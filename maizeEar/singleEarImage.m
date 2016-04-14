@@ -1,4 +1,10 @@
 function [KernelLength sM] = singleEarImage(fileName,noe,oPath,toSave,toDisplay)
+    %{
+        April 14 2016
+        1. copy and add variable info from cob func
+        2. change same update first 
+        3. make it work for 300 dpi
+    %}
     versionString = ['Starting ear analysis algorithm. \nPublication Version 1.0 - Monday, March 28, 2016. \n'];
     fprintf(versionString);
     totalTimeInit = clock;
@@ -42,7 +48,8 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,toSave,toDisplay)
         %%%%%%%%%%%%%%%%%%%%%%%
         fprintf(['starting with image load.\n']);
         I = imread(fileName);
-        I = checkBlue(I);
+        I = checkBlue(I,checkBlue_scaleFactor,addcut,baselineBlue)
+        %I = checkBlue(I);
         fprintf(['ending with image load.\n']);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % INIT VARS - end
@@ -55,6 +62,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,toSave,toDisplay)
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                       
         fprintf(['starting with image analysis. \n']);
         % make the window sizes
+        %%window size matters for dpi. It is based on 1200 dpi
         RAD = 1200:25:1600;
         % the number of down sample grid sites
         gridSites = 10;
