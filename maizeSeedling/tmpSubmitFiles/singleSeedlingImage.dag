@@ -1,0 +1,98 @@
+JOB headnode headnode.nothing DONE
+JOB job1 singleSeedlingImage.submit
+VARS job1 FileTransferList = "/mnt/spaldingdata/nate/dcraw,singleSeedlingImage,run_singleSeedlingImage.sh"
+VARS job1 argNumber1 = "/iplant/home/hirsc213/maizeData/seedlingData/growthchamber12.7.15/day14_mo17_4-5comp.tif#ZyhcdYdYCjWBw03#"
+VARS job1 argNumber2 = "50"
+VARS job1 argNumber3 = "5"
+VARS job1 argNumber4 = "100"
+VARS job1 argNumber5 = "100"
+VARS job1 argNumber6 = "4"
+VARS job1 argNumber7 = "./output/"
+VARS job1 argNumber8 = "job1"
+RETRY job1 3
+SCRIPT POST job1 post.sh job1.tar /mnt/spaldingdata/nate/mirror_images/maizeData/hirsc213/return/seedlingData/
+JOB job2 singleSeedlingImage.submit
+VARS job2 FileTransferList = "/mnt/spaldingdata/nate/dcraw,singleSeedlingImage,run_singleSeedlingImage.sh"
+VARS job2 argNumber1 = "/iplant/home/hirsc213/maizeData/seedlingData/new_background/plot1.nef#Y0ApXGyQvo5LU6y#"
+VARS job2 argNumber2 = "50"
+VARS job2 argNumber3 = "5"
+VARS job2 argNumber4 = "100"
+VARS job2 argNumber5 = "100"
+VARS job2 argNumber6 = "4"
+VARS job2 argNumber7 = "./output/"
+VARS job2 argNumber8 = "job2"
+RETRY job2 3
+SCRIPT POST job2 post.sh job2.tar /mnt/spaldingdata/nate/mirror_images/maizeData/hirsc213/return/seedlingData/
+JOB job3 singleSeedlingImage.submit
+VARS job3 FileTransferList = "/mnt/spaldingdata/nate/dcraw,singleSeedlingImage,run_singleSeedlingImage.sh"
+VARS job3 argNumber1 = "/iplant/home/hirsc213/maizeData/seedlingData/new_background/plot2.nef#Y0ApXGyQvo5LU6y#"
+VARS job3 argNumber2 = "50"
+VARS job3 argNumber3 = "5"
+VARS job3 argNumber4 = "100"
+VARS job3 argNumber5 = "100"
+VARS job3 argNumber6 = "4"
+VARS job3 argNumber7 = "./output/"
+VARS job3 argNumber8 = "job3"
+RETRY job3 3
+SCRIPT POST job3 post.sh job3.tar /mnt/spaldingdata/nate/mirror_images/maizeData/hirsc213/return/seedlingData/
+JOB job4 singleSeedlingImage.submit
+VARS job4 FileTransferList = "/mnt/spaldingdata/nate/dcraw,singleSeedlingImage,run_singleSeedlingImage.sh"
+VARS job4 argNumber1 = "/iplant/home/hirsc213/maizeData/seedlingData/new_background/plot3.nef#Y0ApXGyQvo5LU6y#"
+VARS job4 argNumber2 = "50"
+VARS job4 argNumber3 = "5"
+VARS job4 argNumber4 = "100"
+VARS job4 argNumber5 = "100"
+VARS job4 argNumber6 = "4"
+VARS job4 argNumber7 = "./output/"
+VARS job4 argNumber8 = "job4"
+RETRY job4 3
+SCRIPT POST job4 post.sh job4.tar /mnt/spaldingdata/nate/mirror_images/maizeData/hirsc213/return/seedlingData/
+JOB job5 singleSeedlingImage.submit
+VARS job5 FileTransferList = "/mnt/spaldingdata/nate/dcraw,singleSeedlingImage,run_singleSeedlingImage.sh"
+VARS job5 argNumber1 = "/iplant/home/hirsc213/maizeData/seedlingData/new_background/plot4.nef#Y0ApXGyQvo5LU6y#"
+VARS job5 argNumber2 = "50"
+VARS job5 argNumber3 = "5"
+VARS job5 argNumber4 = "100"
+VARS job5 argNumber5 = "100"
+VARS job5 argNumber6 = "4"
+VARS job5 argNumber7 = "./output/"
+VARS job5 argNumber8 = "job5"
+RETRY job5 3
+SCRIPT POST job5 post.sh job5.tar /mnt/spaldingdata/nate/mirror_images/maizeData/hirsc213/return/seedlingData/
+JOB job6 singleSeedlingImage.submit
+VARS job6 FileTransferList = "/mnt/spaldingdata/nate/dcraw,singleSeedlingImage,run_singleSeedlingImage.sh"
+VARS job6 argNumber1 = "/iplant/home/hirsc213/maizeData/seedlingData/new_background/plot5.nef#Y0ApXGyQvo5LU6y#"
+VARS job6 argNumber2 = "50"
+VARS job6 argNumber3 = "5"
+VARS job6 argNumber4 = "100"
+VARS job6 argNumber5 = "100"
+VARS job6 argNumber6 = "4"
+VARS job6 argNumber7 = "./output/"
+VARS job6 argNumber8 = "job6"
+RETRY job6 3
+SCRIPT POST job6 post.sh job6.tar /mnt/spaldingdata/nate/mirror_images/maizeData/hirsc213/return/seedlingData/
+JOB job7 singleSeedlingImage.submit
+VARS job7 FileTransferList = "/mnt/spaldingdata/nate/dcraw,singleSeedlingImage,run_singleSeedlingImage.sh"
+VARS job7 argNumber1 = "/iplant/home/hirsc213/maizeData/seedlingData/new_background/plot6.nef#Y0ApXGyQvo5LU6y#"
+VARS job7 argNumber2 = "50"
+VARS job7 argNumber3 = "5"
+VARS job7 argNumber4 = "100"
+VARS job7 argNumber5 = "100"
+VARS job7 argNumber6 = "4"
+VARS job7 argNumber7 = "./output/"
+VARS job7 argNumber8 = "job7"
+RETRY job7 3
+SCRIPT POST job7 post.sh job7.tar /mnt/spaldingdata/nate/mirror_images/maizeData/hirsc213/return/seedlingData/
+JOB job8 singleSeedlingImage.submit
+VARS job8 FileTransferList = "/mnt/spaldingdata/nate/dcraw,singleSeedlingImage,run_singleSeedlingImage.sh"
+VARS job8 argNumber1 = "/iplant/home/hirsc213/maizeData/seedlingData/new_background/plot7.nef#Y0ApXGyQvo5LU6y#"
+VARS job8 argNumber2 = "50"
+VARS job8 argNumber3 = "5"
+VARS job8 argNumber4 = "100"
+VARS job8 argNumber5 = "100"
+VARS job8 argNumber6 = "4"
+VARS job8 argNumber7 = "./output/"
+VARS job8 argNumber8 = "job8"
+RETRY job8 3
+SCRIPT POST job8 post.sh job8.tar /mnt/spaldingdata/nate/mirror_images/maizeData/hirsc213/return/seedlingData/
+PARENT headnode CHILD job1 job2 job3 job4 job5 job6 job7 job8 

@@ -1,0 +1,1694 @@
+JOB headnode headnode.nothing DONE
+JOB job1 singleCobImage.submit
+VARS job1 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job1 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-17-15-Scan2c/Scan2-150217-0071.tif#NQL2kKzdTjie11s#"
+VARS job1 argNumber2 = "3"
+VARS job1 argNumber3 = "./output/"
+VARS job1 argNumber4 = "0"
+VARS job1 argNumber5 = "job1"
+RETRY job1 3
+SCRIPT POST job1 post.sh job1.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job2 singleCobImage.submit
+VARS job2 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job2 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-17-15-Scan2c/Scan2-150217-0119.tif#NQL2kKzdTjie11s#"
+VARS job2 argNumber2 = "3"
+VARS job2 argNumber3 = "./output/"
+VARS job2 argNumber4 = "0"
+VARS job2 argNumber5 = "job2"
+RETRY job2 3
+SCRIPT POST job2 post.sh job2.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job3 singleCobImage.submit
+VARS job3 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job3 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-17-15-Scan2c/Scan2-150217-0121.tif#NQL2kKzdTjie11s#"
+VARS job3 argNumber2 = "3"
+VARS job3 argNumber3 = "./output/"
+VARS job3 argNumber4 = "0"
+VARS job3 argNumber5 = "job3"
+RETRY job3 3
+SCRIPT POST job3 post.sh job3.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job4 singleCobImage.submit
+VARS job4 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job4 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-17-15-Scan2c/Scan2-150217-0129.tif#NQL2kKzdTjie11s#"
+VARS job4 argNumber2 = "3"
+VARS job4 argNumber3 = "./output/"
+VARS job4 argNumber4 = "0"
+VARS job4 argNumber5 = "job4"
+RETRY job4 3
+SCRIPT POST job4 post.sh job4.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job5 singleCobImage.submit
+VARS job5 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job5 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-18-15-Scan2c/Scan2-150218-0021.tif#tO5YlVlmXp0DfME#"
+VARS job5 argNumber2 = "3"
+VARS job5 argNumber3 = "./output/"
+VARS job5 argNumber4 = "0"
+VARS job5 argNumber5 = "job5"
+RETRY job5 3
+SCRIPT POST job5 post.sh job5.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job6 singleCobImage.submit
+VARS job6 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job6 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-18-15-Scan2c/Scan2-150218-0037.tif#tO5YlVlmXp0DfME#"
+VARS job6 argNumber2 = "3"
+VARS job6 argNumber3 = "./output/"
+VARS job6 argNumber4 = "0"
+VARS job6 argNumber5 = "job6"
+RETRY job6 3
+SCRIPT POST job6 post.sh job6.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job7 singleCobImage.submit
+VARS job7 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job7 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-18-15-Scan2c/Scan2-150218-0039.tif#tO5YlVlmXp0DfME#"
+VARS job7 argNumber2 = "3"
+VARS job7 argNumber3 = "./output/"
+VARS job7 argNumber4 = "0"
+VARS job7 argNumber5 = "job7"
+RETRY job7 3
+SCRIPT POST job7 post.sh job7.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job8 singleCobImage.submit
+VARS job8 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job8 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-18-15-Scan2c/Scan2-150218-0093.tif#tO5YlVlmXp0DfME#"
+VARS job8 argNumber2 = "3"
+VARS job8 argNumber3 = "./output/"
+VARS job8 argNumber4 = "0"
+VARS job8 argNumber5 = "job8"
+RETRY job8 3
+SCRIPT POST job8 post.sh job8.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job9 singleCobImage.submit
+VARS job9 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job9 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-18-15-Scan2c/Scan2-150218-0097.tif#tO5YlVlmXp0DfME#"
+VARS job9 argNumber2 = "3"
+VARS job9 argNumber3 = "./output/"
+VARS job9 argNumber4 = "0"
+VARS job9 argNumber5 = "job9"
+RETRY job9 3
+SCRIPT POST job9 post.sh job9.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job10 singleCobImage.submit
+VARS job10 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job10 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-18-15-Scan2c/Scan2-150218-0109.tif#tO5YlVlmXp0DfME#"
+VARS job10 argNumber2 = "3"
+VARS job10 argNumber3 = "./output/"
+VARS job10 argNumber4 = "0"
+VARS job10 argNumber5 = "job10"
+RETRY job10 3
+SCRIPT POST job10 post.sh job10.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job11 singleCobImage.submit
+VARS job11 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job11 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-18-15-Scan2c/Scan2-150218-0111.tif#tO5YlVlmXp0DfME#"
+VARS job11 argNumber2 = "3"
+VARS job11 argNumber3 = "./output/"
+VARS job11 argNumber4 = "0"
+VARS job11 argNumber5 = "job11"
+RETRY job11 3
+SCRIPT POST job11 post.sh job11.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job12 singleCobImage.submit
+VARS job12 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job12 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0059.tif#EBmzsn2zA6rp1Kv#"
+VARS job12 argNumber2 = "3"
+VARS job12 argNumber3 = "./output/"
+VARS job12 argNumber4 = "0"
+VARS job12 argNumber5 = "job12"
+RETRY job12 3
+SCRIPT POST job12 post.sh job12.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job13 singleCobImage.submit
+VARS job13 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job13 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0065.tif#EBmzsn2zA6rp1Kv#"
+VARS job13 argNumber2 = "3"
+VARS job13 argNumber3 = "./output/"
+VARS job13 argNumber4 = "0"
+VARS job13 argNumber5 = "job13"
+RETRY job13 3
+SCRIPT POST job13 post.sh job13.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job14 singleCobImage.submit
+VARS job14 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job14 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0067.tif#EBmzsn2zA6rp1Kv#"
+VARS job14 argNumber2 = "3"
+VARS job14 argNumber3 = "./output/"
+VARS job14 argNumber4 = "0"
+VARS job14 argNumber5 = "job14"
+RETRY job14 3
+SCRIPT POST job14 post.sh job14.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job15 singleCobImage.submit
+VARS job15 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job15 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0069.tif#EBmzsn2zA6rp1Kv#"
+VARS job15 argNumber2 = "3"
+VARS job15 argNumber3 = "./output/"
+VARS job15 argNumber4 = "0"
+VARS job15 argNumber5 = "job15"
+RETRY job15 3
+SCRIPT POST job15 post.sh job15.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job16 singleCobImage.submit
+VARS job16 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job16 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0071.tif#EBmzsn2zA6rp1Kv#"
+VARS job16 argNumber2 = "3"
+VARS job16 argNumber3 = "./output/"
+VARS job16 argNumber4 = "0"
+VARS job16 argNumber5 = "job16"
+RETRY job16 3
+SCRIPT POST job16 post.sh job16.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job17 singleCobImage.submit
+VARS job17 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job17 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0073.tif#EBmzsn2zA6rp1Kv#"
+VARS job17 argNumber2 = "3"
+VARS job17 argNumber3 = "./output/"
+VARS job17 argNumber4 = "0"
+VARS job17 argNumber5 = "job17"
+RETRY job17 3
+SCRIPT POST job17 post.sh job17.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job18 singleCobImage.submit
+VARS job18 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job18 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0075.tif#EBmzsn2zA6rp1Kv#"
+VARS job18 argNumber2 = "3"
+VARS job18 argNumber3 = "./output/"
+VARS job18 argNumber4 = "0"
+VARS job18 argNumber5 = "job18"
+RETRY job18 3
+SCRIPT POST job18 post.sh job18.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job19 singleCobImage.submit
+VARS job19 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job19 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0077.tif#EBmzsn2zA6rp1Kv#"
+VARS job19 argNumber2 = "3"
+VARS job19 argNumber3 = "./output/"
+VARS job19 argNumber4 = "0"
+VARS job19 argNumber5 = "job19"
+RETRY job19 3
+SCRIPT POST job19 post.sh job19.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job20 singleCobImage.submit
+VARS job20 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job20 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0079.tif#EBmzsn2zA6rp1Kv#"
+VARS job20 argNumber2 = "3"
+VARS job20 argNumber3 = "./output/"
+VARS job20 argNumber4 = "0"
+VARS job20 argNumber5 = "job20"
+RETRY job20 3
+SCRIPT POST job20 post.sh job20.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job21 singleCobImage.submit
+VARS job21 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job21 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0081.tif#EBmzsn2zA6rp1Kv#"
+VARS job21 argNumber2 = "3"
+VARS job21 argNumber3 = "./output/"
+VARS job21 argNumber4 = "0"
+VARS job21 argNumber5 = "job21"
+RETRY job21 3
+SCRIPT POST job21 post.sh job21.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job22 singleCobImage.submit
+VARS job22 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job22 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0083.tif#EBmzsn2zA6rp1Kv#"
+VARS job22 argNumber2 = "3"
+VARS job22 argNumber3 = "./output/"
+VARS job22 argNumber4 = "0"
+VARS job22 argNumber5 = "job22"
+RETRY job22 3
+SCRIPT POST job22 post.sh job22.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job23 singleCobImage.submit
+VARS job23 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job23 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0085.tif#EBmzsn2zA6rp1Kv#"
+VARS job23 argNumber2 = "3"
+VARS job23 argNumber3 = "./output/"
+VARS job23 argNumber4 = "0"
+VARS job23 argNumber5 = "job23"
+RETRY job23 3
+SCRIPT POST job23 post.sh job23.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job24 singleCobImage.submit
+VARS job24 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job24 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0087.tif#EBmzsn2zA6rp1Kv#"
+VARS job24 argNumber2 = "3"
+VARS job24 argNumber3 = "./output/"
+VARS job24 argNumber4 = "0"
+VARS job24 argNumber5 = "job24"
+RETRY job24 3
+SCRIPT POST job24 post.sh job24.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job25 singleCobImage.submit
+VARS job25 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job25 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0089.tif#EBmzsn2zA6rp1Kv#"
+VARS job25 argNumber2 = "3"
+VARS job25 argNumber3 = "./output/"
+VARS job25 argNumber4 = "0"
+VARS job25 argNumber5 = "job25"
+RETRY job25 3
+SCRIPT POST job25 post.sh job25.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job26 singleCobImage.submit
+VARS job26 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job26 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0091.tif#EBmzsn2zA6rp1Kv#"
+VARS job26 argNumber2 = "3"
+VARS job26 argNumber3 = "./output/"
+VARS job26 argNumber4 = "0"
+VARS job26 argNumber5 = "job26"
+RETRY job26 3
+SCRIPT POST job26 post.sh job26.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job27 singleCobImage.submit
+VARS job27 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job27 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0093.tif#EBmzsn2zA6rp1Kv#"
+VARS job27 argNumber2 = "3"
+VARS job27 argNumber3 = "./output/"
+VARS job27 argNumber4 = "0"
+VARS job27 argNumber5 = "job27"
+RETRY job27 3
+SCRIPT POST job27 post.sh job27.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job28 singleCobImage.submit
+VARS job28 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job28 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0095.tif#EBmzsn2zA6rp1Kv#"
+VARS job28 argNumber2 = "3"
+VARS job28 argNumber3 = "./output/"
+VARS job28 argNumber4 = "0"
+VARS job28 argNumber5 = "job28"
+RETRY job28 3
+SCRIPT POST job28 post.sh job28.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job29 singleCobImage.submit
+VARS job29 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job29 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0097.tif#EBmzsn2zA6rp1Kv#"
+VARS job29 argNumber2 = "3"
+VARS job29 argNumber3 = "./output/"
+VARS job29 argNumber4 = "0"
+VARS job29 argNumber5 = "job29"
+RETRY job29 3
+SCRIPT POST job29 post.sh job29.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job30 singleCobImage.submit
+VARS job30 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job30 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0099.tif#EBmzsn2zA6rp1Kv#"
+VARS job30 argNumber2 = "3"
+VARS job30 argNumber3 = "./output/"
+VARS job30 argNumber4 = "0"
+VARS job30 argNumber5 = "job30"
+RETRY job30 3
+SCRIPT POST job30 post.sh job30.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job31 singleCobImage.submit
+VARS job31 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job31 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0101.tif#EBmzsn2zA6rp1Kv#"
+VARS job31 argNumber2 = "3"
+VARS job31 argNumber3 = "./output/"
+VARS job31 argNumber4 = "0"
+VARS job31 argNumber5 = "job31"
+RETRY job31 3
+SCRIPT POST job31 post.sh job31.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job32 singleCobImage.submit
+VARS job32 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job32 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0103.tif#EBmzsn2zA6rp1Kv#"
+VARS job32 argNumber2 = "3"
+VARS job32 argNumber3 = "./output/"
+VARS job32 argNumber4 = "0"
+VARS job32 argNumber5 = "job32"
+RETRY job32 3
+SCRIPT POST job32 post.sh job32.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job33 singleCobImage.submit
+VARS job33 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job33 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0105.tif#EBmzsn2zA6rp1Kv#"
+VARS job33 argNumber2 = "3"
+VARS job33 argNumber3 = "./output/"
+VARS job33 argNumber4 = "0"
+VARS job33 argNumber5 = "job33"
+RETRY job33 3
+SCRIPT POST job33 post.sh job33.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job34 singleCobImage.submit
+VARS job34 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job34 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0107.tif#EBmzsn2zA6rp1Kv#"
+VARS job34 argNumber2 = "3"
+VARS job34 argNumber3 = "./output/"
+VARS job34 argNumber4 = "0"
+VARS job34 argNumber5 = "job34"
+RETRY job34 3
+SCRIPT POST job34 post.sh job34.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job35 singleCobImage.submit
+VARS job35 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job35 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0111.tif#EBmzsn2zA6rp1Kv#"
+VARS job35 argNumber2 = "3"
+VARS job35 argNumber3 = "./output/"
+VARS job35 argNumber4 = "0"
+VARS job35 argNumber5 = "job35"
+RETRY job35 3
+SCRIPT POST job35 post.sh job35.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job36 singleCobImage.submit
+VARS job36 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job36 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0113.tif#EBmzsn2zA6rp1Kv#"
+VARS job36 argNumber2 = "3"
+VARS job36 argNumber3 = "./output/"
+VARS job36 argNumber4 = "0"
+VARS job36 argNumber5 = "job36"
+RETRY job36 3
+SCRIPT POST job36 post.sh job36.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job37 singleCobImage.submit
+VARS job37 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job37 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0115.tif#EBmzsn2zA6rp1Kv#"
+VARS job37 argNumber2 = "3"
+VARS job37 argNumber3 = "./output/"
+VARS job37 argNumber4 = "0"
+VARS job37 argNumber5 = "job37"
+RETRY job37 3
+SCRIPT POST job37 post.sh job37.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job38 singleCobImage.submit
+VARS job38 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job38 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0117.tif#EBmzsn2zA6rp1Kv#"
+VARS job38 argNumber2 = "3"
+VARS job38 argNumber3 = "./output/"
+VARS job38 argNumber4 = "0"
+VARS job38 argNumber5 = "job38"
+RETRY job38 3
+SCRIPT POST job38 post.sh job38.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job39 singleCobImage.submit
+VARS job39 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job39 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0119.tif#EBmzsn2zA6rp1Kv#"
+VARS job39 argNumber2 = "3"
+VARS job39 argNumber3 = "./output/"
+VARS job39 argNumber4 = "0"
+VARS job39 argNumber5 = "job39"
+RETRY job39 3
+SCRIPT POST job39 post.sh job39.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job40 singleCobImage.submit
+VARS job40 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job40 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0121.tif#EBmzsn2zA6rp1Kv#"
+VARS job40 argNumber2 = "3"
+VARS job40 argNumber3 = "./output/"
+VARS job40 argNumber4 = "0"
+VARS job40 argNumber5 = "job40"
+RETRY job40 3
+SCRIPT POST job40 post.sh job40.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job41 singleCobImage.submit
+VARS job41 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job41 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0123.tif#EBmzsn2zA6rp1Kv#"
+VARS job41 argNumber2 = "3"
+VARS job41 argNumber3 = "./output/"
+VARS job41 argNumber4 = "0"
+VARS job41 argNumber5 = "job41"
+RETRY job41 3
+SCRIPT POST job41 post.sh job41.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job42 singleCobImage.submit
+VARS job42 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job42 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0125.tif#EBmzsn2zA6rp1Kv#"
+VARS job42 argNumber2 = "3"
+VARS job42 argNumber3 = "./output/"
+VARS job42 argNumber4 = "0"
+VARS job42 argNumber5 = "job42"
+RETRY job42 3
+SCRIPT POST job42 post.sh job42.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job43 singleCobImage.submit
+VARS job43 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job43 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0127.tif#EBmzsn2zA6rp1Kv#"
+VARS job43 argNumber2 = "3"
+VARS job43 argNumber3 = "./output/"
+VARS job43 argNumber4 = "0"
+VARS job43 argNumber5 = "job43"
+RETRY job43 3
+SCRIPT POST job43 post.sh job43.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job44 singleCobImage.submit
+VARS job44 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job44 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0129.tif#EBmzsn2zA6rp1Kv#"
+VARS job44 argNumber2 = "3"
+VARS job44 argNumber3 = "./output/"
+VARS job44 argNumber4 = "0"
+VARS job44 argNumber5 = "job44"
+RETRY job44 3
+SCRIPT POST job44 post.sh job44.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job45 singleCobImage.submit
+VARS job45 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job45 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0131.tif#EBmzsn2zA6rp1Kv#"
+VARS job45 argNumber2 = "3"
+VARS job45 argNumber3 = "./output/"
+VARS job45 argNumber4 = "0"
+VARS job45 argNumber5 = "job45"
+RETRY job45 3
+SCRIPT POST job45 post.sh job45.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job46 singleCobImage.submit
+VARS job46 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job46 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0133.tif#EBmzsn2zA6rp1Kv#"
+VARS job46 argNumber2 = "3"
+VARS job46 argNumber3 = "./output/"
+VARS job46 argNumber4 = "0"
+VARS job46 argNumber5 = "job46"
+RETRY job46 3
+SCRIPT POST job46 post.sh job46.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job47 singleCobImage.submit
+VARS job47 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job47 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0135.tif#EBmzsn2zA6rp1Kv#"
+VARS job47 argNumber2 = "3"
+VARS job47 argNumber3 = "./output/"
+VARS job47 argNumber4 = "0"
+VARS job47 argNumber5 = "job47"
+RETRY job47 3
+SCRIPT POST job47 post.sh job47.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job48 singleCobImage.submit
+VARS job48 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job48 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0137.tif#EBmzsn2zA6rp1Kv#"
+VARS job48 argNumber2 = "3"
+VARS job48 argNumber3 = "./output/"
+VARS job48 argNumber4 = "0"
+VARS job48 argNumber5 = "job48"
+RETRY job48 3
+SCRIPT POST job48 post.sh job48.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job49 singleCobImage.submit
+VARS job49 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job49 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0139.tif#EBmzsn2zA6rp1Kv#"
+VARS job49 argNumber2 = "3"
+VARS job49 argNumber3 = "./output/"
+VARS job49 argNumber4 = "0"
+VARS job49 argNumber5 = "job49"
+RETRY job49 3
+SCRIPT POST job49 post.sh job49.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job50 singleCobImage.submit
+VARS job50 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job50 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0141.tif#EBmzsn2zA6rp1Kv#"
+VARS job50 argNumber2 = "3"
+VARS job50 argNumber3 = "./output/"
+VARS job50 argNumber4 = "0"
+VARS job50 argNumber5 = "job50"
+RETRY job50 3
+SCRIPT POST job50 post.sh job50.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job51 singleCobImage.submit
+VARS job51 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job51 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0143.tif#EBmzsn2zA6rp1Kv#"
+VARS job51 argNumber2 = "3"
+VARS job51 argNumber3 = "./output/"
+VARS job51 argNumber4 = "0"
+VARS job51 argNumber5 = "job51"
+RETRY job51 3
+SCRIPT POST job51 post.sh job51.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job52 singleCobImage.submit
+VARS job52 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job52 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0145.tif#EBmzsn2zA6rp1Kv#"
+VARS job52 argNumber2 = "3"
+VARS job52 argNumber3 = "./output/"
+VARS job52 argNumber4 = "0"
+VARS job52 argNumber5 = "job52"
+RETRY job52 3
+SCRIPT POST job52 post.sh job52.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job53 singleCobImage.submit
+VARS job53 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job53 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0147.tif#EBmzsn2zA6rp1Kv#"
+VARS job53 argNumber2 = "3"
+VARS job53 argNumber3 = "./output/"
+VARS job53 argNumber4 = "0"
+VARS job53 argNumber5 = "job53"
+RETRY job53 3
+SCRIPT POST job53 post.sh job53.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job54 singleCobImage.submit
+VARS job54 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job54 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0149.tif#EBmzsn2zA6rp1Kv#"
+VARS job54 argNumber2 = "3"
+VARS job54 argNumber3 = "./output/"
+VARS job54 argNumber4 = "0"
+VARS job54 argNumber5 = "job54"
+RETRY job54 3
+SCRIPT POST job54 post.sh job54.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job55 singleCobImage.submit
+VARS job55 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job55 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-19-15-Scan2c/Scan2-150219-0151.tif#EBmzsn2zA6rp1Kv#"
+VARS job55 argNumber2 = "3"
+VARS job55 argNumber3 = "./output/"
+VARS job55 argNumber4 = "0"
+VARS job55 argNumber5 = "job55"
+RETRY job55 3
+SCRIPT POST job55 post.sh job55.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job56 singleCobImage.submit
+VARS job56 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job56 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0003.tif#6BTsYpmFjanYFNq#"
+VARS job56 argNumber2 = "3"
+VARS job56 argNumber3 = "./output/"
+VARS job56 argNumber4 = "0"
+VARS job56 argNumber5 = "job56"
+RETRY job56 3
+SCRIPT POST job56 post.sh job56.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job57 singleCobImage.submit
+VARS job57 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job57 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0007.tif#6BTsYpmFjanYFNq#"
+VARS job57 argNumber2 = "3"
+VARS job57 argNumber3 = "./output/"
+VARS job57 argNumber4 = "0"
+VARS job57 argNumber5 = "job57"
+RETRY job57 3
+SCRIPT POST job57 post.sh job57.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job58 singleCobImage.submit
+VARS job58 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job58 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0009.tif#6BTsYpmFjanYFNq#"
+VARS job58 argNumber2 = "3"
+VARS job58 argNumber3 = "./output/"
+VARS job58 argNumber4 = "0"
+VARS job58 argNumber5 = "job58"
+RETRY job58 3
+SCRIPT POST job58 post.sh job58.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job59 singleCobImage.submit
+VARS job59 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job59 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0017.tif#6BTsYpmFjanYFNq#"
+VARS job59 argNumber2 = "3"
+VARS job59 argNumber3 = "./output/"
+VARS job59 argNumber4 = "0"
+VARS job59 argNumber5 = "job59"
+RETRY job59 3
+SCRIPT POST job59 post.sh job59.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job60 singleCobImage.submit
+VARS job60 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job60 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0021.tif#6BTsYpmFjanYFNq#"
+VARS job60 argNumber2 = "3"
+VARS job60 argNumber3 = "./output/"
+VARS job60 argNumber4 = "0"
+VARS job60 argNumber5 = "job60"
+RETRY job60 3
+SCRIPT POST job60 post.sh job60.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job61 singleCobImage.submit
+VARS job61 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job61 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0025.tif#6BTsYpmFjanYFNq#"
+VARS job61 argNumber2 = "3"
+VARS job61 argNumber3 = "./output/"
+VARS job61 argNumber4 = "0"
+VARS job61 argNumber5 = "job61"
+RETRY job61 3
+SCRIPT POST job61 post.sh job61.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job62 singleCobImage.submit
+VARS job62 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job62 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0043.tif#6BTsYpmFjanYFNq#"
+VARS job62 argNumber2 = "3"
+VARS job62 argNumber3 = "./output/"
+VARS job62 argNumber4 = "0"
+VARS job62 argNumber5 = "job62"
+RETRY job62 3
+SCRIPT POST job62 post.sh job62.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job63 singleCobImage.submit
+VARS job63 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job63 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0045.tif#6BTsYpmFjanYFNq#"
+VARS job63 argNumber2 = "3"
+VARS job63 argNumber3 = "./output/"
+VARS job63 argNumber4 = "0"
+VARS job63 argNumber5 = "job63"
+RETRY job63 3
+SCRIPT POST job63 post.sh job63.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job64 singleCobImage.submit
+VARS job64 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job64 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0047.tif#6BTsYpmFjanYFNq#"
+VARS job64 argNumber2 = "3"
+VARS job64 argNumber3 = "./output/"
+VARS job64 argNumber4 = "0"
+VARS job64 argNumber5 = "job64"
+RETRY job64 3
+SCRIPT POST job64 post.sh job64.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job65 singleCobImage.submit
+VARS job65 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job65 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0051.tif#6BTsYpmFjanYFNq#"
+VARS job65 argNumber2 = "3"
+VARS job65 argNumber3 = "./output/"
+VARS job65 argNumber4 = "0"
+VARS job65 argNumber5 = "job65"
+RETRY job65 3
+SCRIPT POST job65 post.sh job65.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job66 singleCobImage.submit
+VARS job66 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job66 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0069.tif#6BTsYpmFjanYFNq#"
+VARS job66 argNumber2 = "3"
+VARS job66 argNumber3 = "./output/"
+VARS job66 argNumber4 = "0"
+VARS job66 argNumber5 = "job66"
+RETRY job66 3
+SCRIPT POST job66 post.sh job66.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job67 singleCobImage.submit
+VARS job67 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job67 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0077.tif#6BTsYpmFjanYFNq#"
+VARS job67 argNumber2 = "3"
+VARS job67 argNumber3 = "./output/"
+VARS job67 argNumber4 = "0"
+VARS job67 argNumber5 = "job67"
+RETRY job67 3
+SCRIPT POST job67 post.sh job67.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job68 singleCobImage.submit
+VARS job68 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job68 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0079.tif#6BTsYpmFjanYFNq#"
+VARS job68 argNumber2 = "3"
+VARS job68 argNumber3 = "./output/"
+VARS job68 argNumber4 = "0"
+VARS job68 argNumber5 = "job68"
+RETRY job68 3
+SCRIPT POST job68 post.sh job68.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job69 singleCobImage.submit
+VARS job69 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job69 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0081.tif#6BTsYpmFjanYFNq#"
+VARS job69 argNumber2 = "3"
+VARS job69 argNumber3 = "./output/"
+VARS job69 argNumber4 = "0"
+VARS job69 argNumber5 = "job69"
+RETRY job69 3
+SCRIPT POST job69 post.sh job69.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job70 singleCobImage.submit
+VARS job70 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job70 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0085.tif#6BTsYpmFjanYFNq#"
+VARS job70 argNumber2 = "3"
+VARS job70 argNumber3 = "./output/"
+VARS job70 argNumber4 = "0"
+VARS job70 argNumber5 = "job70"
+RETRY job70 3
+SCRIPT POST job70 post.sh job70.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job71 singleCobImage.submit
+VARS job71 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job71 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0087.tif#6BTsYpmFjanYFNq#"
+VARS job71 argNumber2 = "3"
+VARS job71 argNumber3 = "./output/"
+VARS job71 argNumber4 = "0"
+VARS job71 argNumber5 = "job71"
+RETRY job71 3
+SCRIPT POST job71 post.sh job71.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job72 singleCobImage.submit
+VARS job72 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job72 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0089.tif#6BTsYpmFjanYFNq#"
+VARS job72 argNumber2 = "3"
+VARS job72 argNumber3 = "./output/"
+VARS job72 argNumber4 = "0"
+VARS job72 argNumber5 = "job72"
+RETRY job72 3
+SCRIPT POST job72 post.sh job72.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job73 singleCobImage.submit
+VARS job73 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job73 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0105.tif#6BTsYpmFjanYFNq#"
+VARS job73 argNumber2 = "3"
+VARS job73 argNumber3 = "./output/"
+VARS job73 argNumber4 = "0"
+VARS job73 argNumber5 = "job73"
+RETRY job73 3
+SCRIPT POST job73 post.sh job73.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job74 singleCobImage.submit
+VARS job74 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job74 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0107.tif#6BTsYpmFjanYFNq#"
+VARS job74 argNumber2 = "3"
+VARS job74 argNumber3 = "./output/"
+VARS job74 argNumber4 = "0"
+VARS job74 argNumber5 = "job74"
+RETRY job74 3
+SCRIPT POST job74 post.sh job74.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job75 singleCobImage.submit
+VARS job75 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job75 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0111.tif#6BTsYpmFjanYFNq#"
+VARS job75 argNumber2 = "3"
+VARS job75 argNumber3 = "./output/"
+VARS job75 argNumber4 = "0"
+VARS job75 argNumber5 = "job75"
+RETRY job75 3
+SCRIPT POST job75 post.sh job75.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job76 singleCobImage.submit
+VARS job76 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job76 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0113.tif#6BTsYpmFjanYFNq#"
+VARS job76 argNumber2 = "3"
+VARS job76 argNumber3 = "./output/"
+VARS job76 argNumber4 = "0"
+VARS job76 argNumber5 = "job76"
+RETRY job76 3
+SCRIPT POST job76 post.sh job76.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job77 singleCobImage.submit
+VARS job77 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job77 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0115.tif#6BTsYpmFjanYFNq#"
+VARS job77 argNumber2 = "3"
+VARS job77 argNumber3 = "./output/"
+VARS job77 argNumber4 = "0"
+VARS job77 argNumber5 = "job77"
+RETRY job77 3
+SCRIPT POST job77 post.sh job77.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job78 singleCobImage.submit
+VARS job78 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job78 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0117.tif#6BTsYpmFjanYFNq#"
+VARS job78 argNumber2 = "3"
+VARS job78 argNumber3 = "./output/"
+VARS job78 argNumber4 = "0"
+VARS job78 argNumber5 = "job78"
+RETRY job78 3
+SCRIPT POST job78 post.sh job78.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job79 singleCobImage.submit
+VARS job79 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job79 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0119.tif#6BTsYpmFjanYFNq#"
+VARS job79 argNumber2 = "3"
+VARS job79 argNumber3 = "./output/"
+VARS job79 argNumber4 = "0"
+VARS job79 argNumber5 = "job79"
+RETRY job79 3
+SCRIPT POST job79 post.sh job79.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job80 singleCobImage.submit
+VARS job80 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job80 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0121.tif#6BTsYpmFjanYFNq#"
+VARS job80 argNumber2 = "3"
+VARS job80 argNumber3 = "./output/"
+VARS job80 argNumber4 = "0"
+VARS job80 argNumber5 = "job80"
+RETRY job80 3
+SCRIPT POST job80 post.sh job80.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job81 singleCobImage.submit
+VARS job81 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job81 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0123.tif#6BTsYpmFjanYFNq#"
+VARS job81 argNumber2 = "3"
+VARS job81 argNumber3 = "./output/"
+VARS job81 argNumber4 = "0"
+VARS job81 argNumber5 = "job81"
+RETRY job81 3
+SCRIPT POST job81 post.sh job81.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job82 singleCobImage.submit
+VARS job82 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job82 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0125.tif#6BTsYpmFjanYFNq#"
+VARS job82 argNumber2 = "3"
+VARS job82 argNumber3 = "./output/"
+VARS job82 argNumber4 = "0"
+VARS job82 argNumber5 = "job82"
+RETRY job82 3
+SCRIPT POST job82 post.sh job82.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job83 singleCobImage.submit
+VARS job83 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job83 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0127.tif#6BTsYpmFjanYFNq#"
+VARS job83 argNumber2 = "3"
+VARS job83 argNumber3 = "./output/"
+VARS job83 argNumber4 = "0"
+VARS job83 argNumber5 = "job83"
+RETRY job83 3
+SCRIPT POST job83 post.sh job83.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job84 singleCobImage.submit
+VARS job84 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job84 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0129.tif#6BTsYpmFjanYFNq#"
+VARS job84 argNumber2 = "3"
+VARS job84 argNumber3 = "./output/"
+VARS job84 argNumber4 = "0"
+VARS job84 argNumber5 = "job84"
+RETRY job84 3
+SCRIPT POST job84 post.sh job84.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job85 singleCobImage.submit
+VARS job85 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job85 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0131.tif#6BTsYpmFjanYFNq#"
+VARS job85 argNumber2 = "3"
+VARS job85 argNumber3 = "./output/"
+VARS job85 argNumber4 = "0"
+VARS job85 argNumber5 = "job85"
+RETRY job85 3
+SCRIPT POST job85 post.sh job85.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job86 singleCobImage.submit
+VARS job86 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job86 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0133.tif#6BTsYpmFjanYFNq#"
+VARS job86 argNumber2 = "3"
+VARS job86 argNumber3 = "./output/"
+VARS job86 argNumber4 = "0"
+VARS job86 argNumber5 = "job86"
+RETRY job86 3
+SCRIPT POST job86 post.sh job86.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job87 singleCobImage.submit
+VARS job87 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job87 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0135.tif#6BTsYpmFjanYFNq#"
+VARS job87 argNumber2 = "3"
+VARS job87 argNumber3 = "./output/"
+VARS job87 argNumber4 = "0"
+VARS job87 argNumber5 = "job87"
+RETRY job87 3
+SCRIPT POST job87 post.sh job87.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job88 singleCobImage.submit
+VARS job88 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job88 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0137.tif#6BTsYpmFjanYFNq#"
+VARS job88 argNumber2 = "3"
+VARS job88 argNumber3 = "./output/"
+VARS job88 argNumber4 = "0"
+VARS job88 argNumber5 = "job88"
+RETRY job88 3
+SCRIPT POST job88 post.sh job88.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job89 singleCobImage.submit
+VARS job89 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job89 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0139.tif#6BTsYpmFjanYFNq#"
+VARS job89 argNumber2 = "3"
+VARS job89 argNumber3 = "./output/"
+VARS job89 argNumber4 = "0"
+VARS job89 argNumber5 = "job89"
+RETRY job89 3
+SCRIPT POST job89 post.sh job89.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job90 singleCobImage.submit
+VARS job90 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job90 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0141.tif#6BTsYpmFjanYFNq#"
+VARS job90 argNumber2 = "3"
+VARS job90 argNumber3 = "./output/"
+VARS job90 argNumber4 = "0"
+VARS job90 argNumber5 = "job90"
+RETRY job90 3
+SCRIPT POST job90 post.sh job90.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job91 singleCobImage.submit
+VARS job91 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job91 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0143.tif#6BTsYpmFjanYFNq#"
+VARS job91 argNumber2 = "3"
+VARS job91 argNumber3 = "./output/"
+VARS job91 argNumber4 = "0"
+VARS job91 argNumber5 = "job91"
+RETRY job91 3
+SCRIPT POST job91 post.sh job91.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job92 singleCobImage.submit
+VARS job92 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job92 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-23-15-Scan2c/Scan2-150223-0145.tif#6BTsYpmFjanYFNq#"
+VARS job92 argNumber2 = "3"
+VARS job92 argNumber3 = "./output/"
+VARS job92 argNumber4 = "0"
+VARS job92 argNumber5 = "job92"
+RETRY job92 3
+SCRIPT POST job92 post.sh job92.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job93 singleCobImage.submit
+VARS job93 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job93 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-24-15-Scan2c/Scan2-150224-0083.tif#E3Jqhwaw4pNlgqS#"
+VARS job93 argNumber2 = "3"
+VARS job93 argNumber3 = "./output/"
+VARS job93 argNumber4 = "0"
+VARS job93 argNumber5 = "job93"
+RETRY job93 3
+SCRIPT POST job93 post.sh job93.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job94 singleCobImage.submit
+VARS job94 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job94 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-24-15-Scan2c/Scan2-150224-0087.tif#E3Jqhwaw4pNlgqS#"
+VARS job94 argNumber2 = "3"
+VARS job94 argNumber3 = "./output/"
+VARS job94 argNumber4 = "0"
+VARS job94 argNumber5 = "job94"
+RETRY job94 3
+SCRIPT POST job94 post.sh job94.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job95 singleCobImage.submit
+VARS job95 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job95 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-26-15-Scan2c/Scan2-150226-0017.tif#DGnpLELSm5eO4Vz#"
+VARS job95 argNumber2 = "3"
+VARS job95 argNumber3 = "./output/"
+VARS job95 argNumber4 = "0"
+VARS job95 argNumber5 = "job95"
+RETRY job95 3
+SCRIPT POST job95 post.sh job95.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job96 singleCobImage.submit
+VARS job96 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job96 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-26-15-Scan2c/Scan2-150226-0043.tif#DGnpLELSm5eO4Vz#"
+VARS job96 argNumber2 = "3"
+VARS job96 argNumber3 = "./output/"
+VARS job96 argNumber4 = "0"
+VARS job96 argNumber5 = "job96"
+RETRY job96 3
+SCRIPT POST job96 post.sh job96.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job97 singleCobImage.submit
+VARS job97 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job97 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-26-15-Scan2c/Scan2-150226-0065.tif#DGnpLELSm5eO4Vz#"
+VARS job97 argNumber2 = "3"
+VARS job97 argNumber3 = "./output/"
+VARS job97 argNumber4 = "0"
+VARS job97 argNumber5 = "job97"
+RETRY job97 3
+SCRIPT POST job97 post.sh job97.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job98 singleCobImage.submit
+VARS job98 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job98 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-26-15-Scan2c/Scan2-150226-0103.tif#DGnpLELSm5eO4Vz#"
+VARS job98 argNumber2 = "3"
+VARS job98 argNumber3 = "./output/"
+VARS job98 argNumber4 = "0"
+VARS job98 argNumber5 = "job98"
+RETRY job98 3
+SCRIPT POST job98 post.sh job98.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job99 singleCobImage.submit
+VARS job99 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job99 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-27-15-Scan2c/Scan2-150227-0045.tif#q4dnYhfRuG7GxOq#"
+VARS job99 argNumber2 = "3"
+VARS job99 argNumber3 = "./output/"
+VARS job99 argNumber4 = "0"
+VARS job99 argNumber5 = "job99"
+RETRY job99 3
+SCRIPT POST job99 post.sh job99.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job100 singleCobImage.submit
+VARS job100 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job100 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-27-15-Scan2c/Scan2-150227-0051.tif#q4dnYhfRuG7GxOq#"
+VARS job100 argNumber2 = "3"
+VARS job100 argNumber3 = "./output/"
+VARS job100 argNumber4 = "0"
+VARS job100 argNumber5 = "job100"
+RETRY job100 3
+SCRIPT POST job100 post.sh job100.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job101 singleCobImage.submit
+VARS job101 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job101 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-27-15-Scan2c/Scan2-150227-0093.tif#q4dnYhfRuG7GxOq#"
+VARS job101 argNumber2 = "3"
+VARS job101 argNumber3 = "./output/"
+VARS job101 argNumber4 = "0"
+VARS job101 argNumber5 = "job101"
+RETRY job101 3
+SCRIPT POST job101 post.sh job101.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job102 singleCobImage.submit
+VARS job102 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job102 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-27-15-Scan2c/Scan2-150227-0109.tif#q4dnYhfRuG7GxOq#"
+VARS job102 argNumber2 = "3"
+VARS job102 argNumber3 = "./output/"
+VARS job102 argNumber4 = "0"
+VARS job102 argNumber5 = "job102"
+RETRY job102 3
+SCRIPT POST job102 post.sh job102.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job103 singleCobImage.submit
+VARS job103 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job103 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-27-15-Scan2c/Scan2-150227-0135.tif#q4dnYhfRuG7GxOq#"
+VARS job103 argNumber2 = "3"
+VARS job103 argNumber3 = "./output/"
+VARS job103 argNumber4 = "0"
+VARS job103 argNumber5 = "job103"
+RETRY job103 3
+SCRIPT POST job103 post.sh job103.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job104 singleCobImage.submit
+VARS job104 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job104 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-27-15-Scan2c/Scan2-150227-0153.tif#q4dnYhfRuG7GxOq#"
+VARS job104 argNumber2 = "3"
+VARS job104 argNumber3 = "./output/"
+VARS job104 argNumber4 = "0"
+VARS job104 argNumber5 = "job104"
+RETRY job104 3
+SCRIPT POST job104 post.sh job104.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job105 singleCobImage.submit
+VARS job105 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job105 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-9-15-Scan2c/Scan2-150209-0029.tif#ibojSXs4I2xDWHL#"
+VARS job105 argNumber2 = "3"
+VARS job105 argNumber3 = "./output/"
+VARS job105 argNumber4 = "0"
+VARS job105 argNumber5 = "job105"
+RETRY job105 3
+SCRIPT POST job105 post.sh job105.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job106 singleCobImage.submit
+VARS job106 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job106 argNumber1 = "/iplant/home/gxe/maizeData/cobData/2-9-15-Scan2c/Scan2-150209-0085.tif#ibojSXs4I2xDWHL#"
+VARS job106 argNumber2 = "3"
+VARS job106 argNumber3 = "./output/"
+VARS job106 argNumber4 = "0"
+VARS job106 argNumber5 = "job106"
+RETRY job106 3
+SCRIPT POST job106 post.sh job106.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job107 singleCobImage.submit
+VARS job107 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job107 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-2-15-Scan2c/Scan2-150302-0019.tif#3PtCI2dugbqGVvs#"
+VARS job107 argNumber2 = "3"
+VARS job107 argNumber3 = "./output/"
+VARS job107 argNumber4 = "0"
+VARS job107 argNumber5 = "job107"
+RETRY job107 3
+SCRIPT POST job107 post.sh job107.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job108 singleCobImage.submit
+VARS job108 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job108 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-2-15-Scan2c/Scan2-150302-0027.tif#3PtCI2dugbqGVvs#"
+VARS job108 argNumber2 = "3"
+VARS job108 argNumber3 = "./output/"
+VARS job108 argNumber4 = "0"
+VARS job108 argNumber5 = "job108"
+RETRY job108 3
+SCRIPT POST job108 post.sh job108.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job109 singleCobImage.submit
+VARS job109 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job109 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-2-15-Scan2c/Scan2-150302-0045.tif#3PtCI2dugbqGVvs#"
+VARS job109 argNumber2 = "3"
+VARS job109 argNumber3 = "./output/"
+VARS job109 argNumber4 = "0"
+VARS job109 argNumber5 = "job109"
+RETRY job109 3
+SCRIPT POST job109 post.sh job109.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job110 singleCobImage.submit
+VARS job110 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job110 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-2-15-Scan2c/Scan2-150302-0077.tif#3PtCI2dugbqGVvs#"
+VARS job110 argNumber2 = "3"
+VARS job110 argNumber3 = "./output/"
+VARS job110 argNumber4 = "0"
+VARS job110 argNumber5 = "job110"
+RETRY job110 3
+SCRIPT POST job110 post.sh job110.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job111 singleCobImage.submit
+VARS job111 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job111 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-2-15-Scan2c/Scan2-150302-0083.tif#3PtCI2dugbqGVvs#"
+VARS job111 argNumber2 = "3"
+VARS job111 argNumber3 = "./output/"
+VARS job111 argNumber4 = "0"
+VARS job111 argNumber5 = "job111"
+RETRY job111 3
+SCRIPT POST job111 post.sh job111.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job112 singleCobImage.submit
+VARS job112 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job112 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-2-15-Scan2c/Scan2-150302-0107.tif#3PtCI2dugbqGVvs#"
+VARS job112 argNumber2 = "3"
+VARS job112 argNumber3 = "./output/"
+VARS job112 argNumber4 = "0"
+VARS job112 argNumber5 = "job112"
+RETRY job112 3
+SCRIPT POST job112 post.sh job112.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job113 singleCobImage.submit
+VARS job113 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job113 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-2-15-Scan2c/Scan2-150302-0119.tif#3PtCI2dugbqGVvs#"
+VARS job113 argNumber2 = "3"
+VARS job113 argNumber3 = "./output/"
+VARS job113 argNumber4 = "0"
+VARS job113 argNumber5 = "job113"
+RETRY job113 3
+SCRIPT POST job113 post.sh job113.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job114 singleCobImage.submit
+VARS job114 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job114 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-2-15-Scan2c/Scan2-150302-0121.tif#3PtCI2dugbqGVvs#"
+VARS job114 argNumber2 = "3"
+VARS job114 argNumber3 = "./output/"
+VARS job114 argNumber4 = "0"
+VARS job114 argNumber5 = "job114"
+RETRY job114 3
+SCRIPT POST job114 post.sh job114.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job115 singleCobImage.submit
+VARS job115 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job115 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-2-15-Scan2c/Scan2-150302-0123.tif#3PtCI2dugbqGVvs#"
+VARS job115 argNumber2 = "3"
+VARS job115 argNumber3 = "./output/"
+VARS job115 argNumber4 = "0"
+VARS job115 argNumber5 = "job115"
+RETRY job115 3
+SCRIPT POST job115 post.sh job115.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job116 singleCobImage.submit
+VARS job116 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job116 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-2-15-Scan2c/Scan2-150302-0131.tif#3PtCI2dugbqGVvs#"
+VARS job116 argNumber2 = "3"
+VARS job116 argNumber3 = "./output/"
+VARS job116 argNumber4 = "0"
+VARS job116 argNumber5 = "job116"
+RETRY job116 3
+SCRIPT POST job116 post.sh job116.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job117 singleCobImage.submit
+VARS job117 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job117 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-2-15-Scan2c/Scan2-150302-0133.tif#3PtCI2dugbqGVvs#"
+VARS job117 argNumber2 = "3"
+VARS job117 argNumber3 = "./output/"
+VARS job117 argNumber4 = "0"
+VARS job117 argNumber5 = "job117"
+RETRY job117 3
+SCRIPT POST job117 post.sh job117.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job118 singleCobImage.submit
+VARS job118 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job118 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-2-15-Scan2c/Scan2-150302-0135.tif#3PtCI2dugbqGVvs#"
+VARS job118 argNumber2 = "3"
+VARS job118 argNumber3 = "./output/"
+VARS job118 argNumber4 = "0"
+VARS job118 argNumber5 = "job118"
+RETRY job118 3
+SCRIPT POST job118 post.sh job118.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job119 singleCobImage.submit
+VARS job119 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job119 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0001.tif#3oaHRLdALFCHsIs#"
+VARS job119 argNumber2 = "3"
+VARS job119 argNumber3 = "./output/"
+VARS job119 argNumber4 = "0"
+VARS job119 argNumber5 = "job119"
+RETRY job119 3
+SCRIPT POST job119 post.sh job119.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job120 singleCobImage.submit
+VARS job120 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job120 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0003.tif#3oaHRLdALFCHsIs#"
+VARS job120 argNumber2 = "3"
+VARS job120 argNumber3 = "./output/"
+VARS job120 argNumber4 = "0"
+VARS job120 argNumber5 = "job120"
+RETRY job120 3
+SCRIPT POST job120 post.sh job120.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job121 singleCobImage.submit
+VARS job121 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job121 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0005.tif#3oaHRLdALFCHsIs#"
+VARS job121 argNumber2 = "3"
+VARS job121 argNumber3 = "./output/"
+VARS job121 argNumber4 = "0"
+VARS job121 argNumber5 = "job121"
+RETRY job121 3
+SCRIPT POST job121 post.sh job121.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job122 singleCobImage.submit
+VARS job122 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job122 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0007.tif#3oaHRLdALFCHsIs#"
+VARS job122 argNumber2 = "3"
+VARS job122 argNumber3 = "./output/"
+VARS job122 argNumber4 = "0"
+VARS job122 argNumber5 = "job122"
+RETRY job122 3
+SCRIPT POST job122 post.sh job122.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job123 singleCobImage.submit
+VARS job123 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job123 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0009.tif#3oaHRLdALFCHsIs#"
+VARS job123 argNumber2 = "3"
+VARS job123 argNumber3 = "./output/"
+VARS job123 argNumber4 = "0"
+VARS job123 argNumber5 = "job123"
+RETRY job123 3
+SCRIPT POST job123 post.sh job123.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job124 singleCobImage.submit
+VARS job124 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job124 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0011.tif#3oaHRLdALFCHsIs#"
+VARS job124 argNumber2 = "3"
+VARS job124 argNumber3 = "./output/"
+VARS job124 argNumber4 = "0"
+VARS job124 argNumber5 = "job124"
+RETRY job124 3
+SCRIPT POST job124 post.sh job124.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job125 singleCobImage.submit
+VARS job125 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job125 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0013.tif#3oaHRLdALFCHsIs#"
+VARS job125 argNumber2 = "3"
+VARS job125 argNumber3 = "./output/"
+VARS job125 argNumber4 = "0"
+VARS job125 argNumber5 = "job125"
+RETRY job125 3
+SCRIPT POST job125 post.sh job125.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job126 singleCobImage.submit
+VARS job126 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job126 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0015.tif#3oaHRLdALFCHsIs#"
+VARS job126 argNumber2 = "3"
+VARS job126 argNumber3 = "./output/"
+VARS job126 argNumber4 = "0"
+VARS job126 argNumber5 = "job126"
+RETRY job126 3
+SCRIPT POST job126 post.sh job126.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job127 singleCobImage.submit
+VARS job127 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job127 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0017.tif#3oaHRLdALFCHsIs#"
+VARS job127 argNumber2 = "3"
+VARS job127 argNumber3 = "./output/"
+VARS job127 argNumber4 = "0"
+VARS job127 argNumber5 = "job127"
+RETRY job127 3
+SCRIPT POST job127 post.sh job127.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job128 singleCobImage.submit
+VARS job128 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job128 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0019.tif#3oaHRLdALFCHsIs#"
+VARS job128 argNumber2 = "3"
+VARS job128 argNumber3 = "./output/"
+VARS job128 argNumber4 = "0"
+VARS job128 argNumber5 = "job128"
+RETRY job128 3
+SCRIPT POST job128 post.sh job128.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job129 singleCobImage.submit
+VARS job129 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job129 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0021.tif#3oaHRLdALFCHsIs#"
+VARS job129 argNumber2 = "3"
+VARS job129 argNumber3 = "./output/"
+VARS job129 argNumber4 = "0"
+VARS job129 argNumber5 = "job129"
+RETRY job129 3
+SCRIPT POST job129 post.sh job129.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job130 singleCobImage.submit
+VARS job130 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job130 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0023.tif#3oaHRLdALFCHsIs#"
+VARS job130 argNumber2 = "3"
+VARS job130 argNumber3 = "./output/"
+VARS job130 argNumber4 = "0"
+VARS job130 argNumber5 = "job130"
+RETRY job130 3
+SCRIPT POST job130 post.sh job130.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job131 singleCobImage.submit
+VARS job131 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job131 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0025.tif#3oaHRLdALFCHsIs#"
+VARS job131 argNumber2 = "3"
+VARS job131 argNumber3 = "./output/"
+VARS job131 argNumber4 = "0"
+VARS job131 argNumber5 = "job131"
+RETRY job131 3
+SCRIPT POST job131 post.sh job131.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job132 singleCobImage.submit
+VARS job132 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job132 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0027.tif#3oaHRLdALFCHsIs#"
+VARS job132 argNumber2 = "3"
+VARS job132 argNumber3 = "./output/"
+VARS job132 argNumber4 = "0"
+VARS job132 argNumber5 = "job132"
+RETRY job132 3
+SCRIPT POST job132 post.sh job132.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job133 singleCobImage.submit
+VARS job133 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job133 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0029.tif#3oaHRLdALFCHsIs#"
+VARS job133 argNumber2 = "3"
+VARS job133 argNumber3 = "./output/"
+VARS job133 argNumber4 = "0"
+VARS job133 argNumber5 = "job133"
+RETRY job133 3
+SCRIPT POST job133 post.sh job133.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job134 singleCobImage.submit
+VARS job134 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job134 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0031.tif#3oaHRLdALFCHsIs#"
+VARS job134 argNumber2 = "3"
+VARS job134 argNumber3 = "./output/"
+VARS job134 argNumber4 = "0"
+VARS job134 argNumber5 = "job134"
+RETRY job134 3
+SCRIPT POST job134 post.sh job134.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job135 singleCobImage.submit
+VARS job135 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job135 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0033.tif#3oaHRLdALFCHsIs#"
+VARS job135 argNumber2 = "3"
+VARS job135 argNumber3 = "./output/"
+VARS job135 argNumber4 = "0"
+VARS job135 argNumber5 = "job135"
+RETRY job135 3
+SCRIPT POST job135 post.sh job135.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job136 singleCobImage.submit
+VARS job136 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job136 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0035.tif#3oaHRLdALFCHsIs#"
+VARS job136 argNumber2 = "3"
+VARS job136 argNumber3 = "./output/"
+VARS job136 argNumber4 = "0"
+VARS job136 argNumber5 = "job136"
+RETRY job136 3
+SCRIPT POST job136 post.sh job136.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job137 singleCobImage.submit
+VARS job137 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job137 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0037.tif#3oaHRLdALFCHsIs#"
+VARS job137 argNumber2 = "3"
+VARS job137 argNumber3 = "./output/"
+VARS job137 argNumber4 = "0"
+VARS job137 argNumber5 = "job137"
+RETRY job137 3
+SCRIPT POST job137 post.sh job137.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job138 singleCobImage.submit
+VARS job138 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job138 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0039.tif#3oaHRLdALFCHsIs#"
+VARS job138 argNumber2 = "3"
+VARS job138 argNumber3 = "./output/"
+VARS job138 argNumber4 = "0"
+VARS job138 argNumber5 = "job138"
+RETRY job138 3
+SCRIPT POST job138 post.sh job138.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job139 singleCobImage.submit
+VARS job139 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job139 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0041.tif#3oaHRLdALFCHsIs#"
+VARS job139 argNumber2 = "3"
+VARS job139 argNumber3 = "./output/"
+VARS job139 argNumber4 = "0"
+VARS job139 argNumber5 = "job139"
+RETRY job139 3
+SCRIPT POST job139 post.sh job139.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job140 singleCobImage.submit
+VARS job140 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job140 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0043.tif#3oaHRLdALFCHsIs#"
+VARS job140 argNumber2 = "3"
+VARS job140 argNumber3 = "./output/"
+VARS job140 argNumber4 = "0"
+VARS job140 argNumber5 = "job140"
+RETRY job140 3
+SCRIPT POST job140 post.sh job140.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job141 singleCobImage.submit
+VARS job141 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job141 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0045.tif#3oaHRLdALFCHsIs#"
+VARS job141 argNumber2 = "3"
+VARS job141 argNumber3 = "./output/"
+VARS job141 argNumber4 = "0"
+VARS job141 argNumber5 = "job141"
+RETRY job141 3
+SCRIPT POST job141 post.sh job141.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job142 singleCobImage.submit
+VARS job142 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job142 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0047.tif#3oaHRLdALFCHsIs#"
+VARS job142 argNumber2 = "3"
+VARS job142 argNumber3 = "./output/"
+VARS job142 argNumber4 = "0"
+VARS job142 argNumber5 = "job142"
+RETRY job142 3
+SCRIPT POST job142 post.sh job142.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job143 singleCobImage.submit
+VARS job143 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job143 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0049.tif#3oaHRLdALFCHsIs#"
+VARS job143 argNumber2 = "3"
+VARS job143 argNumber3 = "./output/"
+VARS job143 argNumber4 = "0"
+VARS job143 argNumber5 = "job143"
+RETRY job143 3
+SCRIPT POST job143 post.sh job143.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job144 singleCobImage.submit
+VARS job144 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job144 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0051.tif#3oaHRLdALFCHsIs#"
+VARS job144 argNumber2 = "3"
+VARS job144 argNumber3 = "./output/"
+VARS job144 argNumber4 = "0"
+VARS job144 argNumber5 = "job144"
+RETRY job144 3
+SCRIPT POST job144 post.sh job144.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job145 singleCobImage.submit
+VARS job145 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job145 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0053.tif#3oaHRLdALFCHsIs#"
+VARS job145 argNumber2 = "3"
+VARS job145 argNumber3 = "./output/"
+VARS job145 argNumber4 = "0"
+VARS job145 argNumber5 = "job145"
+RETRY job145 3
+SCRIPT POST job145 post.sh job145.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job146 singleCobImage.submit
+VARS job146 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job146 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0055.tif#3oaHRLdALFCHsIs#"
+VARS job146 argNumber2 = "3"
+VARS job146 argNumber3 = "./output/"
+VARS job146 argNumber4 = "0"
+VARS job146 argNumber5 = "job146"
+RETRY job146 3
+SCRIPT POST job146 post.sh job146.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job147 singleCobImage.submit
+VARS job147 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job147 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0057.tif#3oaHRLdALFCHsIs#"
+VARS job147 argNumber2 = "3"
+VARS job147 argNumber3 = "./output/"
+VARS job147 argNumber4 = "0"
+VARS job147 argNumber5 = "job147"
+RETRY job147 3
+SCRIPT POST job147 post.sh job147.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job148 singleCobImage.submit
+VARS job148 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job148 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0059.tif#3oaHRLdALFCHsIs#"
+VARS job148 argNumber2 = "3"
+VARS job148 argNumber3 = "./output/"
+VARS job148 argNumber4 = "0"
+VARS job148 argNumber5 = "job148"
+RETRY job148 3
+SCRIPT POST job148 post.sh job148.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job149 singleCobImage.submit
+VARS job149 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job149 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0061.tif#3oaHRLdALFCHsIs#"
+VARS job149 argNumber2 = "3"
+VARS job149 argNumber3 = "./output/"
+VARS job149 argNumber4 = "0"
+VARS job149 argNumber5 = "job149"
+RETRY job149 3
+SCRIPT POST job149 post.sh job149.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job150 singleCobImage.submit
+VARS job150 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job150 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0063.tif#3oaHRLdALFCHsIs#"
+VARS job150 argNumber2 = "3"
+VARS job150 argNumber3 = "./output/"
+VARS job150 argNumber4 = "0"
+VARS job150 argNumber5 = "job150"
+RETRY job150 3
+SCRIPT POST job150 post.sh job150.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job151 singleCobImage.submit
+VARS job151 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job151 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0065.tif#3oaHRLdALFCHsIs#"
+VARS job151 argNumber2 = "3"
+VARS job151 argNumber3 = "./output/"
+VARS job151 argNumber4 = "0"
+VARS job151 argNumber5 = "job151"
+RETRY job151 3
+SCRIPT POST job151 post.sh job151.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job152 singleCobImage.submit
+VARS job152 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job152 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0067.tif#3oaHRLdALFCHsIs#"
+VARS job152 argNumber2 = "3"
+VARS job152 argNumber3 = "./output/"
+VARS job152 argNumber4 = "0"
+VARS job152 argNumber5 = "job152"
+RETRY job152 3
+SCRIPT POST job152 post.sh job152.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job153 singleCobImage.submit
+VARS job153 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job153 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0069.tif#3oaHRLdALFCHsIs#"
+VARS job153 argNumber2 = "3"
+VARS job153 argNumber3 = "./output/"
+VARS job153 argNumber4 = "0"
+VARS job153 argNumber5 = "job153"
+RETRY job153 3
+SCRIPT POST job153 post.sh job153.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job154 singleCobImage.submit
+VARS job154 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job154 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0071.tif#3oaHRLdALFCHsIs#"
+VARS job154 argNumber2 = "3"
+VARS job154 argNumber3 = "./output/"
+VARS job154 argNumber4 = "0"
+VARS job154 argNumber5 = "job154"
+RETRY job154 3
+SCRIPT POST job154 post.sh job154.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job155 singleCobImage.submit
+VARS job155 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job155 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0073.tif#3oaHRLdALFCHsIs#"
+VARS job155 argNumber2 = "3"
+VARS job155 argNumber3 = "./output/"
+VARS job155 argNumber4 = "0"
+VARS job155 argNumber5 = "job155"
+RETRY job155 3
+SCRIPT POST job155 post.sh job155.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job156 singleCobImage.submit
+VARS job156 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job156 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0075.tif#3oaHRLdALFCHsIs#"
+VARS job156 argNumber2 = "3"
+VARS job156 argNumber3 = "./output/"
+VARS job156 argNumber4 = "0"
+VARS job156 argNumber5 = "job156"
+RETRY job156 3
+SCRIPT POST job156 post.sh job156.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job157 singleCobImage.submit
+VARS job157 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job157 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0077.tif#3oaHRLdALFCHsIs#"
+VARS job157 argNumber2 = "3"
+VARS job157 argNumber3 = "./output/"
+VARS job157 argNumber4 = "0"
+VARS job157 argNumber5 = "job157"
+RETRY job157 3
+SCRIPT POST job157 post.sh job157.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job158 singleCobImage.submit
+VARS job158 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job158 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0079.tif#3oaHRLdALFCHsIs#"
+VARS job158 argNumber2 = "3"
+VARS job158 argNumber3 = "./output/"
+VARS job158 argNumber4 = "0"
+VARS job158 argNumber5 = "job158"
+RETRY job158 3
+SCRIPT POST job158 post.sh job158.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job159 singleCobImage.submit
+VARS job159 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job159 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0081.tif#3oaHRLdALFCHsIs#"
+VARS job159 argNumber2 = "3"
+VARS job159 argNumber3 = "./output/"
+VARS job159 argNumber4 = "0"
+VARS job159 argNumber5 = "job159"
+RETRY job159 3
+SCRIPT POST job159 post.sh job159.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job160 singleCobImage.submit
+VARS job160 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job160 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0083.tif#3oaHRLdALFCHsIs#"
+VARS job160 argNumber2 = "3"
+VARS job160 argNumber3 = "./output/"
+VARS job160 argNumber4 = "0"
+VARS job160 argNumber5 = "job160"
+RETRY job160 3
+SCRIPT POST job160 post.sh job160.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job161 singleCobImage.submit
+VARS job161 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job161 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0085.tif#3oaHRLdALFCHsIs#"
+VARS job161 argNumber2 = "3"
+VARS job161 argNumber3 = "./output/"
+VARS job161 argNumber4 = "0"
+VARS job161 argNumber5 = "job161"
+RETRY job161 3
+SCRIPT POST job161 post.sh job161.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job162 singleCobImage.submit
+VARS job162 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job162 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0087.tif#3oaHRLdALFCHsIs#"
+VARS job162 argNumber2 = "3"
+VARS job162 argNumber3 = "./output/"
+VARS job162 argNumber4 = "0"
+VARS job162 argNumber5 = "job162"
+RETRY job162 3
+SCRIPT POST job162 post.sh job162.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job163 singleCobImage.submit
+VARS job163 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job163 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0089.tif#3oaHRLdALFCHsIs#"
+VARS job163 argNumber2 = "3"
+VARS job163 argNumber3 = "./output/"
+VARS job163 argNumber4 = "0"
+VARS job163 argNumber5 = "job163"
+RETRY job163 3
+SCRIPT POST job163 post.sh job163.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job164 singleCobImage.submit
+VARS job164 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job164 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0091.tif#3oaHRLdALFCHsIs#"
+VARS job164 argNumber2 = "3"
+VARS job164 argNumber3 = "./output/"
+VARS job164 argNumber4 = "0"
+VARS job164 argNumber5 = "job164"
+RETRY job164 3
+SCRIPT POST job164 post.sh job164.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job165 singleCobImage.submit
+VARS job165 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job165 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0093.tif#3oaHRLdALFCHsIs#"
+VARS job165 argNumber2 = "3"
+VARS job165 argNumber3 = "./output/"
+VARS job165 argNumber4 = "0"
+VARS job165 argNumber5 = "job165"
+RETRY job165 3
+SCRIPT POST job165 post.sh job165.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job166 singleCobImage.submit
+VARS job166 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job166 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0095.tif#3oaHRLdALFCHsIs#"
+VARS job166 argNumber2 = "3"
+VARS job166 argNumber3 = "./output/"
+VARS job166 argNumber4 = "0"
+VARS job166 argNumber5 = "job166"
+RETRY job166 3
+SCRIPT POST job166 post.sh job166.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job167 singleCobImage.submit
+VARS job167 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job167 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0097.tif#3oaHRLdALFCHsIs#"
+VARS job167 argNumber2 = "3"
+VARS job167 argNumber3 = "./output/"
+VARS job167 argNumber4 = "0"
+VARS job167 argNumber5 = "job167"
+RETRY job167 3
+SCRIPT POST job167 post.sh job167.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job168 singleCobImage.submit
+VARS job168 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job168 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0099.tif#3oaHRLdALFCHsIs#"
+VARS job168 argNumber2 = "3"
+VARS job168 argNumber3 = "./output/"
+VARS job168 argNumber4 = "0"
+VARS job168 argNumber5 = "job168"
+RETRY job168 3
+SCRIPT POST job168 post.sh job168.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job169 singleCobImage.submit
+VARS job169 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job169 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0101.tif#3oaHRLdALFCHsIs#"
+VARS job169 argNumber2 = "3"
+VARS job169 argNumber3 = "./output/"
+VARS job169 argNumber4 = "0"
+VARS job169 argNumber5 = "job169"
+RETRY job169 3
+SCRIPT POST job169 post.sh job169.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job170 singleCobImage.submit
+VARS job170 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job170 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0103.tif#3oaHRLdALFCHsIs#"
+VARS job170 argNumber2 = "3"
+VARS job170 argNumber3 = "./output/"
+VARS job170 argNumber4 = "0"
+VARS job170 argNumber5 = "job170"
+RETRY job170 3
+SCRIPT POST job170 post.sh job170.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job171 singleCobImage.submit
+VARS job171 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job171 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0105.tif#3oaHRLdALFCHsIs#"
+VARS job171 argNumber2 = "3"
+VARS job171 argNumber3 = "./output/"
+VARS job171 argNumber4 = "0"
+VARS job171 argNumber5 = "job171"
+RETRY job171 3
+SCRIPT POST job171 post.sh job171.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job172 singleCobImage.submit
+VARS job172 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job172 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0107.tif#3oaHRLdALFCHsIs#"
+VARS job172 argNumber2 = "3"
+VARS job172 argNumber3 = "./output/"
+VARS job172 argNumber4 = "0"
+VARS job172 argNumber5 = "job172"
+RETRY job172 3
+SCRIPT POST job172 post.sh job172.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job173 singleCobImage.submit
+VARS job173 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job173 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0109.tif#3oaHRLdALFCHsIs#"
+VARS job173 argNumber2 = "3"
+VARS job173 argNumber3 = "./output/"
+VARS job173 argNumber4 = "0"
+VARS job173 argNumber5 = "job173"
+RETRY job173 3
+SCRIPT POST job173 post.sh job173.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job174 singleCobImage.submit
+VARS job174 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job174 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0111.tif#3oaHRLdALFCHsIs#"
+VARS job174 argNumber2 = "3"
+VARS job174 argNumber3 = "./output/"
+VARS job174 argNumber4 = "0"
+VARS job174 argNumber5 = "job174"
+RETRY job174 3
+SCRIPT POST job174 post.sh job174.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job175 singleCobImage.submit
+VARS job175 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job175 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0113.tif#3oaHRLdALFCHsIs#"
+VARS job175 argNumber2 = "3"
+VARS job175 argNumber3 = "./output/"
+VARS job175 argNumber4 = "0"
+VARS job175 argNumber5 = "job175"
+RETRY job175 3
+SCRIPT POST job175 post.sh job175.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job176 singleCobImage.submit
+VARS job176 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job176 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0115.tif#3oaHRLdALFCHsIs#"
+VARS job176 argNumber2 = "3"
+VARS job176 argNumber3 = "./output/"
+VARS job176 argNumber4 = "0"
+VARS job176 argNumber5 = "job176"
+RETRY job176 3
+SCRIPT POST job176 post.sh job176.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job177 singleCobImage.submit
+VARS job177 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job177 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0117.tif#3oaHRLdALFCHsIs#"
+VARS job177 argNumber2 = "3"
+VARS job177 argNumber3 = "./output/"
+VARS job177 argNumber4 = "0"
+VARS job177 argNumber5 = "job177"
+RETRY job177 3
+SCRIPT POST job177 post.sh job177.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job178 singleCobImage.submit
+VARS job178 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job178 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0119.tif#3oaHRLdALFCHsIs#"
+VARS job178 argNumber2 = "3"
+VARS job178 argNumber3 = "./output/"
+VARS job178 argNumber4 = "0"
+VARS job178 argNumber5 = "job178"
+RETRY job178 3
+SCRIPT POST job178 post.sh job178.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job179 singleCobImage.submit
+VARS job179 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job179 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0121.tif#3oaHRLdALFCHsIs#"
+VARS job179 argNumber2 = "3"
+VARS job179 argNumber3 = "./output/"
+VARS job179 argNumber4 = "0"
+VARS job179 argNumber5 = "job179"
+RETRY job179 3
+SCRIPT POST job179 post.sh job179.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job180 singleCobImage.submit
+VARS job180 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job180 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0123.tif#3oaHRLdALFCHsIs#"
+VARS job180 argNumber2 = "3"
+VARS job180 argNumber3 = "./output/"
+VARS job180 argNumber4 = "0"
+VARS job180 argNumber5 = "job180"
+RETRY job180 3
+SCRIPT POST job180 post.sh job180.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job181 singleCobImage.submit
+VARS job181 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job181 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0125.tif#3oaHRLdALFCHsIs#"
+VARS job181 argNumber2 = "3"
+VARS job181 argNumber3 = "./output/"
+VARS job181 argNumber4 = "0"
+VARS job181 argNumber5 = "job181"
+RETRY job181 3
+SCRIPT POST job181 post.sh job181.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job182 singleCobImage.submit
+VARS job182 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job182 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0127.tif#3oaHRLdALFCHsIs#"
+VARS job182 argNumber2 = "3"
+VARS job182 argNumber3 = "./output/"
+VARS job182 argNumber4 = "0"
+VARS job182 argNumber5 = "job182"
+RETRY job182 3
+SCRIPT POST job182 post.sh job182.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job183 singleCobImage.submit
+VARS job183 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job183 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0129.tif#3oaHRLdALFCHsIs#"
+VARS job183 argNumber2 = "3"
+VARS job183 argNumber3 = "./output/"
+VARS job183 argNumber4 = "0"
+VARS job183 argNumber5 = "job183"
+RETRY job183 3
+SCRIPT POST job183 post.sh job183.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job184 singleCobImage.submit
+VARS job184 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job184 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0131.tif#3oaHRLdALFCHsIs#"
+VARS job184 argNumber2 = "3"
+VARS job184 argNumber3 = "./output/"
+VARS job184 argNumber4 = "0"
+VARS job184 argNumber5 = "job184"
+RETRY job184 3
+SCRIPT POST job184 post.sh job184.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job185 singleCobImage.submit
+VARS job185 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job185 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0133.tif#3oaHRLdALFCHsIs#"
+VARS job185 argNumber2 = "3"
+VARS job185 argNumber3 = "./output/"
+VARS job185 argNumber4 = "0"
+VARS job185 argNumber5 = "job185"
+RETRY job185 3
+SCRIPT POST job185 post.sh job185.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job186 singleCobImage.submit
+VARS job186 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job186 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0135.tif#3oaHRLdALFCHsIs#"
+VARS job186 argNumber2 = "3"
+VARS job186 argNumber3 = "./output/"
+VARS job186 argNumber4 = "0"
+VARS job186 argNumber5 = "job186"
+RETRY job186 3
+SCRIPT POST job186 post.sh job186.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job187 singleCobImage.submit
+VARS job187 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job187 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0137.tif#3oaHRLdALFCHsIs#"
+VARS job187 argNumber2 = "3"
+VARS job187 argNumber3 = "./output/"
+VARS job187 argNumber4 = "0"
+VARS job187 argNumber5 = "job187"
+RETRY job187 3
+SCRIPT POST job187 post.sh job187.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job188 singleCobImage.submit
+VARS job188 FileTransferList = "singleCobImage,run_singleCobImage.sh"
+VARS job188 argNumber1 = "/iplant/home/gxe/maizeData/cobData/3-3-15-Scan2c/Scan2-150303-0139.tif#3oaHRLdALFCHsIs#"
+VARS job188 argNumber2 = "3"
+VARS job188 argNumber3 = "./output/"
+VARS job188 argNumber4 = "0"
+VARS job188 argNumber5 = "job188"
+RETRY job188 3
+SCRIPT POST job188 post.sh job188.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+PARENT headnode CHILD job1 job2 job3 job4 job5 job6 job7 job8 job9 job10 job11 job12 job13 job14 job15 job16 job17 job18 job19 job20 job21 job22 job23 job24 job25 job26 job27 job28 job29 job30 job31 job32 job33 job34 job35 job36 job37 job38 job39 job40 job41 job42 job43 job44 job45 job46 job47 job48 job49 job50 job51 job52 job53 job54 job55 job56 job57 job58 job59 job60 job61 job62 job63 job64 job65 job66 job67 job68 job69 job70 job71 job72 job73 job74 job75 job76 job77 job78 job79 job80 job81 job82 job83 job84 job85 job86 job87 job88 job89 job90 job91 job92 job93 job94 job95 job96 job97 job98 job99 job100 job101 job102 job103 job104 job105 job106 job107 job108 job109 job110 job111 job112 job113 job114 job115 job116 job117 job118 job119 job120 job121 job122 job123 job124 job125 job126 job127 job128 job129 job130 job131 job132 job133 job134 job135 job136 job137 job138 job139 job140 job141 job142 job143 job144 job145 job146 job147 job148 job149 job150 job151 job152 job153 job154 job155 job156 job157 job158 job159 job160 job161 job162 job163 job164 job165 job166 job167 job168 job169 job170 job171 job172 job173 job174 job175 job176 job177 job178 job179 job180 job181 job182 job183 job184 job185 job186 job187 job188 

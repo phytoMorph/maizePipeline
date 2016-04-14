@@ -1,0 +1,1522 @@
+JOB headnode headnode.nothing DONE
+JOB job1 singleEarImage.submit
+VARS job1 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job1 argNumber1 = "/iplant/home/gxe/maizeData/earData/2-17-15-Scan1/Scan1-150217-0014.tif#1kW8cSbqPUToI4E#"
+VARS job1 argNumber2 = "3"
+VARS job1 argNumber3 = "./output/"
+VARS job1 argNumber4 = "0"
+VARS job1 argNumber5 = "1"
+VARS job1 argNumber6 = "job1"
+RETRY job1 3
+SCRIPT POST job1 post.sh job1.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job2 singleEarImage.submit
+VARS job2 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job2 argNumber1 = "/iplant/home/gxe/maizeData/earData/2-17-15-Scan1/Scan1-150217-0117.tif#1kW8cSbqPUToI4E#"
+VARS job2 argNumber2 = "3"
+VARS job2 argNumber3 = "./output/"
+VARS job2 argNumber4 = "0"
+VARS job2 argNumber5 = "1"
+VARS job2 argNumber6 = "job2"
+RETRY job2 3
+SCRIPT POST job2 post.sh job2.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job3 singleEarImage.submit
+VARS job3 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job3 argNumber1 = "/iplant/home/gxe/maizeData/earData/2-17-15-Scan1/Scan1-150217-0118.tif#1kW8cSbqPUToI4E#"
+VARS job3 argNumber2 = "3"
+VARS job3 argNumber3 = "./output/"
+VARS job3 argNumber4 = "0"
+VARS job3 argNumber5 = "1"
+VARS job3 argNumber6 = "job3"
+RETRY job3 3
+SCRIPT POST job3 post.sh job3.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job4 singleEarImage.submit
+VARS job4 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job4 argNumber1 = "/iplant/home/gxe/maizeData/earData/2-18-15-Scan1/Scan1-150218-0035.tif#61Yb6ih3Sdz0UO5#"
+VARS job4 argNumber2 = "3"
+VARS job4 argNumber3 = "./output/"
+VARS job4 argNumber4 = "0"
+VARS job4 argNumber5 = "1"
+VARS job4 argNumber6 = "job4"
+RETRY job4 3
+SCRIPT POST job4 post.sh job4.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job5 singleEarImage.submit
+VARS job5 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job5 argNumber1 = "/iplant/home/gxe/maizeData/earData/2-18-15-Scan1/Scan1-150218-0036.tif#61Yb6ih3Sdz0UO5#"
+VARS job5 argNumber2 = "3"
+VARS job5 argNumber3 = "./output/"
+VARS job5 argNumber4 = "0"
+VARS job5 argNumber5 = "1"
+VARS job5 argNumber6 = "job5"
+RETRY job5 3
+SCRIPT POST job5 post.sh job5.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job6 singleEarImage.submit
+VARS job6 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job6 argNumber1 = "/iplant/home/gxe/maizeData/earData/2-18-15-Scan1/Scan1-150218-0051.tif#61Yb6ih3Sdz0UO5#"
+VARS job6 argNumber2 = "3"
+VARS job6 argNumber3 = "./output/"
+VARS job6 argNumber4 = "0"
+VARS job6 argNumber5 = "1"
+VARS job6 argNumber6 = "job6"
+RETRY job6 3
+SCRIPT POST job6 post.sh job6.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job7 singleEarImage.submit
+VARS job7 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job7 argNumber1 = "/iplant/home/gxe/maizeData/earData/2-18-15-Scan1/Scan1-150218-0052.tif#61Yb6ih3Sdz0UO5#"
+VARS job7 argNumber2 = "3"
+VARS job7 argNumber3 = "./output/"
+VARS job7 argNumber4 = "0"
+VARS job7 argNumber5 = "1"
+VARS job7 argNumber6 = "job7"
+RETRY job7 3
+SCRIPT POST job7 post.sh job7.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job8 singleEarImage.submit
+VARS job8 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job8 argNumber1 = "/iplant/home/gxe/maizeData/earData/2-18-15-Scan1/Scan1-150218-0114.tif#61Yb6ih3Sdz0UO5#"
+VARS job8 argNumber2 = "3"
+VARS job8 argNumber3 = "./output/"
+VARS job8 argNumber4 = "0"
+VARS job8 argNumber5 = "1"
+VARS job8 argNumber6 = "job8"
+RETRY job8 3
+SCRIPT POST job8 post.sh job8.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job9 singleEarImage.submit
+VARS job9 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job9 argNumber1 = "/iplant/home/gxe/maizeData/earData/2-23-15-Scan1/Scan1-150223-0058.tif#FqhiOW1zmBz4cSU#"
+VARS job9 argNumber2 = "3"
+VARS job9 argNumber3 = "./output/"
+VARS job9 argNumber4 = "0"
+VARS job9 argNumber5 = "1"
+VARS job9 argNumber6 = "job9"
+RETRY job9 3
+SCRIPT POST job9 post.sh job9.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job10 singleEarImage.submit
+VARS job10 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job10 argNumber1 = "/iplant/home/gxe/maizeData/earData/2-23-15-Scan1/Scan1-150223-0069.tif#FqhiOW1zmBz4cSU#"
+VARS job10 argNumber2 = "3"
+VARS job10 argNumber3 = "./output/"
+VARS job10 argNumber4 = "0"
+VARS job10 argNumber5 = "1"
+VARS job10 argNumber6 = "job10"
+RETRY job10 3
+SCRIPT POST job10 post.sh job10.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job11 singleEarImage.submit
+VARS job11 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job11 argNumber1 = "/iplant/home/gxe/maizeData/earData/2-24-15-Scan1/Scan1-150224-0116.tif#QYJOrgeMXGCaQXM#"
+VARS job11 argNumber2 = "3"
+VARS job11 argNumber3 = "./output/"
+VARS job11 argNumber4 = "0"
+VARS job11 argNumber5 = "1"
+VARS job11 argNumber6 = "job11"
+RETRY job11 3
+SCRIPT POST job11 post.sh job11.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job12 singleEarImage.submit
+VARS job12 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job12 argNumber1 = "/iplant/home/gxe/maizeData/earData/2-26-15-Scan1/Scan1-150226-0014.tif#5r0AwlmFZMVi6ZA#"
+VARS job12 argNumber2 = "3"
+VARS job12 argNumber3 = "./output/"
+VARS job12 argNumber4 = "0"
+VARS job12 argNumber5 = "1"
+VARS job12 argNumber6 = "job12"
+RETRY job12 3
+SCRIPT POST job12 post.sh job12.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job13 singleEarImage.submit
+VARS job13 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job13 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0001.tif#3BXkFB30O2ErXgk#"
+VARS job13 argNumber2 = "3"
+VARS job13 argNumber3 = "./output/"
+VARS job13 argNumber4 = "0"
+VARS job13 argNumber5 = "1"
+VARS job13 argNumber6 = "job13"
+RETRY job13 3
+SCRIPT POST job13 post.sh job13.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job14 singleEarImage.submit
+VARS job14 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job14 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0002.tif#3BXkFB30O2ErXgk#"
+VARS job14 argNumber2 = "3"
+VARS job14 argNumber3 = "./output/"
+VARS job14 argNumber4 = "0"
+VARS job14 argNumber5 = "1"
+VARS job14 argNumber6 = "job14"
+RETRY job14 3
+SCRIPT POST job14 post.sh job14.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job15 singleEarImage.submit
+VARS job15 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job15 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0003.tif#3BXkFB30O2ErXgk#"
+VARS job15 argNumber2 = "3"
+VARS job15 argNumber3 = "./output/"
+VARS job15 argNumber4 = "0"
+VARS job15 argNumber5 = "1"
+VARS job15 argNumber6 = "job15"
+RETRY job15 3
+SCRIPT POST job15 post.sh job15.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job16 singleEarImage.submit
+VARS job16 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job16 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0004.tif#3BXkFB30O2ErXgk#"
+VARS job16 argNumber2 = "3"
+VARS job16 argNumber3 = "./output/"
+VARS job16 argNumber4 = "0"
+VARS job16 argNumber5 = "1"
+VARS job16 argNumber6 = "job16"
+RETRY job16 3
+SCRIPT POST job16 post.sh job16.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job17 singleEarImage.submit
+VARS job17 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job17 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0005.tif#3BXkFB30O2ErXgk#"
+VARS job17 argNumber2 = "3"
+VARS job17 argNumber3 = "./output/"
+VARS job17 argNumber4 = "0"
+VARS job17 argNumber5 = "1"
+VARS job17 argNumber6 = "job17"
+RETRY job17 3
+SCRIPT POST job17 post.sh job17.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job18 singleEarImage.submit
+VARS job18 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job18 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0006.tif#3BXkFB30O2ErXgk#"
+VARS job18 argNumber2 = "3"
+VARS job18 argNumber3 = "./output/"
+VARS job18 argNumber4 = "0"
+VARS job18 argNumber5 = "1"
+VARS job18 argNumber6 = "job18"
+RETRY job18 3
+SCRIPT POST job18 post.sh job18.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job19 singleEarImage.submit
+VARS job19 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job19 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0007.tif#3BXkFB30O2ErXgk#"
+VARS job19 argNumber2 = "3"
+VARS job19 argNumber3 = "./output/"
+VARS job19 argNumber4 = "0"
+VARS job19 argNumber5 = "1"
+VARS job19 argNumber6 = "job19"
+RETRY job19 3
+SCRIPT POST job19 post.sh job19.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job20 singleEarImage.submit
+VARS job20 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job20 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0008.tif#3BXkFB30O2ErXgk#"
+VARS job20 argNumber2 = "3"
+VARS job20 argNumber3 = "./output/"
+VARS job20 argNumber4 = "0"
+VARS job20 argNumber5 = "1"
+VARS job20 argNumber6 = "job20"
+RETRY job20 3
+SCRIPT POST job20 post.sh job20.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job21 singleEarImage.submit
+VARS job21 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job21 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0009.tif#3BXkFB30O2ErXgk#"
+VARS job21 argNumber2 = "3"
+VARS job21 argNumber3 = "./output/"
+VARS job21 argNumber4 = "0"
+VARS job21 argNumber5 = "1"
+VARS job21 argNumber6 = "job21"
+RETRY job21 3
+SCRIPT POST job21 post.sh job21.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job22 singleEarImage.submit
+VARS job22 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job22 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0010.tif#3BXkFB30O2ErXgk#"
+VARS job22 argNumber2 = "3"
+VARS job22 argNumber3 = "./output/"
+VARS job22 argNumber4 = "0"
+VARS job22 argNumber5 = "1"
+VARS job22 argNumber6 = "job22"
+RETRY job22 3
+SCRIPT POST job22 post.sh job22.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job23 singleEarImage.submit
+VARS job23 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job23 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0011.tif#3BXkFB30O2ErXgk#"
+VARS job23 argNumber2 = "3"
+VARS job23 argNumber3 = "./output/"
+VARS job23 argNumber4 = "0"
+VARS job23 argNumber5 = "1"
+VARS job23 argNumber6 = "job23"
+RETRY job23 3
+SCRIPT POST job23 post.sh job23.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job24 singleEarImage.submit
+VARS job24 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job24 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0012.tif#3BXkFB30O2ErXgk#"
+VARS job24 argNumber2 = "3"
+VARS job24 argNumber3 = "./output/"
+VARS job24 argNumber4 = "0"
+VARS job24 argNumber5 = "1"
+VARS job24 argNumber6 = "job24"
+RETRY job24 3
+SCRIPT POST job24 post.sh job24.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job25 singleEarImage.submit
+VARS job25 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job25 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0013.tif#3BXkFB30O2ErXgk#"
+VARS job25 argNumber2 = "3"
+VARS job25 argNumber3 = "./output/"
+VARS job25 argNumber4 = "0"
+VARS job25 argNumber5 = "1"
+VARS job25 argNumber6 = "job25"
+RETRY job25 3
+SCRIPT POST job25 post.sh job25.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job26 singleEarImage.submit
+VARS job26 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job26 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0014.tif#3BXkFB30O2ErXgk#"
+VARS job26 argNumber2 = "3"
+VARS job26 argNumber3 = "./output/"
+VARS job26 argNumber4 = "0"
+VARS job26 argNumber5 = "1"
+VARS job26 argNumber6 = "job26"
+RETRY job26 3
+SCRIPT POST job26 post.sh job26.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job27 singleEarImage.submit
+VARS job27 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job27 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0015.tif#3BXkFB30O2ErXgk#"
+VARS job27 argNumber2 = "3"
+VARS job27 argNumber3 = "./output/"
+VARS job27 argNumber4 = "0"
+VARS job27 argNumber5 = "1"
+VARS job27 argNumber6 = "job27"
+RETRY job27 3
+SCRIPT POST job27 post.sh job27.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job28 singleEarImage.submit
+VARS job28 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job28 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0016.tif#3BXkFB30O2ErXgk#"
+VARS job28 argNumber2 = "3"
+VARS job28 argNumber3 = "./output/"
+VARS job28 argNumber4 = "0"
+VARS job28 argNumber5 = "1"
+VARS job28 argNumber6 = "job28"
+RETRY job28 3
+SCRIPT POST job28 post.sh job28.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job29 singleEarImage.submit
+VARS job29 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job29 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0017.tif#3BXkFB30O2ErXgk#"
+VARS job29 argNumber2 = "3"
+VARS job29 argNumber3 = "./output/"
+VARS job29 argNumber4 = "0"
+VARS job29 argNumber5 = "1"
+VARS job29 argNumber6 = "job29"
+RETRY job29 3
+SCRIPT POST job29 post.sh job29.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job30 singleEarImage.submit
+VARS job30 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job30 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0018.tif#3BXkFB30O2ErXgk#"
+VARS job30 argNumber2 = "3"
+VARS job30 argNumber3 = "./output/"
+VARS job30 argNumber4 = "0"
+VARS job30 argNumber5 = "1"
+VARS job30 argNumber6 = "job30"
+RETRY job30 3
+SCRIPT POST job30 post.sh job30.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job31 singleEarImage.submit
+VARS job31 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job31 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0019.tif#3BXkFB30O2ErXgk#"
+VARS job31 argNumber2 = "3"
+VARS job31 argNumber3 = "./output/"
+VARS job31 argNumber4 = "0"
+VARS job31 argNumber5 = "1"
+VARS job31 argNumber6 = "job31"
+RETRY job31 3
+SCRIPT POST job31 post.sh job31.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job32 singleEarImage.submit
+VARS job32 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job32 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0020.tif#3BXkFB30O2ErXgk#"
+VARS job32 argNumber2 = "3"
+VARS job32 argNumber3 = "./output/"
+VARS job32 argNumber4 = "0"
+VARS job32 argNumber5 = "1"
+VARS job32 argNumber6 = "job32"
+RETRY job32 3
+SCRIPT POST job32 post.sh job32.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job33 singleEarImage.submit
+VARS job33 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job33 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0021.tif#3BXkFB30O2ErXgk#"
+VARS job33 argNumber2 = "3"
+VARS job33 argNumber3 = "./output/"
+VARS job33 argNumber4 = "0"
+VARS job33 argNumber5 = "1"
+VARS job33 argNumber6 = "job33"
+RETRY job33 3
+SCRIPT POST job33 post.sh job33.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job34 singleEarImage.submit
+VARS job34 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job34 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0022.tif#3BXkFB30O2ErXgk#"
+VARS job34 argNumber2 = "3"
+VARS job34 argNumber3 = "./output/"
+VARS job34 argNumber4 = "0"
+VARS job34 argNumber5 = "1"
+VARS job34 argNumber6 = "job34"
+RETRY job34 3
+SCRIPT POST job34 post.sh job34.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job35 singleEarImage.submit
+VARS job35 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job35 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0023.tif#3BXkFB30O2ErXgk#"
+VARS job35 argNumber2 = "3"
+VARS job35 argNumber3 = "./output/"
+VARS job35 argNumber4 = "0"
+VARS job35 argNumber5 = "1"
+VARS job35 argNumber6 = "job35"
+RETRY job35 3
+SCRIPT POST job35 post.sh job35.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job36 singleEarImage.submit
+VARS job36 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job36 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0024.tif#3BXkFB30O2ErXgk#"
+VARS job36 argNumber2 = "3"
+VARS job36 argNumber3 = "./output/"
+VARS job36 argNumber4 = "0"
+VARS job36 argNumber5 = "1"
+VARS job36 argNumber6 = "job36"
+RETRY job36 3
+SCRIPT POST job36 post.sh job36.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job37 singleEarImage.submit
+VARS job37 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job37 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0025.tif#3BXkFB30O2ErXgk#"
+VARS job37 argNumber2 = "3"
+VARS job37 argNumber3 = "./output/"
+VARS job37 argNumber4 = "0"
+VARS job37 argNumber5 = "1"
+VARS job37 argNumber6 = "job37"
+RETRY job37 3
+SCRIPT POST job37 post.sh job37.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job38 singleEarImage.submit
+VARS job38 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job38 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0026.tif#3BXkFB30O2ErXgk#"
+VARS job38 argNumber2 = "3"
+VARS job38 argNumber3 = "./output/"
+VARS job38 argNumber4 = "0"
+VARS job38 argNumber5 = "1"
+VARS job38 argNumber6 = "job38"
+RETRY job38 3
+SCRIPT POST job38 post.sh job38.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job39 singleEarImage.submit
+VARS job39 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job39 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0027.tif#3BXkFB30O2ErXgk#"
+VARS job39 argNumber2 = "3"
+VARS job39 argNumber3 = "./output/"
+VARS job39 argNumber4 = "0"
+VARS job39 argNumber5 = "1"
+VARS job39 argNumber6 = "job39"
+RETRY job39 3
+SCRIPT POST job39 post.sh job39.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job40 singleEarImage.submit
+VARS job40 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job40 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0028.tif#3BXkFB30O2ErXgk#"
+VARS job40 argNumber2 = "3"
+VARS job40 argNumber3 = "./output/"
+VARS job40 argNumber4 = "0"
+VARS job40 argNumber5 = "1"
+VARS job40 argNumber6 = "job40"
+RETRY job40 3
+SCRIPT POST job40 post.sh job40.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job41 singleEarImage.submit
+VARS job41 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job41 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0029.tif#3BXkFB30O2ErXgk#"
+VARS job41 argNumber2 = "3"
+VARS job41 argNumber3 = "./output/"
+VARS job41 argNumber4 = "0"
+VARS job41 argNumber5 = "1"
+VARS job41 argNumber6 = "job41"
+RETRY job41 3
+SCRIPT POST job41 post.sh job41.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job42 singleEarImage.submit
+VARS job42 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job42 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0030.tif#3BXkFB30O2ErXgk#"
+VARS job42 argNumber2 = "3"
+VARS job42 argNumber3 = "./output/"
+VARS job42 argNumber4 = "0"
+VARS job42 argNumber5 = "1"
+VARS job42 argNumber6 = "job42"
+RETRY job42 3
+SCRIPT POST job42 post.sh job42.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job43 singleEarImage.submit
+VARS job43 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job43 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0031.tif#3BXkFB30O2ErXgk#"
+VARS job43 argNumber2 = "3"
+VARS job43 argNumber3 = "./output/"
+VARS job43 argNumber4 = "0"
+VARS job43 argNumber5 = "1"
+VARS job43 argNumber6 = "job43"
+RETRY job43 3
+SCRIPT POST job43 post.sh job43.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job44 singleEarImage.submit
+VARS job44 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job44 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0032.tif#3BXkFB30O2ErXgk#"
+VARS job44 argNumber2 = "3"
+VARS job44 argNumber3 = "./output/"
+VARS job44 argNumber4 = "0"
+VARS job44 argNumber5 = "1"
+VARS job44 argNumber6 = "job44"
+RETRY job44 3
+SCRIPT POST job44 post.sh job44.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job45 singleEarImage.submit
+VARS job45 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job45 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0033.tif#3BXkFB30O2ErXgk#"
+VARS job45 argNumber2 = "3"
+VARS job45 argNumber3 = "./output/"
+VARS job45 argNumber4 = "0"
+VARS job45 argNumber5 = "1"
+VARS job45 argNumber6 = "job45"
+RETRY job45 3
+SCRIPT POST job45 post.sh job45.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job46 singleEarImage.submit
+VARS job46 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job46 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0034.tif#3BXkFB30O2ErXgk#"
+VARS job46 argNumber2 = "3"
+VARS job46 argNumber3 = "./output/"
+VARS job46 argNumber4 = "0"
+VARS job46 argNumber5 = "1"
+VARS job46 argNumber6 = "job46"
+RETRY job46 3
+SCRIPT POST job46 post.sh job46.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job47 singleEarImage.submit
+VARS job47 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job47 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0035.tif#3BXkFB30O2ErXgk#"
+VARS job47 argNumber2 = "3"
+VARS job47 argNumber3 = "./output/"
+VARS job47 argNumber4 = "0"
+VARS job47 argNumber5 = "1"
+VARS job47 argNumber6 = "job47"
+RETRY job47 3
+SCRIPT POST job47 post.sh job47.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job48 singleEarImage.submit
+VARS job48 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job48 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0036.tif#3BXkFB30O2ErXgk#"
+VARS job48 argNumber2 = "3"
+VARS job48 argNumber3 = "./output/"
+VARS job48 argNumber4 = "0"
+VARS job48 argNumber5 = "1"
+VARS job48 argNumber6 = "job48"
+RETRY job48 3
+SCRIPT POST job48 post.sh job48.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job49 singleEarImage.submit
+VARS job49 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job49 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0037.tif#3BXkFB30O2ErXgk#"
+VARS job49 argNumber2 = "3"
+VARS job49 argNumber3 = "./output/"
+VARS job49 argNumber4 = "0"
+VARS job49 argNumber5 = "1"
+VARS job49 argNumber6 = "job49"
+RETRY job49 3
+SCRIPT POST job49 post.sh job49.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job50 singleEarImage.submit
+VARS job50 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job50 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0038.tif#3BXkFB30O2ErXgk#"
+VARS job50 argNumber2 = "3"
+VARS job50 argNumber3 = "./output/"
+VARS job50 argNumber4 = "0"
+VARS job50 argNumber5 = "1"
+VARS job50 argNumber6 = "job50"
+RETRY job50 3
+SCRIPT POST job50 post.sh job50.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job51 singleEarImage.submit
+VARS job51 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job51 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0039.tif#3BXkFB30O2ErXgk#"
+VARS job51 argNumber2 = "3"
+VARS job51 argNumber3 = "./output/"
+VARS job51 argNumber4 = "0"
+VARS job51 argNumber5 = "1"
+VARS job51 argNumber6 = "job51"
+RETRY job51 3
+SCRIPT POST job51 post.sh job51.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job52 singleEarImage.submit
+VARS job52 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job52 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0040.tif#3BXkFB30O2ErXgk#"
+VARS job52 argNumber2 = "3"
+VARS job52 argNumber3 = "./output/"
+VARS job52 argNumber4 = "0"
+VARS job52 argNumber5 = "1"
+VARS job52 argNumber6 = "job52"
+RETRY job52 3
+SCRIPT POST job52 post.sh job52.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job53 singleEarImage.submit
+VARS job53 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job53 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0041.tif#3BXkFB30O2ErXgk#"
+VARS job53 argNumber2 = "3"
+VARS job53 argNumber3 = "./output/"
+VARS job53 argNumber4 = "0"
+VARS job53 argNumber5 = "1"
+VARS job53 argNumber6 = "job53"
+RETRY job53 3
+SCRIPT POST job53 post.sh job53.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job54 singleEarImage.submit
+VARS job54 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job54 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0042.tif#3BXkFB30O2ErXgk#"
+VARS job54 argNumber2 = "3"
+VARS job54 argNumber3 = "./output/"
+VARS job54 argNumber4 = "0"
+VARS job54 argNumber5 = "1"
+VARS job54 argNumber6 = "job54"
+RETRY job54 3
+SCRIPT POST job54 post.sh job54.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job55 singleEarImage.submit
+VARS job55 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job55 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0043.tif#3BXkFB30O2ErXgk#"
+VARS job55 argNumber2 = "3"
+VARS job55 argNumber3 = "./output/"
+VARS job55 argNumber4 = "0"
+VARS job55 argNumber5 = "1"
+VARS job55 argNumber6 = "job55"
+RETRY job55 3
+SCRIPT POST job55 post.sh job55.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job56 singleEarImage.submit
+VARS job56 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job56 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0044.tif#3BXkFB30O2ErXgk#"
+VARS job56 argNumber2 = "3"
+VARS job56 argNumber3 = "./output/"
+VARS job56 argNumber4 = "0"
+VARS job56 argNumber5 = "1"
+VARS job56 argNumber6 = "job56"
+RETRY job56 3
+SCRIPT POST job56 post.sh job56.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job57 singleEarImage.submit
+VARS job57 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job57 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0045.tif#3BXkFB30O2ErXgk#"
+VARS job57 argNumber2 = "3"
+VARS job57 argNumber3 = "./output/"
+VARS job57 argNumber4 = "0"
+VARS job57 argNumber5 = "1"
+VARS job57 argNumber6 = "job57"
+RETRY job57 3
+SCRIPT POST job57 post.sh job57.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job58 singleEarImage.submit
+VARS job58 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job58 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0046.tif#3BXkFB30O2ErXgk#"
+VARS job58 argNumber2 = "3"
+VARS job58 argNumber3 = "./output/"
+VARS job58 argNumber4 = "0"
+VARS job58 argNumber5 = "1"
+VARS job58 argNumber6 = "job58"
+RETRY job58 3
+SCRIPT POST job58 post.sh job58.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job59 singleEarImage.submit
+VARS job59 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job59 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0047.tif#3BXkFB30O2ErXgk#"
+VARS job59 argNumber2 = "3"
+VARS job59 argNumber3 = "./output/"
+VARS job59 argNumber4 = "0"
+VARS job59 argNumber5 = "1"
+VARS job59 argNumber6 = "job59"
+RETRY job59 3
+SCRIPT POST job59 post.sh job59.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job60 singleEarImage.submit
+VARS job60 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job60 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0048.tif#3BXkFB30O2ErXgk#"
+VARS job60 argNumber2 = "3"
+VARS job60 argNumber3 = "./output/"
+VARS job60 argNumber4 = "0"
+VARS job60 argNumber5 = "1"
+VARS job60 argNumber6 = "job60"
+RETRY job60 3
+SCRIPT POST job60 post.sh job60.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job61 singleEarImage.submit
+VARS job61 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job61 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0049.tif#3BXkFB30O2ErXgk#"
+VARS job61 argNumber2 = "3"
+VARS job61 argNumber3 = "./output/"
+VARS job61 argNumber4 = "0"
+VARS job61 argNumber5 = "1"
+VARS job61 argNumber6 = "job61"
+RETRY job61 3
+SCRIPT POST job61 post.sh job61.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job62 singleEarImage.submit
+VARS job62 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job62 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0050.tif#3BXkFB30O2ErXgk#"
+VARS job62 argNumber2 = "3"
+VARS job62 argNumber3 = "./output/"
+VARS job62 argNumber4 = "0"
+VARS job62 argNumber5 = "1"
+VARS job62 argNumber6 = "job62"
+RETRY job62 3
+SCRIPT POST job62 post.sh job62.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job63 singleEarImage.submit
+VARS job63 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job63 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0051.tif#3BXkFB30O2ErXgk#"
+VARS job63 argNumber2 = "3"
+VARS job63 argNumber3 = "./output/"
+VARS job63 argNumber4 = "0"
+VARS job63 argNumber5 = "1"
+VARS job63 argNumber6 = "job63"
+RETRY job63 3
+SCRIPT POST job63 post.sh job63.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job64 singleEarImage.submit
+VARS job64 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job64 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0052.tif#3BXkFB30O2ErXgk#"
+VARS job64 argNumber2 = "3"
+VARS job64 argNumber3 = "./output/"
+VARS job64 argNumber4 = "0"
+VARS job64 argNumber5 = "1"
+VARS job64 argNumber6 = "job64"
+RETRY job64 3
+SCRIPT POST job64 post.sh job64.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job65 singleEarImage.submit
+VARS job65 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job65 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0053.tif#3BXkFB30O2ErXgk#"
+VARS job65 argNumber2 = "3"
+VARS job65 argNumber3 = "./output/"
+VARS job65 argNumber4 = "0"
+VARS job65 argNumber5 = "1"
+VARS job65 argNumber6 = "job65"
+RETRY job65 3
+SCRIPT POST job65 post.sh job65.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job66 singleEarImage.submit
+VARS job66 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job66 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0054.tif#3BXkFB30O2ErXgk#"
+VARS job66 argNumber2 = "3"
+VARS job66 argNumber3 = "./output/"
+VARS job66 argNumber4 = "0"
+VARS job66 argNumber5 = "1"
+VARS job66 argNumber6 = "job66"
+RETRY job66 3
+SCRIPT POST job66 post.sh job66.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job67 singleEarImage.submit
+VARS job67 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job67 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0055.tif#3BXkFB30O2ErXgk#"
+VARS job67 argNumber2 = "3"
+VARS job67 argNumber3 = "./output/"
+VARS job67 argNumber4 = "0"
+VARS job67 argNumber5 = "1"
+VARS job67 argNumber6 = "job67"
+RETRY job67 3
+SCRIPT POST job67 post.sh job67.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job68 singleEarImage.submit
+VARS job68 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job68 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0056.tif#3BXkFB30O2ErXgk#"
+VARS job68 argNumber2 = "3"
+VARS job68 argNumber3 = "./output/"
+VARS job68 argNumber4 = "0"
+VARS job68 argNumber5 = "1"
+VARS job68 argNumber6 = "job68"
+RETRY job68 3
+SCRIPT POST job68 post.sh job68.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job69 singleEarImage.submit
+VARS job69 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job69 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0057.tif#3BXkFB30O2ErXgk#"
+VARS job69 argNumber2 = "3"
+VARS job69 argNumber3 = "./output/"
+VARS job69 argNumber4 = "0"
+VARS job69 argNumber5 = "1"
+VARS job69 argNumber6 = "job69"
+RETRY job69 3
+SCRIPT POST job69 post.sh job69.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job70 singleEarImage.submit
+VARS job70 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job70 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0058.tif#3BXkFB30O2ErXgk#"
+VARS job70 argNumber2 = "3"
+VARS job70 argNumber3 = "./output/"
+VARS job70 argNumber4 = "0"
+VARS job70 argNumber5 = "1"
+VARS job70 argNumber6 = "job70"
+RETRY job70 3
+SCRIPT POST job70 post.sh job70.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job71 singleEarImage.submit
+VARS job71 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job71 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0059.tif#3BXkFB30O2ErXgk#"
+VARS job71 argNumber2 = "3"
+VARS job71 argNumber3 = "./output/"
+VARS job71 argNumber4 = "0"
+VARS job71 argNumber5 = "1"
+VARS job71 argNumber6 = "job71"
+RETRY job71 3
+SCRIPT POST job71 post.sh job71.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job72 singleEarImage.submit
+VARS job72 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job72 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0060.tif#3BXkFB30O2ErXgk#"
+VARS job72 argNumber2 = "3"
+VARS job72 argNumber3 = "./output/"
+VARS job72 argNumber4 = "0"
+VARS job72 argNumber5 = "1"
+VARS job72 argNumber6 = "job72"
+RETRY job72 3
+SCRIPT POST job72 post.sh job72.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job73 singleEarImage.submit
+VARS job73 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job73 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0061.tif#3BXkFB30O2ErXgk#"
+VARS job73 argNumber2 = "3"
+VARS job73 argNumber3 = "./output/"
+VARS job73 argNumber4 = "0"
+VARS job73 argNumber5 = "1"
+VARS job73 argNumber6 = "job73"
+RETRY job73 3
+SCRIPT POST job73 post.sh job73.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job74 singleEarImage.submit
+VARS job74 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job74 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0062.tif#3BXkFB30O2ErXgk#"
+VARS job74 argNumber2 = "3"
+VARS job74 argNumber3 = "./output/"
+VARS job74 argNumber4 = "0"
+VARS job74 argNumber5 = "1"
+VARS job74 argNumber6 = "job74"
+RETRY job74 3
+SCRIPT POST job74 post.sh job74.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job75 singleEarImage.submit
+VARS job75 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job75 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0063.tif#3BXkFB30O2ErXgk#"
+VARS job75 argNumber2 = "3"
+VARS job75 argNumber3 = "./output/"
+VARS job75 argNumber4 = "0"
+VARS job75 argNumber5 = "1"
+VARS job75 argNumber6 = "job75"
+RETRY job75 3
+SCRIPT POST job75 post.sh job75.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job76 singleEarImage.submit
+VARS job76 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job76 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0064.tif#3BXkFB30O2ErXgk#"
+VARS job76 argNumber2 = "3"
+VARS job76 argNumber3 = "./output/"
+VARS job76 argNumber4 = "0"
+VARS job76 argNumber5 = "1"
+VARS job76 argNumber6 = "job76"
+RETRY job76 3
+SCRIPT POST job76 post.sh job76.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job77 singleEarImage.submit
+VARS job77 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job77 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0065.tif#3BXkFB30O2ErXgk#"
+VARS job77 argNumber2 = "3"
+VARS job77 argNumber3 = "./output/"
+VARS job77 argNumber4 = "0"
+VARS job77 argNumber5 = "1"
+VARS job77 argNumber6 = "job77"
+RETRY job77 3
+SCRIPT POST job77 post.sh job77.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job78 singleEarImage.submit
+VARS job78 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job78 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0066.tif#3BXkFB30O2ErXgk#"
+VARS job78 argNumber2 = "3"
+VARS job78 argNumber3 = "./output/"
+VARS job78 argNumber4 = "0"
+VARS job78 argNumber5 = "1"
+VARS job78 argNumber6 = "job78"
+RETRY job78 3
+SCRIPT POST job78 post.sh job78.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job79 singleEarImage.submit
+VARS job79 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job79 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0067.tif#3BXkFB30O2ErXgk#"
+VARS job79 argNumber2 = "3"
+VARS job79 argNumber3 = "./output/"
+VARS job79 argNumber4 = "0"
+VARS job79 argNumber5 = "1"
+VARS job79 argNumber6 = "job79"
+RETRY job79 3
+SCRIPT POST job79 post.sh job79.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job80 singleEarImage.submit
+VARS job80 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job80 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0068.tif#3BXkFB30O2ErXgk#"
+VARS job80 argNumber2 = "3"
+VARS job80 argNumber3 = "./output/"
+VARS job80 argNumber4 = "0"
+VARS job80 argNumber5 = "1"
+VARS job80 argNumber6 = "job80"
+RETRY job80 3
+SCRIPT POST job80 post.sh job80.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job81 singleEarImage.submit
+VARS job81 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job81 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0069.tif#3BXkFB30O2ErXgk#"
+VARS job81 argNumber2 = "3"
+VARS job81 argNumber3 = "./output/"
+VARS job81 argNumber4 = "0"
+VARS job81 argNumber5 = "1"
+VARS job81 argNumber6 = "job81"
+RETRY job81 3
+SCRIPT POST job81 post.sh job81.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job82 singleEarImage.submit
+VARS job82 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job82 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0070.tif#3BXkFB30O2ErXgk#"
+VARS job82 argNumber2 = "3"
+VARS job82 argNumber3 = "./output/"
+VARS job82 argNumber4 = "0"
+VARS job82 argNumber5 = "1"
+VARS job82 argNumber6 = "job82"
+RETRY job82 3
+SCRIPT POST job82 post.sh job82.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job83 singleEarImage.submit
+VARS job83 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job83 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0071.tif#3BXkFB30O2ErXgk#"
+VARS job83 argNumber2 = "3"
+VARS job83 argNumber3 = "./output/"
+VARS job83 argNumber4 = "0"
+VARS job83 argNumber5 = "1"
+VARS job83 argNumber6 = "job83"
+RETRY job83 3
+SCRIPT POST job83 post.sh job83.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job84 singleEarImage.submit
+VARS job84 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job84 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0072.tif#3BXkFB30O2ErXgk#"
+VARS job84 argNumber2 = "3"
+VARS job84 argNumber3 = "./output/"
+VARS job84 argNumber4 = "0"
+VARS job84 argNumber5 = "1"
+VARS job84 argNumber6 = "job84"
+RETRY job84 3
+SCRIPT POST job84 post.sh job84.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job85 singleEarImage.submit
+VARS job85 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job85 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0073.tif#3BXkFB30O2ErXgk#"
+VARS job85 argNumber2 = "3"
+VARS job85 argNumber3 = "./output/"
+VARS job85 argNumber4 = "0"
+VARS job85 argNumber5 = "1"
+VARS job85 argNumber6 = "job85"
+RETRY job85 3
+SCRIPT POST job85 post.sh job85.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job86 singleEarImage.submit
+VARS job86 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job86 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0074.tif#3BXkFB30O2ErXgk#"
+VARS job86 argNumber2 = "3"
+VARS job86 argNumber3 = "./output/"
+VARS job86 argNumber4 = "0"
+VARS job86 argNumber5 = "1"
+VARS job86 argNumber6 = "job86"
+RETRY job86 3
+SCRIPT POST job86 post.sh job86.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job87 singleEarImage.submit
+VARS job87 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job87 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0075.tif#3BXkFB30O2ErXgk#"
+VARS job87 argNumber2 = "3"
+VARS job87 argNumber3 = "./output/"
+VARS job87 argNumber4 = "0"
+VARS job87 argNumber5 = "1"
+VARS job87 argNumber6 = "job87"
+RETRY job87 3
+SCRIPT POST job87 post.sh job87.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job88 singleEarImage.submit
+VARS job88 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job88 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0076.tif#3BXkFB30O2ErXgk#"
+VARS job88 argNumber2 = "3"
+VARS job88 argNumber3 = "./output/"
+VARS job88 argNumber4 = "0"
+VARS job88 argNumber5 = "1"
+VARS job88 argNumber6 = "job88"
+RETRY job88 3
+SCRIPT POST job88 post.sh job88.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job89 singleEarImage.submit
+VARS job89 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job89 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0077.tif#3BXkFB30O2ErXgk#"
+VARS job89 argNumber2 = "3"
+VARS job89 argNumber3 = "./output/"
+VARS job89 argNumber4 = "0"
+VARS job89 argNumber5 = "1"
+VARS job89 argNumber6 = "job89"
+RETRY job89 3
+SCRIPT POST job89 post.sh job89.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job90 singleEarImage.submit
+VARS job90 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job90 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0078.tif#3BXkFB30O2ErXgk#"
+VARS job90 argNumber2 = "3"
+VARS job90 argNumber3 = "./output/"
+VARS job90 argNumber4 = "0"
+VARS job90 argNumber5 = "1"
+VARS job90 argNumber6 = "job90"
+RETRY job90 3
+SCRIPT POST job90 post.sh job90.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job91 singleEarImage.submit
+VARS job91 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job91 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0079.tif#3BXkFB30O2ErXgk#"
+VARS job91 argNumber2 = "3"
+VARS job91 argNumber3 = "./output/"
+VARS job91 argNumber4 = "0"
+VARS job91 argNumber5 = "1"
+VARS job91 argNumber6 = "job91"
+RETRY job91 3
+SCRIPT POST job91 post.sh job91.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job92 singleEarImage.submit
+VARS job92 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job92 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0080.tif#3BXkFB30O2ErXgk#"
+VARS job92 argNumber2 = "3"
+VARS job92 argNumber3 = "./output/"
+VARS job92 argNumber4 = "0"
+VARS job92 argNumber5 = "1"
+VARS job92 argNumber6 = "job92"
+RETRY job92 3
+SCRIPT POST job92 post.sh job92.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job93 singleEarImage.submit
+VARS job93 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job93 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0081.tif#3BXkFB30O2ErXgk#"
+VARS job93 argNumber2 = "3"
+VARS job93 argNumber3 = "./output/"
+VARS job93 argNumber4 = "0"
+VARS job93 argNumber5 = "1"
+VARS job93 argNumber6 = "job93"
+RETRY job93 3
+SCRIPT POST job93 post.sh job93.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job94 singleEarImage.submit
+VARS job94 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job94 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0082.tif#3BXkFB30O2ErXgk#"
+VARS job94 argNumber2 = "3"
+VARS job94 argNumber3 = "./output/"
+VARS job94 argNumber4 = "0"
+VARS job94 argNumber5 = "1"
+VARS job94 argNumber6 = "job94"
+RETRY job94 3
+SCRIPT POST job94 post.sh job94.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job95 singleEarImage.submit
+VARS job95 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job95 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0083.tif#3BXkFB30O2ErXgk#"
+VARS job95 argNumber2 = "3"
+VARS job95 argNumber3 = "./output/"
+VARS job95 argNumber4 = "0"
+VARS job95 argNumber5 = "1"
+VARS job95 argNumber6 = "job95"
+RETRY job95 3
+SCRIPT POST job95 post.sh job95.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job96 singleEarImage.submit
+VARS job96 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job96 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0084.tif#3BXkFB30O2ErXgk#"
+VARS job96 argNumber2 = "3"
+VARS job96 argNumber3 = "./output/"
+VARS job96 argNumber4 = "0"
+VARS job96 argNumber5 = "1"
+VARS job96 argNumber6 = "job96"
+RETRY job96 3
+SCRIPT POST job96 post.sh job96.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job97 singleEarImage.submit
+VARS job97 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job97 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0085.tif#3BXkFB30O2ErXgk#"
+VARS job97 argNumber2 = "3"
+VARS job97 argNumber3 = "./output/"
+VARS job97 argNumber4 = "0"
+VARS job97 argNumber5 = "1"
+VARS job97 argNumber6 = "job97"
+RETRY job97 3
+SCRIPT POST job97 post.sh job97.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job98 singleEarImage.submit
+VARS job98 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job98 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0086.tif#3BXkFB30O2ErXgk#"
+VARS job98 argNumber2 = "3"
+VARS job98 argNumber3 = "./output/"
+VARS job98 argNumber4 = "0"
+VARS job98 argNumber5 = "1"
+VARS job98 argNumber6 = "job98"
+RETRY job98 3
+SCRIPT POST job98 post.sh job98.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job99 singleEarImage.submit
+VARS job99 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job99 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0087.tif#3BXkFB30O2ErXgk#"
+VARS job99 argNumber2 = "3"
+VARS job99 argNumber3 = "./output/"
+VARS job99 argNumber4 = "0"
+VARS job99 argNumber5 = "1"
+VARS job99 argNumber6 = "job99"
+RETRY job99 3
+SCRIPT POST job99 post.sh job99.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job100 singleEarImage.submit
+VARS job100 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job100 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0088.tif#3BXkFB30O2ErXgk#"
+VARS job100 argNumber2 = "3"
+VARS job100 argNumber3 = "./output/"
+VARS job100 argNumber4 = "0"
+VARS job100 argNumber5 = "1"
+VARS job100 argNumber6 = "job100"
+RETRY job100 3
+SCRIPT POST job100 post.sh job100.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job101 singleEarImage.submit
+VARS job101 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job101 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0089.tif#3BXkFB30O2ErXgk#"
+VARS job101 argNumber2 = "3"
+VARS job101 argNumber3 = "./output/"
+VARS job101 argNumber4 = "0"
+VARS job101 argNumber5 = "1"
+VARS job101 argNumber6 = "job101"
+RETRY job101 3
+SCRIPT POST job101 post.sh job101.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job102 singleEarImage.submit
+VARS job102 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job102 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0090.tif#3BXkFB30O2ErXgk#"
+VARS job102 argNumber2 = "3"
+VARS job102 argNumber3 = "./output/"
+VARS job102 argNumber4 = "0"
+VARS job102 argNumber5 = "1"
+VARS job102 argNumber6 = "job102"
+RETRY job102 3
+SCRIPT POST job102 post.sh job102.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job103 singleEarImage.submit
+VARS job103 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job103 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0091.tif#3BXkFB30O2ErXgk#"
+VARS job103 argNumber2 = "3"
+VARS job103 argNumber3 = "./output/"
+VARS job103 argNumber4 = "0"
+VARS job103 argNumber5 = "1"
+VARS job103 argNumber6 = "job103"
+RETRY job103 3
+SCRIPT POST job103 post.sh job103.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job104 singleEarImage.submit
+VARS job104 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job104 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0092.tif#3BXkFB30O2ErXgk#"
+VARS job104 argNumber2 = "3"
+VARS job104 argNumber3 = "./output/"
+VARS job104 argNumber4 = "0"
+VARS job104 argNumber5 = "1"
+VARS job104 argNumber6 = "job104"
+RETRY job104 3
+SCRIPT POST job104 post.sh job104.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job105 singleEarImage.submit
+VARS job105 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job105 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0093.tif#3BXkFB30O2ErXgk#"
+VARS job105 argNumber2 = "3"
+VARS job105 argNumber3 = "./output/"
+VARS job105 argNumber4 = "0"
+VARS job105 argNumber5 = "1"
+VARS job105 argNumber6 = "job105"
+RETRY job105 3
+SCRIPT POST job105 post.sh job105.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job106 singleEarImage.submit
+VARS job106 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job106 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0094.tif#3BXkFB30O2ErXgk#"
+VARS job106 argNumber2 = "3"
+VARS job106 argNumber3 = "./output/"
+VARS job106 argNumber4 = "0"
+VARS job106 argNumber5 = "1"
+VARS job106 argNumber6 = "job106"
+RETRY job106 3
+SCRIPT POST job106 post.sh job106.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job107 singleEarImage.submit
+VARS job107 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job107 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0095.tif#3BXkFB30O2ErXgk#"
+VARS job107 argNumber2 = "3"
+VARS job107 argNumber3 = "./output/"
+VARS job107 argNumber4 = "0"
+VARS job107 argNumber5 = "1"
+VARS job107 argNumber6 = "job107"
+RETRY job107 3
+SCRIPT POST job107 post.sh job107.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job108 singleEarImage.submit
+VARS job108 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job108 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0096.tif#3BXkFB30O2ErXgk#"
+VARS job108 argNumber2 = "3"
+VARS job108 argNumber3 = "./output/"
+VARS job108 argNumber4 = "0"
+VARS job108 argNumber5 = "1"
+VARS job108 argNumber6 = "job108"
+RETRY job108 3
+SCRIPT POST job108 post.sh job108.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job109 singleEarImage.submit
+VARS job109 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job109 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0097.tif#3BXkFB30O2ErXgk#"
+VARS job109 argNumber2 = "3"
+VARS job109 argNumber3 = "./output/"
+VARS job109 argNumber4 = "0"
+VARS job109 argNumber5 = "1"
+VARS job109 argNumber6 = "job109"
+RETRY job109 3
+SCRIPT POST job109 post.sh job109.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job110 singleEarImage.submit
+VARS job110 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job110 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0098.tif#3BXkFB30O2ErXgk#"
+VARS job110 argNumber2 = "3"
+VARS job110 argNumber3 = "./output/"
+VARS job110 argNumber4 = "0"
+VARS job110 argNumber5 = "1"
+VARS job110 argNumber6 = "job110"
+RETRY job110 3
+SCRIPT POST job110 post.sh job110.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job111 singleEarImage.submit
+VARS job111 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job111 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0099.tif#3BXkFB30O2ErXgk#"
+VARS job111 argNumber2 = "3"
+VARS job111 argNumber3 = "./output/"
+VARS job111 argNumber4 = "0"
+VARS job111 argNumber5 = "1"
+VARS job111 argNumber6 = "job111"
+RETRY job111 3
+SCRIPT POST job111 post.sh job111.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job112 singleEarImage.submit
+VARS job112 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job112 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0100.tif#3BXkFB30O2ErXgk#"
+VARS job112 argNumber2 = "3"
+VARS job112 argNumber3 = "./output/"
+VARS job112 argNumber4 = "0"
+VARS job112 argNumber5 = "1"
+VARS job112 argNumber6 = "job112"
+RETRY job112 3
+SCRIPT POST job112 post.sh job112.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job113 singleEarImage.submit
+VARS job113 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job113 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0101.tif#3BXkFB30O2ErXgk#"
+VARS job113 argNumber2 = "3"
+VARS job113 argNumber3 = "./output/"
+VARS job113 argNumber4 = "0"
+VARS job113 argNumber5 = "1"
+VARS job113 argNumber6 = "job113"
+RETRY job113 3
+SCRIPT POST job113 post.sh job113.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job114 singleEarImage.submit
+VARS job114 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job114 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0102.tif#3BXkFB30O2ErXgk#"
+VARS job114 argNumber2 = "3"
+VARS job114 argNumber3 = "./output/"
+VARS job114 argNumber4 = "0"
+VARS job114 argNumber5 = "1"
+VARS job114 argNumber6 = "job114"
+RETRY job114 3
+SCRIPT POST job114 post.sh job114.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job115 singleEarImage.submit
+VARS job115 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job115 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0103.tif#3BXkFB30O2ErXgk#"
+VARS job115 argNumber2 = "3"
+VARS job115 argNumber3 = "./output/"
+VARS job115 argNumber4 = "0"
+VARS job115 argNumber5 = "1"
+VARS job115 argNumber6 = "job115"
+RETRY job115 3
+SCRIPT POST job115 post.sh job115.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job116 singleEarImage.submit
+VARS job116 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job116 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0104.tif#3BXkFB30O2ErXgk#"
+VARS job116 argNumber2 = "3"
+VARS job116 argNumber3 = "./output/"
+VARS job116 argNumber4 = "0"
+VARS job116 argNumber5 = "1"
+VARS job116 argNumber6 = "job116"
+RETRY job116 3
+SCRIPT POST job116 post.sh job116.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job117 singleEarImage.submit
+VARS job117 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job117 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0105.tif#3BXkFB30O2ErXgk#"
+VARS job117 argNumber2 = "3"
+VARS job117 argNumber3 = "./output/"
+VARS job117 argNumber4 = "0"
+VARS job117 argNumber5 = "1"
+VARS job117 argNumber6 = "job117"
+RETRY job117 3
+SCRIPT POST job117 post.sh job117.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job118 singleEarImage.submit
+VARS job118 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job118 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0106.tif#3BXkFB30O2ErXgk#"
+VARS job118 argNumber2 = "3"
+VARS job118 argNumber3 = "./output/"
+VARS job118 argNumber4 = "0"
+VARS job118 argNumber5 = "1"
+VARS job118 argNumber6 = "job118"
+RETRY job118 3
+SCRIPT POST job118 post.sh job118.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job119 singleEarImage.submit
+VARS job119 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job119 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0107.tif#3BXkFB30O2ErXgk#"
+VARS job119 argNumber2 = "3"
+VARS job119 argNumber3 = "./output/"
+VARS job119 argNumber4 = "0"
+VARS job119 argNumber5 = "1"
+VARS job119 argNumber6 = "job119"
+RETRY job119 3
+SCRIPT POST job119 post.sh job119.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job120 singleEarImage.submit
+VARS job120 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job120 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0108.tif#3BXkFB30O2ErXgk#"
+VARS job120 argNumber2 = "3"
+VARS job120 argNumber3 = "./output/"
+VARS job120 argNumber4 = "0"
+VARS job120 argNumber5 = "1"
+VARS job120 argNumber6 = "job120"
+RETRY job120 3
+SCRIPT POST job120 post.sh job120.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job121 singleEarImage.submit
+VARS job121 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job121 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0109.tif#3BXkFB30O2ErXgk#"
+VARS job121 argNumber2 = "3"
+VARS job121 argNumber3 = "./output/"
+VARS job121 argNumber4 = "0"
+VARS job121 argNumber5 = "1"
+VARS job121 argNumber6 = "job121"
+RETRY job121 3
+SCRIPT POST job121 post.sh job121.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job122 singleEarImage.submit
+VARS job122 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job122 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0110.tif#3BXkFB30O2ErXgk#"
+VARS job122 argNumber2 = "3"
+VARS job122 argNumber3 = "./output/"
+VARS job122 argNumber4 = "0"
+VARS job122 argNumber5 = "1"
+VARS job122 argNumber6 = "job122"
+RETRY job122 3
+SCRIPT POST job122 post.sh job122.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job123 singleEarImage.submit
+VARS job123 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job123 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0111.tif#3BXkFB30O2ErXgk#"
+VARS job123 argNumber2 = "3"
+VARS job123 argNumber3 = "./output/"
+VARS job123 argNumber4 = "0"
+VARS job123 argNumber5 = "1"
+VARS job123 argNumber6 = "job123"
+RETRY job123 3
+SCRIPT POST job123 post.sh job123.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job124 singleEarImage.submit
+VARS job124 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job124 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0112.tif#3BXkFB30O2ErXgk#"
+VARS job124 argNumber2 = "3"
+VARS job124 argNumber3 = "./output/"
+VARS job124 argNumber4 = "0"
+VARS job124 argNumber5 = "1"
+VARS job124 argNumber6 = "job124"
+RETRY job124 3
+SCRIPT POST job124 post.sh job124.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job125 singleEarImage.submit
+VARS job125 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job125 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0113.tif#3BXkFB30O2ErXgk#"
+VARS job125 argNumber2 = "3"
+VARS job125 argNumber3 = "./output/"
+VARS job125 argNumber4 = "0"
+VARS job125 argNumber5 = "1"
+VARS job125 argNumber6 = "job125"
+RETRY job125 3
+SCRIPT POST job125 post.sh job125.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job126 singleEarImage.submit
+VARS job126 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job126 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0114.tif#3BXkFB30O2ErXgk#"
+VARS job126 argNumber2 = "3"
+VARS job126 argNumber3 = "./output/"
+VARS job126 argNumber4 = "0"
+VARS job126 argNumber5 = "1"
+VARS job126 argNumber6 = "job126"
+RETRY job126 3
+SCRIPT POST job126 post.sh job126.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job127 singleEarImage.submit
+VARS job127 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job127 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0115.tif#3BXkFB30O2ErXgk#"
+VARS job127 argNumber2 = "3"
+VARS job127 argNumber3 = "./output/"
+VARS job127 argNumber4 = "0"
+VARS job127 argNumber5 = "1"
+VARS job127 argNumber6 = "job127"
+RETRY job127 3
+SCRIPT POST job127 post.sh job127.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job128 singleEarImage.submit
+VARS job128 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job128 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0116.tif#3BXkFB30O2ErXgk#"
+VARS job128 argNumber2 = "3"
+VARS job128 argNumber3 = "./output/"
+VARS job128 argNumber4 = "0"
+VARS job128 argNumber5 = "1"
+VARS job128 argNumber6 = "job128"
+RETRY job128 3
+SCRIPT POST job128 post.sh job128.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job129 singleEarImage.submit
+VARS job129 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job129 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0117.tif#3BXkFB30O2ErXgk#"
+VARS job129 argNumber2 = "3"
+VARS job129 argNumber3 = "./output/"
+VARS job129 argNumber4 = "0"
+VARS job129 argNumber5 = "1"
+VARS job129 argNumber6 = "job129"
+RETRY job129 3
+SCRIPT POST job129 post.sh job129.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job130 singleEarImage.submit
+VARS job130 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job130 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0118.tif#3BXkFB30O2ErXgk#"
+VARS job130 argNumber2 = "3"
+VARS job130 argNumber3 = "./output/"
+VARS job130 argNumber4 = "0"
+VARS job130 argNumber5 = "1"
+VARS job130 argNumber6 = "job130"
+RETRY job130 3
+SCRIPT POST job130 post.sh job130.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job131 singleEarImage.submit
+VARS job131 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job131 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0119.tif#3BXkFB30O2ErXgk#"
+VARS job131 argNumber2 = "3"
+VARS job131 argNumber3 = "./output/"
+VARS job131 argNumber4 = "0"
+VARS job131 argNumber5 = "1"
+VARS job131 argNumber6 = "job131"
+RETRY job131 3
+SCRIPT POST job131 post.sh job131.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job132 singleEarImage.submit
+VARS job132 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job132 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0120.tif#3BXkFB30O2ErXgk#"
+VARS job132 argNumber2 = "3"
+VARS job132 argNumber3 = "./output/"
+VARS job132 argNumber4 = "0"
+VARS job132 argNumber5 = "1"
+VARS job132 argNumber6 = "job132"
+RETRY job132 3
+SCRIPT POST job132 post.sh job132.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job133 singleEarImage.submit
+VARS job133 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job133 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0121.tif#3BXkFB30O2ErXgk#"
+VARS job133 argNumber2 = "3"
+VARS job133 argNumber3 = "./output/"
+VARS job133 argNumber4 = "0"
+VARS job133 argNumber5 = "1"
+VARS job133 argNumber6 = "job133"
+RETRY job133 3
+SCRIPT POST job133 post.sh job133.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job134 singleEarImage.submit
+VARS job134 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job134 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0122.tif#3BXkFB30O2ErXgk#"
+VARS job134 argNumber2 = "3"
+VARS job134 argNumber3 = "./output/"
+VARS job134 argNumber4 = "0"
+VARS job134 argNumber5 = "1"
+VARS job134 argNumber6 = "job134"
+RETRY job134 3
+SCRIPT POST job134 post.sh job134.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job135 singleEarImage.submit
+VARS job135 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job135 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0123.tif#3BXkFB30O2ErXgk#"
+VARS job135 argNumber2 = "3"
+VARS job135 argNumber3 = "./output/"
+VARS job135 argNumber4 = "0"
+VARS job135 argNumber5 = "1"
+VARS job135 argNumber6 = "job135"
+RETRY job135 3
+SCRIPT POST job135 post.sh job135.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job136 singleEarImage.submit
+VARS job136 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job136 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0124.tif#3BXkFB30O2ErXgk#"
+VARS job136 argNumber2 = "3"
+VARS job136 argNumber3 = "./output/"
+VARS job136 argNumber4 = "0"
+VARS job136 argNumber5 = "1"
+VARS job136 argNumber6 = "job136"
+RETRY job136 3
+SCRIPT POST job136 post.sh job136.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job137 singleEarImage.submit
+VARS job137 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job137 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0125.tif#3BXkFB30O2ErXgk#"
+VARS job137 argNumber2 = "3"
+VARS job137 argNumber3 = "./output/"
+VARS job137 argNumber4 = "0"
+VARS job137 argNumber5 = "1"
+VARS job137 argNumber6 = "job137"
+RETRY job137 3
+SCRIPT POST job137 post.sh job137.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job138 singleEarImage.submit
+VARS job138 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job138 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0126.tif#3BXkFB30O2ErXgk#"
+VARS job138 argNumber2 = "3"
+VARS job138 argNumber3 = "./output/"
+VARS job138 argNumber4 = "0"
+VARS job138 argNumber5 = "1"
+VARS job138 argNumber6 = "job138"
+RETRY job138 3
+SCRIPT POST job138 post.sh job138.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job139 singleEarImage.submit
+VARS job139 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job139 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0127.tif#3BXkFB30O2ErXgk#"
+VARS job139 argNumber2 = "3"
+VARS job139 argNumber3 = "./output/"
+VARS job139 argNumber4 = "0"
+VARS job139 argNumber5 = "1"
+VARS job139 argNumber6 = "job139"
+RETRY job139 3
+SCRIPT POST job139 post.sh job139.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job140 singleEarImage.submit
+VARS job140 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job140 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0128.tif#3BXkFB30O2ErXgk#"
+VARS job140 argNumber2 = "3"
+VARS job140 argNumber3 = "./output/"
+VARS job140 argNumber4 = "0"
+VARS job140 argNumber5 = "1"
+VARS job140 argNumber6 = "job140"
+RETRY job140 3
+SCRIPT POST job140 post.sh job140.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job141 singleEarImage.submit
+VARS job141 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job141 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0129.tif#3BXkFB30O2ErXgk#"
+VARS job141 argNumber2 = "3"
+VARS job141 argNumber3 = "./output/"
+VARS job141 argNumber4 = "0"
+VARS job141 argNumber5 = "1"
+VARS job141 argNumber6 = "job141"
+RETRY job141 3
+SCRIPT POST job141 post.sh job141.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job142 singleEarImage.submit
+VARS job142 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job142 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0130.tif#3BXkFB30O2ErXgk#"
+VARS job142 argNumber2 = "3"
+VARS job142 argNumber3 = "./output/"
+VARS job142 argNumber4 = "0"
+VARS job142 argNumber5 = "1"
+VARS job142 argNumber6 = "job142"
+RETRY job142 3
+SCRIPT POST job142 post.sh job142.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job143 singleEarImage.submit
+VARS job143 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job143 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0131.tif#3BXkFB30O2ErXgk#"
+VARS job143 argNumber2 = "3"
+VARS job143 argNumber3 = "./output/"
+VARS job143 argNumber4 = "0"
+VARS job143 argNumber5 = "1"
+VARS job143 argNumber6 = "job143"
+RETRY job143 3
+SCRIPT POST job143 post.sh job143.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job144 singleEarImage.submit
+VARS job144 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job144 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0132.tif#3BXkFB30O2ErXgk#"
+VARS job144 argNumber2 = "3"
+VARS job144 argNumber3 = "./output/"
+VARS job144 argNumber4 = "0"
+VARS job144 argNumber5 = "1"
+VARS job144 argNumber6 = "job144"
+RETRY job144 3
+SCRIPT POST job144 post.sh job144.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job145 singleEarImage.submit
+VARS job145 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job145 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0133.tif#3BXkFB30O2ErXgk#"
+VARS job145 argNumber2 = "3"
+VARS job145 argNumber3 = "./output/"
+VARS job145 argNumber4 = "0"
+VARS job145 argNumber5 = "1"
+VARS job145 argNumber6 = "job145"
+RETRY job145 3
+SCRIPT POST job145 post.sh job145.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job146 singleEarImage.submit
+VARS job146 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job146 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0134.tif#3BXkFB30O2ErXgk#"
+VARS job146 argNumber2 = "3"
+VARS job146 argNumber3 = "./output/"
+VARS job146 argNumber4 = "0"
+VARS job146 argNumber5 = "1"
+VARS job146 argNumber6 = "job146"
+RETRY job146 3
+SCRIPT POST job146 post.sh job146.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job147 singleEarImage.submit
+VARS job147 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job147 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0135.tif#3BXkFB30O2ErXgk#"
+VARS job147 argNumber2 = "3"
+VARS job147 argNumber3 = "./output/"
+VARS job147 argNumber4 = "0"
+VARS job147 argNumber5 = "1"
+VARS job147 argNumber6 = "job147"
+RETRY job147 3
+SCRIPT POST job147 post.sh job147.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job148 singleEarImage.submit
+VARS job148 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job148 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0136.tif#3BXkFB30O2ErXgk#"
+VARS job148 argNumber2 = "3"
+VARS job148 argNumber3 = "./output/"
+VARS job148 argNumber4 = "0"
+VARS job148 argNumber5 = "1"
+VARS job148 argNumber6 = "job148"
+RETRY job148 3
+SCRIPT POST job148 post.sh job148.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job149 singleEarImage.submit
+VARS job149 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job149 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0137.tif#3BXkFB30O2ErXgk#"
+VARS job149 argNumber2 = "3"
+VARS job149 argNumber3 = "./output/"
+VARS job149 argNumber4 = "0"
+VARS job149 argNumber5 = "1"
+VARS job149 argNumber6 = "job149"
+RETRY job149 3
+SCRIPT POST job149 post.sh job149.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job150 singleEarImage.submit
+VARS job150 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job150 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0138.tif#3BXkFB30O2ErXgk#"
+VARS job150 argNumber2 = "3"
+VARS job150 argNumber3 = "./output/"
+VARS job150 argNumber4 = "0"
+VARS job150 argNumber5 = "1"
+VARS job150 argNumber6 = "job150"
+RETRY job150 3
+SCRIPT POST job150 post.sh job150.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job151 singleEarImage.submit
+VARS job151 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job151 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0139.tif#3BXkFB30O2ErXgk#"
+VARS job151 argNumber2 = "3"
+VARS job151 argNumber3 = "./output/"
+VARS job151 argNumber4 = "0"
+VARS job151 argNumber5 = "1"
+VARS job151 argNumber6 = "job151"
+RETRY job151 3
+SCRIPT POST job151 post.sh job151.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+JOB job152 singleEarImage.submit
+VARS job152 FileTransferList = "singleEarImage,run_singleEarImage.sh"
+VARS job152 argNumber1 = "/iplant/home/gxe/maizeData/earData/3-3-15-Scan1/Scan1-150303-0140.tif#3BXkFB30O2ErXgk#"
+VARS job152 argNumber2 = "3"
+VARS job152 argNumber3 = "./output/"
+VARS job152 argNumber4 = "0"
+VARS job152 argNumber5 = "1"
+VARS job152 argNumber6 = "job152"
+RETRY job152 3
+SCRIPT POST job152 post.sh job152.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/earData/
+PARENT headnode CHILD job1 job2 job3 job4 job5 job6 job7 job8 job9 job10 job11 job12 job13 job14 job15 job16 job17 job18 job19 job20 job21 job22 job23 job24 job25 job26 job27 job28 job29 job30 job31 job32 job33 job34 job35 job36 job37 job38 job39 job40 job41 job42 job43 job44 job45 job46 job47 job48 job49 job50 job51 job52 job53 job54 job55 job56 job57 job58 job59 job60 job61 job62 job63 job64 job65 job66 job67 job68 job69 job70 job71 job72 job73 job74 job75 job76 job77 job78 job79 job80 job81 job82 job83 job84 job85 job86 job87 job88 job89 job90 job91 job92 job93 job94 job95 job96 job97 job98 job99 job100 job101 job102 job103 job104 job105 job106 job107 job108 job109 job110 job111 job112 job113 job114 job115 job116 job117 job118 job119 job120 job121 job122 job123 job124 job125 job126 job127 job128 job129 job130 job131 job132 job133 job134 job135 job136 job137 job138 job139 job140 job141 job142 job143 job144 job145 job146 job147 job148 job149 job150 job151 job152 
