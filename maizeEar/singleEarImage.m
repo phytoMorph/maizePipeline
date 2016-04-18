@@ -1,4 +1,4 @@
-function [KernelLength sM] = singleEarImage(fileName,noe,oPath,defaultAreaPix,fracDpi,toSave,toDisplay)
+function [KernelLength sM] = singleEarImage(fileName,noe,oPath,defaultAreaPix,fracDpi,checkBlue_scaleFactor,addcut,baselineBlue,toSave,toDisplay)
     %{
         April 14 2016
         1. copy and add variable info from cob func
