@@ -24,7 +24,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
     colRange1: The color range for back ground to be removed in getcobMask.
     colRange2: The color range for back ground to be removed in getcobMask.
     fill: The radius of disk for Kernel of an image close operation.
-    CHUNK:
+    CHUNK: The number of chunk for input for FFT in myBlock0;
     toSave: 0 - not to save, 1 - to save.
     toDisplay: 0 - not to save, 1 - to save.
     %}
