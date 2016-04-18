@@ -1,4 +1,4 @@
-function [KernelLength sM] = singleEarImage(fileName,noe,oPath,defaultAreaPix,fracDpi,checkBlue_scaleFactor,addcut,baselineBlue,fill,CHUNK,toSave,toDisplay)
+function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFactor,defaultAreaPix,fracDpi,checkBlue_scaleFactor,addcut,baselineBlue,fill,CHUNK,toSave,toDisplay)
     %{
         April 14 2016
         1. copy and add variable info from cob func
@@ -48,7 +48,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,defaultAreaPix,fr
         %%%%%%%%%%%%%%%%%%%%%%%
         noe = StoN(noe);
         checkBlue_scaleFactor = StoN(checkBlue_scaleFactor);
-        %rawImage_scaleFactor = StoN(rawImage_scaleFactor);
+        rawImage_scaleFactor = StoN(rawImage_scaleFactor);
         fracDpi = StoN(fracDpi);
         addcut = StoN(addcut);
         defaultAreaPix = StoN(defaultAreaPix);
@@ -64,7 +64,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,defaultAreaPix,fr
         fprintf(['Number of Ears:' num2str(noe) '\n']);
         fprintf(['OutPath:' oPath '\n']);
         fprintf(['Image resize in checkBlue:' num2str(checkBlue_scaleFactor) '\n']); 
-        %fprintf(['Raw image resize:' num2str(rawImage_scaleFactor) '\n']);  
+        fprintf(['Raw image resize:' num2str(rawImage_scaleFactor) '\n']);  
         fprintf(['Threshold noise size:' num2str(defaultAreaPix) '\n']);
         fprintf(['Fraction relative to 1200 dpi:' num2str(fracDpi) '\n']);  
         %fprintf(['The radius of color circle:' num2str(rho) '\n']);
@@ -85,6 +85,8 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,defaultAreaPix,fr
         %%%%%%%%%%%%%%%%%%%%%%%
         fprintf(['starting with image load.\n']);
         I = imread(fileName);
+        % rawImage_scaleFactor to lower 'DPI' effect, by fraction 
+        I = imresize(I,rawImage_scaleFactor);
         I = checkBlue(I,checkBlue_scaleFactor,addcut,baselineBlue);
         %I = checkBlue(I);
         fprintf(['ending with image load.\n']);
