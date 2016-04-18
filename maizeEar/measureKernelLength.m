@@ -1,4 +1,4 @@
-function [T ufT BB PS MT sM] = measureKernelLength(I,numberCobs,RAD,gridSites)
+function [T ufT BB PS MT sM] = measureKernelLength(I,numberCobs,RAD,gridSites,defaultAreaPix,fracDpi)
     %%%%%%%%%%%%%%%%%%%%%%%
     % init return vars    
     ufT = 0;

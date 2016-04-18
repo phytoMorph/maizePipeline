@@ -1,4 +1,4 @@
-function [KernelLength sM] = singleEarImage(fileName,noe,oPath,toSave,toDisplay)
+function [KernelLength sM] = singleEarImage(fileName,noe,oPath,defaultAreaPix,fracDpi,toSave,toDisplay)
     %{
         April 14 2016
         1. copy and add variable info from cob func
@@ -44,7 +44,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,toSave,toDisplay)
         [pth nm ext] = fileparts(fileName);
         fprintf(['ending with variable and environment initialization.\n']);
         %%%%%%%%%%%%%%%%%%%%%%%
-        % read the image and take off the blue strip for bar code
+        % read the image and take off the blue strip for bar codedefaultAreaPix,fracDpi
         %%%%%%%%%%%%%%%%%%%%%%%
         fprintf(['starting with image load.\n']);
         I = imread(fileName);
