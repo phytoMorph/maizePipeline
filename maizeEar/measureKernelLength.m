@@ -1,4 +1,4 @@
-function [T ufT BB PS MT sM] = measureKernelLength(I,numberCobs,RAD,gridSites,defaultAreaPix,fracDpi)
+function [T ufT BB PS MT sM] = measureKernelLength(I,numberCobs,RAD,gridSites,defaultAreaPix,fracDpi,fill)
     %%%%%%%%%%%%%%%%%%%%%%%
     % init return vars    
     ufT = 0;
@@ -19,10 +19,11 @@ function [T ufT BB PS MT sM] = measureKernelLength(I,numberCobs,RAD,gridSites,de
         % get binary, close, fill holes, remove small objects
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         B = fI > level;
-        B = imopen(B,strel('disk',31));
-        B = imclose(B,strel('disk',31));
+        B = imopen(B,strel('disk',fill));
+        B = imclose(B,strel('disk',fill));
         B = imfill(B,'holes');
-        B = bwareaopen(B,1000000);
+        areaRemove = round(defaultAreaPix/fracDpi);
+        B = bwareaopen(B,areaRemove);
         B = imclearborder(B);
         R = regionprops(B,'PixelIdxList','PixelList','Area','Image','BoundingBox');
         fprintf(['ending mask creation. \n']);

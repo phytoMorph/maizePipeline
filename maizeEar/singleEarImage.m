@@ -1,4 +1,4 @@
-function [KernelLength sM] = singleEarImage(fileName,noe,oPath,defaultAreaPix,fracDpi,checkBlue_scaleFactor,addcut,baselineBlue,toSave,toDisplay)
+function [KernelLength sM] = singleEarImage(fileName,noe,oPath,defaultAreaPix,fracDpi,checkBlue_scaleFactor,addcut,baselineBlue,fill,toSave,toDisplay)
     %{
         April 14 2016
         1. copy and add variable info from cob func
@@ -25,12 +25,16 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,defaultAreaPix,fr
         %%%%%%%%%%%%%%%%%%%%%%%
         % convert the strings to numbers if they are strings
         %%%%%%%%%%%%%%%%%%%%%%%
-        if ischar(noe)
-            noe = str2num(noe);
-        end
-        if ischar(toSave)
-            toSave = str2num(toSave);
-        end
+        noe = StoN(noe);
+        checkBlue_scaleFactor = StoN(checkBlue_scaleFactor);
+        %rawImage_scaleFactor = StoN(rawImage_scaleFactor);
+        fracDpi = StoN(fracDpi);
+        addcut = StoN(addcut);
+        defaultAreaPix = StoN(defaultAreaPix);
+        baselineBlue = StoN(baselineBlue);
+        %colRange1 = StoN(colRange1);
+        %colRange2 = StoN(colRange2);
+        fill = StoN(fill);
         %%%%%%%%%%%%%%%%%%%%%%%
         % print out the fileName, number of ears, output path
         %%%%%%%%%%%%%%%%%%%%%%%
@@ -48,7 +52,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,defaultAreaPix,fr
         %%%%%%%%%%%%%%%%%%%%%%%
         fprintf(['starting with image load.\n']);
         I = imread(fileName);
-        I = checkBlue(I,checkBlue_scaleFactor,addcut,baselineBlue)
+        I = checkBlue(I,checkBlue_scaleFactor,addcut,baselineBlue);
         %I = checkBlue(I);
         fprintf(['ending with image load.\n']);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,10 +67,10 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,defaultAreaPix,fr
         fprintf(['starting with image analysis. \n']);
         % make the window sizes
         %%window size matters for dpi. It is based on 1200 dpi
-        RAD = 1200:25:1600;
+        RAD = round(1200/fracDpi):round(25/fracDpi):round(1600/fracDpi);
         % the number of down sample grid sites
         gridSites = 10;
-        [KernelLength FT BB S MT] = measureKernelLength(I,noe,RAD,gridSites);        
+        [KernelLength FT BB S MT] = measureKernelLength(I,noe,RAD,gridSites,defaultAreaPix,fracDpi,fill);        
         % average kernel height
         uT = nanmean(KernelLength,2);        
         DATA = [];             
