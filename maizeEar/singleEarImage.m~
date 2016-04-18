@@ -24,7 +24,6 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,defaultAreaPix,fr
     colRange1: The color range for back ground to be removed in getcobMask.
     colRange2: The color range for back ground to be removed in getcobMask.
     fill: The radius of disk for Kernel of an image close operation.
-    CHUNK:
     toSave: 0 - not to save, 1 - to save.
     toDisplay: 0 - not to save, 1 - to save.
     %}
@@ -63,6 +62,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,defaultAreaPix,fr
         fprintf(['FileName:' fileName '\n']);
         fprintf(['Number of Ears:' num2str(noe) '\n']);
         fprintf(['OutPath:' oPath '\n']);
+     
         fprintf(['Image resize in checkBlue:' num2str(checkBlue_scaleFactor) '\n']); 
         %fprintf(['Raw image resize:' num2str(rawImage_scaleFactor) '\n']);  
         fprintf(['Threshold noise size:' num2str(defaultAreaPix) '\n']);

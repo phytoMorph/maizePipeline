@@ -1,4 +1,4 @@
-function [T ret] = measureImage(fsI,toMeasure,downsample,dR) 
+function [T ret] = measureImage(fsI,toMeasure,downsample,dR,CHUNK) 
     %%%%%%%%%%%%%%%%%%%%%%%
     % init return vars    
     T = NaN;   
@@ -20,7 +20,7 @@ function [T ret] = measureImage(fsI,toMeasure,downsample,dR)
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         tm = clock;        
         sites = [g1(idx) g2(idx)];
-        ret = siteProcess(sites,[dR 1],@(block)myBlock0(block),fsI);
+        ret = siteProcess(sites,[dR 1],@(block)myBlock0(block),fsI,CHUNK);
         ret = cell2mat(ret);
         ret = mean(ret,2);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

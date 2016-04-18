@@ -1,4 +1,4 @@
-function [T ufT BB PS MT sM] = measureKernelLength(I,numberCobs,RAD,gridSites,defaultAreaPix,fracDpi,fill)
+function [T ufT BB PS MT sM] = measureKernelLength(I,numberCobs,RAD,gridSites,defaultAreaPix,fracDpi,fill,CHUNK)
     %%%%%%%%%%%%%%%%%%%%%%%
     % init return vars    
     ufT = 0;
@@ -67,16 +67,16 @@ function [T ufT BB PS MT sM] = measureKernelLength(I,numberCobs,RAD,gridSites,de
             % init vars to measuure image
             tG = {};
             tL = {};
-            parfor r = 1:numel(RAD)
+            for r = 1:numel(RAD)
                 fprintf(['starting with fft window ' num2str(r) ':' num2str(numel(RAD)) '\n']);
                 % set the current window size
                 dR = RAD(r);
                 % errode such that the fft window samples only ear image
                 toMeasure = imerode(subI,strel('rectangle',[2*dR+1 20]));
                 % call to measure kernel period of the rising edge
-                [Tg tG{r}] = measureImage(gMSK.*grayImage,toMeasure,gridSites,dR);
+                [Tg tG{r}] = measureImage(gMSK.*grayImage,toMeasure,gridSites,dR,CHUNK);
                 % call to measure the kernel period of the falling edge
-                [Tl tL{r}] = measureImage(lMSK.*grayImage,toMeasure,gridSites,dR);
+                [Tl tL{r}] = measureImage(lMSK.*grayImage,toMeasure,gridSites,dR,CHUNK);
                 % stack results together
                 MT(r,:,e) = [Tg Tl];
                 % average of rising and falling edge period
