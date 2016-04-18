@@ -7,7 +7,8 @@ April 14 2016
 1. Whole set of functions are uploaed  
 2. Cob function works for 300, 600, 800 and 1200 DPI.  
 3. Ear function is currently on process  
-4. Project Name
+4. Project Name  
+
 April 18 2016  
 1. Ear function works for 300DPI and 800DPI   
 2. Still I need to find a way to confirm if it is expected result   
