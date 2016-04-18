@@ -29,7 +29,7 @@ Submit a pull request :D
 TODO: Write history
 
 ## Credits
-Spalding Labatory, The Department of Botanc, University of Wisconsin Madison   
+Spalding Labatory, The Department of Botany University of Wisconsin Madison
 
 Nathan D. Miller  
 Jonghyun Lee  
