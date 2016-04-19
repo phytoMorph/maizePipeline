@@ -1,6 +1,10 @@
 function [] = singleKernelImage(fileName,oPath,toSave,toDisplay)
     versionString = ['Starting kernel analysis algorithm. \n Publication Version 1.0 - Monday, March 28, 2016. \n'];
     fprintf(versionString);
+    %{  
+        April 19 2016
+        par removed
+    %}
     %%%%%%%%%%%%%%%%%%%%%%%
     % init vars
     MAJOR = [];
@@ -35,8 +39,10 @@ function [] = singleKernelImage(fileName,oPath,toSave,toDisplay)
         % read the image and take off the blue strip for bar code
         %%%%%%%%%%%%%%%%%%%%%%%
         fprintf(['starting with image load.\n']);
+        %%add resize 
         I = imread(fileName);
         % TO REMOVE WAS 100 second arg
+        %%change checkblue
         I = checkBlue(I);
         fprintf(['ending with image load.\n']);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -56,6 +62,7 @@ function [] = singleKernelImage(fileName,oPath,toSave,toDisplay)
         % threshold the image
         B = single(G) > level;        
         % remove small objects
+        %%take out constant
         B = bwareaopen(B,50000);                
         % fill holes
         B = imfill(B,8,'holes');

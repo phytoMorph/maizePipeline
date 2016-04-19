@@ -1,10 +1,11 @@
 function [tdB] = findTipPoints_fast(dB,B,I)
     tdB = dB;
+    %%take this out
     SEGSIZE = 601;
     [E,U] = generateCurveSegments(dB,SEGSIZE,10);
     
-    
-    parfor k = 1:numel(dB)
+    for k = 1:numel(dB)
+    %parfor k = 1:numel(dB)
         fprintf(['starting creating measure tensor for:' num2str(k) ':' num2str(numel(dB)) '\n']);
         tm = clock;
         M{k} = measureSingleContourMetrics_fast(dB{k},B,E,U,SEGSIZE,10);
@@ -17,7 +18,7 @@ function [tdB] = findTipPoints_fast(dB,B,I)
         %{
         parfor e = 1:numel(tdB)
             uR = measureSingleContourParametersForMLE(tdB{e},B,E,U,SEGSIZE,10);
-            M(e,:) = uR;
+            M(e,:) = uR;parfor e = 1:numel(dB)
             e
             numel(tdB)
         end

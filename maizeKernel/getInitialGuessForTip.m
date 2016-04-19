@@ -1,7 +1,8 @@
 function [tipPoint dB] = getInitialGuessForTip(dB)
     % smoothing parameters
     para{1} = [10:100];
-    parfor e = 1:numel(dB)
+    for e = 1:numel(dB)
+    %parfor e = 1:numel(dB)
         % get the curvature values for gaussian smoothed contours
         out = cwtK_closed_imfilter(dB{e},para);
         % get the size of the kurvature matrix
