@@ -1,4 +1,4 @@
-function [] = singleCobImage(fileName,noe,oPath,checkBlue_scaleFactor,rawImage_scaleFactor,defaultAreaPix,fracDpi,rho,addcut,baselineBlue,colRange1,colRange2,fill,toSave,toDisplay)
+function [] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,fracDpi,rho,addcut,baselineBlue,colRange1,colRange2,fill,toSave,toDisplay)
     %{ 
         singleCobImage is main function to handle cob analysis. It takes
         all input variables for its dependent functions. This function
