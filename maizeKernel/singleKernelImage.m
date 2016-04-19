@@ -1,9 +1,27 @@
-function [] = singleKernelImage(fileName,oPath,toSave,toDisplay)
+function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,addcut,baselineBlue,toSave,toDisplay)
     versionString = ['Starting kernel analysis algorithm. \n Publication Version 1.0 - Monday, March 28, 2016. \n'];
     fprintf(versionString);
     %{  
         April 19 2016
         par removed
+    %}
+    %{
+    fileName: An image to be analyze in a string that includes path and file name.
+    noe: Number of cobs that are expected to be analyzed. 
+    oPath: A path to result of analysis in a string that includes '/'.
+    checkBlue_scaleFactor: A desired percentage to resize the image in checkBlue.
+    rawImage_scaleFactor: A desired percentage to resize the image.
+    defaultAreaPix: The default pixel to be considered noise relative to 1200 dpi.
+    fracDpi: The fraction relative to 1200 dpi.
+    rho: The radius of color circle, relative to 1200 dpi.
+    addcut: The boarder handle for checkBlue. This is an addition to blue top computed in checkBlue.
+    baselineBlue: The baseline threshold to remove blue header in checkBlue.
+    colRange1: The color range for back ground to be removed in getcobMask.
+    colRange2: The color range for back ground to be removed in getcobMask.
+    fill: The radius of disk for Kernel of an image close operation.
+    CHUNK: The number of chunk for input for FFT in myBlock0;
+    toSave: 0 - not to save, 1 - to save.,checkBlue_scaleFactor,addcut,baselineBlue
+    toDisplay: 0 - not to save, 1 - to save.
     %}
     %%%%%%%%%%%%%%%%%%%%%%%
     % init vars
@@ -21,15 +39,42 @@ function [] = singleKernelImage(fileName,oPath,toSave,toDisplay)
         %%%%%%%%%%%%%%%%%%%%%%%
         initIrods();
         %%%%%%%%%%%%%%%%%%%%%%%
+        % convert the strings to numbers if they are strings
+        %%%%%%%%%%%%%%%%%%%%%%%
+        %noe = StoN(noe);
+        checkBlue_scaleFactor = StoN(checkBlue_scaleFactor);
+        rawImage_scaleFactor = StoN(rawImage_scaleFactor);
+        %fracDpi = StoN(fracDpi);
+        addcut = StoN(addcut);
+        %defaultAreaPix = StoN(defaultAreaPix);
+        baselineBlue = StoN(baselineBlue);
+        %colRange1 = StoN(colRange1);
+        %colRange2 = StoN(colRange2);
+        %fill = StoN(fill);
+        %CHUNK = StoN(CHUNK);
+        %%%%%%%%%%%%%%%%%%%%%%%
         % print out the fileName, number of ears, output path
         %%%%%%%%%%%%%%%%%%%%%%%
         fprintf(['FileName:' fileName '\n']);
-        fprintf(['OutPath:' oPath '\n']); 
+        %fprintf(['Number of Ears:' num2str(noe) '\n']);
+        fprintf(['OutPath:' oPath '\n']);
+        fprintf(['Image resize in checkBlue:' num2str(checkBlue_scaleFactor) '\n']); 
+        fprintf(['Raw image resize:' num2str(rawImage_scaleFactor) '\n']);  
+        %fprintf(['Threshold noise size:' num2str(defaultAreaPix) '\n']);
+        %fprintf(['Fraction relative to 1200 dpi:' num2str(fracDpi) '\n']);  
+        %fprintf(['The radius of color circle:' num2str(rho) '\n']);
+        fprintf(['The boarder handle for checkBlue:' num2str(addcut) '\n']);
+        fprintf(['Baseline threshold to remove blue header:' num2str(baselineBlue) '\n']);
+        %fprintf(['Background Color Range I:' num2str(colRange1) '\n']);
+        %fprintf(['Background Color Range II:' num2str(colRange2) '\n']);
+        %fprintf(['The radius of disk for closing:' num2str(fill) '\n']);
+        %fprintf(['The number of chunk of blocks for FFT:' num2str(CHUNK) '\n']);
+
         %%%%%%%%%%%%%%%%%%%%%%%
         % get the file parts
         %%%%%%%%%%%%%%%%%%%%%%%
         [pth nm ext] = fileparts(fileName);
-         %%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%
         % make output directory
         %%%%%%%%%%%%%%%%%%%%%%%
         mkdir(oPath);
@@ -42,8 +87,10 @@ function [] = singleKernelImage(fileName,oPath,toSave,toDisplay)
         %%add resize 
         I = imread(fileName);
         % TO REMOVE WAS 100 second arg
-        %%change checkblue
-        I = checkBlue(I);
+        % rawImage_scaleFactor to lower 'DPI' effect, by fraction 
+        I = imresize(I,rawImage_scaleFactor);
+        I = checkBlue(I,checkBlue_scaleFactor,addcut,baselineBlue);
+        %I = checkBlue(I);
         fprintf(['ending with image load.\n']);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % INIT VARS - end
