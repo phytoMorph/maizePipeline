@@ -13,6 +13,12 @@ April 18 2016
 1. Ear function works for 300DPI and 800DPI   
 2. Still I need to find a way to confirm if it is expected result   
 
+April 19 2016  
+1. Ear function is almost done  
+2. Kernel function is on process  
+3. Error occurs in kernel function  
+  
+
 ## Installation
 
 TODO: Describe the installation process
