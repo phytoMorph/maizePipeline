@@ -25,7 +25,9 @@ function [tdB] = findTipPoints_fast(dB,B,I)
         %}
         %The following error occurred converting from struct to double:Error using double Conversion to double from struct is not possible.
         for k = 1:numel(dB)
-            tM(k,:) = M{k}(1,:);
+            %tM(k,:) = M{k}(1,:);
+            tmp = single(M{k}(1,:));
+            tM(k,:) = tmp;
         end
         
         
