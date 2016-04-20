@@ -6,7 +6,9 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         3. make it work for 300 dpi
     %}
     %{
-        This is main function to control ear image analysis.
+        singleEarImage is main function to handle ear analysis. It takes
+        all input variables for its dependent functions. This function
+        returns final result including image with bounding box.
         Dependency: StoN, checkBlue and measureKernelLength
     %}
     versionString = ['Starting ear analysis algorithm. \nPublication Version 1.0 - Monday, March 28, 2016. \n'];
