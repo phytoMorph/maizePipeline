@@ -5,6 +5,10 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         2. change same update first 
         3. make it work for 300 dpi
     %}
+    %{
+        This is main function to control ear image analysis.
+        Dependency: StoN, checkBlue and measureKernelLength
+    %}
     versionString = ['Starting ear analysis algorithm. \nPublication Version 1.0 - Monday, March 28, 2016. \n'];
     fprintf(versionString);
     totalTimeInit = clock;
