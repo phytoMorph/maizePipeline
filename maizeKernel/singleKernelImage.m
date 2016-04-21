@@ -133,7 +133,7 @@ function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_sc
         % select boundaries of single kernels
         dB = dB(fidx);
         [tipPoint dB] = getInitialGuessForTip(dB);
-        [dB] = findTipPoints_fast(dB,B,I,toDisplay);
+        [dB] = findTipPoints_fast(dB,B,I);
         
         dB = Econtour(dB,B,I);
         [M] = getKernelMeasurements(B,dB);

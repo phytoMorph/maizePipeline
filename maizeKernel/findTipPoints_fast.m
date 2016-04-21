@@ -1,4 +1,4 @@
-function [tdB] = findTipPoints_fast(dB,B,I,disp)
+function [tdB] = findTipPoints_fast(dB,B,I)
     tdB = dB;
     %%take this out
     SEGSIZE = 601;
@@ -40,24 +40,26 @@ function [tdB] = findTipPoints_fast(dB,B,I,disp)
 
         %imshow(I,[]);
         %hold on
-        if disp
-            %imshow(I,[]);
-            imshow(I);
-            hold on;
-        end
+        %if disp
+        %    %imshow(I,[]);
+        %    imshow(I);
+        %    hold on;
+        %end
         for e = 1:numel(dB)
             MLE = lookUpLOG(H,M{e});
             MLE = sum(MLE,2);
             [J,nidx] = max(MLE);
             toShift = nidx-1;
             shiftAmount(rep,e) = toShift;
-            if disp
+            %{
+              if disp
                 plot(tdB{e}(:,2),tdB{e}(:,1),'r');
                 hold on
                 plot(tdB{e}(1,2),tdB{e}(1,1),'c*');
                 plot(tdB{e}(nidx,2),tdB{e}(nidx,1),'b*');
                 drawnow
             end
+            %}
             %tdB{e} = circshift(tdB{e},[toShift 0]);
             %M{e} = circshift(M{e},[toShift 0]);
             
@@ -68,7 +70,7 @@ function [tdB] = findTipPoints_fast(dB,B,I,disp)
             SKIP = 2;        
             tic
             toMeasure = 0:SKIP:(size(tdB{e},1)-1);
-            [MLE sMLE] = estimateMLE(toMeasure,tdB{e},B,H,size(tdB{e},1),'circular',1,E,U,SEGSIZE,10);
+           ,toDisplay [MLE sMLE] = estimateMLE(toMeasure,tdB{e},B,H,size(tdB{e},1),'circular',1,E,U,SEGSIZE,10);
             %}
             %[J,nidx] = max(sMLE);
             %{
