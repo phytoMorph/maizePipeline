@@ -1,0 +1,13 @@
+April 21 2016
+
+
+For Linux user
+
+For beginers(general info)
+http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1/
+
+Pull requests
+https://help.github.com/articles/using-pull-requests/
+
+Fork repository
+http://kbroman.org/github_tutorial/pages/fork.html
