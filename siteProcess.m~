@@ -2,7 +2,6 @@ function [ret] = siteProcess(sites,blockSize,func,image,CHUNK)
     %{
         siteProcess slices an image into multiple blocks and feeds to
         func, which is myBlock0 in this case.
-        Dependency: myBlock0
     %}
     try
         %CHUNK = 10;
