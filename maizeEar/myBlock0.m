@@ -1,4 +1,7 @@
 function [ret] = myBlock0(block)
+    %{
+        myBlock0 takes block from siteProcess and return mean of fft.
+    %}
     % subtract off the mean
     uBlock = mean(block,1);
     block = bsxfun(@minus,block,uBlock);
