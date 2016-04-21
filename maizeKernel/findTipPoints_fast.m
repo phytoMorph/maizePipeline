@@ -26,8 +26,8 @@ function [tdB] = findTipPoints_fast(dB,B,I)
         %The following error occurred converting from struct to double:Error using double Conversion to double from struct is not possible.
         for k = 1:numel(dB)
             %tM(k,:) = M{k}(1,:);
-            tmp = single(M{k}(1,:));
-            tM(k,:) = tmp;
+            tmp = struct2array(M{k});
+            tM(k,:) = tmp(1,:);
         end
         
         
@@ -41,7 +41,8 @@ function [tdB] = findTipPoints_fast(dB,B,I)
         %imshow(I,[]);
         %hold on
         if disp
-            imshow(I,[]);
+            %imshow(I,[]);
+            imshow(I);
             hold on;
         end
         for e = 1:numel(dB)
