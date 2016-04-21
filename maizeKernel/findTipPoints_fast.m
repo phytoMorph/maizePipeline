@@ -1,4 +1,4 @@
-function [tdB] = findTipPoints_fast(dB,B,I)
+function [tdB] = findTipPoints_fast(dB,B,I,disp)
     tdB = dB;
     %%take this out
     SEGSIZE = 601;
