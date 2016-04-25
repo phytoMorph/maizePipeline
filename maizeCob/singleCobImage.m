@@ -1,4 +1,4 @@
-function [] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,fracDpi,rho,addcut,baselineBlue,colRange1,colRange2,fill,toSave,toDisplay)
+function [S] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,fracDpi,rho,addcut,baselineBlue,colRange1,colRange2,fill,toSave,toDisplay)
     %{ 
         singleCobImage is main function to handle cob analysis. It takes
         all input variables for its dependent functions. This function
@@ -51,11 +51,11 @@ function [] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_s
         %checkBlue_scaleFactor = round(checkBlue_scaleFactor*fracDpi)
         rawImage_scaleFactor = StoN(rawImage_scaleFactor);
         defaultAreaPix = StoN(defaultAreaPix);
-        defaultAreaPix = round(defaultAreaPix/fracDpi)
+        defaultAreaPix = round(defaultAreaPix/fracDpi);
         rho = StoN(rho);
-        rho = round(rho/fracDpi)
+        rho = round(rho/fracDpi);
         addcut = StoN(addcut);
-        addcut = round(addcut/fracDpi)
+        addcut = round(addcut/fracDpi);
         baselineBlue = StoN(baselineBlue);
         baselineBlue = round(baselineBlue/fracDpi);
         colRange1 = StoN(colRange1);

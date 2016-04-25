@@ -1,4 +1,4 @@
-function [] = wrap4Cob(fileName,noe,oPath,rawImage_scaleFactor)
+function [S] = wrap4Cob(fileName,noe,oPath,rawImage_scaleFactor)
     try
 % This function takes inputs and compute relative inputs with fraction
 % Get resolution of the image frosingleCobImagem its filename
@@ -15,7 +15,7 @@ function [] = wrap4Cob(fileName,noe,oPath,rawImage_scaleFactor)
         rawImage_scaleFactor = StoN(rawImage_scaleFactor);
         fracDpi = round(baseRes/res);
         fracDpi = round(fracDpi/rawImage_scaleFactor);
-        singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,1,1000000,fracDpi,300,100,600,70,166,50,1,1);
+        [S] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,1,1000000,fracDpi,300,100,600,70,166,50,0,0);
     catch ME
         close all;
         getReport(ME);
