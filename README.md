@@ -6,7 +6,7 @@ Publication of Maize Ear, Cob and Kernel Code
 April 14 2016  
 1. Whole set of functions are uploaed  
 2. Cob function works for 300, 600, 800 and 1200 DPI.  
-3. Ear function is currently on process  
+3. Ear function is currently in process  
 4. Project Name  
 
 April 18 2016  
@@ -15,7 +15,7 @@ April 18 2016
 
 April 19 2016  
 1. Ear function is almost done  
-2. Kernel function is on process  
+2. Kernel function is in process  
 3. Error occurs in kernel function  
   
 
@@ -28,12 +28,12 @@ TODO: Describe the installation process
 TODO: Write usage instructions
 
 ## Contributing
-
-Fork it!
-Create your feature branch: git checkout -b my-new-feature
-Commit your changes: git commit -am 'Add some feature'
-Push to the branch: git push origin my-new-feature
-Submit a pull request :D
+  
+Fork it!  
+Create your feature branch: git checkout -b my-new-feature  
+Commit your changes: git commit -am 'Add some feature'  
+Push to the branch: git push origin my-new-feature  
+Submit a pull request :D  
 ## History
 
 TODO: Write history
