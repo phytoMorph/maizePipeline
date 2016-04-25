@@ -7,6 +7,7 @@
 % 300 dpi
 % 600 dpi
 % 800 dpi
+I800 = '/mnt/snapper/Lee/maizeData_resTest/cobData/MN03-160129-0054-800.tif';
 singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,
 defaultAreaPix,fracDpi,rho,addcut,baselineBlue,colRange1,colRange2,fill,
 toSave,toDisplay)

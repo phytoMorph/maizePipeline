@@ -1,4 +1,4 @@
-function [I] = getCobMask_ver1(I,defaultAreaPix,fracDpi,colRange1,colRange2,fill)
+function [I] = getCobMask_ver1(I,defaultAreaPix,colRange1,colRange2,fill)
         %{
             getCobMask turns image into black and white base upon background color information,
             removes small objects(dusts) and operates closing.
@@ -10,9 +10,9 @@ function [I] = getCobMask_ver1(I,defaultAreaPix,fracDpi,colRange1,colRange2,fill
         I = imclearborder(I);        
         I = imfill(I,'holes');
         %%Remove small objects. In this case less than 1000000 pixels (works for 1200dpi)
-        areaRemove = round(defaultAreaPix/fracDpi);
-        I = bwareaopen(I,areaRemove);
+        %%now fracDpi handles defaultAreaPix outside of the func
+        I = bwareaopen(I,defaultAreaPix);
         %%Check what these value mean
         I = imopen(I,strel('disk',fill));
-        I = bwareaopen(I,areaRemove);
+        I = bwareaopen(I,defaultAreaPix);
 end

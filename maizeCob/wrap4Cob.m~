@@ -1,4 +1,4 @@
-function [] = wrap4Cob(fileName,noe,oPath,rawImage_scaleFactor)
+function [varargout] = wrap4Cob(mainfun,fileName,noe,oPath,rawImage_scaleFactor,varargin)
     try
 % This function takes inputs and compute relative inputs with fraction
 % Get resolution of the image frosingleCobImagem its filename
@@ -7,15 +7,11 @@ function [] = wrap4Cob(fileName,noe,oPath,rawImage_scaleFactor)
 % i.e. 'MN03-160125-0026-300.tif'
         nums = regexp(nm,'-','split');
         res = nums(end);
-        res = cell2mat(res);
-        %baseRes = 1200;
-        baseRes = 800;
+        baseRes = 1200;
         res = StoN(res);
         baseRes = StoN(baseRes);
-        rawImage_scaleFactor = StoN(rawImage_scaleFactor);
         fracDpi = round(baseRes/res);
-        fracDpi = round(fracDpi/rawImage_scaleFactor);
-        singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,1,1000000,fracDpi,300,100,600,70,166,50,1,1);
+        singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,.25,1000000,fracDpi,300,100,600,70,166,50,1,1);
     catch ME
         close all;
         getReport(ME);

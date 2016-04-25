@@ -24,7 +24,7 @@ function [I] = checkBlue(I, checkBlue_scaleFactor,addcut,baselineBlue)
             fidx = find(dI);
             fidx = max(fidx);
             fidx = fidx *checkBlue_scaleFactor^-1;
-            fidx = fidx + round(addcut);
+            fidx = fidx + addcut;
             I = I(fidx:end,:,:);
         end
         fprintf(['end with check for blue header.\n']);

@@ -46,12 +46,18 @@ function [] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_s
         % convert the strings to numbers if they are strings
         %%%%%%%%%%%%%%%%%%%%%%%
         noe = StoN(noe);
-        checkBlue_scaleFactor = StoN(checkBlue_scaleFactor);
-        rawImage_scaleFactor = StoN(rawImage_scaleFactor);
         fracDpi = StoN(fracDpi);
-        addcut = StoN(addcut);
+        checkBlue_scaleFactor = StoN(checkBlue_scaleFactor);
+        %checkBlue_scaleFactor = round(checkBlue_scaleFactor*fracDpi)
+        rawImage_scaleFactor = StoN(rawImage_scaleFactor);
         defaultAreaPix = StoN(defaultAreaPix);
+        defaultAreaPix = round(defaultAreaPix/fracDpi)
+        rho = StoN(rho);
+        rho = round(rho/fracDpi)
+        addcut = StoN(addcut);
+        addcut = round(addcut/fracDpi)
         baselineBlue = StoN(baselineBlue);
+        baselineBlue = round(baselineBlue/fracDpi);
         colRange1 = StoN(colRange1);
         colRange2 = StoN(colRange2);
         fill = StoN(fill);
@@ -85,7 +91,7 @@ function [] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_s
         % rawImage_scaleFactor to lower 'DPI' effect, by fraction 
         I = imresize(I,rawImage_scaleFactor);
         % check blue header and remove
-        I = checkBlue(I,checkBlue_scaleFactor,fracDpi,addcut,baselineBlue);
+        I = checkBlue(I,checkBlue_scaleFactor,addcut,baselineBlue);
         fprintf(['ending with image load.\n']);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % INIT VARS - end
@@ -99,7 +105,7 @@ function [] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_s
         % main measurement code call
         fprintf(['starting with image analysis \n']);
         % run the analysis
-        [BB S] = maizeCob(single(I)/255,noe,defaultAreaPix,fracDpi,colRange1,colRange2,fill);
+        [BB S] = maizeCob(single(I)/255,noe,defaultAreaPix,colRange1,colRange2,fill);
         % stack the results from the bounding box
         DATA = [];
         for b = 1:numel(BB)                

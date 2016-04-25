@@ -1,4 +1,4 @@
-function [BB PS] = maizeCob(I,numberOfCobs,defaultAreaPix,fracDpi,colRange1,colRange2,fill)
+function [BB PS] = maizeCob(I,numberOfCobs,defaultAreaPix,colRange1,colRange2,fill)
     %{
         maizeCob is main function to analyze cob image. It will analyze
         mutiple cobs.It returns masked cob image and width profile.
@@ -13,7 +13,7 @@ function [BB PS] = maizeCob(I,numberOfCobs,defaultAreaPix,fracDpi,colRange1,colR
         % declare vars
         PS.widthProfile = [];
         % get cob mask
-        [B] = getCobMask_ver1(I,defaultAreaPix,fracDpi,colRange1,colRange2,fill);
+        [B] = getCobMask_ver1(I,defaultAreaPix,colRange1,colRange2,fill);
         R = regionprops(B,'PixelIdxList','PixelList','Area','Image','BoundingBox');
         numberOfCobs = min(numberOfCobs,numel(R));
         %%%%%%%%%%%%%%%%%%%%%%%%%%
