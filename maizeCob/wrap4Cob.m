@@ -1,5 +1,9 @@
 function [S] = wrap4Cob(fileName,noe,oPath,rawImage_scaleFactor)
     %{
+        wrap4Cob is to handle singleCobImage. FracDpi will be computed and
+        other relative variables will be adjusted. 
+        Decision of base resolution needed.
+        Universiality of wraper function is considered.
     %}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Variable Definition
@@ -28,6 +32,7 @@ function [S] = wrap4Cob(fileName,noe,oPath,rawImage_scaleFactor)
 % Expect same filename format
 % i.e. 'MN03-160125-0026-300.tif'
         nums = regexp(nm,'-','split');
+        % get resolution for the current image 
         res = nums(end);
         res = cell2mat(res);
         %baseRes = 1200;
@@ -37,6 +42,7 @@ function [S] = wrap4Cob(fileName,noe,oPath,rawImage_scaleFactor)
         rawImage_scaleFactor = StoN(rawImage_scaleFactor);
         fracDpi = round(baseRes/res);
         fracDpi = round(fracDpi/rawImage_scaleFactor);
+        % return measured values
         [S] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,1,1000000,fracDpi,300,100,600,70,166,50,0,0);
     catch ME
         close all;
