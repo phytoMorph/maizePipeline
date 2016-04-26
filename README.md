@@ -18,6 +18,11 @@ April 19 2016
 2. Kernel function is in process  
 3. Error occurs in kernel function  
   
+April 26 2016  
+1. wrap4Cob added  
+2. loop4Scale added  
+  
+  
 
 ## Installation
 
