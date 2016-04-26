@@ -4,6 +4,7 @@ function [setS] = loop4Scale(fileName,noe,oPath,numLoop)
     %setD = zeros(numLoop,1,'single');
     for e = 1:numLoop
         div = StoN(e);
+        % below .2 does not work
         scale = .2 + (0.8/numLoop)*div;
         S = wrap4Cob(fileName,noe,oPath,scale);
         setS(e,1:3) = S.average_WIDTH;
