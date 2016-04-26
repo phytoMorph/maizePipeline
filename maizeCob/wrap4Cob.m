@@ -1,6 +1,26 @@
 function [S] = wrap4Cob(fileName,noe,oPath,rawImage_scaleFactor)
     %{
     %}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Variable Definition
+    %{
+    fileName: An image to be analyze in a string that includes path and file name.
+    noe: Number of cobs that are expected to be analyzed. 
+    oPath: A path to result of analysis in a string that includes '/'.
+    rawImage_scaleFactor: A desired percentage to resize the image.
+
+    defaultAreaPix: The default pixel to be considered noise relative to 1200 dpi.
+    fracDpi: The fraction relative to 1200 dpi.
+    rho: The radius of color circle, relative to 1200 dpi.
+    addcut: The boarder handle for checkBlue. This is an addition to blue top computed in checkBlue.
+    baselineBlue: The baseline threshold to remove blue header in checkBlue.
+    colRange1: The color range for back ground to be removed in getcobMask.
+    colRange2: The color range for back ground to be removed in getcobMask.
+    fill: The radius of disk for Kernel of an image close operation.
+    toSave: 0 - not to save, 1 - to save.
+    toDisplay: 0 - not to save, 1 - to save.
+    %}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     try
 % This function takes inputs and compute relative inputs with fraction
 % Get resolution of the image frosingleCobImagem its filename
@@ -22,7 +42,7 @@ function [S] = wrap4Cob(fileName,noe,oPath,rawImage_scaleFactor)
         close all;
         getReport(ME);
         fprintf(['******error in:wrap4Cob.m******\n']);
-    end
+    end[setS] = loop4Scale(I800,noe,oPutC,20);
 end
 
 %{

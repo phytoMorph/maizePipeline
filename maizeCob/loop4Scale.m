@@ -4,6 +4,28 @@ function [setS] = loop4Scale(fileName,noe,oPath,numLoop)
         between fraction of resolution relative to base resolution and
         result of average_WIDTH. 
     %}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Variable Definition
+    %{
+    fileName: An image to be analyze in a string that includes path and file name.
+    noe: Number of cobs that are expected to be analyzed. 
+    oPath: A path to result of analysis in a string that includes '/'.
+    numLoop: Number of iteration wanted.
+    
+    checkBlue_scaleFactor: A desired percentage to resize the image in checkBlue.
+    rawImage_scaleFactor: A desired percentage to resize the image.
+    defaultAreaPix: The default pixel to be considered noise relative to 1200 dpi.
+    fracDpi: The fraction relative to 1200 dpi.
+    rho: The radius of color circle, relative to 1200 dpi.
+    addcut: The boarder handle for checkBlue. This is an addition to blue top computed in checkBlue.
+    baselineBlue: The baseline threshold to remove blue header in checkBlue.
+    colRange1: The color range for back ground to be removed in getcobMask.
+    colRange2: The color range for back ground to be removed in getcobMask.
+    fill: The radius of disk for Kernel of an image close operation.
+    toSave: 0 - not to save, 1 - to save.
+    toDisplay: 0 - not to save, 1 - to save.
+    %}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     try    
         numLoop = StoN(numLoop);
         setS = zeros(numLoop,4,'single');
