@@ -1,4 +1,6 @@
 function [S] = wrap4Cob(fileName,noe,oPath,rawImage_scaleFactor)
+    %{
+    %}
     try
 % This function takes inputs and compute relative inputs with fraction
 % Get resolution of the image frosingleCobImagem its filename

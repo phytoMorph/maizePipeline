@@ -1,9 +1,4 @@
 function [setS] = loop4Scale(fileName,noe,oPath,numLoop)
-    %{
-        loop4Scale is to test theory that there is a linear relation
-        between fraction of resolution relative to base resolution and
-        result of average_WIDTH. 
-    %}
     try    
         numLoop = StoN(numLoop);
         setS = zeros(numLoop,4,'single');
@@ -21,9 +16,5 @@ function [setS] = loop4Scale(fileName,noe,oPath,numLoop)
         close all;
         getReport(ME);
         fprintf(['******error in:wrap4Cob.m******\n']);
-    end
 end
-
-%{
-    [setS] = loop4Scale(I800,noe,oPutC,20);
-%}
+end
