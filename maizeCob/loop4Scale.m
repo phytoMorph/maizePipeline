@@ -27,6 +27,13 @@ function [setS] = loop4Scale(fileName,noe,oPath,numLoop)
     %}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     try    
+        %%%%%%%%%%%%%%%%%%%%%%%
+        % print out the input variables
+        %%%%%%%%%%%%%%%%%%%%%%%
+        fprintf(['FileName:' fileName '\n']);
+        fprintf(['Number of Ears:' num2str(noe) '\n']);
+        fprintf(['Number of iteration:' num2str(numLoop) '\n']);
+        fprintf(['OutPath:' oPath '\n']);
         numLoop = StoN(numLoop);
         setS = zeros(numLoop,4,'single');
         %setD = zeros(numLoop,1,'single');
