@@ -3,7 +3,7 @@ function [S] = wrap4Cob(fileName,noe,oPath,rawImage_scaleFactor)
         wrap4Cob is to handle singleCobImage. FracDpi will be computed and
         other relative variables will be adjusted. 
         Decision of base resolution needed.
-        Universiality of wraper function is considered.
+        Universiality of wrapper function is considered.
     %}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Variable Definition
@@ -48,7 +48,8 @@ function [S] = wrap4Cob(fileName,noe,oPath,rawImage_scaleFactor)
         close all;
         getReport(ME);
         fprintf(['******error in:wrap4Cob.m******\n']);
-    end[setS] = loop4Scale(I800,noe,oPutC,20);
+        [setS] = loop4Scale(I800,noe,oPutC,20);
+    end
 end
 
 %{

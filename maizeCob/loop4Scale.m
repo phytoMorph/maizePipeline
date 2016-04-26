@@ -42,7 +42,7 @@ function [setS] = loop4Scale(fileName,noe,oPath,numLoop)
     catch ME
         close all;
         getReport(ME);
-        fprintf(['******error in:wrap4Cob.m******\n']);
+        fprintf(['******error in:loop4Scale.m******\n']);
     end
 end
 
