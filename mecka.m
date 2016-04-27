@@ -35,7 +35,11 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
     checkBlue_scaleFactor = .25;
     switch algorithm
         case 'e'
-            
+            % set to default value of 10
+            CHUNK = 10;
+            [KernelLength sM] = singleEarImage(fileName,numberOfObjects,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,
+,addcut,baselineBlue,fill,CHUNK,toSave,toDisplay)
+[KernelLength sM] = singleEarImage(I800,3,oPut,1,.25,1000000,100/2,600,31,10,1,1)
         case 'c'
             % set to default value of 10^6
             defaultAreaPix = 10^6;
