@@ -109,7 +109,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         RAD = windowSizeD1:windowSizeD2:windowSizeD3;
         % the number of down sample grid sites
         gridSites = 10;
-        [KernelLength FT BB S MT] = measureKernelLength(I,noe,RAD,gridSites,defaultAreaPix,fill,CHUNK);        
+        [KernelLength FT BB S MT] = measureKernelLength(I,noe,RAD,gridSites,defaultAreaPix,fracDpi,fill,CHUNK);        
         % average kernel height
         uT = nanmean(KernelLength,2);        
         DATA = [];             
