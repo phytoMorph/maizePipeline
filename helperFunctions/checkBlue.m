@@ -1,7 +1,20 @@
 function [I] = checkBlue(I, checkBlue_scaleFactor,addcut,baselineBlue)
     %{
-        checkBlue finds blue header from the raw image and if there is, it
-        removes blue header and returns resulted image.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    About:      
+                checkBlue finds blue header from the raw image and if there is, it removes blue 
+                header and returns resulted image.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Dependency: 
+                imresize.m, rgb2hsv_fast.m, regionprops.m
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Variable Definition:
+                I:       An image to be analyzed in a matrix.
+                checkBlue_scaleFactor:  A desired percentage to resize the image in checkBlue.
+                rawImage_scaleFactor:   A desired percentage to resize the image.
+                addcut:         The boarder handle for checkBlue. This is an addition to blue top computed in checkBlue.
+                baselineBlue:   The baseline threshold to remove blue header in checkBlue.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
     try
         fprintf(['starting with check for blue header.\n']);

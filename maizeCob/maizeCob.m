@@ -1,8 +1,21 @@
 function [BB PS] = maizeCob(I,numberOfCobs,defaultAreaPix,colRange1,colRange2,fill)
     %{
-        maizeCob is main function to analyze cob image. It will analyze
-        mutiple cobs.It returns masked cob image and width profile.
-        Dependency: getCobMask_ver1
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    About:      
+                maizeCob is main function to analyze cob image. It will analyze mutiple cobs.
+                It returns masked cob image and width profile.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Dependency: 
+                getCobMask_ver1.m
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Variable Definition:
+                I:       An image to be analyzed in a matrix.
+                numberOfCobs:            Number of cobs that are expected to be analyzed. 
+                defaultAreaPix: The default pixel to be considered noise relative to 1200 dpi.
+                colRange1:      The color range for back ground to be removed in getcobMask.
+                colRange2:      The color range for back ground to be removed in getcobMask.
+                fill:           The radius of disk for Kernel of an image close operation.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
     %%%%%%%%%%%%%%%%%%%%%%%
     % init return vars    
