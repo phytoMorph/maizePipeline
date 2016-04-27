@@ -1,4 +1,7 @@
-function [T ufT BB PS MT sM] = measureKernelLength(I,numberCobs,RAD,gridSites,defaultAreaPix,fracDpi,fill,CHUNK)
+function [T ufT BB PS MT sM] = measureKernelLength(I,numberCobs,RAD,gridSites,defaultAreaPix,fill,CHUNK)
+    %{
+        Header required.
+    %}
     %%%%%%%%%%%%%%%%%%%%%%%
     % init return vars    
     ufT = 0;
@@ -22,8 +25,7 @@ function [T ufT BB PS MT sM] = measureKernelLength(I,numberCobs,RAD,gridSites,de
         B = imopen(B,strel('disk',fill));
         B = imclose(B,strel('disk',fill));
         B = imfill(B,'holes');
-        areaRemove = round(defaultAreaPix/fracDpi);
-        B = bwareaopen(B,areaRemove);
+        B = bwareaopen(B,defaultAreaPix);
         B = imclearborder(B);
         R = regionprops(B,'PixelIdxList','PixelList','Area','Image','BoundingBox');
         fprintf(['ending mask creation. \n']);
