@@ -1,0 +1,13 @@
+function [] = mecka(algorithm,fileName,numberOfObjects,oPath,scanResolution,rawImage_scaleFactor)
+    if nargin ~= 6
+        rawImage_scaleFactor
+    switch algorithm
+        case 'e'
+            
+        case 'c'
+            
+            singleCobImage(fileName,numberOfObjects,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,fracDpi,rho,addcut,baselineBlue,colRange1,colRange2,fill,toSave,toDisplay)
+        case 'k'
+            
+    end
+end
