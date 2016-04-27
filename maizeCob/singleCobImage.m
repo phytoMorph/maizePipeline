@@ -1,10 +1,10 @@
-function [S] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,fracDpi,rho,addcut,baselineBlue,colRange1,colRange2,fill,toSave,toDisplay)
+function [S] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,rho,addcut,baselineBlue,colRange1,colRange2,fill,toSave,toDisplay)
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
-                singleCobImage is main function to handle cob analysis. It takes all input variables 
+                singleCobImage.m is main function to handle cob analysis. It takes all input variables 
                 for its dependent functions. This function returns final result including image with 
-                bounding box and color circle.
+                bounding box and color circle. (Inputs are relative to 1200dpi)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     Dependency: 
                 StoN.m, checkBlue.m, maizeCob.m
@@ -16,7 +16,6 @@ function [S] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_
                 checkBlue_scaleFactor:  A desired percentage to resize the image in checkBlue.
                 rawImage_scaleFactor:   A desired percentage to resize the image.
                 defaultAreaPix: The default pixel to be considered noise relative to 1200 dpi.
-                fracDpi:        The fraction relative to 1200 dpi.
                 rho:            The radius of color circle, relative to 1200 dpi.
                 addcut:         The boarder handle for checkBlue. This is an addition to blue top computed in checkBlue.
                 baselineBlue:   The baseline threshold to remove blue header in checkBlue.
@@ -43,18 +42,12 @@ function [S] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_
         % convert the strings to numbers if they are strings
         %%%%%%%%%%%%%%%%%%%%%%%
         noe = StoN(noe);
-        fracDpi = StoN(fracDpi);
         checkBlue_scaleFactor = StoN(checkBlue_scaleFactor);
-        %checkBlue_scaleFactor = round(checkBlue_scaleFactor*fracDpi)
         rawImage_scaleFactor = StoN(rawImage_scaleFactor);
-        defaultAreaPix = StoN(defaultAreaPix);
-        defaultAreaPix = round(defaultAreaPix/fracDpi);
+        defaultAreaPix = StoN(defaultAreaPix);       
         rho = StoN(rho);
-        rho = round(rho/fracDpi);
-        addcut = StoN(addcut);
-        addcut = round(addcut/fracDpi);
+        addcut = StoN(addcut);    
         baselineBlue = StoN(baselineBlue);
-        baselineBlue = round(baselineBlue/fracDpi);
         colRange1 = StoN(colRange1);
         colRange2 = StoN(colRange2);
         fill = StoN(fill);
@@ -67,7 +60,6 @@ function [S] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_
         fprintf(['Image resize in checkBlue:' num2str(checkBlue_scaleFactor) '\n']); 
         fprintf(['Raw image resize:' num2str(rawImage_scaleFactor) '\n']);  
         fprintf(['Threshold noise size:' num2str(defaultAreaPix) '\n']);
-        fprintf(['Fraction relative to 1200 dpi:' num2str(fracDpi) '\n']);  
         fprintf(['The radius of color circle:' num2str(rho) '\n']);
         fprintf(['The boarder handle for checkBlue:' num2str(addcut) '\n']);
         fprintf(['Baseline threshold to remove blue header:' num2str(baselineBlue) '\n']);
