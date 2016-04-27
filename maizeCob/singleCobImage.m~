@@ -1,4 +1,11 @@
 function [S] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,fracDpi,rho,addcut,baselineBlue,colRange1,colRange2,fill,toSave,toDisplay)
+
+    %%We need to handle reporting. For now if the number of cobs to find is
+    %%three and the number of cobs to be found is two, no error message. If
+    %%no cobs were found, we still get image from checkblue and error
+    %%message. addcut value is reponsible for cutting off blue top from
+    %%the image in checkblue.    
+
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
@@ -6,30 +13,28 @@ function [S] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_
                 for its dependent functions. This function returns final result including image with 
                 bounding box and color circle.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    Dependency: 
-                StoN.m, checkBlue.m, maizeCob.m
+    Dependency: StoN.m, checkBlue.m, maizeCob.m
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     Variable Definition:
-                fileName:       An image to be analyze in a string that includes path and file name.
-                noe:            Number of cobs that are expected to be analyzed. 
-                oPath:          A path to result of analysis in a string that includes '/'.
-                checkBlue_scaleFactor:  A desired percentage to resize the image in checkBlue.
-                rawImage_scaleFactor:   A desired percentage to resize the image.
-                defaultAreaPix: The default pixel to be considered noise relative to 1200 dpi.
-                fracDpi:        The fraction relative to 1200 dpi.
-                rho:            The radius of color circle, relative to 1200 dpi.
-                addcut:         The boarder handle for checkBlue. This is an addition to blue top computed in checkBlue.
-                baselineBlue:   The baseline threshold to remove blue header in checkBlue.
-                colRange1:      The color range for back ground to be removed in getcobMask.
-                colRange2:      The color range for back ground to be removed in getcobMask.
-                fill:           The radius of disk for Kernel of an image close operation.
-                toSave:         0 - not to save, 1 - to save.
-                toDisplay:      0 - not to save, 1 - to save.
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    fileName: An image to be analyze in a string that includes path and file name.
+    noe: Number of cobs that are expected to be analyzed. 
+    oPath: A path to result of analysis in a string that includes '/'.
+    checkBlue_scaleFactor: A desired percentage to resize the image in checkBlue.
+    rawImage_scaleFactor: A desired percentage to resize the image.
+    defaultAreaPix: The default pixel to be considered noise relative to 1200 dpi.
+    fracDpi: The fraction relative to 1200 dpi.
+    rho: The radius of color circle, relative to 1200 dpi.
+    addcut: The boarder handle for checkBlue. This is an addition to blue top computed in checkBlue.
+    baselineBlue: The baseline threshold to remove blue header in checkBlue.
+    colRange1: The color range for back ground to be removed in getcobMask.
+    colRange2: The color range for back ground to be removed in getcobMask.
+    fill: The radius of disk for Kernel of an image close operation.
+    toSave: 0 - not to save, 1 - to save.
+    toDisplay: 0 - not to save, 1 - to save.
     %}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     versionString = ['Starting cob analysis algorithm. \n Publication Version 1.0 - Monday, March 28, 2016. \n'];
     fprintf(versionString);
-    totalTimeInit = clock;
     try
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % INIT VARS - start
@@ -170,19 +175,13 @@ function [S] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_
         getReport(ME);
         fprintf(['******error in:singleCobImage.m******\n']);
     end
-    fprintf(['Total Running Time: ' num2str(etime(clock,totalTimeInit)) '\n']);
+    %%This line of code does not work
+    %%I cannot find totalTimeInit
+    %fprintf(['Total Running Time: ' num2str(etime(clock,totalTimeInit)) '\n']);
     versionString = ['Ending cob analysis algorithm. \nPublication Version 1.0 - Monday, March 28, 2016. \n'];
     fprintf(versionString);
 end
 %{
-
-    TODO: 
-    %%We need to handle reporting. For now if the number of cobs to find is
-    %%three and the number of cobs to be found is two, no error message. If
-    %%no cobs were found, we still get image from checkblue and error
-    %%message. addcut value is reponsible for cutting off blue top from
-    %%the image in checkblue.    
-
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % compile
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
