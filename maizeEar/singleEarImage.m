@@ -23,14 +23,17 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
     checkBlue_scaleFactor: A desired percentage to resize the image in checkBlue.
     rawImage_scaleFactor: A desired percentage to resize the image.
     defaultAreaPix: The default pixel to be considered noise relative to 1200 dpi.
-    fracDpi: The fraction relative to 1200 dpi.
     rho: The radius of color circle, relative to 1200 dpi.
     addcut: The boarder handle for checkBlue. This is an addition to blue top computed in checkBlue.
     baselineBlue: The baseline threshold to remove blue header in checkBlue.
     colRange1: The color range for back ground to be removed in getcobMask.
     colRange2: The color range for back ground to be removed in getcobMask.
     fill: The radius of disk for Kernel of an image close operation.
-    CHUNK: The number of chunk for input for FFT in myBlock0;
+    CHUNK: The number of chunk for input for FFT in myBlock0.
+    windowSize =  The value to be filled for RAD in 3 dimensions.
+    windowSizeD1: The value to be filled in first dimension for RAD, the window size.
+    windowSizeD2: The value to be filled in second dimension for RAD, the window size.
+    windowSizeD3: The value to be filled in third dimension for RAD, the window size.
     toSave: 0 - not to save, 1 - to save.
     toDisplay: 0 - not to save, 1 - to save.
     %}
@@ -60,6 +63,9 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         baselineBlue = StoN(baselineBlue);
         fill = StoN(fill);
         CHUNK = StoN(CHUNK);
+        windowSizeD1 = StoN(windowSizeD1);
+        windowSizeD2 = StoN(windowSizeD2);
+        windowSizeD3 = StoN(windowSizeD3);
         %%%%%%%%%%%%%%%%%%%%%%%
         % print out the fileName, number of ears, output path
         %%%%%%%%%%%%%%%%%%%%%%%
@@ -97,7 +103,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         % INIT VARS - end
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                
         
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%windowSizeD = StoN(windowSizeD);%%%%%%%%%
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % ANALYSIS - start
