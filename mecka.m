@@ -2,7 +2,7 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
-                mecka.m is wrapper function to handle Maize Ear Cob Kernel Analysis. A users are 
+                mecka.m is wrapper function to handle Maize Ear Cob Kernel Analysis. A user is 
                 to choose one of three algorithm to use. (Inputs are relative to 1200dpi)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     Dependency: 
