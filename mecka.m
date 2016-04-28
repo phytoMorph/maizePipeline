@@ -23,23 +23,32 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
         % set to default value of 1
         rawImage_scaleFactor = 1;
     end
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % set to default value of 1200
     defaultResolution = 1200;
     scanResolution = StoN(scanResolution);
     % compute proportion of resolution over default
     fracDpi = scanResolution/defaultResolution;
-    
-  
-  
     % set to default value of .25
     checkBlue_scaleFactor = .25;
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     switch algorithm
         case 'e'
             % set to default value of 10
             CHUNK = 10;
-            [KernelLength sM] = singleEarImage(fileName,numberOfObjects,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,
-,addcut,baselineBlue,fill,CHUNK,toSave,toDisplay)
-[KernelLength sM] = singleEarImage(I800,3,oPut,1,.25,1000000,100/2,600,31,10,1,1)
+            % set to default value of 10^6
+            defaultAreaPix = 10^6;
+            defaultAreaPix = round(defaultAreaPix/fracDpi);
+            % set to default value of 100
+            addcut = 100;
+            addcut = round(addcut/fracDpi);
+            % set to default value of 600
+            baselineBlue = 600;
+            baselineBlue = round(baselineBlue/fracDpi);
+            % set to default value of 50
+            fill = 31;
+            [KernelLength sM] = singleEarImage(fileName,numberOfObjects,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,toSave,toDisplay)
+            %[KernelLength sM] = singleEarImage(I800,3,oPut,1,.25,1000000,100/2,600,31,10,1,1)
         case 'c'
             % set to default value of 10^6
             defaultAreaPix = 10^6;
