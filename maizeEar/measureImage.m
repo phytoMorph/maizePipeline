@@ -16,7 +16,7 @@ function [T ret] = measureImage(fsI,toMeasure,downsample,dR,CHUNK)
         idx = sub2ind(size(toMeasure),g1(:),g2(:));
         idx = find(toMeasure(idx) == 1);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        % perform fft block process at sites
+        % perform fft block process at sitesret{k} = func(B);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         tm = clock;        
         sites = [g1(idx) g2(idx)];
@@ -32,7 +32,9 @@ function [T ret] = measureImage(fsI,toMeasure,downsample,dR,CHUNK)
         h = fspecial('average',[5 1]);
         ufT = imfilter(ufT,h);
         % find period via first peak finding
+        fprintf(['******error in:1\n']);
         [T f] = findT(ufT,2*dR+1);
+        fprintf(['******error in:2\n']);
         fprintf(['e-time for find fft @ ' num2str(etime(clock,tm)) '\n']);
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % display
@@ -47,6 +49,8 @@ function [T ret] = measureImage(fsI,toMeasure,downsample,dR,CHUNK)
             drawnow
         end
     catch ME
+        close all;
+        getReport(ME);
         fprintf(['******error in:measureImage.m******\n']);
     end
 end

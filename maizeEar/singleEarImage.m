@@ -71,7 +71,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         %%%%%%%%%%%%%%%%%%%%%%%
         fprintf(['FileName:' fileName '\n']);
         fprintf(['Number of Ears:' num2str(noe) '\n']);
-        fprintf(['OutPath:' oPath '\n']);
+        fprintf(['OutPath:' oPath '\n']); 
         fprintf(['Image resize in checkBlue:' num2str(checkBlue_scaleFactor) '\n']); 
         fprintf(['Raw image resize:' num2str(rawImage_scaleFactor) '\n']);  
         fprintf(['Threshold noise size:' num2str(defaultAreaPix) '\n']);  
