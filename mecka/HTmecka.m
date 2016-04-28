@@ -18,7 +18,6 @@ function [] = HTmecka(user,algorithm)
     dag.setOutputLocation(['/mnt/spaldingdata/nate/mirror_images/maizeData/' user '/return/cobData/']);
     dag.setTempFilesLocation(tmpFileLocation);
     numJobs = numel(FileList);
-    numJobs = 10;
     % add jobs to dag for each image - create and add job to dag
     for e = 1:numJobs
         [pth,nm,ex] = fileparts(FileList{e});

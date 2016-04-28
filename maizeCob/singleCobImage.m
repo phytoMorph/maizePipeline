@@ -78,7 +78,7 @@ function [S] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_
         fprintf(['starting with image load.\n']);
         I = imread(fileName);
         % rawImage_scaleFactor to lower 'DPI' effect, by fraction 
-        I = imresize(I,rawImage_scaleFactor);
+        if rawImage_scaleFactor ~= 1;I = imresize(I,rawImage_scaleFactor);end
         % check blue header and remove
         I = checkBlue(I,checkBlue_scaleFactor,addcut,baselineBlue);
         fprintf(['ending with image load.\n']);
