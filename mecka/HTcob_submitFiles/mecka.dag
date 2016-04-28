@@ -1,0 +1,67 @@
+JOB headnode headnode.nothing DONE
+JOB job1 mecka.submit
+VARS job1 FileTransferList = "mecka,run_mecka.sh"
+VARS job1 argNumber1 = "c"
+VARS job1 argNumber2 = "/iplant/home/gxe/maizeData/cobData/1-26-16-Scan2c/Scan2-160126-0025.tif#jN4pxAu4EoNdiEb#"
+VARS job1 argNumber3 = "3"
+VARS job1 argNumber4 = "./output/"
+VARS job1 argNumber5 = "1"
+VARS job1 argNumber6 = "1"
+VARS job1 argNumber7 = "1200"
+VARS job1 argNumber8 = "1"
+VARS job1 argNumber9 = "job1"
+RETRY job1 3
+SCRIPT POST job1 post.sh job1.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job2 mecka.submit
+VARS job2 FileTransferList = "mecka,run_mecka.sh"
+VARS job2 argNumber1 = "c"
+VARS job2 argNumber2 = "/iplant/home/gxe/maizeData/cobData/2-8-16-Scan2c/Scan2-160208-0049 (2).tif#qCAgWFOkY3juWlb#"
+VARS job2 argNumber3 = "3"
+VARS job2 argNumber4 = "./output/"
+VARS job2 argNumber5 = "1"
+VARS job2 argNumber6 = "1"
+VARS job2 argNumber7 = "1200"
+VARS job2 argNumber8 = "1"
+VARS job2 argNumber9 = "job2"
+RETRY job2 3
+SCRIPT POST job2 post.sh job2.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job3 mecka.submit
+VARS job3 FileTransferList = "mecka,run_mecka.sh"
+VARS job3 argNumber1 = "c"
+VARS job3 argNumber2 = "/iplant/home/gxe/maizeData/cobData/2-8-16-Scan2c/Scan2-160208-0051 (2).tif#qCAgWFOkY3juWlb#"
+VARS job3 argNumber3 = "3"
+VARS job3 argNumber4 = "./output/"
+VARS job3 argNumber5 = "1"
+VARS job3 argNumber6 = "1"
+VARS job3 argNumber7 = "1200"
+VARS job3 argNumber8 = "1"
+VARS job3 argNumber9 = "job3"
+RETRY job3 3
+SCRIPT POST job3 post.sh job3.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job4 mecka.submit
+VARS job4 FileTransferList = "mecka,run_mecka.sh"
+VARS job4 argNumber1 = "c"
+VARS job4 argNumber2 = "/iplant/home/gxe/maizeData/cobData/2-9-16-Scan2c/Scan2-160209-0073.tif#JymX3VVLlLStK43#"
+VARS job4 argNumber3 = "3"
+VARS job4 argNumber4 = "./output/"
+VARS job4 argNumber5 = "1"
+VARS job4 argNumber6 = "1"
+VARS job4 argNumber7 = "1200"
+VARS job4 argNumber8 = "1"
+VARS job4 argNumber9 = "job4"
+RETRY job4 3
+SCRIPT POST job4 post.sh job4.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+JOB job5 mecka.submit
+VARS job5 FileTransferList = "mecka,run_mecka.sh"
+VARS job5 argNumber1 = "c"
+VARS job5 argNumber2 = "/iplant/home/gxe/maizeData/cobData/2-9-16-Scan2c/Scan2-160209-0155.tif#JymX3VVLlLStK43#"
+VARS job5 argNumber3 = "3"
+VARS job5 argNumber4 = "./output/"
+VARS job5 argNumber5 = "1"
+VARS job5 argNumber6 = "1"
+VARS job5 argNumber7 = "1200"
+VARS job5 argNumber8 = "1"
+VARS job5 argNumber9 = "job5"
+RETRY job5 3
+SCRIPT POST job5 post.sh job5.tar /mnt/spaldingdata/nate/mirror_images/maizeData/gxe/return/cobData/
+PARENT headnode CHILD job1 job2 job3 job4 job5 

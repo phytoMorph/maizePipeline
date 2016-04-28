@@ -1,11 +1,9 @@
 function [] = HTmecka(user,algorithm)
-
-
-
-switch algorithm
+    tmpFileLocation = '/mnt/scratch1/maizePipeline/mecka/tmpSubmitFiles/';
+    switch algorithm
         case 'c'
             analysisType = 'cobs';
-            tmpFileLocation = '/mnt/scratch1/maizePipeline/mecka/HTcob_submitFiles/';
+          
             memREQ = '4000';
             algorithmFlag = 'c';
             numberOfObjects = '3';
@@ -20,6 +18,7 @@ switch algorithm
     dag.setOutputLocation(['/mnt/spaldingdata/nate/mirror_images/maizeData/' user '/return/cobData/']);
     dag.setTempFilesLocation(tmpFileLocation);
     numJobs = numel(FileList);
+    numJobs = 10;
     % add jobs to dag for each image - create and add job to dag
     for e = 1:numJobs
         [pth,nm,ex] = fileparts(FileList{e});

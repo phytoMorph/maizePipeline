@@ -46,7 +46,8 @@ function [worked] = myiinit(username,password,varargin)
         fidx = strfind(result,'failed');
         worked = isempty(fidx);
     catch ME
+        close all;
         getReport(ME)
-        
+        fprintf(['******error in:myiinit.m******\n']);
     end
 end

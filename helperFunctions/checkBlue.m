@@ -42,6 +42,7 @@ function [I] = checkBlue(I, checkBlue_scaleFactor,addcut,baselineBlue)
         end
         fprintf(['end with check for blue header.\n']);
     catch ME
+        getReport(ME)
         fprintf(['******error in checkblue.m******\n']);
     end
 end
