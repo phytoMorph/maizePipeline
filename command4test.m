@@ -29,7 +29,7 @@ I300 = '/mnt/snapper/Lee/maizeData_resTest/earData/MN03-160125-0026-300.tif';
 % 600 dpi
 I600 = '/mnt/snapper/Lee/maizeData_resTest/earData/MN03-160125-0026-600.tif'
 % 800 dpi
-I800 = '/mnt/snapper/Lee/maizeData_resTest/earData/MN03-160125-0026-800.tif'
+I800E = '/mnt/snapper/Lee/maizeData_resTest/earData/MN03-160125-0026-800.tif'
 [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,
 fracDpi,addcut,baselineBlue,fill,CHUNK,toSave,toDisplay)
 [KernelLength sM] = singleEarImage(I800,3,oPut,1,.25,1000000,2,100/2,600,31,10,1,1)
