@@ -1,4 +1,4 @@
-function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSizeD1,windowSizeD2,windowSizeD3,toSave,toDisplay)
+function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSize,toSave,toDisplay)
     %{
         April 14 2016
         1. copy and add variable info from cob func
@@ -63,9 +63,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         baselineBlue = StoN(baselineBlue);
         fill = StoN(fill);
         CHUNK = StoN(CHUNK);
-        windowSizeD1 = StoN(windowSizeD1);
-        windowSizeD2 = StoN(windowSizeD2);
-        windowSizeD3 = StoN(windowSizeD3);
+        windowSize = StoN(windowSize);
         %%%%%%%%%%%%%%%%%%%%%%%
         % print out the fileName, number of ears, output path
         %%%%%%%%%%%%%%%%%%%%%%%
@@ -76,11 +74,9 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         fprintf(['Raw image resize:' num2str(rawImage_scaleFactor) '\n']);  
         fprintf(['Threshold noise size:' num2str(defaultAreaPix) '\n']);
         fprintf(['Fraction relative to 1200 dpi:' num2str(fracDpi) '\n']);  
-        %fprintf(['The radius of color circle:' num2str(rho) '\n']);
+        fprintf(['The window size, RAD:' num2str(windowSize) '\n']);
         fprintf(['The boarder handle for checkBlue:' num2str(addcut) '\n']);
         fprintf(['Baseline threshold to remove blue header:' num2str(baselineBlue) '\n']);
-        %fprintf(['Background Color Range I:' num2str(colRange1) '\n']);
-        %fprintf(['Background Color Range II:' num2str(colRange2) '\n']);
         fprintf(['The radius of disk for closing:' num2str(fill) '\n']);
         fprintf(['The number of chunk of blocks for FFT:' num2str(CHUNK) '\n']);
         %%%%%%%%%%%%%%%%%%%%%%%
@@ -97,7 +93,6 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         % rawImage_scaleFactor to lower 'DPI' effect, by fraction 
         I = imresize(I,rawImage_scaleFactor);
         I = checkBlue(I,checkBlue_scaleFactor,addcut,baselineBlue);
-        %I = checkBlue(I);
         fprintf(['ending with image load.\n']);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % INIT VARS - end
@@ -112,7 +107,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         % make the window sizes
         %%window size matters for dpi. It is based on 1200 dpi
         %RAD = round(1200/fracDpi):round(25/fracDpi):round(1600/fracDpi);
-        RAD = windowSizeD1:windowSizeD2:windowSizeD3;
+        RAD = windowSize;
         % the number of down sample grid sites
         gridSites = 10;
         [KernelLength FT BB S MT] = measureKernelLength(I,noe,RAD,gridSites,defaultAreaPix,fill,CHUNK);        
