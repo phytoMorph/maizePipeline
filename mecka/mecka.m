@@ -103,8 +103,7 @@ end
     % run local copy - for cob
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     fileName ='/iplant/home/garf0012/maizeData/cobData/HOF_NIL/IA01-151210/IA01-151210-0005.tif';
+    oPath = '/mnt/scratch1/maizePipeline/testResults/';
     mecka('c',fileName,3,oPath,0,1,1200,1);
-    singleCobImage(fileName,3,[],0,0);
-    singleCobImage(fileName,3,oPut,1,1,1000000,4,300/4,100/4,600,70,166,50,1,1);
 
 %}
