@@ -22,7 +22,7 @@ singleCobImage(I800,3,oPut,1,.25,1000000,2,300/2,100/2,600,70,166,50,1,1);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ear function %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-oPut = '/mnt/snapper/Lee/maizeData_resTest_Result/earData_Result/';
+oPutE = '/mnt/snapper/Lee/maizeData_resTest_Result/earData_Result/';
 
 % 300 dpi
 I300 = '/mnt/snapper/Lee/maizeData_resTest/earData/MN03-160125-0026-300.tif';
@@ -32,7 +32,7 @@ I600 = '/mnt/snapper/Lee/maizeData_resTest/earData/MN03-160125-0026-600.tif'
 I800E = '/mnt/snapper/Lee/maizeData_resTest/earData/MN03-160125-0026-800.tif'
 [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,
 fracDpi,addcut,baselineBlue,fill,CHUNK,toSave,toDisplay)
-[KernelLength sM] = singleEarImage(I800,3,oPut,1,.25,1000000,2,100/2,600,31,10,1,1)
+[KernelLength sM] = singleEarImage(I800E,3,oPutE,1,.25,1000000,2,100/2,600/2,31,10,1200/2,12,800,1,1)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% kernel function %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
