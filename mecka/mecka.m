@@ -20,6 +20,11 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
     try
+        fprintf(['OutPath:' oPath '\n']);
+        if ~strcmp(oPath(end),filesep)
+            oPath = [oPath filesep];
+        end
+        fprintf(['OutPath:' oPath '\n']);
         % no input of rawImage_scaleFactor is default
         if nargin ~= 8
             % set to default value of 1
@@ -106,5 +111,16 @@ end
     mecka('c',fileName,3,oPath,0,1,1200,1);
     singleCobImage(fileName,3,[],0,0);
     singleCobImage(fileName,3,oPut,1,1,1000000,4,300/4,100/4,600,70,166,50,1,1);
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % run local copy - for ear
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    fileName = '/mnt/snapper/Lee/code_2016/production/memory_use_producution/MatlabMemoryUse_verMarch012016/input/Scan1-160129-0043.tif';
+    mecka('e',fileName,3,oPath,0,1,1200,1);
+    [KernelLength sM] = singleEarImage(fileName,3,'/home/nate/Downloads/',1,1);
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % run local copy - for kernel
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %}

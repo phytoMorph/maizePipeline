@@ -8,15 +8,19 @@ mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,scanResolution,r
 % for cob
 oPutC = '/mnt/snapper/Lee/maizeData_resTest_Result/cobData_Result/';
 I800C = '/mnt/snapper/Lee/maizeData_resTest/cobData/MN03-160129-0054-800.tif';
+I600C = '/mnt/snapper/Lee/maizeData_resTest/cobData/MN03-160129-0054-600.tif';
 I300C = '/mnt/snapper/Lee/maizeData_resTest/cobData/MN03-160129-0054-300.tif';
 mecka('c',I800C,3,oPutC,1,1,800);
+mecka('c',I600C,3,oPutC,1,1,600);
 mecka('c',I300C,3,oPutC,1,1,300);
 
 % for ear
 oPutE = '/mnt/snapper/Lee/maizeData_resTest_Result/earData_Result/';
 I800E = '/mnt/snapper/Lee/maizeData_resTest/earData/MN03-160125-0026-800.tif'
+I600E = '/mnt/snapper/Lee/maizeData_resTest/earData/MN03-160125-0026-600.tif'
 I300E = '/mnt/snapper/Lee/maizeData_resTest/earData/MN03-160125-0026-300.tif'
 mecka('e',I800E,3,oPutE,1,1,800);
+mecka('e',I600E,3,oPutE,1,1,600);
 mecka('e',I300E,3,oPutE,1,1,300);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% cob function %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
