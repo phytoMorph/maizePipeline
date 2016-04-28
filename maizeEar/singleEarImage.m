@@ -104,10 +104,11 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         %%window size matters for dpi. It is based on 1200 dpi
         %RAD = round(1200/fracDpi):round(25/fracDpi):round(1600/fracDpi);
         %RAD = windowSizeD1:windowSizeD2:windowSizeD3;
+        RAD = windowSize;
         % the number of down sample grid sites
         gridSites = 10;
         %[KernelLength FT BB S MT] = measureKernelLength(I,noe,RAD,gridSites,defaultAreaPix,fill,CHUNK); 
-        [KernelLength FT BB S MT] = measureKernelLength(I,noe,windowSize,gridSites,defaultAreaPix,fill,CHUNK);
+        [KernelLength FT BB S MT] = measureKernelLength(I,noe,RAD,gridSites,defaultAreaPix,fill,CHUNK);
         % average kernel height
         uT = nanmean(KernelLength,2);        
         DATA = [];             
@@ -173,7 +174,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
             csvwrite(csvOut,DATA);
             csvOut = [oPath nm 'width_results.csv'];
             csvwrite(csvOut,S.widthProfile);
-            fprintf(['ending save phase \n ']);
+            fprintf(['ending save phase \n']);
         end
         close all;
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
