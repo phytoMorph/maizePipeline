@@ -1,4 +1,5 @@
-function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSizeD1,windowSizeD2,windowSizeD3,toSave,toDisplay)
+function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSize,toSave,toDisplay)
+%function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSizeD1,windowSizeD2,windowSizeD3,toSave,toDisplay)
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
@@ -56,9 +57,10 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         baselineBlue = StoN(baselineBlue);
         fill = StoN(fill);
         CHUNK = StoN(CHUNK);
-        windowSizeD1 = StoN(windowSizeD1);
-        windowSizeD2 = StoN(windowSizeD2);
-        windowSizeD3 = StoN(windowSizeD3);
+        windowSize = StoN(windowSize);
+        %windowSizeD1 = StoN(windowSizeD1);
+        %windowSizeD2 = StoN(windowSizeD2);
+        %windowSizeD3 = StoN(windowSizeD3);
         %%%%%%%%%%%%%%%%%%%%%%%
         % print out the fileName, number of ears, output path
         %%%%%%%%%%%%%%%%%%%%%%%
@@ -101,10 +103,11 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         % make the window sizes
         %%window size matters for dpi. It is based on 1200 dpi
         %RAD = round(1200/fracDpi):round(25/fracDpi):round(1600/fracDpi);
-        RAD = windowSizeD1:windowSizeD2:windowSizeD3;
+        %RAD = windowSizeD1:windowSizeD2:windowSizeD3;
         % the number of down sample grid sites
         gridSites = 10;
-        [KernelLength FT BB S MT] = measureKernelLength(I,noe,RAD,gridSites,defaultAreaPix,fill,CHUNK);        
+        %[KernelLength FT BB S MT] = measureKernelLength(I,noe,RAD,gridSites,defaultAreaPix,fill,CHUNK); 
+        [KernelLength FT BB S MT] = measureKernelLength(I,noe,windowSize,gridSites,defaultAreaPix,fill,CHUNK);
         % average kernel height
         uT = nanmean(KernelLength,2);        
         DATA = [];             
