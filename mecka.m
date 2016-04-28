@@ -64,7 +64,7 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 addcut = round(addcut*fracDpi);
                 % set to default value of 600
                 baselineBlue = 600;
-                baselineBlue = round(baselineBlue*fracDpi);
+                %baselineBlue = round(baselineBlue*fracDpi);
                 % set to default value of 70
                 colRange1 = 70;
                 % set to default value of 166
