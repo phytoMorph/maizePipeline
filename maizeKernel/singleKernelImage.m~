@@ -6,7 +6,8 @@ function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_sc
                 for its dependent functions. (Inputs are relative to 1200dpi)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     Dependency: 
-                StoN.m, checkBlue.m, getThresholdLevel.m, getInitialGuessForTip.m,
+                StoN.m, checkBlue.m, getThresholdLevel.m,
+                getInitialGuessForTip.m,
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     Variable Definition:
                 fileName:       An image to be analyze in a string that includes path and file name.
@@ -72,6 +73,7 @@ function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_sc
         % rawImage_scaleFactor to lower 'DPI' effect, by fraction 
         I = imresize(I,rawImage_scaleFactor);
         I = checkBlue(I,checkBlue_scaleFactor,addcut,baselineBlue);
+        %I = checkBlue(I);
         fprintf(['ending with image load.\n']);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % INIT VARS - end
@@ -115,6 +117,7 @@ function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_sc
         dB = dB(fidx);
         [tipPoint dB] = getInitialGuessForTip(dB);
         [dB] = findTipPoints_fast(dB,B,I);
+        
         dB = Econtour(dB,B,I);
         [M] = getKernelMeasurements(B,dB);
         MAJOR = [M.MajorLength];
@@ -123,6 +126,9 @@ function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_sc
         for e = 1:numel(M)
             toSaveContour = [toSaveContour M(e).iContour(:)];
         end
+        
+        
+        
         
         fprintf(['ending with image analysis\n']);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
