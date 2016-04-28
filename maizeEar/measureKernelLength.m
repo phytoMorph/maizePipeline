@@ -50,7 +50,7 @@ function [T ufT BB PS MT sM] = measureKernelLength(I,numberCobs,RAD,gridSites,de
             PS.average_WIDTH(e) = uW;
             % store width profile
             PS.widthProfile = [PS.widthProfile ;interp1(1:numel(WIDTH),WIDTH,linspace(1,numel(WIDTH),1000))];
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Display
             % process the grayscale image, take gradient, look at pos and neg
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             h = fspecial('average',41);            

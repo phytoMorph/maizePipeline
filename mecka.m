@@ -48,7 +48,7 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 % set to default value of 600
                 baselineBlue = 600;
                 baselineBlue = round(baselineBlue*fracDpi);
-                % set to default value of 50
+                % set to default value of 31
                 fill = 31;
                 % set to default value of 1200:25:1600
                 %windowSize = 1200:25:1600;
