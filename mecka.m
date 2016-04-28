@@ -32,7 +32,8 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
         % compute proportion of resolution over default
         fracDpi = scanResolution/defaultResolution;
         % set to default value of .25
-        checkBlue_scaleFactor = .25;
+        checkBlue_scaleFactor = 1;
+        fprintf(['Fraction relative to 1200 dpi:' num2str(fracDpi) '\n']); 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         switch algorithm
             case 'e'
