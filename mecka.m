@@ -40,13 +40,13 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 CHUNK = 10;
                 % set to default value of 10^6
                 defaultAreaPix = 10^6;
-                defaultAreaPix = round(defaultAreaPix/fracDpi);
+                defaultAreaPix = round(defaultAreaPix*fracDpi);
                 % set to default value of 100
                 addcut = 100;
-                addcut = round(addcut/fracDpi);
+                addcut = round(addcut*fracDpi);
                 % set to default value of 600
                 baselineBlue = 600;
-                baselineBlue = round(baselineBlue/fracDpi);
+                baselineBlue = round(baselineBlue*fracDpi);
                 % set to default value of 50
                 fill = 31;
                 [KernelLength sM] = singleEarImage(fileName,numberOfObjects,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,toSave,toDisplay)
@@ -54,16 +54,16 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
             case 'c'
                 % set to default value of 10^6
                 defaultAreaPix = 10^6;
-                defaultAreaPix = round(defaultAreaPix/fracDpi);
+                defaultAreaPix = round(defaultAreaPix*fracDpi);
                 % set to default value of 300
                 rho = 300;
-                rho = round(rho/fracDpi);
+                rho = round(rho*fracDpi);
                 % set to default value of 100
                 addcut = 100;
-                addcut = round(addcut/fracDpi);
+                addcut = round(addcut*fracDpi);
                 % set to default value of 600
                 baselineBlue = 600;
-                baselineBlue = round(baselineBlue/fracDpi);
+                baselineBlue = round(baselineBlue*fracDpi);
                 % set to default value of 70
                 colRange1 = 70;
                 % set to default value of 166

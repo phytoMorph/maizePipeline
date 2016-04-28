@@ -8,7 +8,7 @@ function [I] = checkBlue(I, checkBlue_scaleFactor,addcut,baselineBlue)
     Dependency: 
                 imresize.m, rgb2hsv_fast.m, regionprops.m
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    Variable Definition:
+    Variable Definition:mecka('c',I800,3,oPutC,1,1,800);
                 I:       An image to be analyzed in a matrix.
                 checkBlue_scaleFactor:  A desired percentage to resize the image in checkBlue.
                 rawImage_scaleFactor:   A desired percentage to resize the image.
@@ -42,6 +42,6 @@ function [I] = checkBlue(I, checkBlue_scaleFactor,addcut,baselineBlue)
         end
         fprintf(['end with check for blue header.\n']);
     catch ME
-        fprintf(['******error in check blue******\n']);
+        fprintf(['******error in checkblue.m******\n']);
     end
 end
