@@ -20,11 +20,9 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
     try
-        fprintf(['OutPath:' oPath '\n']);
         if ~strcmp(oPath(end),filesep)
             oPath = [oPath filesep];
         end
-        fprintf(['OutPath:' oPath '\n']);
         % no input of rawImage_scaleFactor is default
         if nargin ~= 8
             % set to default value of 1
@@ -57,12 +55,7 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 fill = 31;
                 % set to default value of 1200:25:1600
                 windowSize = round(1200*fracDpi):round(25*fracDpi):round(1600*fracDpi);
-                %windowSizeD1 = round(1200*fracDpi);
-                %windowSizeD2 = round(25*fracDpi);
-                %windowSizeD3 = round(1600*fracDpi);
-                %[KernelLength sM] = singleEarImage(fileName,numberOfObjects,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSizeD1,windowSizeD2,windowSizeD3,toSave,toDisplay)
                 [KernelLength sM] = singleEarImage(fileName,numberOfObjects,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSize,toSave,toDisplay)
-                %[KernelLength sM] = singleEarImage(I800,3,oPut,1,.25,1000000,100/2,600,31,10,1,1)
             case 'c'
                 % set to default value of 10^6
                 defaultAreaPix = 10^6;
