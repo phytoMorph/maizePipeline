@@ -5,11 +5,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% wrapper function %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,scanResolution,rawImage_scaleFactor)
-mecka('c',I800,3,oPutC,1,1,800);
-singleCobImage(I800,3,oPut,1,.25,1000000,2,300/2,100/2,600,70,166,50,1,1);
+% for cob
+oPutC = '/mnt/snapper/Lee/maizeData_resTest_Result/cobData_Result/';
+I800C = '/mnt/snapper/Lee/maizeData_resTest/cobData/MN03-160129-0054-800.tif';
+I300C = '/mnt/snapper/Lee/maizeData_resTest/cobData/MN03-160129-0054-300.tif';
+mecka('c',I800C,3,oPutC,1,1,800);
+mecka('c',I300C,3,oPutC,1,1,300);
+
+% for ear
+oPutE = '/mnt/snapper/Lee/maizeData_resTest_Result/earData_Result/';
+I800E = '/mnt/snapper/Lee/maizeData_resTest/earData/MN03-160125-0026-800.tif'
+I300E = '/mnt/snapper/Lee/maizeData_resTest/earData/MN03-160125-0026-300.tif'
+mecka('e',I800E,3,oPutE,1,1,800);
+mecka('e',I300E,3,oPutE,1,1,300);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% cob function %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+oPutC = '/mnt/snapper/Lee/maizeData_resTest_Result/cobData_Result/';
 % 300 dpi
 % 600 dpi
 % 800 dpi
