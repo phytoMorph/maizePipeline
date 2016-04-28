@@ -1,28 +1,27 @@
 function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,addcut,baselineBlue,toSave,toDisplay)
+    %{
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    About:      
+                singleKernelImage.m is main function to handle kernel analysis. It takes all input variables 
+                for its dependent functions. (Inputs are relative to 1200dpi)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Dependency: 
+                StoN.m, checkBlue.m, getThresholdLevel.m,
+                getInitialGuessForTip.m,
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Variable Definition:
+                fileName:       An image to be analyze in a string that includes path and file name.
+                oPath:          A path to result of analysis in a string that includes '/'.
+                rawImage_scaleFactor:   A desired percentage to resize the image.
+                checkBlue_scaleFactor:  A desired percentage to resize the image in checkBlue.
+                addcut:         The boarder handle for checkBlue. This is an addition to blue top computed in checkBlue.
+                baselineBlue:   The baseline threshold to remove blue header in checkBlue.
+                toSave:         0 - not to save, 1 - to save.
+                toDisplay:      0 - not to save, 1 - to save.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %}
     versionString = ['Starting kernel analysis algorithm. \n Publication Version 1.0 - Monday, March 28, 2016. \n'];
     fprintf(versionString);
-    %{  
-        April 19 2016
-        par removed
-    %}
-    %{
-    fileName: An image to be analyze in a string that includes path and file name.
-    noe: Number of cobs that are expected to be analyzed. 
-    oPath: A path to result of analysis in a string that includes '/'.
-    checkBlue_scaleFactor: A desired percentage to resize the image in checkBlue.
-    rawImage_scaleFactor: A desired percentage to resize the image.
-    defaultAreaPix: The default pixel to be considered noise relative to 1200 dpi.
-    fracDpi: The fraction relative to 1200 dpi.
-    rho: The radius of color circle, relative to 1200 dpi.
-    addcut: The boarder handle for checkBlue. This is an addition to blue top computed in checkBlue.
-    baselineBlue: The baseline threshold to remove blue header in checkBlue.
-    colRange1: The color range for back ground to be removed in getcobMask.
-    colRange2: The color range for back ground to be removed in getcobMask.
-    fill: The radius of disk for Kernel of an image close operation.
-    CHUNK: The number of chunk for input for FFT in myBlock0;
-    toSave: 0 - not to save, 1 - to save.,checkBlue_scaleFactor,addcut,baselineBlue
-    toDisplay: 0 - not to save, 1 - to save.
-    %}
     %%%%%%%%%%%%%%%%%%%%%%%
     % init vars
     MAJOR = [];
