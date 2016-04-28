@@ -32,9 +32,7 @@ function [T ret] = measureImage(fsI,toMeasure,downsample,dR,CHUNK)
         h = fspecial('average',[5 1]);
         ufT = imfilter(ufT,h);
         % find period via first peak finding
-        fprintf(['******error in:1\n']);
         [T f] = findT(ufT,2*dR+1);
-        fprintf(['******error in:2\n']);
         fprintf(['e-time for find fft @ ' num2str(etime(clock,tm)) '\n']);
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % display
