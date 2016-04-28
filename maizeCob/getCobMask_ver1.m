@@ -2,7 +2,7 @@ function [I] = getCobMask_ver1(I,defaultAreaPix,colRange1,colRange2,fill)
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
-                getCobMask turns image into black and white base upon background color information, 
+                getCobMask_ver1.m turns image into black and white base upon background color information, 
                 removes small objects(dusts) and operates closing.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     Dependency: 

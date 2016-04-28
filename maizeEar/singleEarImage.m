@@ -1,44 +1,37 @@
 function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSizeD1,windowSizeD2,windowSizeD3,toSave,toDisplay)
     %{
-        April 14 2016
-        1. copy and add variable info from cob func
-        2. change same update first 
-        3. make it work for 300 dpi
-    %}
-    %{
-        singleEarImage is main function to handle ear analysis. It takes
-        all input variables for its dependent functions. This function
-        returns final result including image with bounding box.
-        Dependency: StoN, checkBlue and measureKernelLength
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    About:      
+                singleEarImage.m is main function to handle ear analysis. It takes all input variables 
+                for its dependent functions. This function returns final result including image with 
+                bounding box. (Inputs are relative to 1200dpi)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Dependency: 
+                StoN.m, checkBlue.m, measureKernelLength.m
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Variable Definition:
+                fileName:       An image to be analyze in a string that includes path and file name.
+                noe:            Number of cobs that are expected to be analyzed. 
+                oPath:          A path to result of analysis in a string that includes '/'.
+                rawImage_scaleFactor:   A desired percentage to resize the image.
+                checkBlue_scaleFactor:  A desired percentage to resize the image in checkBlue.
+                defaultAreaPix: The default pixel to be considered noise relative to 1200 dpi.
+                addcut:         The boarder handle for checkBlue. This is an addition to blue top computed in checkBlue.
+                baselineBlue:   The baseline threshold to remove blue header in checkBlue.
+                fill:           The radius of disk for Kernel of an image close operation.
+                CHUNK:          The number of chunk for input for FFT in myBlock0.
+                windowSize =    The value to be filled for RAD in 3 dimensions.
+                windowSizeD1:   The value to be filled in first dimension for RAD, the window size.
+                windowSizeD2:   The value to be filled in second dimension for RAD, the window size.
+                windowSizeD3:   The value to be filled in third dimension for RAD, the window size.
+                toSave:         0 - not to save, 1 - to save.
+                toDisplay:      0 - not to save, 1 - to save.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
     versionString = ['Starting ear analysis algorithm. \nPublication Version 1.0 - Monday, March 28, 2016. \n'];
     fprintf(versionString);
     totalTimeInit = clock;
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % Variable Definition
-    %{
-    fileName: An image to be analyze in a string that includes path and file name.
-    noe: Number of cobs that are expected to be analyzed. 
-    oPath: A path to result of analysis in a string that includes '/'.
-    checkBlue_scaleFactor: A desired percentage to resize the image in checkBlue.
-    rawImage_scaleFactor: A desired percentage to resize the image.
-    defaultAreaPix: The default pixel to be considered noise relative to 1200 dpi.
-    rho: The radius of color circle, relative to 1200 dpi.
-    addcut: The boarder handle for checkBlue. This is an addition to blue top computed in checkBlue.
-    baselineBlue: The baseline threshold to remove blue header in checkBlue.
-    colRange1: The color range for back ground to be removed in getcobMask.
-    colRange2: The color range for back ground to be removed in getcobMask.
-    fill: The radius of disk for Kernel of an image close operation.
-    CHUNK: The number of chunk for input for FFT in myBlock0.
-    windowSize =  The value to be filled for RAD in 3 dimensions.
-    windowSizeD1: The value to be filled in first dimension for RAD, the window size.
-    windowSizeD2: The value to be filled in second dimension for RAD, the window size.
-    windowSizeD3: The value to be filled in third dimension for RAD, the window size.
-    toSave: 0 - not to save, 1 - to save.
-    toDisplay: 0 - not to save, 1 - to save.
-    %}
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%D3
+    %%%%%%%%%%%%%%%%%%%%%%%
     % init return vars    
     sM = [];   
     KernelLength = [];
