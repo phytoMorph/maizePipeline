@@ -50,7 +50,12 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 baselineBlue = round(baselineBlue*fracDpi);
                 % set to default value of 50
                 fill = 31;
-                [KernelLength sM] = singleEarImage(fileName,numberOfObjects,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,toSave,toDisplay)
+                % set to default value of 1200:25:1600
+                %windowSize = 1200:25:1600;
+                windowSizeD1 = round(1200*fracDpi);
+                windowSizeD2 = round(25*fracDpi);
+                windowSizeD3 = round(1600*fracDpi);
+                [KernelLength sM] = singleEarImage(fileName,numberOfObjects,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSizeD1,windowSizeD2,windowSizeD3,toSave,toDisplay)
                 %[KernelLength sM] = singleEarImage(I800,3,oPut,1,.25,1000000,100/2,600,31,10,1,1)
             case 'c'
                 % set to default value of 10^6

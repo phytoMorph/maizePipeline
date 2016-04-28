@@ -1,4 +1,4 @@
-function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSize,toSave,toDisplay)
+function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSizeD1,windowSizeD2,windowSizeD3,toSave,toDisplay)
     %{
         April 14 2016
         1. copy and add variable info from cob func
@@ -38,7 +38,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
     toDisplay: 0 - not to save, 1 - to save.
     %}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%D3
     % init return vars    
     sM = [];   
     KernelLength = [];
@@ -63,7 +63,9 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         baselineBlue = StoN(baselineBlue);
         fill = StoN(fill);
         CHUNK = StoN(CHUNK);
-        windowSize = StoN(windowSize);
+        windowSizeD1 = StoN(windowSizeD1);
+        windowSizeD2 = StoN(windowSizeD2);
+        windowSizeD3 = StoN(windowSizeD3);
         %%%%%%%%%%%%%%%%%%%%%%%
         % print out the fileName, number of ears, output path
         %%%%%%%%%%%%%%%%%%%%%%%
@@ -72,9 +74,8 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         fprintf(['OutPath:' oPath '\n']);
         fprintf(['Image resize in checkBlue:' num2str(checkBlue_scaleFactor) '\n']); 
         fprintf(['Raw image resize:' num2str(rawImage_scaleFactor) '\n']);  
-        fprintf(['Threshold noise size:' num2str(defaultAreaPix) '\n']);
-        fprintf(['Fraction relative to 1200 dpi:' num2str(fracDpi) '\n']);  
-        fprintf(['The window size, RAD:' num2str(windowSize) '\n']);
+        fprintf(['Threshold noise size:' num2str(defaultAreaPix) '\n']);  
+        %fprintf(['The window size, RAD:' num2str(windowSize) '\n']);
         fprintf(['The boarder handle for checkBlue:' num2str(addcut) '\n']);
         fprintf(['Baseline threshold to remove blue header:' num2str(baselineBlue) '\n']);
         fprintf(['The radius of disk for closing:' num2str(fill) '\n']);
@@ -107,7 +108,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         % make the window sizes
         %%window size matters for dpi. It is based on 1200 dpi
         %RAD = round(1200/fracDpi):round(25/fracDpi):round(1600/fracDpi);
-        RAD = windowSize;
+        RAD = windowSizeD1:windowSizeD2:windowSizeD3;
         % the number of down sample grid sites
         gridSites = 10;
         [KernelLength FT BB S MT] = measureKernelLength(I,noe,RAD,gridSites,defaultAreaPix,fill,CHUNK);        
