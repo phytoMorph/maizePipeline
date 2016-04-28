@@ -26,7 +26,7 @@ function [S] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_
                 toDisplay:      0 - not to save, 1 - to save.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
-    versionString = ['Starting cob analysis algorithm. \n Publication Version 1.0 - Monday, March 28, 2016. \n'];
+    versionString = ['Starting cob analysis algorithm. \nPublication Version 1.0 - Monday, March 28, 2016. \n'];
     fprintf(versionString);
     totalTimeInit = clock;
     try

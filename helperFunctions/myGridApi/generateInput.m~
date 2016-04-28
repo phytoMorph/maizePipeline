@@ -1,0 +1,7 @@
+function [inputString] = generateInput(value,argNumber,matFile)
+    varName = ['arg' num2str(argNumber)];    
+    inputString = [':' class(value) ':' 'matfile' ',' varName ':'];    
+    CMD = [varName '=' 'value'];
+    eval(CMD);
+    save(matFile,varName,'-append');
+end

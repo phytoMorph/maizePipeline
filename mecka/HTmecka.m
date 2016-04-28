@@ -1,0 +1,51 @@
+function [] = HTmecka(user,algorithm)
+
+
+
+switch algorithm
+        case 'c'
+            analysisType = 'cobs';
+            tmpFileLocation = '/mnt/scratch1/maizePipeline/mecka/HTcob_submitFiles/';
+            memREQ = '4000';
+            algorithmFlag = 'c';
+            numberOfObjects = '3';
+            imageRES = '1200';
+    end
+    
+    % get file list
+    [FileList] = ScanAndIssueNewFilesOniRods(user,analysisType);
+    % geneate the dag
+    dag = epfod();
+    dag.setFunctionName('mecka');
+    dag.setOutputLocation(['/mnt/spaldingdata/nate/mirror_images/maizeData/' user '/return/cobData/']);
+    dag.setTempFilesLocation(tmpFileLocation);
+    numJobs = numel(FileList);
+    % add jobs to dag for each image - create and add job to dag
+    for e = 1:numJobs
+        [pth,nm,ex] = fileparts(FileList{e});
+        % create job
+        job = cJob();
+        job.requirements.memory = {'=' memREQ};
+        job.setTempFilesLocation(tmpFileLocation);
+        job.setFunctionName('mecka');
+        job.setNumberofArgs(8);
+        job.setArgument(algorithmFlag,1);
+        job.setArgument([FileList{e}],2);        
+        job.setArgument(numberOfObjects,3);
+        job.setArgument('./output/',4);
+        job.setArgument('1',5);
+        job.setArgument('1',6);
+        job.setArgument(imageRES,7);
+        job.setArgument('1',8)
+        
+        % add job to dag
+        dag.addJob(job);
+        job.generate_submitFilesForDag();
+    end
+    % submit dag
+    dag.submitDag(50,50);
+end
+
+%{
+    HTmecka('gxe','c');
+%}
