@@ -20,6 +20,9 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
     try
+        if ~strcmp(oPath(end),filesep)
+            oPath = [oPath filesep];
+        end
         % no input of rawImage_scaleFactor is default
         if nargin ~= 8
             % set to default value of 1
@@ -52,12 +55,7 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 fill = 31;
                 % set to default value of 1200:25:1600
                 windowSize = round(1200*fracDpi):round(25*fracDpi):round(1600*fracDpi);
-                %windowSizeD1 = round(1200*fracDpi);
-                %windowSizeD2 = round(25*fracDpi);
-                %windowSizeD3 = round(1600*fracDpi);
-                %[KernelLength sM] = singleEarImage(fileName,numberOfObjects,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSizeD1,windowSizeD2,windowSizeD3,toSave,toDisplay)
                 [KernelLength sM] = singleEarImage(fileName,numberOfObjects,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSize,toSave,toDisplay)
-                %[KernelLength sM] = singleEarImage(I800,3,oPut,1,.25,1000000,100/2,600,31,10,1,1)
             case 'c'
                 % set to default value of 10^6
                 defaultAreaPix = 10^6;
@@ -105,5 +103,16 @@ end
     fileName ='/iplant/home/garf0012/maizeData/cobData/HOF_NIL/IA01-151210/IA01-151210-0005.tif';
     oPath = '/mnt/scratch1/maizePipeline/testResults/';
     mecka('c',fileName,3,oPath,0,1,1200,1);
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % run local copy - for ear
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    fileName = '/mnt/snapper/Lee/code_2016/production/memory_use_producution/MatlabMemoryUse_verMarch012016/input/Scan1-160129-0043.tif';
+    mecka('e',fileName,3,oPath,0,1,1200,1);
+    [KernelLength sM] = singleEarImage(fileName,3,'/home/nate/Downloads/',1,1);
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % run local copy - for kernel
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %}
