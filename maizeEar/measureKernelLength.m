@@ -1,6 +1,23 @@
 function [T ufT BB PS MT sM] = measureKernelLength(I,numberCobs,RAD,gridSites,defaultAreaPix,fill,CHUNK)
     %{
-        Header required.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    About:      
+                measureKernelLength.m is main function to handle cob analysis. It takes all input variables 
+                for its dependent functions. This function returns final result including image with 
+                bounding box and color circle. (Inputs are relative to 1200dpi)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Dependency: 
+                rgb2hsv_fast.m, measureImage.m
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Variable Definition:
+                I:              The blue header remvoed image to be analyzed.
+                numberCobs:     Number of cobs that are expected to be analyzed. 
+                RAD:            The value for window size.
+                gridSites:      The number of down sample grid sites.
+                defaultAreaPix: The default pixel to be considered noise relative to 1200 dpi.
+                fill:           The radius of disk for Kernel of an image close operation.
+                CHUNK:          The number of chunk for input for FFT in myBlock0.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
     %%%%%%%%%%%%%%%%%%%%%%%
     % init return vars    
