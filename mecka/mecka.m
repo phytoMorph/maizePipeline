@@ -102,6 +102,7 @@ end
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     fileName = '/iplant/home/garf0012/maizeData/cobData/HOF_NIL/IA01-151210/IA01-151210-0005.tif';
     fileName = '/iplant/home/gxe/maizeData/cobData/1-26-16-Scan2c/Scan2-160126-0001.tif';
+    fileName = '/iplant/home/gxe/maizeData/cobData/2-17-16-Scan2c/Scan2-160217-0047.tif';
     oPath = '/mnt/scratch1/maizePipeline/testResults/';
     mecka('c',fileName,3,oPath,0,1,1200,1);
 
