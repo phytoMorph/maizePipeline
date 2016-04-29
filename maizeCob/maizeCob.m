@@ -2,7 +2,7 @@ function [BB PS] = maizeCob(I,numberOfCobs,defaultAreaPix,colRange1,colRange2,fi
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
-                maizeCob is main function to analyze cob image. It will analyze mutiple cobs.
+                maizeCob.m is main function to analyze cob image. It will analyze mutiple cobs.
                 It returns masked cob image and width profile.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     Dependency: 

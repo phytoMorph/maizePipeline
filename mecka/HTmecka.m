@@ -1,4 +1,18 @@
 function [] = HTmecka(user,algorithm)
+    %{
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    About:      
+                HTmecka.m is create jobs for condor to run Maize Ear Cob Kernel Analysis. A user is 
+                to choose one of three algorithm to use and provide user for condor.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Dependency: 
+                mecka.m, ScanAndIssueNewFilesOniRods.m
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Variable Definition:
+                user:           The user name for condor. (?)
+                algorithm:      The argorithm to use. 'c' for singleCobImage.m, 'e' for singleEarImage.m, and 'k' for singleKernelImage.m
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %}
     tmpFileLocation = '/mnt/scratch1/maizePipeline/mecka/tmpSubmitFiles/';
     switch algorithm
         case 'c'
