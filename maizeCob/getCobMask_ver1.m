@@ -1,4 +1,4 @@
-function [I] = getCobMask_ver1(I,defaultAreaPix,colRange1,colRange2,fill)
+function [Mask_out] = getCobMask_ver1(I,defaultAreaPix,colRange1,colRange2,fill)
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
@@ -18,14 +18,11 @@ function [I] = getCobMask_ver1(I,defaultAreaPix,colRange1,colRange2,fill)
     %}
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % get gray and filter
-        I = rgb2hsv_fast(I,'single','H');
-        I = I < colRange1/360 | I > colRange2/360;
-        I = imclearborder(I);        
-        I = imfill(I,'holes');
-        %%Remove small objects. In this case less than 1000000 pixels (works for 1200dpi)
-        %%now fracDpi handles defaultAreaPix outside of the func
-        I = bwareaopen(I,defaultAreaPix);
-        %%Check what these value mean
-        I = imopen(I,strel('disk',fill));
-        I = bwareaopen(I,defaultAreaPix);
+        Mask_out = rgb2hsv_fast(I,'single','H');
+        Mask_out = Mask_out < colRange1/360 | Mask_out > colRange2/360;
+        Mask_out = imclearborder(Mask_out);        
+        Mask_out = imfill(Mask_out,'holes');
+        Mask_out = bwareaopen(Mask_out,defaultAreaPix);
+        Mask_out = imopen(Mask_out,strel('disk',fill));
+        Mask_out = bwareaopen(Mask_out,defaultAreaPix);
 end

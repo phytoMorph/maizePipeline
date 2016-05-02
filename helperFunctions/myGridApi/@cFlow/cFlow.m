@@ -42,6 +42,7 @@ classdef cFlow < handle
     methods
         function [obj] = cFlow(func)
             if nargin >= 1
+                % generate unique time-rand stamp
                 obj.uniqueTimeRandStamp = strrep([num2str(now) num2str(rand(1,1))],'.','');
                 obj.dateString = datestr(now);
                 obj.subMemFunc = func;
@@ -332,14 +333,15 @@ classdef cFlow < handle
 end
 
 %{
-
-    
-
     func = cFlow('testCondorFunction');
     res = func(1,2);
     func.submitDag(50,50);
     o = cFlowLoader(res);
 
+    func = cFlow('testCondorFunction');
+    [res1,res2] = func(1,2);
+    func.submitDag(50,50);
+    [o1,o2] = cFlowLoader(res1,res2);
 
 
     for e = 1:10
