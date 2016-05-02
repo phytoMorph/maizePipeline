@@ -1,4 +1,4 @@
-function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,RAD,toSave,toDisplay)
+function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSize,toSave,toDisplay)
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
@@ -32,6 +32,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
     % init return vars    
     sM = [];   
     KernelLength = [];
+        fprintf(['starting with variable and environment initialization.\n']);
     %%%%%%%%%%%%%%%%%%%%%%%
     try
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
