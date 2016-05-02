@@ -1,4 +1,22 @@
-function [T ret] = measureImage(fsI,toMeasure,downsample,dR,CHUNK) 
+function [T ret] = measureImage(fsI,toMeasure,downsample,dR,CHUNK)
+    %{
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    About:      
+                measureImage.m is main function to handle cob analysis. It takes all input variables 
+                for its dependent functions. This function returns final result including image with 
+                bounding box and color circle. (Inputs are relative to 1200dpi)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Dependency: 
+                siteProcess.m, myBlock0.m, findT.m
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Variable Definition:
+                fsI:            The image, period to be measured.
+                toMeasure:      Errode such that the fft window samples only ear image.
+                downsample:     The number of down sample grid sites.
+                dR:             Set the current window size
+                CHUNK:          The number of chunk for input for FFT in myBlock0.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %}
     %%%%%%%%%%%%%%%%%%%%%%%
     % init return vars    
     T = NaN;   

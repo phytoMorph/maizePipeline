@@ -1,11 +1,24 @@
 function [ret] = siteProcess(sites,blockSize,func,image,CHUNK)
     %{
-        siteProcess slices an image into multiple blocks and feeds to
-        func, which is myBlock0 in this case.
-        Dependency: myBlock0
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    About:      
+                siteProcess.m slices an image into multiple blocks and feeds to func, which is 
+                myBlock0 in this case.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Dependency: 
+                myBlock0.m
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Variable Definition:
+                fsI:            The image, period to be measured.
+                toMeasure:      Errode such that the fft window samples only ear image.
+                downsample:     The number of down sample grid sites.
+                dR:             Set the current window size
+                func:
+                image:
+                CHUNK:          The number of chunk for input for FFT in myBlock0.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
     try
-        %CHUNK = 10;
         % init start and stop pointers
         str = 1;
         stp = str + CHUNK;

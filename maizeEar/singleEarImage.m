@@ -1,5 +1,4 @@
-function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSize,toSave,toDisplay)
-%function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSizeD1,windowSizeD2,windowSizeD3,toSave,toDisplay)
+function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,RAD,toSave,toDisplay)
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
@@ -21,10 +20,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
                 baselineBlue:   The baseline threshold to remove blue header in checkBlue.
                 fill:           The radius of disk for Kernel of an image close operation.
                 CHUNK:          The number of chunk for input for FFT in myBlock0.
-                windowSize =    The value to be filled for RAD in 3 dimensions.
-                windowSizeD1:   The value to be filled in first dimension for RAD, the window size.
-                windowSizeD2:   The value to be filled in second dimension for RAD, the window size.
-                windowSizeD3:   The value to be filled in third dimension for RAD, the window size.
+                RAD:            The value for window size.
                 toSave:         0 - not to save, 1 - to save.
                 toDisplay:      0 - not to save, 1 - to save.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -58,9 +54,6 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         fill = StoN(fill);
         CHUNK = StoN(CHUNK);
         windowSize = StoN(windowSize);
-        %windowSizeD1 = StoN(windowSizeD1);
-        %windowSizeD2 = StoN(windowSizeD2);
-        %windowSizeD3 = StoN(windowSizeD3);
         %%%%%%%%%%%%%%%%%%%%%%%
         % print out the fileName, number of ears, output path
         %%%%%%%%%%%%%%%%%%%%%%%
@@ -70,7 +63,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         fprintf(['Image resize in checkBlue:' num2str(checkBlue_scaleFactor) '\n']); 
         fprintf(['Raw image resize:' num2str(rawImage_scaleFactor) '\n']);  
         fprintf(['Threshold noise size:' num2str(defaultAreaPix) '\n']);  
-        %fprintf(['The window size, RAD:' num2str(windowSize) '\n']);
+        fprintf(['The window size, RAD:' num2str(windowSize) '\n']);
         fprintf(['The boarder handle for checkBlue:' num2str(addcut) '\n']);
         fprintf(['Baseline threshold to remove blue header:' num2str(baselineBlue) '\n']);
         fprintf(['The radius of disk for closing:' num2str(fill) '\n']);
@@ -86,8 +79,9 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         %%%%%%%%%%%%%%%%%%%%%%%
         fprintf(['starting with image load.\n']);
         I = imread(fileName);
-        % rawImage_scaleFactor to lower 'DPI' effect, by fraction 
-        I = imresize(I,rawImage_scaleFactor);
+        % rawImage_scaleFactor to lower 'DPI' effect, by fraction
+        % If resize factor is 1, do not excecute imresize
+        if rawImage_scaleFactor ~= 1;I = imresize(I,rawImage_scaleFactor);end
         I = checkBlue(I,checkBlue_scaleFactor,addcut,baselineBlue);
         fprintf(['ending with image load.\n']);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -100,14 +94,8 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         % ANALYSIS - start
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                       
         fprintf(['starting with image analysis. \n']);
-        % make the window sizes
-        %%window size matters for dpi. It is based on 1200 dpi
-        %RAD = round(1200/fracDpi):round(25/fracDpi):round(1600/fracDpi);
-        %RAD = windowSizeD1:windowSizeD2:windowSizeD3;
-        RAD = windowSize;
         % the number of down sample grid sites
         gridSites = 10;
-        %[KernelLength FT BB S MT] = measureKernelLength(I,noe,RAD,gridSites,defaultAreaPix,fill,CHUNK); 
         [KernelLength FT BB S MT] = measureKernelLength(I,noe,RAD,gridSites,defaultAreaPix,fill,CHUNK);
         % average kernel height
         uT = nanmean(KernelLength,2);        
