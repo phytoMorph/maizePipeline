@@ -3,7 +3,7 @@ function [tdB] = findTipPoints_fast(dB,B,I)
     SEGSIZE = 601;
     [E,U] = generateCurveSegments(dB,SEGSIZE,10);
     
-    
+    disp = 0;
     parfor k = 1:numel(dB)
         fprintf(['starting creating measure tensor for:' num2str(k) ':' num2str(numel(dB)) '\n']);
         tm = clock;
@@ -17,7 +17,9 @@ function [tdB] = findTipPoints_fast(dB,B,I)
         tM = [];
         
         for k = 1:numel(dB)
-            tM(k,:) = M{k}(1,:);
+            %tM(k,:) = M{k}(1,:);
+            tmp = struct2array(M{k});
+            tM(k,:) = tmp(1,:);
         end
         
         
