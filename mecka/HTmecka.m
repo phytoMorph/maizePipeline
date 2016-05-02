@@ -60,4 +60,5 @@ end
 
 %{
     HTmecka('gxe','c');
+    HTmecka('gxe','e');
 %}

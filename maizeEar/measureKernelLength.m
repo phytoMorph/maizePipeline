@@ -86,7 +86,7 @@ function [T ufT BB PS MT sM] = measureKernelLength(I,numberCobs,RAD,gridSites,de
             % init vars to measuure image
             tG = {};
             tL = {};
-            for r = 1:numel(RAD)
+            parfor r = 1:numel(RAD)
                 fprintf(['starting with fft window ' num2str(r) ':' num2str(numel(RAD)) '\n']);
                 % set the current window size
                 dR = RAD(r);
