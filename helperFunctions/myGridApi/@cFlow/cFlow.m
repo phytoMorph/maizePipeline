@@ -167,6 +167,8 @@ classdef cFlow < handle
             scpFileList{3} = [obj.tmpFilesLocation obj.jobList{1}.generate_exeName()];
             scpFileList{4} = [obj.tmpFilesLocation obj.jobFunction];
             scpFileList{5} = [obj.tmpFilesLocation 'run_' obj.jobFunction '.sh'];
+            scpFileList{6} = [obj.defaultCompileDirectory 'clear.sh'];
+            scpFileList{7} = [obj.defaultCompileDirectory 'post.sh'];
             if ~isempty(obj.prescriptFile)
                 scpFileList{6} = [obj.tmpFilesLocation obj.prescriptFile];
             end
@@ -231,7 +233,8 @@ classdef cFlow < handle
                 end
                 for e = 1:nargout
                     % add the output directory to the string for var name
-                    varargout{e} = [obj.outputLocation 'output' filesep tmpJob.matFileName '@out' num2str(e)];
+                    %varargout{e} = [obj.outputLocation 'output' filesep tmpJob.matFileName '@out' num2str(e)];
+                    varargout{e} = [obj.outputLocation tmpJob.matFileName '@out' num2str(e)];
                 end
                 save(tmpJob.fullMatLocation,'tmpJob','-append');
                 
