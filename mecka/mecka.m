@@ -104,6 +104,7 @@ end
     fileName = '/iplant/home/garf0012/maizeData/cobData/HOF_NIL/IA01-151210/IA01-151210-0005.tif';
     fileName = '/iplant/home/gxe/maizeData/cobData/1-26-16-Scan2c/Scan2-160126-0001.tif';
     fileName = '/iplant/home/gxe/maizeData/cobData/2-17-16-Scan2c/Scan2-160217-0047.tif';
+    fileName = '/iplant/home/gxe/maizeData/cobData/2-9-16-Scan2c/Scan2-160209-0033.tif';
     oPath = '/mnt/scratch1/maizePipeline/testResults/';
     mecka('c',fileName,3,oPath,0,1,1200,1);
 
@@ -111,8 +112,8 @@ end
     % run local copy - for ear
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     fileName = '/mnt/snapper/Lee/code_2016/production/memory_use_producution/MatlabMemoryUse_verMarch012016/input/Scan1-160129-0043.tif';
+    oPath = '/mnt/scratch1/maizePipeline/testResults/';    
     mecka('e',fileName,3,oPath,0,1,1200,1);
-    [KernelLength sM] = singleEarImage(fileName,3,'/home/nate/Downloads/',1,1);
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % run local copy - for kernel

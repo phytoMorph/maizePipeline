@@ -95,7 +95,7 @@ function [S] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_
         % main measurement code call
         fprintf(['starting with image analysis \n']);
         % convert to single
-        I = single(I)/255;
+        %I = single(I)/255;
         % run the analysis
         [BB S] = maizeCob(I,noe,defaultAreaPix,colRange1,colRange2,fill);
         % stack the results from the bounding box
@@ -123,7 +123,7 @@ function [S] = singleCobImage(fileName,noe,oPath,rawImage_scaleFactor,checkBlue_
                 rectangle('Position',BB{b},'EdgeColor','r');
                 UR = BB{b}(1:2);
                 UR(1) = UR(1) + BB{b}(3);
-                rectangle('Position',[UR rho rho],'EdgeColor','none','Curvature',[1 1],'FaceColor',S.RGB(b,:));
+                rectangle('Position',[UR rho rho],'EdgeColor','none','Curvature',[1 1],'FaceColor',S.RGB(b,:)/255);
             end
             %%%%%%%%%%%%%%%%%%%%%%%
             % format the image

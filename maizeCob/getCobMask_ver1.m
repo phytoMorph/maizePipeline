@@ -1,4 +1,4 @@
-function [I] = getCobMask_ver1(I,defaultAreaPix,colRange1,colRange2,fill)
+function [Mask_out] = getCobMask_ver1(I,defaultAreaPix,colRange1,colRange2,fill)
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
@@ -18,6 +18,15 @@ function [I] = getCobMask_ver1(I,defaultAreaPix,colRange1,colRange2,fill)
     %}
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % get gray and filter
+<<<<<<< HEAD
+        Mask_out = rgb2hsv_fast(I,'single','H');
+        Mask_out = Mask_out < colRange1/360 | Mask_out > colRange2/360;
+        Mask_out = imclearborder(Mask_out);        
+        Mask_out = imfill(Mask_out,'holes');
+        Mask_out = bwareaopen(Mask_out,defaultAreaPix);
+        Mask_out = imopen(Mask_out,strel('disk',fill));
+        Mask_out = bwareaopen(Mask_out,defaultAreaPix);
+=======
         I = rgb2hsv_fast(I,'single','H');
         I = I < colRange1/360 | I > colRange2/360;
         I = imclearborder(I);        
@@ -25,4 +34,5 @@ function [I] = getCobMask_ver1(I,defaultAreaPix,colRange1,colRange2,fill)
         I = bwareaopen(I,defaultAreaPix);
         I = imopen(I,strel('disk',fill));
         I = bwareaopen(I,defaultAreaPix);
+>>>>>>> 66bccc59f57875a905a3c2b151a12b796d0ec3eb
 end

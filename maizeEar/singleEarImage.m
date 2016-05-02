@@ -20,7 +20,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
                 baselineBlue:   The baseline threshold to remove blue header in checkBlue.
                 fill:           The radius of disk for Kernel of an image close operation.
                 CHUNK:          The number of chunk for input for FFT in myBlock0.
-                RAD:            The value for window size.
+                windowSize:            The value for window size.
                 toSave:         0 - not to save, 1 - to save.
                 toDisplay:      0 - not to save, 1 - to save.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,7 +64,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         fprintf(['Image resize in checkBlue:' num2str(checkBlue_scaleFactor) '\n']); 
         fprintf(['Raw image resize:' num2str(rawImage_scaleFactor) '\n']);  
         fprintf(['Threshold noise size:' num2str(defaultAreaPix) '\n']);  
-        fprintf(['The window size, RAD:' num2str(windowSize) '\n']);
+        fprintf(['The window size:' num2str(windowSize) '\n']);
         fprintf(['The boarder handle for checkBlue:' num2str(addcut) '\n']);
         fprintf(['Baseline threshold to remove blue header:' num2str(baselineBlue) '\n']);
         fprintf(['The radius of disk for closing:' num2str(fill) '\n']);
@@ -97,7 +97,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
         fprintf(['starting with image analysis. \n']);
         % the number of down sample grid sites
         gridSites = 10;
-        [KernelLength FT BB S MT] = measureKernelLength(I,noe,RAD,gridSites,defaultAreaPix,fill,CHUNK);
+        [KernelLength FT BB S MT] = measureKernelLength(I,noe,windowSize,gridSites,defaultAreaPix,fill,CHUNK);
         % average kernel height
         uT = nanmean(KernelLength,2);        
         DATA = [];             
@@ -157,7 +157,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
             saveas(h,imageFile);
             % save mat file
             matFile = [oPath nm '.mat'];
-            save(matFile,'BB','fileName','KernelLength','FT','S','RAD');
+            save(matFile,'BB','fileName','KernelLength','FT','S','windowSize');
             % save csv data
             csvOut = [oPath nm 'compile_results.csv'];
             csvwrite(csvOut,DATA);
