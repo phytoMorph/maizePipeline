@@ -20,7 +20,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
                 baselineBlue:   The baseline threshold to remove blue header in checkBlue.
                 fill:           The radius of disk for Kernel of an image close operation.
                 CHUNK:          The number of chunk for input for FFT in myBlock0.
-                windowSize:            The value for window size.
+                windowSize:     The value for window size.
                 toSave:         0 - not to save, 1 - to save.
                 toDisplay:      0 - not to save, 1 - to save.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -32,6 +32,7 @@ function [KernelLength sM] = singleEarImage(fileName,noe,oPath,rawImage_scaleFac
     % init return vars    
     sM = [];   
     KernelLength = [];
+        fprintf(['starting with variable and environment initialization.\n']);
     %%%%%%%%%%%%%%%%%%%%%%%
     try
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
