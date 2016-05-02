@@ -206,6 +206,8 @@ classdef cJob < handle
         function [] = localExecute(obj)
             varargout = {};
             matFile = obj.fullMatLocation();
+            
+            
             if isdeployed
                 [~,matFile] = fileparts(matFile); 
             end
@@ -219,6 +221,8 @@ classdef cJob < handle
             inputString(end) = ')';
             CMD = ['[OUT{1:obj.jobNargout}] = ' obj.jobFunction inputString ';'];
             eval(CMD);
+            
+            
             if isdeployed
                 mkdir('./output/');
                 matFile = ['./output/' matFile '.mat']
@@ -234,6 +238,7 @@ classdef cJob < handle
                     end
                 end
             else
+                
                 for e = 1:numel(OUT)
                     varName = ['out' num2str(e)];
                     CMD = [varName '=OUT{e};'];

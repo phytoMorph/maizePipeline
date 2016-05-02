@@ -17,9 +17,14 @@ function [] = HTmecka(user,algorithm)
     switch algorithm
         case 'c'
             analysisType = 'cobs';
-          
             memREQ = '4000';
             algorithmFlag = 'c';
+            numberOfObjects = '3';
+            imageRES = '1200';
+        case 'e'
+            analysisType = 'ears';
+            memREQ = '4000';
+            algorithmFlag = 'e';
             numberOfObjects = '3';
             imageRES = '1200';
     end

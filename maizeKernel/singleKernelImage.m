@@ -115,7 +115,6 @@ function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_sc
         dB = dB(fidx);
         [tipPoint dB] = getInitialGuessForTip(dB);
         [dB] = findTipPoints_fast(dB,B,I);
-        dB = Econtour(dB,B,I);
         [M] = getKernelMeasurements(B,dB);
         MAJOR = [M.MajorLength];
         MINOR = [M.MinorLength];

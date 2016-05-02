@@ -79,6 +79,7 @@ classdef cFlow < handle
             obj.submitNodeLocation = submitNodeLocation;
         end
         
+        % this function will render a local copy of the dag files
         function [] = renderDagFile(obj,oFilePath)
             if nargin == 1
                 oFilePath = obj.tmpFilesLocation;
@@ -178,18 +179,19 @@ classdef cFlow < handle
             if nargin >= 3
                 maxpost = varargin{2};
             end
+            remote_DAG_location = [obj.jobFunction filesep obj.uniqueTimeRandStamp];
             obj.renderDagFile();
             scpList = obj.generate_scpFileList();
             dirCMD_logs_out = ['ssh -p 50118 nate@128.104.98.118 ''' 'mkdir -p /home/nate/condorFunctions/#directory#/logs/stdout/'''];
             dirCMD_logs_err = ['ssh -p 50118 nate@128.104.98.118 ''' 'mkdir -p /home/nate/condorFunctions/#directory#/logs/stderr/'''];
             dirCMD_output = ['ssh -p 50118 nate@128.104.98.118 ''' 'mkdir -p /home/nate/condorFunctions/#directory#/output/'''];
-            [status result] = system(strrep(dirCMD_logs_out,'#directory#',obj.jobFunction));
-            [status result] = system(strrep(dirCMD_logs_err,'#directory#',obj.jobFunction));
-            [status result] = system(strrep(dirCMD_output,'#directory#',obj.jobFunction));
+            [status result] = system(strrep(dirCMD_logs_out,'#directory#',remote_DAG_location));
+            [status result] = system(strrep(dirCMD_logs_err,'#directory#',remote_DAG_location));
+            [status result] = system(strrep(dirCMD_output,'#directory#',remote_DAG_location));
             dirCMD = ['ssh -p 50118 nate@128.104.98.118 ''' 'mkdir /home/nate/condorFunctions/#directory#/'''];
-            [status result] = system(strrep(dirCMD,'#directory#',obj.jobFunction));
+            [status result] = system(strrep(dirCMD,'#directory#',remote_DAG_location));
             CMD = 'scp -P 50118 #srcfile# nate@128.104.98.118:/home/nate/condorFunctions/#directory#/#desfile#';
-            CMD = strrep(CMD,'#directory#',obj.jobFunction);
+            CMD = strrep(CMD,'#directory#',remote_DAG_location);
             for f = 1:numel(scpList)
                 [pth nm ext] = fileparts(scpList{f});
                 tCMD = strrep(CMD,'#desfile#',[nm ext]);
@@ -200,7 +202,7 @@ classdef cFlow < handle
             % submit the job dag
             dagName = obj.generate_dagName();
             CMD = ['ssh -p 50118 nate@128.104.98.118 ''' 'cd /home/nate/condorFunctions/#directory#/; condor_submit_dag -maxidle ' num2str(maxidle) ' -maxpost ' num2str(maxpost) ' ' dagName ''''];
-            CMD = strrep(CMD,'#directory#',obj.jobFunction);
+            CMD = strrep(CMD,'#directory#',remote_DAG_location);
             system(CMD,'-echo');
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             % condor launch - END
@@ -228,7 +230,8 @@ classdef cFlow < handle
                     tmpJob.setArg(s.subs{e},e);
                 end
                 for e = 1:nargout
-                    varargout{e} = [obj.outputLocation tmpJob.matFileName '@out' num2str(e)];
+                    % add the output directory to the string for var name
+                    varargout{e} = [obj.outputLocation 'output' filesep tmpJob.matFileName '@out' num2str(e)];
                 end
                 save(tmpJob.fullMatLocation,'tmpJob','-append');
                 
@@ -342,6 +345,8 @@ end
     [res1,res2] = func(1,2);
     func.submitDag(50,50);
     [o1,o2] = cFlowLoader(res1,res2);
+    [o1 o2] = cFlowLoader(res);
+
 
 
     for e = 1:10
@@ -349,7 +354,7 @@ end
     end
     func.submitDag(50,50);
 
-    [o1 o2] = cFlowLoader(res);
+    
 
     
 
