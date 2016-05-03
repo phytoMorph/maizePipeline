@@ -251,6 +251,10 @@ classdef cFlow < handle
                 [varargout{1:nargout}] = builtin('subsref',obj,s);
             end
         end
+        
+        function [] = generatePostScript(obj)
+        
+        end
     end
     
     methods (Static)
@@ -335,6 +339,7 @@ classdef cFlow < handle
             [uniqueEvalDirectory] = cFlow.generateUniqueCompileLocation(func,uniqueTimeRandStamp);
             uniqueOutputLocation = [uniqueEvalDirectory 'functionOutputs' filesep];
         end
+        
     end
 end
 
@@ -344,20 +349,22 @@ end
     func.submitDag(50,50);
     o = cFlowLoader(res);
 
+
     func = cFlow('testCondorFunction');
     [res1,res2] = func(1,2);
     func.submitDag(50,50);
     [o1,o2] = cFlowLoader(res1,res2);
-    [o1 o2] = cFlowLoader(res);
 
 
-
+    func = cFlow('testCondorFunction');
     for e = 1:10
-        [res1 re2] = func(1,2);
+        [resM1{e} resM2{e}] = func(e,e+1);
     end
     func.submitDag(50,50);
 
-    
+    for e = 1:10
+        [o1M{e} o2M{e}] = cFlowLoader(resM1{e},resM2{e});
+    end
 
     
 

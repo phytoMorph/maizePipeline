@@ -203,11 +203,12 @@ classdef cJob < handle
             matLoc =  [inputsDirectory obj.matFileName];
         end
         
+        % call function to execute the cJob
         function [] = localExecute(obj)
             varargout = {};
             matFile = obj.fullMatLocation();
             
-            
+            % if is deplayed then matFile output becomes the file name only
             if isdeployed
                 [~,matFile] = fileparts(matFile); 
             end
@@ -225,8 +226,9 @@ classdef cJob < handle
             
             if isdeployed
                 mkdir('./output/');
-                matFile = ['./output/' matFile '.mat']
-                fprintf('hello');
+                mkdir('./output/outputVars/');
+                matFile = ['./output/outputVars/' matFile '.mat'];
+                fprintf(['Saving output(s) from function to disk /n']);
                 for e = 1:numel(OUT)
                     varName = ['out' num2str(e)];
                     CMD = [varName '=OUT{e}'];
@@ -238,7 +240,6 @@ classdef cJob < handle
                     end
                 end
             else
-                
                 for e = 1:numel(OUT)
                     varName = ['out' num2str(e)];
                     CMD = [varName '=OUT{e};'];
@@ -324,7 +325,7 @@ classdef cJob < handle
             fprintf(fileID,'%s\n',obj.mainline21);
             fprintf(fileID,'%s\n',obj.mainline3);
             
-            % setup for icommands
+            % if icommands flag is set then perform setup for icommands
             if icommands
                 fprintf(fileID,'%s\n',obj.mainline4);
                 fprintf(fileID,'%s\n',obj.mainline5);
