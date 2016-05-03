@@ -34,6 +34,7 @@ classdef cJob < handle
        % tar the results
        %mainline8 = 'tar zcvf #outputTAR#.tar output';
        mainline8 = 'tar cvf #outputTAR#.tar output';
+       mainline9 = 'tar cvf #outputTAR#.tar #mappingSource#';
        
        % squid location
        squidURL = 'http://proxy.chtc.wisc.edu/SQUID/ndmiller/';       
@@ -307,7 +308,7 @@ classdef cJob < handle
             fclose(fileID);
         end
         % generate shell command for compiled code
-        function [] = generate_shellCommand(obj,MCR_VER,icommands,oFilePath)
+        function [] = generate_shellCommand(obj,MCR_VER,icommands,oFilePath,directoryMappings)
             fileID = fopen([oFilePath obj.generate_exeName],'w');
             
             % setup for shell script            
@@ -343,19 +344,32 @@ classdef cJob < handle
             end            
             fprintf(fileID,'%s\n',mainCMD);
             
-            % setup for tar output            
-            fprintf(fileID,'%s\n',strrep(obj.mainline8,'#outputTAR#',['${' num2str(obj.jobNargin+1) '}']));
+            if nargin ~= 5
+                % setup for tar output            
+                fprintf(fileID,'%s\n',strrep(obj.mainline8,'#outputTAR#',['${' num2str(obj.jobNargin+1) '}']));
+            else
+                % multiple non-default directory mappings
+                
+            else
+                
+            end
             
             % close File
             fclose(fileID);
         end
         % generate submit package
-        function [] = generate_submitFilesForDag(obj,oFilePath)
-            if nargin == 1
+        function [] = generate_submitFilesForDag(obj,directoryMappings,oFilePath)
+            if nargin <= 2
                 oFilePath = obj.tmpFileLocation;
             end
-            obj.generate_submitFile(oFilePath,1);
-            obj.generate_shellCommand('717',1,oFilePath);
+            if nargin ==1
+                obj.generate_submitFile(oFilePath,1);
+                obj.generate_shellCommand('717',1,oFilePath);
+            else
+                obj.generate_submitFile(oFilePath,1);
+                obj.generate_shellCommand('717',1,oFilePath,directoryMappings);
+            end
+            
         end
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
