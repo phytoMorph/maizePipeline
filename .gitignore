@@ -4,6 +4,8 @@
 !readme.md
 !.gitkeep
 !*.m
+!*.cpp
 !*.txt
 !*/
+*ba_interp2.cpp
 
