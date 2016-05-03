@@ -116,7 +116,7 @@ function [M] = measureSingleContourMetrics_fast(contour,B,E,U,S,sm)
         %M.iContour = C; 
         %M.contour = contour;
     catch ME
-    
+        ME
     end
 end
 

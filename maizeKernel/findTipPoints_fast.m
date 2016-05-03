@@ -18,9 +18,9 @@ function [tdB] = findTipPoints_fast(dB,B,I)
         tM = [];
         
         for k = 1:numel(dB)
-            %tM(k,:) = M{k}(1,:);
-            tmp = struct2array(M{k});
-            tM(k,:) = tmp(1,:);
+            tM(k,:) = M{k}(1,:);
+            %tmp = struct2array(M{k});
+            %tM(k,:) = tmp(1,:);
         end
         
         
@@ -38,8 +38,8 @@ function [tdB] = findTipPoints_fast(dB,B,I)
             hold on;
         end
         for e = 1:numel(dB)
-            tmpM = struct2array(M{e});
-            %MLE = lookUpLOG(H,M{e});
+            %tmpM = struct2array(M{e});
+            MLE = lookUpLOG(H,M{e});
             MLE = lookUpLOG(H,tmpM);
             MLE = sum(MLE,2);
             [J,nidx] = max(MLE);
@@ -53,11 +53,10 @@ function [tdB] = findTipPoints_fast(dB,B,I)
                 drawnow
             end
             tdB{e} = circshift(tdB{e},[toShift 0]);
-            %M{e} = circshift(M{e},[toShift 0]);
-            M{e} = circshift(tmpM,[toShift 0]);
+            M{e} = circshift(M{e},[toShift 0]);
+            %M{e} = circshift(tmpM,[toShift 0]);
         end
         rep = rep + 1;
     end
-    
     
 end
