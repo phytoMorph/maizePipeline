@@ -4,7 +4,8 @@ function [tdB] = findTipPoints_fast(dB,B,I)
     [E,U] = generateCurveSegments(dB,SEGSIZE,10);
     
     disp = 0;
-    parfor k = 1:numel(dB)
+    %parfor k = 1:numel(dB)
+    for k = 1:numel(dB)
         fprintf(['starting creating measure tensor for:' num2str(k) ':' num2str(numel(dB)) '\n']);
         tm = clock;
         M{k} = measureSingleContourMetrics_fast(dB{k},B,E,U,SEGSIZE,10);
@@ -37,7 +38,9 @@ function [tdB] = findTipPoints_fast(dB,B,I)
             hold on;
         end
         for e = 1:numel(dB)
-            MLE = lookUpLOG(H,M{e});
+            tmpM = struct2array(M{e});
+            %MLE = lookUpLOG(H,M{e});
+            MLE = lookUpLOG(H,tmpM);
             MLE = sum(MLE,2);
             [J,nidx] = max(MLE);
             toShift = -(nidx-1);
@@ -50,7 +53,8 @@ function [tdB] = findTipPoints_fast(dB,B,I)
                 drawnow
             end
             tdB{e} = circshift(tdB{e},[toShift 0]);
-            M{e} = circshift(M{e},[toShift 0]);
+            %M{e} = circshift(M{e},[toShift 0]);
+            M{e} = circshift(tmpM,[toShift 0]);
         end
         rep = rep + 1;
     end
