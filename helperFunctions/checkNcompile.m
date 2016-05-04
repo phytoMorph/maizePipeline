@@ -1,4 +1,4 @@
-function [] = checkNcompile(mexaName)
+function [] = checkNcompile(mexaName,curPath)
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
@@ -15,16 +15,18 @@ function [] = checkNcompile(mexaName)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
     try
-        [pth nm ext] = fileparts(mexaName);
-        mexaName = ['/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/' nm '/' mexaName];
+        % hard coded destination
+        mexaName = ['/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp/' mexaName];
         if exist(mexaName, 'file')
             % File exists.  Do stuff....
-            %cd(cur);
+            cd(curPath);
         else
           % File does not exist.
           %cd('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp');
-          mex -O ba_interp2.cpp;
-          %cd(cur);
+          mex -O /mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp/ba_interp2.cpp;
+          %mex -O ba_interp2.cpp;
+          addpath(mexaName);
+          cd(curPath);
         end
     catch ME
         close all;
