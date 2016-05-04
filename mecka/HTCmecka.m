@@ -35,14 +35,14 @@ function [] = HTmecka(user,algorithm)
     [FileList] = ScanAndIssueNewFilesOniRods(user,analysisType);
     
     
-    
+    %{
     f = cFLow('mecka');
     for e = 1:numJobs
         f(algorithmFlag,FileList{e},3,'./output/',1,1,imageRES,1);
     end
     f.submitDag(50,50);
+    %}
     
-    %{
     % geneate the dag
     dag = epfod();
     dag.setFunctionName('mecka');
@@ -73,7 +73,7 @@ function [] = HTmecka(user,algorithm)
     end
     % submit dag
     dag.submitDag(50,50);
-    %}
+    
 end
 
 %{

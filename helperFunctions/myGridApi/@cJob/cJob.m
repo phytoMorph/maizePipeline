@@ -34,7 +34,7 @@ classdef cJob < handle
        % tar the results
        %mainline8 = 'tar zcvf #outputTAR#.tar output';
        mainline8 = 'tar cvf #outputTAR#.tar output';
-       mainline9 = 'tar cvf #outputTAR#.tar #mappingSource#';
+       mainline10 = 'tar cvf #outputTAR#.tar #mappingSource#';
        
        % squid location
        squidURL = 'http://proxy.chtc.wisc.edu/SQUID/ndmiller/';       
@@ -50,6 +50,8 @@ classdef cJob < handle
        
        % default remote save location
        outLocation = './output';
+       
+      
     end
     
     properties (Access = private)% for submitfile
@@ -59,6 +61,11 @@ classdef cJob < handle
         % re transfer
         should_transfer_files = 'YES';
         when_to_transfer_output = 'ON_EXIT';        
+    end
+    
+    
+    properties (Constant)
+        deployed_ouput_vars_location = 'inMemVarsOut';
     end
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -226,9 +233,9 @@ classdef cJob < handle
             
             
             if isdeployed
-                mkdir('./output/');
-                mkdir('./output/outputVars/');
-                matFile = ['./output/outputVars/' matFile '.mat'];
+                varsLoc = ['.' filesep cJob.deployed_ouput_vars_location filesep];
+                mkdir(varsLoc);
+                matFile = [varsLoc matFile '.mat'];
                 fprintf(['Saving output(s) from function to disk /n']);
                 for e = 1:numel(OUT)
                     varName = ['out' num2str(e)];
@@ -268,7 +275,10 @@ classdef cJob < handle
         % generate functions
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % generate submit file to call shell command
-        function [] = generate_submitFile(obj,oFilePath,asVar)
+        function [] = generate_submitFile(obj,oFilePath,asVar,numberOfDirectoryMappings)
+            if nargin == 3
+                numberOfDirectoryMappings = 1;
+            end
             fileID = fopen([oFilePath obj.generate_submitName] ,'w');
             
             % setup for universe
@@ -288,7 +298,7 @@ classdef cJob < handle
             obj.renderRequirements(fileID);
             
             % setup for arguments
-            obj.renderArguments(fileID,asVar);
+            obj.renderArguments(fileID,asVar,numberOfDirectoryMappings);
             
             % setup for logging
             obj.renderLogFiles(fileID);
@@ -349,9 +359,13 @@ classdef cJob < handle
                 fprintf(fileID,'%s\n',strrep(obj.mainline8,'#outputTAR#',['${' num2str(obj.jobNargin+1) '}']));
             else
                 % multiple non-default directory mappings
-                
-            else
-                
+                for e = 1:numel(directoryMappings)
+                    fidx = strfind(directoryMappings{e},'>');
+                    source = directoryMappings{e}(1:fidx(1)-1);
+                    tarMappingString = strrep(obj.mainline10,'#outputTAR#',['${' num2str(obj.jobNargin+1+(e)) '}']);
+                    tarMappingString = strrep(tarMappingString,'#mappingSource#',source);
+                    fprintf(fileID,'%s\n',tarMappingString);
+                end
             end
             
             % close File
@@ -366,7 +380,7 @@ classdef cJob < handle
                 obj.generate_submitFile(oFilePath,1);
                 obj.generate_shellCommand('717',1,oFilePath);
             else
-                obj.generate_submitFile(oFilePath,1);
+                obj.generate_submitFile(oFilePath,1,numel(directoryMappings));
                 obj.generate_shellCommand('717',1,oFilePath,directoryMappings);
             end
             
@@ -417,9 +431,12 @@ classdef cJob < handle
             end
         end
 
-        function [] = renderArguments(obj,fileID,asVar)
+        function [] = renderArguments(obj,fileID,asVar,extraArgs)
+            if nargin == 3
+                extraArgs = 1;
+            end
             arg = 'arguments = "';
-            for e = 1:(obj.jobNargin+1)
+            for e = 1:(obj.jobNargin+extraArgs+1)
                 if asVar
                     tmp = ['$(argNumber' num2str(e) ')'];
                 else
