@@ -20,7 +20,8 @@ function [Mask_out] = getCobMask_ver1(I,defaultAreaPix,colRange1,colRange2,fill)
         % get gray and filter
         Mask_out = rgb2hsv_fast(I,'single','H');
         Mask_out = Mask_out < colRange1/360 | Mask_out > colRange2/360;
-        Mask_out = imclearborder(Mask_out);        
+        % take this out and retry on May,4 2016
+        %Mask_out = imclearborder(Mask_out);        
         Mask_out = imfill(Mask_out,'holes');
         Mask_out = bwareaopen(Mask_out,defaultAreaPix);
         Mask_out = imopen(Mask_out,strel('disk',fill));
