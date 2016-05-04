@@ -54,7 +54,7 @@ function [tipPoint dB] = getInitialGuessForTip(dB)
             [~,midx] = min(uK);
             % subtract one  because watersheds start with 0
             midx = midx - 1;
-            % find the deepest average watershed
+            % find the deepest average watersheddB = dB(fidx);
             fidx = find(L==midx);
             % find the deepest point on the watershed
             [~,sidx] = min(K(fidx));

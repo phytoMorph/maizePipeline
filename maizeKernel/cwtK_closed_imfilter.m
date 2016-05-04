@@ -37,5 +37,5 @@ function [out] = cwtK_closed_imfilter(J,para)
         getReport(ME);
         fprintf(['******error in:cwtK_closed_imfilter.m******\n']);
     end
-    end
+
 end
