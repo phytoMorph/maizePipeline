@@ -19,7 +19,7 @@ function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_sc
                 toDisplay:      0 - not to save, 1 - to save.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
-    versionString = ['Starting kernel analysis algorithm. \n Publication Version 1.0 - Monday, March 28, 2016. \n'];
+    versionString = ['Starting kernel analysis algorithm. \nPublication Version 1.0 - Monday, March 28, 2016. \n'];
     fprintf(versionString);
     %%%%%%%%%%%%%%%%%%%%%%%
     % init vars

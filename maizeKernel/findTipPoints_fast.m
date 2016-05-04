@@ -4,12 +4,12 @@ function [tdB] = findTipPoints_fast(dB,B,I)
     [E,U] = generateCurveSegments(dB,SEGSIZE,10);
     
     disp = 0;
-    %parfor k = 1:numel(dB)
-    for k = 1:numel(dB)
+    parfor k = 1:numel(dB)
+    %for k = 1:numel(dB)
         fprintf(['starting creating measure tensor for:' num2str(k) ':' num2str(numel(dB)) '\n']);
         tm = clock;
         M{k} = measureSingleContourMetrics_fast(dB{k},B,E,U,SEGSIZE,10);
-        fprintf(['ending creating measure tensor for:' num2str(k) ':' num2str(numel(dB)) ' in' num2str(etime(clock,tm)) '\n']);
+        fprintf(['ending creating measure tensor for:' num2str(k) ':' num2str(numel(dB)) ' in ' num2str(etime(clock,tm)) '\n']);
     end
     
     shiftAmount = zeros(1,numel(tdB));
