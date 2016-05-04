@@ -1,8 +1,9 @@
-function [] = HTmecka(user,algorithm)
+function [] = HTCmecka(user,algorithm)
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
-                HTmecka.m is create jobs for condor to run Maize Ear Cob Kernel Analysis. A user is 
+                HTCmecka.m is 
+                    create jobs for condor to run Maize Ear Cob Kernel Analysis. A user is 
                 to choose one of three algorithm to use and provide user for condor.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     Dependency: 
@@ -29,6 +30,13 @@ function [] = HTmecka(user,algorithm)
             numberOfObjects = '3';
             imageRES = '1200';
             localOutputLocation = ['/mnt/spaldingdata/nate/mirror_images/maizeData/' user '/return/earData/'];
+        case 'k'
+            analysisType = 'kernels';
+            memREQ = '4000';
+            algorithmFlag = 'k';
+            numberOfObjects = '3';
+            imageRES = '1200';
+            localOutputLocation = ['/mnt/spaldingdata/nate/mirror_images/maizeData/' user '/return/kernelData/'];
     end
     
     % get file list
@@ -79,4 +87,5 @@ end
 %{
     HTCmecka('gxe','c');
     HTCmecka('gxe','e');
+    HTCmecka('gxe','k');
 %}
