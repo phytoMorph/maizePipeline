@@ -27,8 +27,15 @@ function [] = HTmecka(user,algorithm)
             memREQ = '4000';
             algorithmFlag = 'e';
             numberOfObjects = '3';
-            imageRES = '1200';
+            imageRES = '120HTmecka('gxe','e');0';
             localOutputLocation = ['/mnt/spaldingdata/nate/mirror_images/maizeData/' user '/return/earData/'];
+        case 'k'
+            analysisType = 'kernels';
+            memREQ = '4000';
+            algorithmFlag = 'k';
+            numberOfObjects = '3';
+            imageRES = '1200';
+            localOutputLocation = ['/mnt/spaldingdata/nate/mirror_images/maizeData/' user '/return/kernelData/'];
     end
     
     % get file list
@@ -68,4 +75,5 @@ end
 %{
     HTmecka('gxe','c');
     HTmecka('gxe','e');
+    HTmecka('gxe','k');
 %}
