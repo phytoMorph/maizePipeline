@@ -31,6 +31,8 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
             rawImage_scaleFactor = 1;
         end
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%% common arguments for Ear, Cob and Kernel %%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % set to default value of 1200
         defaultResolution = 1200;
         scanResolution = StoN(scanResolution);
@@ -39,6 +41,12 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
         % set to default value of .25
         checkBlue_scaleFactor = .25;
         %fprintf(['Fraction relative to 1200 dpi:' num2str(fracDpi) '\n']); 
+        % set to default value of 100
+        addcut = 100;
+        addcut = round(addcut*fracDpi);
+        % set to default value of 600
+        baselineBlue = 600;
+        baselineBlue = round(baselineBlue*fracDpi);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         switch algorithm
             case 'e'
@@ -47,12 +55,14 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 % set to default value of 10^6
                 defaultAreaPix = 10^6;
                 defaultAreaPix = round(defaultAreaPix*fracDpi);
+                %{
                 % set to default value of 100
                 addcut = 100;
                 addcut = round(addcut*fracDpi);
                 % set to default value of 600
                 baselineBlue = 600;
                 baselineBlue = round(baselineBlue*fracDpi);
+                %}
                 % set to default value of 31
                 fill = 31;
                 % set to default value of 1200:25:1600
@@ -65,12 +75,14 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 % set to default value of 300
                 rho = 300;
                 rho = round(rho*fracDpi);
+                %{
                 % set to default value of 100
                 addcut = 100;
                 addcut = round(addcut*fracDpi);
                 % set to default value of 600
                 baselineBlue = 600;
                 baselineBlue = round(baselineBlue*fracDpi);
+                %}
                 % set to default value of 70
                 colRange1 = 70;
                 % set to default value of 166
@@ -79,11 +91,25 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 fill = 50;
                 singleCobImage(fileName,numberOfObjects,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,rho,addcut,baselineBlue,colRange1,colRange2,fill,toSave,toDisplay);
             case 'k'
-                
+                numberOfObjects;
+                % set to default value of 50000
+                defaultAreaPix = 50000;
+                defaultAreaPix = round(defaultAreaPix*fracDpi);
+                %{
+                % set to default value of 100
+                addcut = 100;
+                addcut = round(addcut*fracDpi);
+                % set to default value of 600
+                baselineBlue = 600;
+                baselineBlue = round(baselineBlue*fracDpi);
+                %}
+                % set to default value of 31
+                fill = 31;
+                singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,toSave,toDisplay);                
         end
     catch ME
         close all;
-        getReport(ME)
+        getReport(ME);
         fprintf(['******error in:mecka.m******\n']);
     end
 end
@@ -117,4 +143,12 @@ end
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % run local copy - for kernel
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Test destination for Lee use
+    oPutK = '/mnt/snapper/Lee/maizeData_resTest_Result/kernelData_Result/'
+    oPath = '/mnt/scratch1/maizePipeline/testResults/';
+    I300K = '/mnt/snapper/Lee/maizeData_resTest/kernelData/MN02-160121-0014-300.tif'
+    I600K = '/mnt/snapper/Lee/maizeData_resTest/kernelData/MN02-160121-0014-600.tif'
+    I800K = '/mnt/snapper/Lee/maizeData_resTest/kernelData/MN02-160121-0014-800.tif'
+    fileName = '/mnt/snapper/Lee/code_2016/production/memory_use_producution/MatlabMemoryUse_verMarch012016/input/Scan1-160129-0043.tif';       
+    mecka('k',I800K,3,oPutK,1,1,800,1);
 %}

@@ -1,4 +1,4 @@
-function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,addcut,baselineBlue,toSave,toDisplay)
+function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,toSave,toDisplay)
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
@@ -13,13 +13,15 @@ function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_sc
                 oPath:          A path to result of analysis in a string that includes '/'.
                 rawImage_scaleFactor:   A desired percentage to resize the image.
                 checkBlue_scaleFactor:  A desired percentage to resize the image in checkBlue.
+                defaultAreaPix: The default pixel to be considered noise relative to 1200 dpi.
                 addcut:         The boarder handle for checkBlue. This is an addition to blue top computed in checkBlue.
                 baselineBlue:   The baseline threshold to remove blue header in checkBlue.
+                fill:           The radius of disk for Kernel of an image close operation.
                 toSave:         0 - not to save, 1 - to save.
                 toDisplay:      0 - not to save, 1 - to save.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
-    versionString = ['Starting kernel analysis algorithm. \n Publication Version 1.0 - Monday, March 28, 2016. \n'];
+    versionString = ['Starting kernel analysis algorithm. \nPublication Version 1.0 - Monday, March 28, 2016. \n'];
     fprintf(versionString);
     %%%%%%%%%%%%%%%%%%%%%%%
     % init vars
@@ -28,6 +30,8 @@ function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_sc
     toSaveContour = [];
     %%%%%%%%%%%%%%%%%%%%%%%
     try
+        %%I don't know if tic/toc is meant to be in the code.
+        tic;
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % INIT VARS - start
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,17 +45,21 @@ function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_sc
         %%%%%%%%%%%%%%%%%%%%%%%
         checkBlue_scaleFactor = StoN(checkBlue_scaleFactor);
         rawImage_scaleFactor = StoN(rawImage_scaleFactor);
+        defaultAreaPix = StoN(defaultAreaPix);
         addcut = StoN(addcut);
         baselineBlue = StoN(baselineBlue);
+        fill = StoN(fill);
         %%%%%%%%%%%%%%%%%%%%%%%
         % print out the fileName, number of ears, output path
         %%%%%%%%%%%%%%%%%%%%%%%
         fprintf(['FileName:' fileName '\n']);
         fprintf(['OutPath:' oPath '\n']);
+        fprintf(['Raw image resize:' num2str(rawImage_scaleFactor) '\n']);
         fprintf(['Image resize in checkBlue:' num2str(checkBlue_scaleFactor) '\n']); 
-        fprintf(['Raw image resize:' num2str(rawImage_scaleFactor) '\n']);  
+        fprintf(['Threshold noise size:' num2str(defaultAreaPix) '\n']);
         fprintf(['The boarder handle for checkBlue:' num2str(addcut) '\n']);
         fprintf(['Baseline threshold to remove blue header:' num2str(baselineBlue) '\n']);
+        fprintf(['The radius of disk for closing:' num2str(fill) '\n']);
         %%%%%%%%%%%%%%%%%%%%%%%
         % get the file parts
         %%%%%%%%%%%%%%%%%%%%%%%
@@ -90,16 +98,19 @@ function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_sc
         % threshold the image
         B = single(G) > level;        
         % remove small objects
-        %%take out constant
-        B = bwareaopen(B,50000);                
+        % 50000 as default
+        %defaultAreaPix = 50000;
+        B = bwareaopen(B,defaultAreaPix);                
         % fill holes
         B = imfill(B,8,'holes');
         % remove objects connected to the kernel and are thin
-        B = imopen(B,strel('disk',31,8));
+        % 31 as default
+        %fill = 31;
+        B = imopen(B,strel('disk',fill,8));
         % fill holes
         B = imfill(B,4,'holes');
         % re-remove small objects
-        B = bwareaopen(B,50000);        
+        B = bwareaopen(B,defaultAreaPix);        
         % measure region props
         R = regionprops(B,'Area','MajorAxis','MinorAxis','Image','Centroid','Orientation','Eccentricity');
         % stack the area
