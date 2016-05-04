@@ -28,7 +28,8 @@ function [tdB] = findTipPoints_fast(dB,B,I)
         cd(cur);
         %}
         % this line added to compile it properly.-Le
-        checkNcompile('ba_interp2.mexa64');
+        %checkNcompile('ba_interp2.mexa64');
+        mex -O ba_interp2.cpp;
         parfor k = 1:numel(dB)
             fprintf(['starting creating measure tensor for:' num2str(k) ':' num2str(numel(dB)) '\n']);
             tm = clock;

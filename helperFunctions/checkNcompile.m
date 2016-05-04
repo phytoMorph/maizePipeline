@@ -15,9 +15,8 @@ function [] = checkNcompile(mexaName)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
     try
-        %cur = pwd;
-        %cd('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp');
-        mexaName = ['/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp' mexaName];
+        [pth nm ext] = fileparts(mexaName);
+        mexaName = ['/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/' nm '/' mexaName];
         if exist(mexaName, 'file')
             % File exists.  Do stuff....
             %cd(cur);
