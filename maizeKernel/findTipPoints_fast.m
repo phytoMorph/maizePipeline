@@ -1,4 +1,6 @@
 function [tdB] = findTipPoints_fast(dB,B,I)
+    % all warnings are not to be shown.
+    warning off
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
@@ -19,13 +21,20 @@ function [tdB] = findTipPoints_fast(dB,B,I)
         [E,U] = generateCurveSegments(dB,SEGSIZE,10);
 
         disp = 0;
-        for k = 1:numel(dB)
+        %{
+        cur = pwd;
+        cd('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp');
+        mex -O ba_interp2.cpp;
+        cd(cur);
+        %}
+        % this line added to compile it properly.-Le
+        checkNcompile('ba_interp2.mexa64');
+        parfor k = 1:numel(dB)
             fprintf(['starting creating measure tensor for:' num2str(k) ':' num2str(numel(dB)) '\n']);
             tm = clock;
             M{k} = measureSingleContourMetrics_fast(dB{k},B,E,U,SEGSIZE,10);
             fprintf(['ending creating measure tensor for:' num2str(k) ':' num2str(numel(dB)) ' in ' num2str(etime(clock,tm)) '\n']);
         end
-
         shiftAmount = zeros(1,numel(tdB));
         rep = 1;
         while ~(rep ~= 1 && all(shiftAmount(end,:) == 0))

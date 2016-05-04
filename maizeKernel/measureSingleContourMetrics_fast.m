@@ -44,8 +44,6 @@ function [M] = measureSingleContourMetrics_fast(contour,B,E,U,S,sm)
             imshow(B,[])
             hold on;
         end
-
-
         currCentroid = fliplr(mean(contour));
         B = double(B);
         for e = 1:size(contour,1)
@@ -60,13 +58,9 @@ function [M] = measureSingleContourMetrics_fast(contour,B,E,U,S,sm)
             nX = linspace(currCentroid(1)-nVEC(1),currCentroid(1)+nVEC(1),2*H);
             nY = linspace(currCentroid(2)-nVEC(2),currCentroid(2)+nVEC(2),2*H);
 
-            % this line added to compile it properly.-Lee
-            cur = pwd;
-            cd('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp');
-            mex -O ba_interp2.cpp;
-            cd(cur);
             
             % sample along the binary image and measure the major axis
+            
             nLP = ba_interp2(B,nX,nY);
             nLPf = imfill(~logical(nLP>.5),[1 round(numel(nLP)/2)]);
             nfidx = find(nLP.*nLPf>.5);
