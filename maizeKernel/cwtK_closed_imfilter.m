@@ -1,4 +1,18 @@
 function [out] = cwtK_closed_imfilter(J,para)
+    %{
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    About:      
+                cwtK_closed_imfilter.m  (Inputs are relative to 1200dpi)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Dependency: 
+                fspecial.m, gradient.m
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Variable Definition:
+                J:      The information is needed. 
+                para:      The information is needed.
+                
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %}
     % MUST REMOVE THE BASE
     % FIND AND SUPPRES    
     try
@@ -18,6 +32,10 @@ function [out] = cwtK_closed_imfilter(J,para)
         out.K = K;
 
     catch ME
-        ME.message
+        %ME.message
+        close all;
+        getReport(ME);
+        fprintf(['******error in:cwtK_closed_imfilter.m******\n']);
+    end
     end
 end

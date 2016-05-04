@@ -91,6 +91,10 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 fill = 50;
                 singleCobImage(fileName,numberOfObjects,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,rho,addcut,baselineBlue,colRange1,colRange2,fill,toSave,toDisplay);
             case 'k'
+                numberOfObjects;
+                % set to default value of 50000
+                defaultAreaPix = 50000;
+                defaultAreaPix = round(defaultAreaPix*fracDpi);
                 %{
                 % set to default value of 100
                 addcut = 100;
@@ -99,8 +103,9 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 baselineBlue = 600;
                 baselineBlue = round(baselineBlue*fracDpi);
                 %}
-                numberOfObjects;
-                singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,addcut,baselineBlue,toSave,toDisplay);                
+                % set to default value of 31
+                fill = 31;
+                singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,toSave,toDisplay);                
         end
     catch ME
         close all;
