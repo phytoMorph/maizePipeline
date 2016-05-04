@@ -1,4 +1,5 @@
 function [M] = measureSingleContourMetrics_fast(contour,B,E,U,S,sm)
+    warning off
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
@@ -19,6 +20,7 @@ function [M] = measureSingleContourMetrics_fast(contour,B,E,U,S,sm)
     % U: average for contour segments
     % S: segment size
     % sm: scales for kurvature
+    
     disp = 1;
     try
     
