@@ -59,4 +59,4 @@ I600K = '/mnt/snapper/Lee/maizeData_resTest/kernelData/MN02-160121-0014-600.tif'
 I800K = '/mnt/snapper/Lee/maizeData_resTest/kernelData/MN02-160121-0014-800.tif'
 
 singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,addcut,baselineBlue,toSave,toDisplay)
-singleKernelImage(I800K,oPutK,1,.25,100/2,600,1,1);
+singleKernelImage(I600K,oPutK,1,.25,100/2,600/2,1,1);
