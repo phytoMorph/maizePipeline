@@ -148,7 +148,9 @@ end
     oPath = '/mnt/scratch1/maizePipeline/testResults/';
     I300K = '/mnt/snapper/Lee/maizeData_resTest/kernelData/MN02-160121-0014-300.tif'
     I600K = '/mnt/snapper/Lee/maizeData_resTest/kernelData/MN02-160121-0014-600.tif'
+    I600K2 = '/mnt/snapper/Lee/maizeData_resTest/kernelData/MN02-160121-0007-600.tif'
+    I600K3 = '/mnt/snapper/Lee/maizeData_resTest/kernelData/MN02-160121-0032-600.tif'
     I800K = '/mnt/snapper/Lee/maizeData_resTest/kernelData/MN02-160121-0014-800.tif'
     fileName = '/mnt/snapper/Lee/code_2016/production/memory_use_producution/MatlabMemoryUse_verMarch012016/input/Scan1-160129-0043.tif';       
-    mecka('k',I800K,3,oPutK,1,1,800,1);
+    mecka('k',I300K,3,oPutK,1,1,300,1);
 %}

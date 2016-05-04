@@ -1,4 +1,18 @@
 function [M] = measureSingleContourMetrics_fast(contour,B,E,U,S,sm)
+    %{
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    About:      
+                measureSingleContourMetrics_fast.m  (Inputs are relative to 1200dpi)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Dependency: 
+                cwtK_closed_imfilter.m, circshift.m
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Variable Definition:
+                dB:      The information is needed. 
+                B:
+                I:
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %}
     % contour: contour of kernel
     % B: binary image
     % E: basis frames for contour segments
@@ -46,6 +60,12 @@ function [M] = measureSingleContourMetrics_fast(contour,B,E,U,S,sm)
             nX = linspace(currCentroid(1)-nVEC(1),currCentroid(1)+nVEC(1),2*H);
             nY = linspace(currCentroid(2)-nVEC(2),currCentroid(2)+nVEC(2),2*H);
 
+            % this line added to compile it properly.-Lee
+            cur = pwd;
+            cd('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp');
+            mex -O ba_interp2.cpp;
+            cd(cur);
+            
             % sample along the binary image and measure the major axis
             nLP = ba_interp2(B,nX,nY);
             nLPf = imfill(~logical(nLP>.5),[1 round(numel(nLP)/2)]);
@@ -116,7 +136,9 @@ function [M] = measureSingleContourMetrics_fast(contour,B,E,U,S,sm)
         %M.iContour = C; 
         %M.contour = contour;
     catch ME
-        ME
+        close all;
+        getReport(ME);
+        fprintf(['******error in:measureSingleContourMetrics_fast.m******\n']);
     end
 end
 

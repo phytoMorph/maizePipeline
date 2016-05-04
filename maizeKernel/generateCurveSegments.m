@@ -7,7 +7,7 @@ function [E,U] = generateCurveSegments(dB,S,sm)
         % generate curve segments
         segs = genS(dB{e}',S,E);        
         Nsegs = [Nsegs squeeze(segs(:,2,:))];
-        e
+        e;
     end
     
      %{
