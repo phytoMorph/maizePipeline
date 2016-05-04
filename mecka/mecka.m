@@ -152,5 +152,5 @@ end
     I600K3 = '/mnt/snapper/Lee/maizeData_resTest/kernelData/MN02-160121-0032-600.tif'
     I800K = '/mnt/snapper/Lee/maizeData_resTest/kernelData/MN02-160121-0014-800.tif'
     fileName = '/mnt/snapper/Lee/code_2016/production/memory_use_producution/MatlabMemoryUse_verMarch012016/input/Scan1-160129-0043.tif';       
-    mecka('k',I300K,3,oPutK,1,1,300,1);
+    mecka('k',I600K,3,oPutK,1,1,600,1);
 %}

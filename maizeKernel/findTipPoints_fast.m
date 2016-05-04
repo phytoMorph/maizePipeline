@@ -28,7 +28,11 @@ function [tdB] = findTipPoints_fast(dB,B,I)
         cd(curPath)
         %mex -O ba_interp2.cpp;
         %}
+        curPath = pwd;
+        cd('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp');
         mex -O /mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp/ba_interp2.cpp;
+        addpath('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp');
+        cd(curPath);
         parfor k = 1:numel(dB)
             fprintf(['starting creating measure tensor for:' num2str(k) ':' num2str(numel(dB)) '\n']);
             tm = clock;
