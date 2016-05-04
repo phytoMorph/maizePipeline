@@ -15,16 +15,17 @@ function [] = checkNcompile(mexaName)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
     try
-        cur = pwd;
-        cd('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp');
+        %cur = pwd;
+        %cd('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp');
+        mexaName = ['/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp' mexaName];
         if exist(mexaName, 'file')
             % File exists.  Do stuff....
-            cd(cur);
+            %cd(cur);
         else
           % File does not exist.
-          cd('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp');
+          %cd('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp');
           mex -O ba_interp2.cpp;
-          cd(cur);
+          %cd(cur);
         end
     catch ME
         close all;
