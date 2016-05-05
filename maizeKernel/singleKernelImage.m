@@ -68,13 +68,11 @@ function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_sc
         % make output directory
         %%%%%%%%%%%%%%%%%%%%%%%
         mkdir(oPath);
-        [pth nm ext] = fileparts(fileName);
         fprintf(['starting with variable and environment initialization.\n']);
         %%%%%%%%%%%%%%%%%%%%%%%
         % read the image and take off the blue strip for bar code
         %%%%%%%%%%%%%%%%%%%%%%%
-        fprintf(['starting with image load.\n']);
-        %%add resize 
+        fprintf(['starting with image load.\n']); 
         I = imread(fileName);
         % TO REMOVE WAS 100 second arg
         % rawImage_scaleFactor to lower 'DPI' effect, by fraction 
