@@ -153,4 +153,6 @@ end
     I800K = '/mnt/snapper/Lee/maizeData_resTest/kernelData/MN02-160121-0014-800.tif'
     fileName = '/mnt/snapper/Lee/code_2016/production/memory_use_producution/MatlabMemoryUse_verMarch012016/input/Scan1-160129-0043.tif';       
     mecka('k',I600K,3,oPutK,1,1,600,1);
+    This works though only 16 kernels were found.
+    mecka('k',I300K,3,oPutK,1,1,240,1);
 %}
