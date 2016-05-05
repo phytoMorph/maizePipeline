@@ -21,13 +21,10 @@ function [tdB] = findTipPoints_fast(dB,B,I)
         [E,U] = generateCurveSegments(dB,SEGSIZE,10);
 
         disp = 0;
+        %%%%%%%%%%%%%%%%%%%%%%%
+        % compile and come back to original path
         % this line added to compile it properly.-Lee
-        %{
-        curPath = pwd;
-        checkNcompile('ba_interp2.mexa64',curPath);
-        cd(curPath)
-        %mex -O ba_interp2.cpp;
-        %}
+        %%%%%%%%%%%%%%%%%%%%%%%
         curPath = pwd;
         cd('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp');
         mex -O /mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp/ba_interp2.cpp;
@@ -46,8 +43,6 @@ function [tdB] = findTipPoints_fast(dB,B,I)
 
             for k = 1:numel(dB)
                 tM(k,:) = M{k}(1,:);
-                %tmp = struct2array(M{k});
-                %tM(k,:) = tmp(1,:);
             end
 
 
