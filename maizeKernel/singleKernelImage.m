@@ -68,17 +68,16 @@ function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_sc
         % make output directory
         %%%%%%%%%%%%%%%%%%%%%%%
         mkdir(oPath);
-        [pth nm ext] = fileparts(fileName);
         fprintf(['starting with variable and environment initialization.\n']);
         %%%%%%%%%%%%%%%%%%%%%%%
         % read the image and take off the blue strip for bar code
         %%%%%%%%%%%%%%%%%%%%%%%
-        fprintf(['starting with image load.\n']);
-        %%add resize 
+        fprintf(['starting with image load.\n']); 
         I = imread(fileName);
         % TO REMOVE WAS 100 second arg
         % rawImage_scaleFactor to lower 'DPI' effect, by fraction 
-        I = imresize(I,rawImage_scaleFactor);
+        % If resize factor is 1, do not excecute imresize
+        if rawImage_scaleFactor ~= 1;I = imresize(I,rawImage_scaleFactor);end
         I = checkBlue(I,checkBlue_scaleFactor,addcut,baselineBlue);
         fprintf(['ending with image load.\n']);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -98,14 +97,10 @@ function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_sc
         % threshold the image
         B = single(G) > level;        
         % remove small objects
-        % 50000 as default
-        %defaultAreaPix = 50000;
         B = bwareaopen(B,defaultAreaPix);                
         % fill holes
         B = imfill(B,8,'holes');
         % remove objects connected to the kernel and are thin
-        % 31 as default
-        %fill = 31;
         B = imopen(B,strel('disk',fill,8));
         % fill holes
         B = imfill(B,4,'holes');
@@ -170,10 +165,14 @@ function [] = singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_sc
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % SAVE - end
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        delete('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interpba_interp2.mexa64')
+        %%%%%%%%%%%%%%%%%%%%%%%
+        % delete compiled file after all done.
+        %%%%%%%%%%%%%%%%%%%%%%%
+        delete('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp/ba_interp2.mexa64');
     catch ME
         close all;
-        getReport(ME)
+        getReport(ME);
+        fprintf(['******error in:singleKernelImage.m******\n']);
     end
 end
 

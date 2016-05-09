@@ -38,6 +38,10 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
         scanResolution = StoN(scanResolution);
         % compute proportion of resolution over default
         fracDpi = scanResolution/defaultResolution;
+        %{
+        % compute square proportion of resolution over default
+        fracDpi = sqrt(scanResolution)/sqrt(defaultResolution);
+        %}
         % set to default value of .25
         checkBlue_scaleFactor = .25;
         %fprintf(['Fraction relative to 1200 dpi:' num2str(fracDpi) '\n']); 
@@ -153,5 +157,7 @@ end
     I600K3 = '/mnt/snapper/Lee/maizeData_resTest/kernelData/MN02-160121-0032-600.tif'
     I800K = '/mnt/snapper/Lee/maizeData_resTest/kernelData/MN02-160121-0014-800.tif'
     fileName = '/mnt/snapper/Lee/code_2016/production/memory_use_producution/MatlabMemoryUse_verMarch012016/input/Scan1-160129-0043.tif';       
-    mecka('k',I300K,3,oPutK,1,1,300,1);
+    mecka('k',I600K,3,oPutK,1,1,600,1);
+    This works though only 16 kernels were found.
+    mecka('k',I300K,3,oPutK,1,1,240,1);
 %}

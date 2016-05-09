@@ -9,22 +9,16 @@ function [M] = measureSingleContourMetrics_fast(contour,B,E,U,S,sm)
                 cwtK_closed_imfilter.m, circshift.m
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     Variable Definition:
-                dB:      The information is needed. 
-                B:
-                I:
+                contour:        contour of kernel
+                B:              binary image
+                E:              basis frames for contour segments
+                U:              average for contour segments
+                S:              segment size
+                sm:             scales for kurvature
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
-    % contour: contour of kernel
-    % B: binary image
-    % E: basis frames for contour segments
-    % U: average for contour segments
-    % S: segment size
-    % sm: scales for kurvature
-    
     disp = 1;
     try
-    
-
         % generate the normal and tangent space for the curve
         cE = getNormalsAndTangent(contour',sm);
 

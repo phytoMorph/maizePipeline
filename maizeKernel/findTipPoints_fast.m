@@ -21,15 +21,15 @@ function [tdB] = findTipPoints_fast(dB,B,I)
         [E,U] = generateCurveSegments(dB,SEGSIZE,10);
 
         disp = 0;
-        %{
-        cur = pwd;
+        %%%%%%%%%%%%%%%%%%%%%%%
+        % compile and come back to original path
+        % this line added to compile it properly.-Lee
+        %%%%%%%%%%%%%%%%%%%%%%%
+        curPath = pwd;
         cd('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp');
-        mex -O ba_interp2.cpp;
-        cd(cur);
-        %}
-        % this line added to compile it properly.-Le
-        %checkNcompile('ba_interp2.mexa64');
-        mex -O ba_interp2.cpp;
+        mex -O /mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp/ba_interp2.cpp;
+        addpath('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/helperFunctions/ba_interp');
+        cd(curPath);
         parfor k = 1:numel(dB)
             fprintf(['starting creating measure tensor for:' num2str(k) ':' num2str(numel(dB)) '\n']);
             tm = clock;
@@ -43,8 +43,6 @@ function [tdB] = findTipPoints_fast(dB,B,I)
 
             for k = 1:numel(dB)
                 tM(k,:) = M{k}(1,:);
-                %tmp = struct2array(M{k});
-                %tM(k,:) = tmp(1,:);
             end
 
 
