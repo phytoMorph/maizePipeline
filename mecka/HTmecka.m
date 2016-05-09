@@ -27,7 +27,7 @@ function [] = HTmecka(user,algorithm)
             memREQ = '4000';
             algorithmFlag = 'e';
             numberOfObjects = '3';
-            imageRES = '120HTmecka('gxe','e');0';
+            imageRES = '1200';
             localOutputLocation = ['/mnt/spaldingdata/nate/mirror_images/maizeData/' user '/return/earData/'];
         case 'k'
             analysisType = 'kernels';

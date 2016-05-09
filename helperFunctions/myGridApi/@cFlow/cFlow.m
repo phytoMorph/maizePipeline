@@ -306,10 +306,11 @@ classdef cFlow < handle
             % setup for post
             fprintf(fileID,'%s\n',obj.mainline0);
             for e = 1:numel(obj.dirMappingsString)
+                fidx = strfind(obj.dirMappingsString{e},'>');
                 s1 = num2str((e-1)*2+1);
                 s2 = num2str((e-1)*2+2);
-                utarLine = strrep(obj.utarLine,'#N1#',s1);
-                utarLine = strrep(utarLine,'#N2#',s2);
+                utarLine = strrep(obj.utarLine,'#N1#',[s1]);
+                utarLine = strrep(utarLine,'#N2#',[s2  ' ' obj.dirMappingsString{e}(1:(fidx(1)-1)) '/* --strip-components=1']);
                 % setup for untarline
                 fprintf(fileID,'%s\n',utarLine);
                 utarLine = strrep(utarLine,'#N2#',s2);
@@ -431,7 +432,7 @@ end
     end
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % test directory mapping(s)
-    func = cFlow('testCondorFunction',{'saveTo>/mnt/spaldingdata/nate/','saveTo2>/mnt/spaldingdata/nate/'});
+    func = cFlow('testCondorFunction',{'saveTo>/mnt/spaldingdata/nate/saveTo/','saveTo2>/mnt/spaldingdata/nate/saveTo2/'});
     res = func(1,2,'./saveTo/','./saveTo2/');
     func.submitDag(50,50);
     o = cFlowLoader(res);

@@ -42,7 +42,7 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
         checkBlue_scaleFactor = .25;
         %fprintf(['Fraction relative to 1200 dpi:' num2str(fracDpi) '\n']); 
         % set to default value of 100
-        addcut = 100;
+        addcut = 150;
         addcut = round(addcut*fracDpi);
         % set to default value of 600
         baselineBlue = 600;
@@ -130,6 +130,7 @@ end
     fileName = '/iplant/home/gxe/maizeData/cobData/1-26-16-Scan2c/Scan2-160126-0001.tif';
     fileName = '/iplant/home/gxe/maizeData/cobData/2-17-16-Scan2c/Scan2-160217-0047.tif';
     fileName = '/iplant/home/gxe/maizeData/cobData/2-9-16-Scan2c/Scan2-160209-0033.tif';
+    
     oPath = '/mnt/scratch1/maizePipeline/testResults/';
     mecka('c',fileName,3,oPath,0,1,1200,1);
 
