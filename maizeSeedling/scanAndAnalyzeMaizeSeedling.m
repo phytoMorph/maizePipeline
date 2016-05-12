@@ -14,14 +14,17 @@ function [] = scanAndAnalyzeMaizeSeedling(user)
         % create job
         job = cJob();
         job.addFile('/mnt/spaldingdata/nate/dcraw');
-        job.requirements.memory = {'=' '8000'};
+        job.addFile('/mnt/spaldingdata/nate/core-3.2.1.jar');                                                                                
+        job.addFile('/mnt/spaldingdata/nate/javase-3.2.1.jar');
+        job.changeMCRfile('v840');
+        job.requirements.memory = {'=' '4000'};
         job.setTempFilesLocation(tmpFileLocation);
         job.setFunctionName('singleSeedlingImage');    
         job.setNumberofArgs(7);        
         job.setArgument([FileList{e}],1);
         job.setArgument('50',2);
         job.setArgument('5',3);
-        job.setArgument('100',4);
+        job.setArgument('120',4);
         job.setArgument('100',5);
         job.setArgument('4',6);
         job.setArgument('./output/',7);
@@ -31,11 +34,17 @@ function [] = scanAndAnalyzeMaizeSeedling(user)
     end
     if numJobs ~= 0
         % submit dag
-        dag.submitDag(50,50);
+        dag.submitDag(150,150);
     end
 end
 
 %{  
     scanAndAnalyzeMaizeSeedling('hirsc213');
-    singleSeedlingImage(FileList{end},50,5,100,100,4,'./junk/');
+    
+    oPath = '/mnt/spaldingdata/nate/mirror_images/maizeData/hirsc213/return/seedlingData/output/';
+    parfor e = 1:numel(FileList)
+        singleSeedlingImage(FileList{e},50,5,100,100,4,oPath);
+    end
+   
+    singleSeedlingImage(FileList{end},50,5,100,100,4,'/mnt/scratch1/phytoM/output/junk/');
 %}
