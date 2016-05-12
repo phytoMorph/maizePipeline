@@ -1,8 +1,8 @@
-function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNIP,rawImage_scaleFactor,oPath)
+function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNIP,rawImage_scaleFactor,OFFSET,sigFILL,eT,thresP,TOP_THRESH,oPath)
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
-                singleEarImage.m is main function to handle ear analysis. It takes all input variables 
+                singleSeedlingImage.m is main function to handle ear analysis. It takes all input variables 
                 for its dependent functions. This function returns final result including image with 
                 bounding box. (Inputs are relative to 1200dpi)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -29,6 +29,11 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
     topTRIM = StoN(topTRIM);
     SNIP = StoN(SNIP);
     rawImage_scaleFactor = StoN(rawImage_scaleFactor);
+    OFFSET = StoN(OFFSET);
+    sigFILL = StoN(sigFILL);
+    eT = StoN(eT);
+    thresP = StoN(thresP);
+    TOP_THRESH = StoN(TOP_THRESH);
     %%%%%%%%%%%%%%%%%%%%%%%
     % print out the fileName, number of ears, output path
     %%%%%%%%%%%%%%%%%%%%%%%
@@ -45,6 +50,7 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
     % init the icommands and create output directory
     initIrods();
     mkdir(oPath);
+    % I added these to static path
     if isdeployed
         javaaddpath([pwd filesep 'core-3.2.1.jar']);
         javaaddpath([pwd filesep 'javase-3.2.1.jar']);
@@ -553,5 +559,5 @@ end
 singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNIP,rawImage_scaleFactor,oPath)
 oPath = '/mnt/snapper/Lee/maizeData_resTest_Result/seedlingData_Result';
 fileName = '/mnt/snapper/Lee/maizeData_resTest/seedlingData/plot7c.tiff';
-singleSeedlingImage(fileName,100,5,100,100,4,1,oPath);
+singleSeedlingImage(fileName,100,5,100,100,4,1,40,1100,120,0.1,1150,oPath);
 %}
