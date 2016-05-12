@@ -1,0 +1,4 @@
+1. download .jar files
+https://zxing.github.io/zxing/apidocs/help-doc.html
+2. add java static path
+http://www.mathworks.com/help/matlab/matlab_external/bringing-java-classes-and-methods-into-matlab-workspace.html#f111065

@@ -1,30 +1,44 @@
-function [] = singleSeedlingImage(imageFile,smoothValue,threshSIG,EXT,topTRIM,SNIP,oPath)
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % imageFile : the image file to operate on
-    % smoothValue : the smooth value for the integration signal along 1 dim
-    % threshSIG : the threshold for finding the cone-tainers
-    % EXT : the extension around the cone-tainers left and right
-    % topTRIM : the amount to trim off the top
-    % SNIP : the amont to use to find the base of the plant
-    % oPath : the location to save the results
+function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNIP,rawImage_scaleFactor,oPath)
+    %{
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    About:      
+                singleEarImage.m is main function to handle ear analysis. It takes all input variables 
+                for its dependent functions. This function returns final result including image with 
+                bounding box. (Inputs are relative to 1200dpi)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Dependency: 
+                StoN.m, checkBlue.m, measureKernelLength.m
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    Variable Definition:
+                fileName:               the image file to operate on.
+                smoothValue:            the smooth value for the integration signal along 1 dim
+                threshSIG:              the threshold for finding the cone-tainers
+                EXT:                    the extension around the cone-tainers left and right.
+                topTRIM:                the amount to trim off the top.
+                SNIP:                   the amont to use to find the base of the plant.
+                rawImage_scaleFactor:   A desired percentage to resize the image.
+                oPath:                  the location to save the results.
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % convert the strings to numbers if they are strings
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    if ischar(smoothValue)
-        smoothValue = str2num(smoothValue);
-    end
-    if ischar(threshSIG)
-        threshSIG = str2num(threshSIG);
-    end
-    if ischar(EXT)
-        EXT = str2num(EXT);
-    end
-    if ischar(topTRIM)
-        topTRIM = str2num(topTRIM);
-    end
-    if ischar(SNIP)
-        SNIP = str2num(SNIP);
-    end
+    smoothValue = StoN(smoothValue);
+    threshSIG = StoN(threshSIG);
+    EXT = StoN(EXT);
+    topTRIM = StoN(topTRIM);
+    SNIP = StoN(SNIP);
+    rawImage_scaleFactor = StoN(rawImage_scaleFactor);
+    %%%%%%%%%%%%%%%%%%%%%%%
+    % print out the fileName, number of ears, output path
+    %%%%%%%%%%%%%%%%%%%%%%%
+    fprintf(['FileName:' fileName '\n']);
+    fprintf(['Number of Ears:' num2str(smoothValue) '\n']);
+    fprintf(['OutPath:' oPath '\n']); 
+    fprintf(['Image resize in checkBlue:' num2str(EXT) '\n']);
+    fprintf(['Image resize in checkBlue:' num2str(topTRIM) '\n']); 
+    fprintf(['Image resize in checkBlue:' num2str(SNIP) '\n']); 
+    %%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % convert the strings to numbers if they are strings
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -45,11 +59,14 @@ function [] = singleSeedlingImage(imageFile,smoothValue,threshSIG,EXT,topTRIM,SN
         % load the image, make gray, edge 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         fprintf(['starting: image load, gray, and edge \n']);
-        fprintf(['working on: ' imageFile '\n']);
+        fprintf(['working on: ' fileName '\n']);
         % path and name
-        [p nm] = fileparts(imageFile);
+        [p nm] = fileparts(fileName);
         % read the image
-        I = imread(imageFile);
+        I = imread(fileName);
+        % rawImage_scaleFactor to lower 'DPI' effect, by fraction
+        % If resize factor is 1, do not excecute imresize
+        if rawImage_scaleFactor ~= 1;I = imresize(I,rawImage_scaleFactor);end
         % rectifiy
         I = rectifyImage(I);
         % get QR code
@@ -407,8 +424,9 @@ function [] = singleSeedlingImage(imageFile,smoothValue,threshSIG,EXT,topTRIM,SN
         end
         
     catch ME
+        close all;
         getReport(ME)
-        close all
+        fprintf(['******error in:singleSeedlingImage.m******\n']);
     end
     
     
@@ -470,10 +488,11 @@ function [] = singleSeedlingImage(imageFile,smoothValue,threshSIG,EXT,topTRIM,SN
         end
         pName5 = [oPath nm '{PlantNumber_All}{Phenotype_imageFileName}.txt'];
         fileID = fopen(pName5,'w');
-        nbytes = fprintf(fileID,'%s\n',imageFile);
+        nbytes = fprintf(fileID,'%s\n',fileName);
     catch ME
+        close all;
         getReport(ME)
-        close all
+        fprintf(['******error in:singleSeedlingImage.m******\n']);
     end
 end
 
@@ -528,5 +547,11 @@ end
             singleSeedlingImage(imageFile,100,5,100,100,4,oPath);
         end
     end
-    
+%}
+
+%{
+singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNIP,rawImage_scaleFactor,oPath)
+oPath = '/mnt/snapper/Lee/maizeData_resTest_Result/seedlingData_Result';
+fileName = '/mnt/snapper/Lee/maizeData_resTest/seedlingData/plot7c.tiff';
+singleSeedlingImage(fileName,100,5,100,100,4,1,oPath);
 %}
