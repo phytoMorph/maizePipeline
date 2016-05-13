@@ -61,11 +61,6 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
         javaaddpath([pwd filesep 'javase-3.2.1.jar']);
     end
     try
-        OFFSET = 40;
-        sigFILL = 1100;
-        eT = 120;
-        thresP = .1;
-        TOP_THRESH = 1150;
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % load the image, make gray, edge 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -315,6 +310,16 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
                 % stack the skeleton points for tracing
                 DP = [x y]';
                 fprintf(['starting: make adjacency matrix\n']);
+                %%%%%%%%%%%%%%%%%%%%%%%
+                % compile first? since Radjacency is .c file?
+                % compile and come back to original path
+                % this line added to compile it properly.-Lee
+                %%%%%%%%%%%%%%%%%%%%%%%
+                curPath = pwd;
+                cd('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/maizeSeedling/dijkstra');
+                mexme_dijkstra
+                addpath('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/maizeSeedling/dijkstra');
+                cd(curPath);
                 % make adjaceny matrix
                 T = Radjacency(DP,3);
                 fprintf(['ending: make adjacency matrix\n']);
