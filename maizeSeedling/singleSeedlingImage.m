@@ -17,6 +17,11 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
                 topTRIM:                the amount to trim off the top.
                 SNIP:                   the amont to use to find the base of the plant.
                 rawImage_scaleFactor:   A desired percentage to resize the image.
+                OFFSET:                 = 40;
+                sigFILL:                = 1100;
+                eT:                     = 120;
+                thresP:                 = .1;
+                TOP_THRESH:             = 1150;
                 oPath:                  the location to save the results.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
