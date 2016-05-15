@@ -33,7 +33,7 @@ function [] = HTmecka(user,algorithm)
             analysisType = 'kernels';
             memREQ = '4000';
             algorithmFlag = 'k';
-            numberOfObjects = '3';
+            numberOfObjects = [];
             imageRES = '1200';
             localOutputLocation = ['/mnt/spaldingdata/nate/mirror_images/maizeData/' user '/return/kernelData/'];
     end

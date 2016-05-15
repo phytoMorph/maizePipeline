@@ -55,7 +55,7 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
     % init the icommands and create output directory
     initIrods();
     mkdir(oPath);
-    % I added these to static path
+    % if is deployed then will look in pwd for jar files
     if isdeployed
         javaaddpath([pwd filesep 'core-3.2.1.jar']);
         javaaddpath([pwd filesep 'javase-3.2.1.jar']);
@@ -79,16 +79,13 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
         nm = getQRcode(I);
         % crop off qr code
         I(1:TOP_THRESH,:,:) = [];
-        % trim off X pixles from rotation
+        % trim off X pixels from left and right edges from rotation
         I(:,1:30,:) = [];
         I(:,end-70:end,:) = [];
-        % make gray scale
-
-        G = rgb2gray(I);
-        % filter the image
-        G = imfilter(G,fspecial('gaussian',[13 13],4),'replicate');
-        % find edge
-        E = edge(G);
+        % make gray scale image
+        G = rgb2gray(single(I)/255);
+        % smooth image
+        G = imfilter(G,fspecial('gaussian',[11 11]));
         fprintf(['ending: image load, gray, and edge \n']);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % load the image, make gray, edge 
@@ -99,38 +96,19 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
         % find the cone-tainers
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         fprintf(['starting: find the cone-tainer \n']);
-        %{
-        TOP_THRESH = 970;
-        % integrate
-        sig = sum(E(TOP_THRESH:end,:),1);
-        % smooth the sig
-        sig = imfilter(sig,fspecial('average',[1 smoothValue]),'replicate');
-        % find the gaps
-        BLOCK = sig < threshSIG;
-        % remove the non-gaps that are less than 50
-        BLOCK = bwareaopen(BLOCK,70);
-        % close the pot holder chunks
-        BLOCK = imclose(BLOCK,strel('disk',100));
-        % extend the conetainers holder blocks
-        eBLOCK = imerode(BLOCK,strel('disk',[EXT]));
-        % make an image mask
-        MASK = repmat(eBLOCK,[size(I,1) 1]);
-        %}
-        %{
-        S = rgb2hsv_fast(I,'single','S');
-        sig = sum(S > .08,1) > 100;
-        sig(1:500) = 1;
-        sig(end-499:end) = 1;
-        sig = imclose(sig,strel('disk',100));
-        %}
-        G = rgb2gray(single(I)/255);
-        G = imfilter(G,fspecial('gaussian',[11 11]));
+        % find horizontal edges
         [d1 d2] = gradient(G);
+        % binary edges
         d2 = abs(d2) > graythresh(abs(d2));
+        % remove small edges
         d2 = bwareaopen(d2,50);
+        % connect the edges
         d2 = imclose(d2,strel('disk',10));
+        % integrate along the dim2
         sig = sum(abs(d2),1);
+        % filter
         sig = imfilter(sig,fspecial('average',[1 smoothValue]),'replicate');
+        % bind vec
         sig = bindVec(sig);
         threshSIG = graythresh(sig);
         % find the gaps
@@ -142,7 +120,6 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
         eBLOCK = imdilate(BLOCK,strel('disk',[EXT]));
         % make an image mask
         MASK = ~repmat(eBLOCK,[size(I,1) 1]);
-        
         % get the bounding boxes for each mask
         R = regionprops(~MASK,'BoundingBox');
         fprintf(['starting: find the cone-tainer :' num2str(numel(R)) '\n']);
@@ -171,8 +148,6 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
             nR(e).BoundingBox = R(e).BoundingBox;
             % trim the top
             tmpD(1:topTRIM:end,:,:) = [];
-            % get the size
-            SZ = size(tmpD);
             fprintf(['ending: crop the strip\n']);
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             % crop a vertical trip for each container
@@ -183,51 +158,20 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
             % find the top of the cone-tainer
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             fprintf(['starting: find the top of the cone-tainer\n']);
-            
+            % get the foreground mask
             MASK = getMASK_ver0(tmpD);
+            % close the mask
             MASK = imclose(MASK,strel('disk',5));
+            % find the bottom and fill holes
             fidx = find(MASK(end,:));
             MASK(end,fidx(1):fidx(end)) = 1;
             MASK = imfill(MASK,'holes');
-            
+            % find edge of mask
             E = edge(MASK);
-            %{
-            % gray scale for the strip
-            G = rgb2gray(tmpD);
-            E = edge(G);
-            % integrate the edge
-            sig = sum(E,2);
-            % threshold the integrated edge
-            sig = sig > eT;
-            % fill in the sig
-            sig(1:sigFILL) = 0;
-            nidx = find(sig);
-            %}
-            
-            %{
-            % filter and edge
-            G = imfilter(G,fspecial('disk',15),'replicate');
-            SZ = size(I);
-            [d1 d2] = gradient(single(G)/255);
-            E = abs(d2) > graythresh(abs(d2));
-            %}
-            %{
-            [H, theta, rho] = hough(E','Theta',linspace(-5,5,20));
-            P  = houghpeaks(H,1,'Threshold',0);
-            linesV = houghlines(E',theta,rho,P,'FillGap',500,'MinLength',300);
-            %}
-            
+            % find the main line
             sig = sum(E,2);
             sig = imfilter(sig,fspecial('average',[5 1]),'replicate');
             [J,nidx] = max(sig);
-            
-            
-            
-            %if ~isempty(nidx)
-                %nidx = nidx(1);
-                %nidx = mean([linesV(1).point1(1) linesV(1).point2(1)]);
-                nR(e).BoundingBox(4) = (nidx-OFFSET)-nR(e).BoundingBox(2);
-            %end
             fprintf(['ending: find the top of the cone-tainer\n']);
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             % find the top of the cone-tainer
@@ -242,27 +186,21 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
             fprintf(['starting: get the plant mask\n']);
             flag = 1;
             cnt = 1;
-            fprintf(['clipping: the bottom plant mask\n']);
-            while flag
-                fprintf(['.']);
-                tmpD = imcrop(I,nR(e).BoundingBox);
-                % make plant mask
-                MASK = getMASK_ver0(tmpD);
-                if sum(MASK(end,:)) > 80
-                    nR(e).BoundingBox(4) = nR(e).BoundingBox(4) -1;
-                else
-                    flag = 0;
-                end
+            fprintf(['starting clipping: the bottom plant mask\n']);
+            % get the inital crop above container and stop at image
+            tmpD = imcrop(I,nR(e).BoundingBox);
+            % make plant mask
+            MASK = getMASK_ver0(tmpD);
+            while (sum(MASK(end,:)) > 80) & cnt < 150
+                fprintf('.');
+                nR(e).BoundingBox(4) = nR(e).BoundingBox(4) - 1;
+                MASK(end,:) = [];
                 cnt = cnt +1;
-                if cnt > 150
-                    flag = 0;
-                end
             end
             fprintf(['\n']);
-            
-            
-            
-            
+            fprintf(['ending clipping: the bottom plant mask\n']);
+            % connect the plant
+            MASK = connectPlant(MASK);
             % sum the mask for the height calculation
             sig = sum(MASK,2);
             % find the pixels
@@ -294,15 +232,16 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
                 SKEL = bwmorph(tmpMASK,'thin',inf);
                 % get the skeleton
                 SKEL = SKEL(1:size(MASK,1),:);
+                SKEL = bwareaopen(SKEL,10);
                 % find the skeleton for tracing
                 [r c] = find(SKEL);
                 % find the tips
                 EP = imfilter(double(SKEL),ones(3,3));
                 [re ce] = find(EP == 2 & SKEL);
                 % SNIP off some stem
-                baseMASK = sum(MASK(end-SNIP:end,:),1);
+                baseMASK = sum(MASK((end-SNIP):end,:),1);
                 % mean along the stem snip
-                basePoint(1) = mean(find(baseMASK));
+                basePoint(1) = mean(find(baseMASK==max(baseMASK)));
                 % set the basepoint 1 to the size of the mask
                 basePoint(2) = size(MASK,1);
                 % find skeleton
@@ -310,16 +249,6 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
                 % stack the skeleton points for tracing
                 DP = [x y]';
                 fprintf(['starting: make adjacency matrix\n']);
-                %%%%%%%%%%%%%%%%%%%%%%%
-                % compile first? since Radjacency is .c file?
-                % compile and come back to original path
-                % this line added to compile it properly.-Lee
-                %%%%%%%%%%%%%%%%%%%%%%%
-                curPath = pwd;
-                cd('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/maizeSeedling/dijkstra');
-                mexme_dijkstra
-                addpath('/mnt/snapper/Lee/gitHub_maizepipeline/maizePipeline/maizeSeedling/dijkstra');
-                cd(curPath);
                 % make adjaceny matrix
                 T = Radjacency(DP,3);
                 fprintf(['ending: make adjacency matrix\n']);
@@ -517,7 +446,7 @@ end
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % compile
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    compile_directory = '/mnt/scratch1/phytoM/flashProjects/maizePipeline/maizeSeedling/tmpSubmitFiles/';
+    compile_directory = '/mnt/scratch1/maizePipeline/maizePipeline/maizeSeedling/tmpSubmitFiles/';
     CMD = ['mcc -d ' compile_directory ' -a im2single.m -m -v -R -singleCompThread singleSeedlingImage.m'];
     eval(CMD);
 
