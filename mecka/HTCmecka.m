@@ -49,9 +49,9 @@ function [] = HTmecka(user,algorithm)
     [FileList] = ScanAndIssueNewFilesOniRods(user,analysisType);
     numJobs = numel(FileList);
     
-    func = cFLow('mecka');
+    func = cFlow('mecka');
     for e = 1:numJobs
-        func(algorithmFlag,FileList{e},numberOfObjects,'./output/',1,1,imageRES,1);
+        func(algorithmFlag,FileList{e},numberOfObjects,'./output/',remoteOutputLocation,1,1,imageRES,1);
     end
     func.submitDag(50,50);
     
