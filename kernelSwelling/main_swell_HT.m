@@ -97,6 +97,8 @@ function [] = main_swell_HT(inFilePath,oPath,numberPerRow,expectedImageNumber,nu
     mainBOX = 1.0e+04*[0.106851000000000   0.051151000000000   0.909598000000000   1.039198000000000]; % new crop box for second widiv run
     %mainBOX = 10^4*[0.102051000000000   0.029551000000000   0.911998000000000   1.017598000000000];
     for e = 1:numel(SET)
+        
+                                            Stack,BOX,mainBOX,numtoMeasure,numCOLS,SKIP,disp
         % measure the data
         [swellValue areaValue] = measureStack(SET{e},[500 500 500 500],mainBOX,numberToAnalyze,numberPerRow,SKIP,0);
         

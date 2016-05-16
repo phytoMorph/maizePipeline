@@ -15,18 +15,11 @@ classdef cFlow < handle
         subMemFunc = '';
         tmpFilesLocation;
         submitNodeLocation;
-        
-        dirMappingsString;
-        
-        % post script untar line
-        mainline0 = '#!/bin/sh';
-        utarLine = 'tar xvf $#N1# -C $#N2#';
-        rmtarLine = 'rm $#N1#';
     end
     
     
     properties (Constant)
-        defaultCompileDirectory = '/mnt/spaldingdata/nate/inMemCondor/compiledFunctions/';
+        defaultCompileDirectory = '/mnt/spaldingdata/nate/inMemCondor/compiledFunctions/'
     end
     
     properties (Access = private)
@@ -38,17 +31,17 @@ classdef cFlow < handle
         
         dagline_vars_input_line = 'VARS #jobName# argNumber#N# = "#argValue#"';
         dagline_vars_output_line = 'VARS #jobName# argNumber#N# = "#jobName#"';
+            
         dagline_retry = 'RETRY #jobName# #numberRetries#';
         dagline_prescript = 'SCRIPT PRE #jobName# #preScriptName#';
         datline_tar_output = 'SCRIPT POST #jobName# post.sh #jobName#.tar #outputLocation#';
-        datline_tar_output_mod = 'SCRIPT POST #jobName# post.sh ';
+        
         dagline_graph_dec = 'PARENT headnode CHILD ';
     end
     
     methods
-        function [obj] = cFlow(func,dirMappings)
+        function [obj] = cFlow(func)
             if nargin >= 1
-                % generate unique time-rand stamp
                 obj.uniqueTimeRandStamp = strrep([num2str(now) num2str(rand(1,1))],'.','');
                 obj.dateString = datestr(now);
                 obj.subMemFunc = func;
@@ -62,24 +55,7 @@ classdef cFlow < handle
                 obj.outputLocation = cFlow.generateUniqueOutputLocation(func,obj.uniqueTimeRandStamp);
                 CMD = ['mkdir -p ' obj.outputLocation];
                 system(CMD);
-                % make default mapping available for the memory
-                obj.addDirectoryMap([cJob.deployed_ouput_vars_location '>' obj.outputLocation]);
             end
-            
-            if nargin == 2
-                % if the arg is passed in as a string only and not a cell 
-                if ~iscell(dirMappings)
-                    dirMappings = {dirMappings};
-                end
-                % add all the directory mappings to the dag
-                for e = 1:numel(dirMappings)
-                    obj.addDirectoryMap(dirMappings{e});
-                end
-            end
-        end
-        
-        function [] = addDirectoryMap(obj,dirMapString)
-            obj.dirMappingsString{end+1} = dirMapString;
         end
         
         function [] = addJob(obj,job)
@@ -102,7 +78,6 @@ classdef cFlow < handle
             obj.submitNodeLocation = submitNodeLocation;
         end
         
-        % this function will render a local copy of the dag files
         function [] = renderDagFile(obj,oFilePath)
             if nargin == 1
                 oFilePath = obj.tmpFilesLocation;
@@ -141,20 +116,10 @@ classdef cFlow < handle
                     fprintf(fileID,'%s\n',tmp);
                 end
                 
-                %if isempty(obj.dirMappingsString)
-                    % setup for output tar via job name
-                    tmp = strrep(obj.dagline_vars_output_line,'#jobName#',jobName);
-                    tmp = strrep(tmp,'#N#',num2str(nargs+1)); 
-                    fprintf(fileID,'%s\n',tmp);
-                %else
-                    for e = 1:numel(obj.dirMappingsString)
-                        % setup for output tar via job name
-                        tmp = strrep(obj.dagline_vars_input_line,'#jobName#',jobName);
-                        tmp = strrep(tmp,'#N#',num2str(nargs+1+(e)));
-                        tmp = strrep(tmp,'#argValue#',[jobName '_dirMapping' num2str(e)]);
-                        fprintf(fileID,'%s\n',tmp);
-                    end
-                %end
+                % setup for output tar via job name
+                tmp = strrep(obj.dagline_vars_output_line,'#jobName#',jobName);
+                tmp = strrep(tmp,'#N#',num2str(nargs+1)); 
+                fprintf(fileID,'%s\n',tmp);
                 
                 % setup for retry
                 tmp = strrep(obj.dagline_retry,'#jobName#',jobName);
@@ -168,20 +133,10 @@ classdef cFlow < handle
                     fprintf(fileID,'%s\n',tmp);    
                 end
                 
-                if isempty(obj.dirMappingsString)
-                    % setup for untar output in post script
-                    tmp = strrep(obj.datline_tar_output,'#jobName#',jobName);
-                    tmp = strrep(tmp,'#outputLocation#',obj.outputLocation);
-                    fprintf(fileID,'%s\n',tmp);
-                else
-                    tmpTarName = strrep(obj.datline_tar_output_mod,'#jobName#',jobName);
-                    for e = 1:numel(obj.dirMappingsString)
-                        fidx = strfind(obj.dirMappingsString{e},'>');
-                        tmpTarName = [tmpTarName jobName '_dirMapping' num2str(e) '.tar' ' ' obj.dirMappingsString{e}(fidx(1)+1:end) ' '];
-                        
-                    end
-                    fprintf(fileID,'%s\n',tmpTarName);
-                end
+                % setup for untar output in post script
+                tmp = strrep(obj.datline_tar_output,'#jobName#',jobName);
+                tmp = strrep(tmp,'#outputLocation#',obj.outputLocation);
+                fprintf(fileID,'%s\n',tmp);
             end
             
             if ~isempty(obj.maxidle)
@@ -210,8 +165,6 @@ classdef cFlow < handle
             scpFileList{3} = [obj.tmpFilesLocation obj.jobList{1}.generate_exeName()];
             scpFileList{4} = [obj.tmpFilesLocation obj.jobFunction];
             scpFileList{5} = [obj.tmpFilesLocation 'run_' obj.jobFunction '.sh'];
-            scpFileList{6} = [obj.defaultCompileDirectory 'clear.sh'];
-            scpFileList{7} = [obj.tmpFilesLocation 'post.sh'];
             if ~isempty(obj.prescriptFile)
                 scpFileList{6} = [obj.tmpFilesLocation obj.prescriptFile];
             end
@@ -224,20 +177,18 @@ classdef cFlow < handle
             if nargin >= 3
                 maxpost = varargin{2};
             end
-            remote_DAG_location = [obj.jobFunction filesep obj.uniqueTimeRandStamp];
             obj.renderDagFile();
-            obj.generatePostScript();
             scpList = obj.generate_scpFileList();
             dirCMD_logs_out = ['ssh -p 50118 nate@128.104.98.118 ''' 'mkdir -p /home/nate/condorFunctions/#directory#/logs/stdout/'''];
             dirCMD_logs_err = ['ssh -p 50118 nate@128.104.98.118 ''' 'mkdir -p /home/nate/condorFunctions/#directory#/logs/stderr/'''];
             dirCMD_output = ['ssh -p 50118 nate@128.104.98.118 ''' 'mkdir -p /home/nate/condorFunctions/#directory#/output/'''];
-            [status result] = system(strrep(dirCMD_logs_out,'#directory#',remote_DAG_location));
-            [status result] = system(strrep(dirCMD_logs_err,'#directory#',remote_DAG_location));
-            [status result] = system(strrep(dirCMD_output,'#directory#',remote_DAG_location));
+            [status result] = system(strrep(dirCMD_logs_out,'#directory#',obj.jobFunction));
+            [status result] = system(strrep(dirCMD_logs_err,'#directory#',obj.jobFunction));
+            [status result] = system(strrep(dirCMD_output,'#directory#',obj.jobFunction));
             dirCMD = ['ssh -p 50118 nate@128.104.98.118 ''' 'mkdir /home/nate/condorFunctions/#directory#/'''];
-            [status result] = system(strrep(dirCMD,'#directory#',remote_DAG_location));
+            [status result] = system(strrep(dirCMD,'#directory#',obj.jobFunction));
             CMD = 'scp -P 50118 #srcfile# nate@128.104.98.118:/home/nate/condorFunctions/#directory#/#desfile#';
-            CMD = strrep(CMD,'#directory#',remote_DAG_location);
+            CMD = strrep(CMD,'#directory#',obj.jobFunction);
             for f = 1:numel(scpList)
                 [pth nm ext] = fileparts(scpList{f});
                 tCMD = strrep(CMD,'#desfile#',[nm ext]);
@@ -248,7 +199,7 @@ classdef cFlow < handle
             % submit the job dag
             dagName = obj.generate_dagName();
             CMD = ['ssh -p 50118 nate@128.104.98.118 ''' 'cd /home/nate/condorFunctions/#directory#/; condor_submit_dag -maxidle ' num2str(maxidle) ' -maxpost ' num2str(maxpost) ' ' dagName ''''];
-            CMD = strrep(CMD,'#directory#',remote_DAG_location);
+            CMD = strrep(CMD,'#directory#',obj.jobFunction);
             system(CMD,'-echo');
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             % condor launch - END
@@ -276,47 +227,21 @@ classdef cFlow < handle
                     tmpJob.setArg(s.subs{e},e);
                 end
                 for e = 1:nargout
-                    % add the output directory to the string for var name
-                    %varargout{e} = [obj.outputLocation 'output' filesep tmpJob.matFileName '@out' num2str(e)];
                     varargout{e} = [obj.outputLocation tmpJob.matFileName '@out' num2str(e)];
                 end
                 save(tmpJob.fullMatLocation,'tmpJob','-append');
                 
-                % make a cJob which will wrap the cJob - why?
+                
                 wrapJob = cJob();
                 wrapJob.setTempFilesLocation(obj.tmpFilesLocation);
                 wrapJob.addFile(tmpJob.fullMatLocation);
                 wrapJob.setFunctionName('cFlow_execute');    
                 wrapJob.setNumberofArgs(1);
                 wrapJob.setArgument(tmpJob.matFileName,1);
-                if isempty(obj.dirMappingsString)
-                    wrapJob.generate_submitFilesForDag();
-                else
-                    wrapJob.generate_submitFilesForDag(obj.dirMappingsString);
-                end
+                wrapJob.generate_submitFilesForDag();
                 obj.addJob(wrapJob);
             else
                 [varargout{1:nargout}] = builtin('subsref',obj,s);
-            end
-        end
-        
-        function [] = generatePostScript(obj)
-            remote_DAG_location = [obj.jobFunction filesep obj.uniqueTimeRandStamp];
-            fileID = fopen([obj.tmpFilesLocation 'post.sh'],'w');
-            % setup for post
-            fprintf(fileID,'%s\n',obj.mainline0);
-            for e = 1:numel(obj.dirMappingsString)
-                fidx = strfind(obj.dirMappingsString{e},'>');
-                s1 = num2str((e-1)*2+1);
-                s2 = num2str((e-1)*2+2);
-                utarLine = strrep(obj.utarLine,'#N1#',[s1]);
-                utarLine = strrep(utarLine,'#N2#',[s2  ' ' obj.dirMappingsString{e}(1:(fidx(1)-1)) '/* --strip-components=1']);
-                % setup for untarline
-                fprintf(fileID,'%s\n',utarLine);
-                utarLine = strrep(utarLine,'#N2#',s2);
-                % setup for rmtarline
-                rmtarLine = strrep(obj.rmtarLine,'#N1#',s1);
-                fprintf(fileID,'%s\n',rmtarLine);
             end
         end
     end
@@ -403,39 +328,26 @@ classdef cFlow < handle
             [uniqueEvalDirectory] = cFlow.generateUniqueCompileLocation(func,uniqueTimeRandStamp);
             uniqueOutputLocation = [uniqueEvalDirectory 'functionOutputs' filesep];
         end
-        
     end
 end
 
 %{
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % simple test - many-inputs > one-output
+
+    
+
     func = cFlow('testCondorFunction');
     res = func(1,2);
     func.submitDag(50,50);
     o = cFlowLoader(res);
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % simple test - many-inputs > many-outputs
-    func = cFlow('testCondorFunction');
-    [res1,res2] = func(1,2);
-    func.submitDag(50,50);
-    [o1,o2] = cFlowLoader(res1,res2);
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % simple test - loop over inputs
-    func = cFlow('testCondorFunction');
+
+
+
     for e = 1:10
-        [resM1{e} resM2{e}] = func(e,e+1);
+        [res1 re2] = func(1,2);
     end
     func.submitDag(50,50);
-    for e = 1:10
-        [o1M{e} o2M{e}] = cFlowLoader(resM1{e},resM2{e});
-    end
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % test directory mapping(s)
-    func = cFlow('testCondorFunction',{'saveTo>/mnt/spaldingdata/nate/saveTo/','saveTo2>/mnt/spaldingdata/nate/saveTo2/'});
-    res = func(1,2,'./saveTo/','./saveTo2/');
-    func.submitDag(50,50);
-    o = cFlowLoader(res);
+
+    [o1 o2] = cFlowLoader(res);
 
     
 

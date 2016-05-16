@@ -34,7 +34,9 @@ classdef cJob < handle
        % tar the results
        %mainline8 = 'tar zcvf #outputTAR#.tar output';
        mainline8 = 'tar cvf #outputTAR#.tar output';
-       mainline10 = 'tar cvf #outputTAR#.tar #mappingSource#';
+       
+       % remove the squid and pack-in files
+       mainline10 = 'rm #rmfile#';
        
        % squid location
        squidURL = 'http://proxy.chtc.wisc.edu/SQUID/ndmiller/';       
@@ -51,7 +53,7 @@ classdef cJob < handle
        % default remote save location
        outLocation = './output';
        
-      
+       MCR_version = 'v717';
     end
     
     properties (Access = private)% for submitfile
@@ -61,11 +63,6 @@ classdef cJob < handle
         % re transfer
         should_transfer_files = 'YES';
         when_to_transfer_output = 'ON_EXIT';        
-    end
-    
-    
-    properties (Constant)
-        deployed_ouput_vars_location = 'inMemVarsOut';
     end
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -138,8 +135,12 @@ classdef cJob < handle
         % note that the MCR must be on the squid server
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         function [] = changeMCRfile(obj,mcrFileName)
+            obj.xferFileList_squid{1} =  [mcrFileName '.zip'];
+            obj.MCR_version = mcrFileName;
+            %{
             [p,n,ex] = fileparts(obj.xferFileList{1});
-            obj.xferFileList{1} = [p mcrFileName];            
+            obj.xferFileList{1} = [p mcrFileName];
+        %}
         end
         
         
@@ -211,12 +212,9 @@ classdef cJob < handle
             matLoc =  [inputsDirectory obj.matFileName];
         end
         
-        % call function to execute the cJob
         function [] = localExecute(obj)
             varargout = {};
             matFile = obj.fullMatLocation();
-            
-            % if is deplayed then matFile output becomes the file name only
             if isdeployed
                 [~,matFile] = fileparts(matFile); 
             end
@@ -230,13 +228,10 @@ classdef cJob < handle
             inputString(end) = ')';
             CMD = ['[OUT{1:obj.jobNargout}] = ' obj.jobFunction inputString ';'];
             eval(CMD);
-            
-            
             if isdeployed
-                varsLoc = ['.' filesep cJob.deployed_ouput_vars_location filesep];
-                mkdir(varsLoc);
-                matFile = [varsLoc matFile '.mat'];
-                fprintf(['Saving output(s) from function to disk /n']);
+                mkdir('./output/');
+                matFile = ['./output/' matFile '.mat']
+                fprintf('hello');
                 for e = 1:numel(OUT)
                     varName = ['out' num2str(e)];
                     CMD = [varName '=OUT{e}'];
@@ -275,10 +270,7 @@ classdef cJob < handle
         % generate functions
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % generate submit file to call shell command
-        function [] = generate_submitFile(obj,oFilePath,asVar,numberOfDirectoryMappings)
-            if nargin == 3
-                numberOfDirectoryMappings = 1;
-            end
+        function [] = generate_submitFile(obj,oFilePath,asVar)
             fileID = fopen([oFilePath obj.generate_submitName] ,'w');
             
             % setup for universe
@@ -298,7 +290,7 @@ classdef cJob < handle
             obj.renderRequirements(fileID);
             
             % setup for arguments
-            obj.renderArguments(fileID,asVar,numberOfDirectoryMappings);
+            obj.renderArguments(fileID,asVar);
             
             % setup for logging
             obj.renderLogFiles(fileID);
@@ -318,15 +310,17 @@ classdef cJob < handle
             fclose(fileID);
         end
         % generate shell command for compiled code
-        function [] = generate_shellCommand(obj,MCR_VER,icommands,oFilePath,directoryMappings)
+        function [] = generate_shellCommand(obj,MCR_VER,icommands,oFilePath)
             fileID = fopen([oFilePath obj.generate_exeName],'w');
             
             % setup for shell script            
             fprintf(fileID,'%s\n',obj.mainline0);
             
             % setup reporting out information on machine which is computing           
+            fprintf(fileID,'%s\n','echo "nodeArchType:"');
             fprintf(fileID,'%s\n',obj.mainline01);
-            
+            fprintf(fileID,'%s\n','echo "nodeIP:"');
+            fprintf(fileID,'%s\n','dig +short myip.opendns.com @resolver1.opendns.com');          
             % render squid files
             obj.renderSquidXfer(fileID);
             
@@ -336,7 +330,7 @@ classdef cJob < handle
             fprintf(fileID,'%s\n',obj.mainline21);
             fprintf(fileID,'%s\n',obj.mainline3);
             
-            % if icommands flag is set then perform setup for icommands
+            % setup for icommands
             if icommands
                 fprintf(fileID,'%s\n',obj.mainline4);
                 fprintf(fileID,'%s\n',obj.mainline5);
@@ -354,36 +348,39 @@ classdef cJob < handle
             end            
             fprintf(fileID,'%s\n',mainCMD);
             
-            if nargin ~= 5
-                % setup for tar output            
-                fprintf(fileID,'%s\n',strrep(obj.mainline8,'#outputTAR#',['${' num2str(obj.jobNargin+1) '}']));
-            else
-                % multiple non-default directory mappings
-                for e = 1:numel(directoryMappings)
-                    fidx = strfind(directoryMappings{e},'>');
-                    source = directoryMappings{e}(1:fidx(1)-1);
-                    tarMappingString = strrep(obj.mainline10,'#outputTAR#',['${' num2str(obj.jobNargin+1+(e)) '}']);
-                    tarMappingString = strrep(tarMappingString,'#mappingSource#',source);
-                    fprintf(fileID,'%s\n',tarMappingString);
-                end
+            % setup for tar output            
+            fprintf(fileID,'%s\n',strrep(obj.mainline8,'#outputTAR#',['${' num2str(obj.jobNargin+1) '}']));
+            
+            % add remove file for squid file list
+            for e = 1:numel(obj.xferFileList_squid)
+                [p,n,ext] = fileparts(obj.xferFileList_squid{e});
+                fprintf(fileID,'%s\n',strrep(obj.mainline10,'#rmfile#',[n ext]));
             end
+            
+            % add remove file for squid file list
+            for e = 1:numel(obj.xferFileList)
+                [p,n,ext] = fileparts(obj.xferFileList{e});
+                fprintf(fileID,'%s\n',strrep(obj.mainline10,'#rmfile#',[n ext]));
+            end
+            
+            
+            fprintf(fileID,'%s\n',strrep(obj.mainline10,'#rmfile#','.irodsA'));
+            fprintf(fileID,'%s\n',strrep(obj.mainline10,'#rmfile#','.irodsEnv'));
+            fprintf(fileID,'%s\n',strrep(obj.mainline10,'#rmfile#','-r output'));
+            
+            
+            
             
             % close File
             fclose(fileID);
         end
         % generate submit package
-        function [] = generate_submitFilesForDag(obj,directoryMappings,oFilePath)
-            if nargin <= 2
+        function [] = generate_submitFilesForDag(obj,oFilePath)
+            if nargin == 1
                 oFilePath = obj.tmpFileLocation;
             end
-            if nargin ==1
-                obj.generate_submitFile(oFilePath,1);
-                obj.generate_shellCommand('717',1,oFilePath);
-            else
-                obj.generate_submitFile(oFilePath,1,numel(directoryMappings));
-                obj.generate_shellCommand('717',1,oFilePath,directoryMappings);
-            end
-            
+            obj.generate_submitFile(oFilePath,1);
+            obj.generate_shellCommand(obj.MCR_version(2:end),1,oFilePath);
         end
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -431,12 +428,9 @@ classdef cJob < handle
             end
         end
 
-        function [] = renderArguments(obj,fileID,asVar,extraArgs)
-            if nargin == 3
-                extraArgs = 1;
-            end
+        function [] = renderArguments(obj,fileID,asVar)
             arg = 'arguments = "';
-            for e = 1:(obj.jobNargin+extraArgs+1)
+            for e = 1:(obj.jobNargin+1)
                 if asVar
                     tmp = ['$(argNumber' num2str(e) ')'];
                 else

@@ -1,9 +1,8 @@
-function [] = HTCmecka(user,algorithm)
+function [] = HTmecka(user,algorithm)
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
-                HTCmecka.m is 
-                    create jobs for condor to run Maize Ear Cob Kernel Analysis. A user is 
+                HTmecka.m is create jobs for condor to run Maize Ear Cob Kernel Analysis. A user is 
                 to choose one of three algorithm to use and provide user for condor.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     Dependency: 
@@ -15,6 +14,8 @@ function [] = HTCmecka(user,algorithm)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
     tmpFileLocation = '/mnt/scratch1/maizePipeline/mecka/tmpSubmitFiles/';
+    remoteOutputLocation = ['/iplant/home/' user '/#plantType#/return/#tissueType#/output/'];
+    remoteOutputLocation = strrep(remoteOutputLocation,'#plantType#','maizeData');
     switch algorithm
         case 'c'
             analysisType = 'cobs';
@@ -23,6 +24,7 @@ function [] = HTCmecka(user,algorithm)
             numberOfObjects = '3';
             imageRES = '1200';
             localOutputLocation = ['/mnt/spaldingdata/nate/mirror_images/maizeData/' user '/return/cobData/'];
+            remoteOutputLocation = strrep(remoteOutputLocation,'#tissueType#','cobData');
         case 'e'
             analysisType = 'ears';
             memREQ = '4000';
@@ -30,57 +32,29 @@ function [] = HTCmecka(user,algorithm)
             numberOfObjects = '3';
             imageRES = '1200';
             localOutputLocation = ['/mnt/spaldingdata/nate/mirror_images/maizeData/' user '/return/earData/'];
+            remoteOutputLocation = strrep(remoteOutputLocation,'#tissueType#','earData');
         case 'k'
             analysisType = 'kernels';
             memREQ = '4000';
             algorithmFlag = 'k';
-            numberOfObjects = '3';
+            numberOfObjects = [];
             imageRES = '1200';
             localOutputLocation = ['/mnt/spaldingdata/nate/mirror_images/maizeData/' user '/return/kernelData/'];
+            remoteOutputLocation = strrep(remoteOutputLocation,'#tissueType#','kernelData');
     end
+    CMD = ['imkdir -p ' remoteOutputLocation];
+    system(CMD);
     
     % get file list
     [FileList] = ScanAndIssueNewFilesOniRods(user,analysisType);
-    
-    
-    %{
-    f = cFLow('mecka');
-    for e = 1:numJobs
-        f(algorithmFlag,FileList{e},3,'./output/',1,1,imageRES,1);
-    end
-    f.submitDag(50,50);
-    %}
-    
-    % geneate the dag
-    dag = epfod();
-    dag.setFunctionName('mecka');
-    dag.setOutputLocation(localOutputLocation);
-    dag.setTempFilesLocation(tmpFileLocation);
     numJobs = numel(FileList);
-    % add jobs to dag for each image - create and add job to dag
+    
+    func = cFLow('mecka');
     for e = 1:numJobs
-        [pth,nm,ex] = fileparts(FileList{e});
-        % create job
-        job = cJob();
-        job.requirements.memory = {'=' memREQ};
-        job.setTempFilesLocation(tmpFileLocation);
-        job.setFunctionName('mecka');
-        job.setNumberofArgs(8);
-        job.setArgument(algorithmFlag,1);
-        job.setArgument([FileList{e}],2);        
-        job.setArgument(numberOfObjects,3);
-        job.setArgument('./output/',4);
-        job.setArgument('1',5);
-        job.setArgument('1',6);
-        job.setArgument(imageRES,7);
-        job.setArgument('1',8)
-        
-        % add job to dag
-        dag.addJob(job);
-        job.generate_submitFilesForDag();
+        func(algorithmFlag,FileList{e},numberOfObjects,'./output/',1,1,imageRES,1);
     end
-    % submit dag
-    dag.submitDag(50,50);
+    func.submitDag(50,50);
+    
     
 end
 
