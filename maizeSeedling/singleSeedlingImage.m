@@ -2,12 +2,12 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
     %{
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     About:      
-                singleSeedlingImage.m is main function to handle ear analysis. It takes all input variables 
+                singleSeedlingImage.m is main function to handle seedling analysis. It takes all input variables 
                 for its dependent functions. This function returns final result including image with 
                 bounding box. (Inputs are relative to 1200dpi)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     Dependency: 
-                StoN.m, checkBlue.m, measureKernelLength.m
+                getQRcode.m, connectPlant.m
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     Variable Definition:
                 fileName:               the image file to operate on.
@@ -43,11 +43,18 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
     % print out the fileName, number of ears, output path
     %%%%%%%%%%%%%%%%%%%%%%%
     fprintf(['FileName:' fileName '\n']);
-    fprintf(['Number of Ears:' num2str(smoothValue) '\n']);
+    fprintf(['Smooth Value:' num2str(smoothValue) '\n']);
     fprintf(['OutPath:' oPath '\n']); 
-    fprintf(['Image resize in checkBlue:' num2str(EXT) '\n']);
-    fprintf(['Image resize in checkBlue:' num2str(topTRIM) '\n']); 
-    fprintf(['Image resize in checkBlue:' num2str(SNIP) '\n']); 
+    fprintf(['Extension:' num2str(EXT) '\n']);
+    fprintf(['Cone-tainers threshhold:' num2str(threshSIG) '\n']); 
+    fprintf(['Short Explanation Required:' num2str(rawImage_scaleFactor) '\n']); 
+    fprintf(['Short Explanation Required:' num2str(OFFSET) '\n']);
+    fprintf(['Short Explanation Required:' num2str(topTRIM) '\n']); 
+    fprintf(['Short Explanation Required:' num2str(SNIP) '\n']); 
+    fprintf(['Short Explanation Required:' num2str(sigFILL) '\n']); 
+    fprintf(['Short Explanation Required:' num2str(eT) '\n']);
+    fprintf(['Short Explanation Required:' num2str(thresP) '\n']); 
+    fprintf(['Short Explanation Required:' num2str(TOP_THRESH) '\n']);
     %%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % convert the strings to numbers if they are strings
@@ -56,6 +63,7 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
     initIrods();
     mkdir(oPath);
     % if is deployed then will look in pwd for jar files
+    % static path added
     if isdeployed
         javaaddpath([pwd filesep 'core-3.2.1.jar']);
         javaaddpath([pwd filesep 'javase-3.2.1.jar']);
