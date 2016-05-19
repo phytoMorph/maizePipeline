@@ -6,7 +6,7 @@ function [BB PS] = maizeCob(I,numberOfCobs,defaultAreaPix,colRange1,colRange2,fi
                 It returns masked cob image and width profile.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     Dependency: 
-                getCobMask_ver1.m
+                getCobMask_ver1.m   
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     Variable Definition:
                 I:       An image to be analyzed in a matrix.
