@@ -207,8 +207,11 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
             end
             fprintf(['\n']);
             fprintf(['ending clipping: the bottom plant mask\n']);
+ 
+            % Don't have connectPlant.m as of May 19 2016 
             % connect the plant
             MASK = connectPlant(MASK);
+            
             % sum the mask for the height calculation
             sig = sum(MASK,2);
             % find the pixels
