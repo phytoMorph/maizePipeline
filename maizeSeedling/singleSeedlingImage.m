@@ -47,7 +47,7 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
     fprintf(['OutPath:' oPath '\n']); 
     fprintf(['Extension:' num2str(EXT) '\n']);
     fprintf(['Cone-tainers threshhold:' num2str(threshSIG) '\n']); 
-    fprintf(['Short Explanation Required:' num2str(rawImage_scaleFactor) '\n']); 
+    fprintf(['Image Resize:' num2str(rawImage_scaleFactor) '\n']); 
     fprintf(['Short Explanation Required:' num2str(OFFSET) '\n']);
     fprintf(['Short Explanation Required:' num2str(topTRIM) '\n']); 
     fprintf(['Short Explanation Required:' num2str(SNIP) '\n']); 

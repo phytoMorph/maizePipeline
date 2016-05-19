@@ -22,10 +22,16 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %}
     try
+        %%%%%%%%%%%%%%%%%%%%%%%
+        % add file separator if needed
+        %%%%%%%%%%%%%%%%%%%%%%%
         if ~strcmp(oPath(end),filesep)
             oPath = [oPath filesep];
         end
-        % no input of rawImage_scaleFactor is default
+       
+        %%%%%%%%%%%%%%%%%%%%%%%
+        % no resize if no input for rawImage_scaleFactor
+        %%%%%%%%%%%%%%%%%%%%%%%
         if nargin ~= 8
             % set to default value of 1
             rawImage_scaleFactor = 1;
@@ -33,25 +39,27 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %%%%%%%%%%%%%%%%%%%%%%%%% common arguments for Ear, Cob and Kernel %%%%%%%%%%%%%%%%%%%%%%%%%
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%
+        % convert variables proportion to the resolution
+        %%%%%%%%%%%%%%%%%%%%%%%
         % set to default value of 1200
         defaultResolution = 1200;
         scanResolution = StoN(scanResolution);
         % compute proportion of resolution over default
         fracDpi = scanResolution/defaultResolution;
-        %{
-        % compute square proportion of resolution over default
-        fracDpi = sqrt(scanResolution)/sqrt(defaultResolution);
-        %}
         % set to default value of .25
         checkBlue_scaleFactor = .25;
         %fprintf(['Fraction relative to 1200 dpi:' num2str(fracDpi) '\n']); 
         % set to default value of 100
-        addcut = 150;
+        addcut = 100;
         addcut = round(addcut*fracDpi);
         % set to default value of 600
         baselineBlue = 600;
         baselineBlue = round(baselineBlue*fracDpi);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%
+        % algorithm selection
+        %%%%%%%%%%%%%%%%%%%%%%%
         switch algorithm
             case 'e'
                 % set to default value of 10
@@ -59,14 +67,6 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 % set to default value of 10^6
                 defaultAreaPix = 10^6;
                 defaultAreaPix = round(defaultAreaPix*fracDpi);
-                %{
-                % set to default value of 100
-                addcut = 100;
-                addcut = round(addcut*fracDpi);
-                % set to default value of 600
-                baselineBlue = 600;
-                baselineBlue = round(baselineBlue*fracDpi);
-                %}
                 % set to default value of 31
                 fill = 31;
                 % set to default value of 1200:25:1600
@@ -79,14 +79,6 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 % set to default value of 300
                 rho = 300;
                 rho = round(rho*fracDpi);
-                %{
-                % set to default value of 100
-                addcut = 100;
-                addcut = round(addcut*fracDpi);
-                % set to default value of 600
-                baselineBlue = 600;
-                baselineBlue = round(baselineBlue*fracDpi);
-                %}
                 % set to default value of 70
                 colRange1 = 70;
                 % set to default value of 166
@@ -99,14 +91,6 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 % set to default value of 50000
                 defaultAreaPix = 50000;
                 defaultAreaPix = round(defaultAreaPix*fracDpi);
-                %{
-                % set to default value of 100
-                addcut = 100;
-                addcut = round(addcut*fracDpi);
-                % set to default value of 600
-                baselineBlue = 600;
-                baselineBlue = round(baselineBlue*fracDpi);
-                %}
                 % set to default value of 31
                 fill = 31;
                 singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,toSave,toDisplay);                
