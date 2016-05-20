@@ -220,6 +220,10 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
             % find the top of the container
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             data.isPlant(e) = 0;
+            %{
+                data.isPlant is 0
+                if statement below is not executed
+            %}
             if sum(MASK(:))/prod(size(MASK)) < thresP & dBIOMASS(e) > 300 & plantHEIGHT(e) > 50
                 data.isPlant(e) = 1;
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
