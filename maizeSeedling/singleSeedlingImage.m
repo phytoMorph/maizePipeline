@@ -236,16 +236,11 @@ function [] = singleSeedlingImage(imageFile,smoothValue,threshSIG,EXT,topTRIM,SN
                 end
             end
             fprintf(['\n']);
-<<<<<<< HEAD
             fprintf(['ending clipping: the bottom plant mask\n']);
             % connect the plant
             %MASK = connectPlant(MASK);
-=======
-            
             
             MASK = connectPlant(MASK);
-            
->>>>>>> ee77abaf9aea487dc6096dd7d9fbb32ca7a7583d
             % sum the mask for the height calculation
             sig = sum(MASK,2);
             % find the pixels
@@ -557,6 +552,7 @@ end
     [imageFile] = getImageFile(txtFileList,'110','12'); % wrong read pDay11
     [imageFile] = getImageFile(txtFileList,'112','12');
     [imageFile] = getImageFile(txtFileList,'1','11');
+    [imageFile] = getImageFile(txtFileList,'100','14');
     
     singleSeedlingImage(imageFile,100,5,100,100,4,oPath);
     parfor e = 1:22
