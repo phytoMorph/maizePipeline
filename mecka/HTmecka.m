@@ -38,6 +38,9 @@ function [] = HTmecka(user,algorithm)
             localOutputLocation = ['/mnt/spaldingdata/nate/mirror_images/maizeData/' user '/return/kernelData/'];
     end
     
+    
+    
+    
     % get file list
     [FileList] = ScanAndIssueNewFilesOniRods(user,analysisType);
     % geneate the dag

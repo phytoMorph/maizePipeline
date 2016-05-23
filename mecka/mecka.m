@@ -1,4 +1,4 @@
-function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,scanResolution,rawImage_scaleFactor)
+function [] = mecka(algorithm,fileName,numberOfObjects,oPath,remotePath,toSave,toDisplay,scanResolution,rawImage_scaleFactor)
     % warnings will not be printed on screen.
     warning off
     %{
@@ -71,7 +71,7 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 fill = 31;
                 % set to default value of 1200:25:1600
                 windowSize = round(1200*fracDpi):round(25*fracDpi):round(1600*fracDpi);
-                [KernelLength sM] = singleEarImage(fileName,numberOfObjects,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSize,toSave,toDisplay);
+                [KernelLength sM] = singleEarImage(fileName,numberOfObjects,oPath,remotePath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,CHUNK,windowSize,toSave,toDisplay);
             case 'c'
                 % set to default value of 10^6
                 defaultAreaPix = 10^6;
@@ -85,7 +85,7 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 colRange2 = 166;
                 % set to default value of 50
                 fill = 50;
-                singleCobImage(fileName,numberOfObjects,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,rho,addcut,baselineBlue,colRange1,colRange2,fill,toSave,toDisplay);
+                singleCobImage(fileName,numberOfObjects,oPath,remotePath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,rho,addcut,baselineBlue,colRange1,colRange2,fill,toSave,toDisplay);
             case 'k'
                 numberOfObjects;
                 % set to default value of 50000
@@ -93,7 +93,7 @@ function [] = mecka(algorithm,fileName,numberOfObjects,oPath,toSave,toDisplay,sc
                 defaultAreaPix = round(defaultAreaPix*fracDpi);
                 % set to default value of 31
                 fill = 31;
-                singleKernelImage(fileName,oPath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,toSave,toDisplay);                
+                singleKernelImage(fileName,oPath,remotePath,rawImage_scaleFactor,checkBlue_scaleFactor,defaultAreaPix,addcut,baselineBlue,fill,toSave,toDisplay);                
         end
     catch ME
         close all;
