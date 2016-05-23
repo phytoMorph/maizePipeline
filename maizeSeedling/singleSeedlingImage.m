@@ -493,7 +493,7 @@ end
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % compile
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    compile_directory = '/mnt/scratch1/phytoM/flashProjects/maizePipeline/maizeSeedling/tmpSubmitFiles/';
+    compile_directory = '/mnt/scratch1/maizePipeline/maizeSeedling/tmpSubmitFiles/';
     CMD = ['mcc -d ' compile_directory ' -a im2single.m -m -v -R -singleCompThread singleSeedlingImage.m'];
     eval(CMD);
 

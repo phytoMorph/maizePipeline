@@ -102,12 +102,20 @@ f = fields(S);
 close all
 for e = 1:numel(f)
     try
-        cnt = sum(all(S.(f{e}).StemDiameter==0,2));
-        %if cnt < 9
-            plot(S.(f{e}).StemDiameter(:),S.(f{e}).DigitalBioMass(:),'.');
-            hold all
-            drawnow
-        %end
+        cnt = sum(all(S.(f{e}).StemDiameter~=0,2));
+        if cnt > 10
+            for k = 1:size(S.(f{e}).StemDiameter,2)
+                tmp1 = S.(f{e}).StemDiameter(:,k);
+                tmp2 = S.(f{e}).DigitalBioMass(:,k);
+                rm = find(tmp1==0 | tmp2==0);
+                tmp1(rm) = [];
+                tmp2(rm) = [];
+                plot(tmp1,tmp2);
+                hold all
+                drawnow
+                waitforbuttonpress
+            end
+        end
     catch
     end
 end
