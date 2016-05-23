@@ -68,11 +68,13 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
         javaaddpath([pwd filesep 'javase-3.2.1.jar']);
     end
     try
+        %{
         OFFSET = 40;
         sigFILL = 1100;
         eT = 120;
         thresP = .1;
         TOP_THRESH = 1150;
+        %}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % load the image, make gray, edge 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

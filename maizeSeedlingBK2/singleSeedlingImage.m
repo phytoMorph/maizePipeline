@@ -49,9 +49,6 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
     fprintf(['Image resize in checkBlue:' num2str(topTRIM) '\n']); 
     fprintf(['Image resize in checkBlue:' num2str(SNIP) '\n']); 
     %%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % convert the strings to numbers if they are strings
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % init the icommands and create output directory
     initIrods();
     mkdir(oPath);
