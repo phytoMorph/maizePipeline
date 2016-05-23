@@ -9,24 +9,31 @@ pKey = 'Phenotype';
 clear S
 S.hello = 0;
 for e = 1:numel(FileList)
-    [v] = keyLookup(FileList{e},key)
+    [v] = keyLookup(FileList{e},key);
     id = str2num(keyLookup(FileList{e},keyID));
     pid = keyLookup(FileList{e},pKey);
     v = strrep(v,' ','');
     v = strrep(v,'7','');
     v = strrep(v,'11','');
     if ~isempty(v)
-        if strcmp(pid,'PlantHeight')
-            data = mean(csvread(FileList{e}));
-            if numel(data) == 1
-                if ~isfield(S,(v))
-                    S.(v) = {};
+        %if strcmp(pid,'PlantHeight')
+        if strcmp(pid,'DigitalBioMass')
+            try
+                data = mean(csvread(FileList{e}));
+                if numel(data) == 1
+                    if ~isfield(S,(v))
+                        S.(v) = {};
+                        S.([v '_n']) = {};
+                    end
+                    if numel(S.(v)) < id
+                        S.(v){id} = [];
+                        S.([v '_n']){id} = {};
+                    end
+                    S.(v){id} = [S.(v){id};data];
+                    S.([v '_n']){id}{end+1} =  FileList{e};
+                    %waitforbuttonpress
                 end
-                if numel(S.(v)) < id
-                    S.(v){id} = [];
-                end
-                S.(v){id} = [S.(v){id};data];
-                %waitforbuttonpress
+            catch
             end
         end
     end
@@ -38,10 +45,10 @@ close all
 u = [];
 s = [];
 for e = 1:21
-    u(1,e) = mean(S.Control{e});
-    u(2,e) = mean(S.Cstressday{e});
-    s(1,e) = std(S.Control{e})*numel(S.Control{e})^-.5;
-    s(2,e) = std(S.Cstressday{e})*numel(S.Cstressday{e})^-.5;
+    u(2,e) = nanmean(S.Control{e});
+    u(1,e) = nanmean(S.Cstressday{e});
+    s(2,e) = nanstd(S.Control{e})*numel(S.Control{e})^-.5;
+    s(1,e) = nanstd(S.Cstressday{e})*numel(S.Cstressday{e})^-.5;
 end
 errorbar(u',s');
 %% find unique types
@@ -61,25 +68,98 @@ for e = 1:numel(FileList)
     end
 end
 UQ = unique(key);
-
+%% get the unique plots
+for e = 1:numel(UQ)
+    plotID{e} = keyLookup(UQ{e},'Plot');
+end
+%% organize by data insert into local "database"
+S = [];
+for e = 1:numel(FileList)
+    e
+    numel(FileList)
+    try
+        plotV = ['plot_' keyLookup(FileList{e},'Plot')];
+        expV = keyLookup(FileList{e},'Experiment');
+        genoTypeV = keyLookup(FileList{e},'Genotype');
+        phenoTypeV = keyLookup(FileList{e},'Phenotype');
+        pictureDayV = str2num(keyLookup(FileList{e},'PictureDay'));
+        plantNumberV = keyLookup(FileList{e},'PlantNumber');
+        if strcmp(plantNumberV,'All')
+            plantNumberV = 1:3;
+        else
+            plantNumberV = str2num(plantNumberV);
+        end
+        S.(plotV).genoType = genoTypeV;
+        S.(plotV).expType = expV;
+        if ~strcmp(phenoTypeV,'Curvature')
+            S.(plotV).(phenoTypeV)(pictureDayV,plantNumberV) = csvread(FileList{e});
+        end
+    catch
+    end
+end
+%% plot dynamics of Stem-diameter and digital biomass
+f = fields(S);
+close all
+for e = 1:numel(f)
+    try
+        cnt = sum(all(S.(f{e}).StemDiameter==0,2));
+        %if cnt < 9
+            plot(S.(f{e}).StemDiameter(:),S.(f{e}).DigitalBioMass(:),'.');
+            hold all
+            drawnow
+        %end
+    catch
+    end
+end
+%% plot end point of Stem-diameter and digital biomass
+f = fields(S);
+close all
+for e = 1:numel(f)
+    try
+        cnt = sum(all(S.(f{e}).StemDiameter==0,2));
+        plot(S.(f{e}).StemDiameter(end,:),S.(f{e}).DigitalBioMass(end,:),'.');
+        hold all
+        drawnow
+    catch
+    end
+end
 %%
+f = fields(S);
+close all
+for e = 1:numel(f)
+    plot(S.(f{e}).DigitalBioMass);
+    hold on
+    drawnow
+end
+%%
+FUN1_1 = [];
+FUN1_2 = [];
+%%
+oPath = '/mnt/spaldingdata/nate/mirror_images/maizeData/hirsc213/return/seedlingData/compiledResults/';
+mkdir(oPath);
 close all
 h1 = figure;
 h2 = figure;
+toSave = 0;
+toDisplay = 0;
+M1 = [];
+M2 = [];
 for u = 1:numel(UQ)
     try
-       
-        %searchString = '{Plot_9}{Experiment_1}{Planted_2-15-2016}{SeedSource_BAM29-8}{SeedYear_2014}{Genotype_Mo17}{Treatment_Control}';
         searchString = UQ{u};
-        %searchString = '{Plot_40}{Experiment_3}{Planted_2-22-16}{SeedSource_BAM7-3}{SeedYear_2014}{Genotype_B73}{Treatment_7C stress day 11}';
         H = [];
         DBM = [];
+        STEM = [];
         pid = '';
         fprintf(['Searching']);
         for e = 1:numel(FileList)
             [p,n,ext] = fileparts(FileList{e});
             fidx = strfind(n,searchString);
-            if ~isempty(fidx)
+            %GENO = keyLookup(FileList{e},'Genotype');
+            
+            if ~isempty(fidx) %& strcmp(GENO,'B73')
+                hello = 1;
+                
                 pid = keyLookup(FileList{e},'Plot');
                 didx = strfind(n,'{PlantNumber_All}{Phenotype_PlantHeight}');
                 if ~isempty(didx)
@@ -96,10 +176,31 @@ for u = 1:numel(UQ)
                     gidx = strfind(n,'{PictureDay_');
                     hidx = strfind(n(gidx(1):end),'}');
                     kidx = strfind(n(gidx(1):end),'_');
-                    data = csvread(FileList{e});
+                    data1 = csvread(FileList{e});
                     idx = str2num(n((kidx(1)+gidx(1)):(hidx(1)+gidx(1)-2)))-3;
-                    DBM(idx,:) = data;
+                   
+                    
+                    try
+                        if numel(data1)==3
+                            for k = 1:3
+                                tmpFileName = strrep(FileList{e},'All',num2str(k));
+                                tmpFileName = strrep(tmpFileName,'DigitalBioMass','StemDiameter');
+                                data = csvread(tmpFileName);
+                                STEM(idx,k) = data;
+                            end
+
+                            DBM(idx,:) = data1;
+                            
+                        end
+                        
+                    catch ME
+                        
+                        ME
+                    end
+                    
                 end
+                
+               
                 fprintf(['.']);
                 if mod(e,30) == 0
                      fprintf(['\n']);
@@ -107,25 +208,73 @@ for u = 1:numel(UQ)
             end
         end
         
-        
-        if all(H(:,1))~=0
-            break
+        if ~isempty(DBM) & ~isempty(STEM)
+            %{
+            FUN1_1 = cat(3,FUN1_1,DBM);
+            FUN1_2 = cat(3,FUN1_2,STEM);
+            %}
+            
+            tmp = DBM(end,:);
+            M1 = [M1;tmp(:)];
+            tmp = STEM(end,:);
+            M2 = [M2;tmp(:)];
+            %{
+            
+            idx = find(all(DBM==0,2) & all(STEM==2,2));
+            DBM(idx,:) = [];
+            STEM(idx,:) = [];
+            if size(STEM,1) > 8
+                for p = 1:3
+                    plot(DBM(:,p),STEM(:,p));
+                    drawnow
+                    hold on
+                end
+            end
+            %}
+            
         end
-        %H(any(H==0,2),:) = [];
-        figure(h1);
-        plot(H)
         
-        figure(h2)
-        plot(DBM);
-        title(num2str(u))
+        M1 = [M1;DBM(:)];
+        M2 = [M2;STEM(:)];
+        
+        
+        plot(M1(:),M2(:),'.')
         drawnow
-        u
-        numel(UQ)
-        title(pid)
-        waitforbuttonpress
+        if toDisplay
+            figure(h1);
+            plot(H)
+            oFile = [oPath searchString '{PictureDay_1-22}{PlantNumber_All}{Phenotype_PlantHeight}' '.tif'];
+            if toSave;saveas(gca,oFile);end
+
+           
+
+            figure(h2)
+            plot(DBM);
+            title(num2str(u));
+            oFile = [oPath searchString '{PictureDay_1-22}{PlantNumber_All}{Phenotype_DigitalBioMass}' '.tif'];
+            if toSave;saveas(gca,oFile);end
+            title(pid);
+
+            drawnow
+            u
+            numel(UQ)
+
+
+
+
+            %waitforbuttonpress
+            if toSave
+            oFile = [oPath searchString '{PictureDay_1-22}{PlantNumber_All}{Phenotype_PlantHeight}' '.csv'];
+            csvwrite(oFile,H);
+            oFile = [oPath searchString '{PictureDay_1-22}{PlantNumber_All}{Phenotype_DigitalBioMass}' '.csv'];
+            csvwrite(oFile,DBM);
+            end
+        end
     catch ME
         ME
         FileList{e}
+        e
+        break
     end
 end
 %%
