@@ -1,91 +1,70 @@
-function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNIP,rawImage_scaleFactor,OFFSET,sigFILL,eT,thresP,TOP_THRESH,oPath)
-    %{
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    About:      
-                singleSeedlingImage.m is main function to handle ear analysis. It takes all input variables 
-                for its dependent functions. This function returns final result including image with 
-                bounding box. (Inputs are relative to 1200dpi)
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    Dependency: 
-                StoN.m, checkBlue.m, measureKernelLength.m
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    Variable Definition:
-                fileName:               the image file to operate on.
-                smoothValue:            the smooth value for the integration signal along 1 dim
-                threshSIG:              the threshold for finding the cone-tainers
-                EXT:                    the extension around the cone-tainers left and right.
-                topTRIM:                the amount to trim off the top.
-                SNIP:                   the amont to use to find the base of the plant.
-                rawImage_scaleFactor:   A desired percentage to resize the image.
-                OFFSET:                 = 40;
-                sigFILL:                = 1100;
-                eT:                     = 120;
-                thresP:                 = .1;
-                TOP_THRESH:             = 1150;
-                oPath:                  the location to save the results.
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %}
+function [] = singleSeedlingImage(imageFile,smoothValue,threshSIG,EXT,topTRIM,SNIP,oPath)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % imageFile : the image file to operate on
+    % smoothValue : the smooth value for the integration signal along 1 dim
+    % threshSIG : the threshold for finding the cone-tainers
+    % EXT : the extension around the cone-tainers left and right
+    % topTRIM : the amount to trim off the top
+    % SNIP : the amont to use to find the base of the plant
+    % oPath : the location to save the results
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % convert the strings to numbers if they are strings
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    smoothValue = StoN(smoothValue);
-    threshSIG = StoN(threshSIG);
-    EXT = StoN(EXT);
-    topTRIM = StoN(topTRIM);
-    SNIP = StoN(SNIP);
-    rawImage_scaleFactor = StoN(rawImage_scaleFactor);
-    OFFSET = StoN(OFFSET);
-    sigFILL = StoN(sigFILL);
-    eT = StoN(eT);
-    thresP = StoN(thresP);
-    TOP_THRESH = StoN(TOP_THRESH);
-    %%%%%%%%%%%%%%%%%%%%%%%
-    % print out the fileName, number of ears, output path
-    %%%%%%%%%%%%%%%%%%%%%%%
-    fprintf(['FileName:' fileName '\n']);
-    fprintf(['Number of Ears:' num2str(smoothValue) '\n']);
-    fprintf(['OutPath:' oPath '\n']); 
-    fprintf(['Image resize in checkBlue:' num2str(EXT) '\n']);
-    fprintf(['Image resize in checkBlue:' num2str(topTRIM) '\n']); 
-    fprintf(['Image resize in checkBlue:' num2str(SNIP) '\n']); 
-    %%%%%%%%%%%%%%%%%%%%%%%
+    if ischar(smoothValue)
+        smoothValue = str2num(smoothValue);
+    end
+    if ischar(threshSIG)
+        threshSIG = str2num(threshSIG);
+    end
+    if ischar(EXT)
+        EXT = str2num(EXT);
+    end
+    if ischar(topTRIM)
+        topTRIM = str2num(topTRIM);
+    end
+    if ischar(SNIP)
+        SNIP = str2num(SNIP);
+    end
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % convert the strings to numbers if they are strings
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % init the icommands and create output directory
     initIrods();
     mkdir(oPath);
-    % if is deployed then will look in pwd for jar files
     if isdeployed
         javaaddpath([pwd filesep 'core-3.2.1.jar']);
         javaaddpath([pwd filesep 'javase-3.2.1.jar']);
     end
     try
+        OFFSET = 40;
+        sigFILL = 1100;
+        eT = 120;
+        thresP = .1;
+        TOP_THRESH = 1150;
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % load the image, make gray, edge 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         fprintf(['starting: image load, gray, and edge \n']);
-        fprintf(['working on: ' fileName '\n']);
+        fprintf(['working on: ' imageFile '\n']);
         % path and name
-        [p nm] = fileparts(fileName);
+        [p nm] = fileparts(imageFile);
         % read the image
-        I = imread(fileName);
-        % rawImage_scaleFactor to lower 'DPI' effect, by fraction
-        % If resize factor is 1, do not excecute imresize
-        if rawImage_scaleFactor ~= 1;I = imresize(I,rawImage_scaleFactor);end
+        I = imread(imageFile);
         % rectifiy
         I = rectifyImage(I);
         % get QR code
         nm = getQRcode(I);
         % crop off qr code
         I(1:TOP_THRESH,:,:) = [];
-        % trim off X pixels from left and right edges from rotation
+        % trim off X pixles from rotation
         I(:,1:30,:) = [];
         I(:,end-70:end,:) = [];
-        % make gray scale image
-        G = rgb2gray(single(I)/255);
-        % smooth image
-        G = imfilter(G,fspecial('gaussian',[11 11]));
+        % make gray scale
+        G = rgb2gray(I);
+        % filter the image
+        G = imfilter(G,fspecial('gaussian',[13 13],4),'replicate');
+        % find edge
+        E = edge(G);
         fprintf(['ending: image load, gray, and edge \n']);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % load the image, make gray, edge 
@@ -96,19 +75,38 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
         % find the cone-tainers
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         fprintf(['starting: find the cone-tainer \n']);
-        % find horizontal edges
-        [d1 d2] = gradient(G);
-        % binary edges
-        d2 = abs(d2) > graythresh(abs(d2));
-        % remove small edges
-        d2 = bwareaopen(d2,50);
-        % connect the edges
-        d2 = imclose(d2,strel('disk',10));
-        % integrate along the dim2
-        sig = sum(abs(d2),1);
-        % filter
+        %{
+        TOP_THRESH = 970;
+        % integrate
+        sig = sum(E(TOP_THRESH:end,:),1);
+        % smooth the sig
         sig = imfilter(sig,fspecial('average',[1 smoothValue]),'replicate');
-        % bind vec
+        % find the gaps
+        BLOCK = sig < threshSIG;
+        % remove the non-gaps that are less than 50
+        BLOCK = bwareaopen(BLOCK,70);
+        % close the pot holder chunks
+        BLOCK = imclose(BLOCK,strel('disk',100));
+        % extend the conetainers holder blocks
+        eBLOCK = imerode(BLOCK,strel('disk',[EXT]));
+        % make an image mask
+        MASK = repmat(eBLOCK,[size(I,1) 1]);
+        %}
+        %{
+        S = rgb2hsv_fast(I,'single','S');
+        sig = sum(S > .08,1) > 100;
+        sig(1:500) = 1;
+        sig(end-499:end) = 1;
+        sig = imclose(sig,strel('disk',100));
+        %}
+        G = rgb2gray(single(I)/255);
+        G = imfilter(G,fspecial('gaussian',[11 11]));
+        [d1 d2] = gradient(G);
+        d2 = abs(d2) > graythresh(abs(d2));
+        d2 = bwareaopen(d2,50);
+        d2 = imclose(d2,strel('disk',10));
+        sig = sum(abs(d2),1);
+        sig = imfilter(sig,fspecial('average',[1 smoothValue]),'replicate');
         sig = bindVec(sig);
         threshSIG = graythresh(sig);
         % find the gaps
@@ -120,6 +118,7 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
         eBLOCK = imdilate(BLOCK,strel('disk',[EXT]));
         % make an image mask
         MASK = ~repmat(eBLOCK,[size(I,1) 1]);
+        
         % get the bounding boxes for each mask
         R = regionprops(~MASK,'BoundingBox');
         fprintf(['starting: find the cone-tainer :' num2str(numel(R)) '\n']);
@@ -139,7 +138,7 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
         % for each cone-tainer
         for e = 1:numel(R)
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            % crop a vertical trip for each container
+            % crop a vertical strip for each container
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             fprintf(['starting: crop the strip\n']);
             % crop the strip
@@ -148,9 +147,11 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
             nR(e).BoundingBox = R(e).BoundingBox;
             % trim the top
             tmpD(1:topTRIM:end,:,:) = [];
+            % get the size
+            SZ = size(tmpD);
             fprintf(['ending: crop the strip\n']);
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            % crop a vertical trip for each container
+            % crop a vertical strip for each container
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -158,20 +159,51 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
             % find the top of the cone-tainer
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             fprintf(['starting: find the top of the cone-tainer\n']);
-            % get the foreground mask
+            
             MASK = getMASK_ver0(tmpD);
-            % close the mask
             MASK = imclose(MASK,strel('disk',5));
-            % find the bottom and fill holes
             fidx = find(MASK(end,:));
             MASK(end,fidx(1):fidx(end)) = 1;
             MASK = imfill(MASK,'holes');
-            % find edge of mask
+            
             E = edge(MASK);
-            % find the main line
+            %{
+            % gray scale for the strip
+            G = rgb2gray(tmpD);
+            E = edge(G);
+            % integrate the edge
+            sig = sum(E,2);
+            % threshold the integrated edge
+            sig = sig > eT;
+            % fill in the sig
+            sig(1:sigFILL) = 0;
+            nidx = find(sig);
+            %}
+            
+            %{
+            % filter and edge
+            G = imfilter(G,fspecial('disk',15),'replicate');
+            SZ = size(I);
+            [d1 d2] = gradient(single(G)/255);
+            E = abs(d2) > graythresh(abs(d2));
+            %}
+            %{
+            [H, theta, rho] = hough(E','Theta',linspace(-5,5,20));
+            P  = houghpeaks(H,1,'Threshold',0);
+            linesV = houghlines(E',theta,rho,P,'FillGap',500,'MinLength',300);
+            %}
+            
             sig = sum(E,2);
             sig = imfilter(sig,fspecial('average',[5 1]),'replicate');
             [J,nidx] = max(sig);
+            
+            
+            
+            %if ~isempty(nidx)
+                %nidx = nidx(1);
+                %nidx = mean([linesV(1).point1(1) linesV(1).point2(1)]);
+                nR(e).BoundingBox(4) = (nidx-OFFSET)-nR(e).BoundingBox(2);
+            %end
             fprintf(['ending: find the top of the cone-tainer\n']);
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             % find the top of the cone-tainer
@@ -186,21 +218,28 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
             fprintf(['starting: get the plant mask\n']);
             flag = 1;
             cnt = 1;
-            fprintf(['starting clipping: the bottom plant mask\n']);
-            % get the inital crop above container and stop at image
-            tmpD = imcrop(I,nR(e).BoundingBox);
-            % make plant mask
-            MASK = getMASK_ver0(tmpD);
-            while (sum(MASK(end,:)) > 80) & cnt < 150
-                fprintf('.');
-                nR(e).BoundingBox(4) = nR(e).BoundingBox(4) - 1;
-                MASK(end,:) = [];
+            fprintf(['clipping: the bottom plant mask\n']);
+            while flag
+                fprintf(['.']);
+                tmpD = imcrop(I,nR(e).BoundingBox);
+                
+                % make plant mask
+                MASK = getMASK_ver0(tmpD);
+                if sum(MASK(end,:)) > 80
+                    nR(e).BoundingBox(4) = nR(e).BoundingBox(4) -1;
+                else
+                    flag = 0;
+                end
                 cnt = cnt +1;
+                if cnt > 150
+                    flag = 0;
+                end
             end
             fprintf(['\n']);
-            fprintf(['ending clipping: the bottom plant mask\n']);
-            % connect the plant
+            
+            
             MASK = connectPlant(MASK);
+            
             % sum the mask for the height calculation
             sig = sum(MASK,2);
             % find the pixels
@@ -222,6 +261,11 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
             data.isPlant(e) = 0;
             if sum(MASK(:))/prod(size(MASK)) < thresP & dBIOMASS(e) > 300 & plantHEIGHT(e) > 50
                 data.isPlant(e) = 1;
+                
+               
+                
+                
+                
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 % trace the skeleton
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -257,6 +301,7 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
                 path = {};
                 % snap the base point to the skeleton
                 [idx(1)] = snapTo(DP',[fliplr(basePoint)]);
+                basePoint = DP(:,idx(1))';
                 for i = 1:numel(re)
                     % find the end point in the skeleton
                     [idx(2)] = snapTo(DP',[re(i) ce(i)]);
@@ -281,6 +326,22 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                % measure the stem diameter
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                STEM_SNIP = 20;
+                MM = 3;
+                STEM = MASK((end-STEM_SNIP):end,:);
+                STEM = logical(STEM) - ~imfill(~logical(STEM),[size(STEM,1) round(basePoint(2))]);
+                dia = sum(STEM,2);
+                dia = sort(dia);
+                dia = mean(dia(MM:end-(MM-1)));
+                pNameDIA = [oPath nm '{PlantNumber_' num2str(e) '}{Phenotype_StemDiameter}.csv'];
+                csvwrite(pNameDIA,dia);
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                % measure the stem diamter
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 % make the mask overlay
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 fprintf(['starting: mask overlay\n']);
@@ -297,8 +358,6 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 % make the mask overlay
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                
-                
                 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 % store the traced paths and other data
@@ -320,7 +379,6 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
                 % store the traced paths and other data
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 
-                
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 % display the results for each plant
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -331,7 +389,7 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
                 E = imdilate(E,strel('disk',3,0));
                 out = flattenMaskOverlay(tmpD(yOFFSET:end,:,:), logical(MASK(yOFFSET:end,:)),.15,'g');
                 out = flattenMaskOverlay(out, logical(E),.55,'b');
-                h = image(out);
+                image(out); hold on;
                 axis off
                 axis equal
                 hold on
@@ -345,18 +403,13 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
                 plot(Xbar,Ybar,'r')
                 %}
 
-
                 for i = 1:numel(data.PATHS{e})
                     plot(data.PATHS{e}{i}(1,:) - xOFFSET,data.PATHS{e}{i}(2,:) - yOFFSET,'r','LineWidth',2);
                 end
-
                 plot(data.PATHS{e}{data.longestPath(e)}(1,:)-xOFFSET,data.PATHS{e}{data.longestPath(e)}(2,:)-yOFFSET,'k','LineWidth',2);
                 title(['plant ' num2str(e)]);
-                drawnow
-                %axis equal;
-                axis off;drawnow;set(gca,'Position',[0 0 1 1]);
+                set(gca,'Position',[0 0 1 1]);
                 tmpImageName = [oPath nm '{PlantNumber_' num2str(e) '}{Phenotype_Image}.tif'];
-              
                 saveas(gca,tmpImageName);
                 close all
                 fprintf(['ending: display single plant\n']);
@@ -364,14 +417,11 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
                 % display the results - for each plant
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             end
-            
-            
         end
         
     catch ME
-        close all;
         getReport(ME)
-        fprintf(['******error in:singleSeedlingImage.m******\n']);
+        close all
     end
     
     
@@ -385,6 +435,7 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
         h = image(out);
         axis off
         hold on
+        imwrite(tmpMASK_final,[oPath nm '{PlantNumber_All}{Phenotype_ImageMask}.tif']);
         for e = 1:numel(HEIGHT)
             if ~(plantHEIGHT(e)==0)
                 % make the data for the bars for height
@@ -403,10 +454,6 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
                     % plot longest path
                     plot(data.PATHS{e}{data.longestPath(e)}(1,:),data.PATHS{e}{data.longestPath(e)}(2,:),'k','LineWidth',2);
                 end
-                
-                
-                
-                drawnow
                 fprintf(['ending with image and results display \n']);
             end
         end
@@ -433,12 +480,12 @@ function [] = singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNI
         end
         pName5 = [oPath nm '{PlantNumber_All}{Phenotype_imageFileName}.txt'];
         fileID = fopen(pName5,'w');
-        nbytes = fprintf(fileID,'%s\n',fileName);
+        nbytes = fprintf(fileID,'%s\n',imageFile);
     catch ME
-        close all;
         getReport(ME)
-        fprintf(['******error in:singleSeedlingImage.m******\n']);
+        close all
     end
+    close all
 end
 
 
@@ -446,7 +493,7 @@ end
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % compile
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    compile_directory = '/mnt/scratch1/maizePipeline/maizePipeline/maizeSeedling/tmpSubmitFiles/';
+    compile_directory = '/mnt/scratch1/phytoM/flashProjects/maizePipeline/maizeSeedling/tmpSubmitFiles/';
     CMD = ['mcc -d ' compile_directory ' -a im2single.m -m -v -R -singleCompThread singleSeedlingImage.m'];
     eval(CMD);
 
@@ -474,6 +521,13 @@ end
     fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC2.22.16/plot11c.tiff';
     %fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC2.29.16/plot23c.tiff';
     fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC2.26.16/plot7c.tiff';
+    %fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC5.6.16/plot224.nef';
+    fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC2.26.16/plot10c.tiff';
+    fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC4.10.16/plot105.nef';
+    fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC4.1.16/plot108.nef';
+    fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC4.1.16/plot110.nef';
+    fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC4.1.16/plot112.nef';
+    fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC2.26.16/plot1.nef';
     singleSeedlingImage(fileName,100,5,100,100,4,oPath);
 
 
@@ -483,8 +537,18 @@ end
     txtFileList = gdig(FilePath,txtFileList,FileExt,1);
     [imageFile] = getImageFile(txtFileList,'10','17');
     [imageFile] = getImageFile(txtFileList,'10','19');
+    [imageFile] = getImageFile(txtFileList,'10','9'); % not present
     [imageFile] = getImageFile(txtFileList,'106','9');
     [imageFile] = getImageFile(txtFileList,'100','22');
+    [imageFile] = getImageFile(txtFileList,'224','21');
+    [imageFile] = getImageFile(txtFileList,'104','19'); % for 18 - cant read QR code
+    [imageFile] = getImageFile(txtFileList,'104','12'); % for 11 - cant read
+    [imageFile] = getImageFile(txtFileList,'105','21');
+    [imageFile] = getImageFile(txtFileList,'108','12');
+    [imageFile] = getImageFile(txtFileList,'110','12'); % wrong read pDay11
+    [imageFile] = getImageFile(txtFileList,'112','12');
+    [imageFile] = getImageFile(txtFileList,'1','11');
+    
     singleSeedlingImage(imageFile,100,5,100,100,4,oPath);
     parfor e = 1:22
         [imageFile] = getImageFile(txtFileList,'100',num2str(e));
@@ -492,11 +556,5 @@ end
             singleSeedlingImage(imageFile,100,5,100,100,4,oPath);
         end
     end
-%}
-
-%{
-singleSeedlingImage(fileName,smoothValue,threshSIG,EXT,topTRIM,SNIP,rawImage_scaleFactor,oPath)
-oPath = '/mnt/snapper/Lee/maizeData_resTest_Result/seedlingData_Result';
-fileName = '/mnt/snapper/Lee/maizeData_resTest/seedlingData/plot7c.tiff';
-singleSeedlingImage(fileName,100,5,100,100,4,1,40,1100,120,0.1,1150,oPath);
+    
 %}

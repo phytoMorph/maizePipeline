@@ -9,15 +9,16 @@ function [] = scanAndAnalyzeMaizeSeedling(user)
     dag.setOutputLocation(['/mnt/spaldingdata/nate/mirror_images/maizeData/' user '/return/seedlingData/']);
     dag.setTempFilesLocation(tmpFileLocation);
     numJobs = numel(FileList);
+    %numJobs = 10;
     % add jobs to dag for each image - create and add job to dag
     for e = 1:numJobs        
         % create job
         job = cJob();
         job.addFile('/mnt/spaldingdata/nate/dcraw');
-        job.addFile('/mnt/spaldingdata/nate/core-3.2.1.jar');                                                                                
-        job.addFile('/mnt/spaldingdata/nate/javase-3.2.1.jar');
+        job.addSquidFile('core-3.2.1.jar');
+        job.addSquidFile('javase-3.2.1.jar');
         job.changeMCRfile('v840');
-        job.requirements.memory = {'=' '4000'};
+        job.requirements.memory = {'=' '2000'};
         job.setTempFilesLocation(tmpFileLocation);
         job.setFunctionName('singleSeedlingImage');    
         job.setNumberofArgs(7);        
