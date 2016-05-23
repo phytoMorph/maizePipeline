@@ -576,6 +576,7 @@ end
     [imageFile] = getImageFile(txtFileList,'110','12'); % wrong read pDay11
     [imageFile] = getImageFile(txtFileList,'112','12');
     [imageFile] = getImageFile(txtFileList,'1','11');
+    [imageFile] = getImageFile(txtFileList,'100','14');
     
     singleSeedlingImage(imageFile,100,5,100,100,4,oPath);
     parfor e = 1:22
