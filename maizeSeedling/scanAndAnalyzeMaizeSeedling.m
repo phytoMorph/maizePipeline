@@ -3,7 +3,7 @@ function [] = scanAndAnalyzeMaizeSeedling(user)
     % get file list
     [FileList] = ScanAndIssueNewFilesOniRods(user,analysisType);
     % geneate the dag
-    tmpFileLocation = '/mnt/scratch1/phytoM/maizeSeedling/tmpSubmitFiles/';
+    tmpFileLocation = '/mnt/scratch1/maizePipeline/maizeSeedling/tmpSubmitFiles/';
     dag = epfod();    
     dag.setFunctionName('singleSeedlingImage');
     dag.setOutputLocation(['/mnt/spaldingdata/nate/mirror_images/maizeData/' user '/return/seedlingData/']);

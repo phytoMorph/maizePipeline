@@ -92,7 +92,8 @@ for e = 1:numel(FileList)
         S.(plotV).genoType = genoTypeV;
         S.(plotV).expType = expV;
         if ~strcmp(phenoTypeV,'Curvature')
-            S.(plotV).(phenoTypeV)(pictureDayV,plantNumberV) = csvread(FileList{e});
+            S.(plotV).(phenoTypeV).data(pictureDayV,plantNumberV) = csvread(FileList{e});
+            S.(plotV).(phenoTypeV).imageFile{pictureDayV}= FileList{e};
         end
     catch
     end
@@ -102,15 +103,15 @@ f = fields(S);
 close all
 for e = 1:numel(f)
     try
-        cnt = sum(all(S.(f{e}).StemDiameter~=0,2));
+        cnt = sum(all(S.(f{e}).StemDiameter.data~=0,2));
         if cnt > 10
-            for k = 1:size(S.(f{e}).StemDiameter,2)
-                tmp1 = S.(f{e}).StemDiameter(:,k);
-                tmp2 = S.(f{e}).DigitalBioMass(:,k);
+            for k = 1:size(S.(f{e}).StemDiameter.data,2)
+                tmp1 = S.(f{e}).StemDiameter.data(:,k);
+                tmp2 = S.(f{e}).DigitalBioMass.data(:,k);
                 rm = find(tmp1==0 | tmp2==0);
                 tmp1(rm) = [];
                 tmp2(rm) = [];
-                plot(tmp1,tmp2);
+                plot(tmp2,tmp1);
                 hold all
                 drawnow
                 waitforbuttonpress
@@ -285,4 +286,3 @@ for u = 1:numel(UQ)
         break
     end
 end
-%%

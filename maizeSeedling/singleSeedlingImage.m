@@ -75,30 +75,6 @@ function [] = singleSeedlingImage(imageFile,smoothValue,threshSIG,EXT,topTRIM,SN
         % find the cone-tainers
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         fprintf(['starting: find the cone-tainer \n']);
-        %{
-        TOP_THRESH = 970;
-        % integrate
-        sig = sum(E(TOP_THRESH:end,:),1);
-        % smooth the sig
-        sig = imfilter(sig,fspecial('average',[1 smoothValue]),'replicate');
-        % find the gaps
-        BLOCK = sig < threshSIG;
-        % remove the non-gaps that are less than 50
-        BLOCK = bwareaopen(BLOCK,70);
-        % close the pot holder chunks
-        BLOCK = imclose(BLOCK,strel('disk',100));
-        % extend the conetainers holder blocks
-        eBLOCK = imerode(BLOCK,strel('disk',[EXT]));
-        % make an image mask
-        MASK = repmat(eBLOCK,[size(I,1) 1]);
-        %}
-        %{
-        S = rgb2hsv_fast(I,'single','S');
-        sig = sum(S > .08,1) > 100;
-        sig(1:500) = 1;
-        sig(end-499:end) = 1;
-        sig = imclose(sig,strel('disk',100));
-        %}
         G = rgb2gray(single(I)/255);
         G = imfilter(G,fspecial('gaussian',[11 11]));
         [d1 d2] = gradient(G);
@@ -118,7 +94,6 @@ function [] = singleSeedlingImage(imageFile,smoothValue,threshSIG,EXT,topTRIM,SN
         eBLOCK = imdilate(BLOCK,strel('disk',[EXT]));
         % make an image mask
         MASK = ~repmat(eBLOCK,[size(I,1) 1]);
-        
         % get the bounding boxes for each mask
         R = regionprops(~MASK,'BoundingBox');
         fprintf(['starting: find the cone-tainer :' num2str(numel(R)) '\n']);
@@ -134,6 +109,8 @@ function [] = singleSeedlingImage(imageFile,smoothValue,threshSIG,EXT,topTRIM,SN
         tmpMASK_final = zeros(size(G));
         out = double(I)/255;
         HEIGHT = NaN*ones(1,numel(R));
+        WIDTH = HEIGHT;
+        dBIOMASS = WIDTH;
         plantHEIGHT = HEIGHT;
         % for each cone-tainer
         for e = 1:numel(R)
@@ -147,8 +124,6 @@ function [] = singleSeedlingImage(imageFile,smoothValue,threshSIG,EXT,topTRIM,SN
             nR(e).BoundingBox = R(e).BoundingBox;
             % trim the top
             tmpD(1:topTRIM:end,:,:) = [];
-            % get the size
-            SZ = size(tmpD);
             fprintf(['ending: crop the strip\n']);
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             % crop a vertical strip for each container
@@ -156,190 +131,207 @@ function [] = singleSeedlingImage(imageFile,smoothValue,threshSIG,EXT,topTRIM,SN
 
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            % find the top of the cone-tainer
+            % find the top of the cone-tainer - rough pass
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             fprintf(['starting: find the top of the cone-tainer\n']);
-            
             MASK = getMASK_ver0(tmpD);
             MASK = imclose(MASK,strel('disk',5));
             fidx = find(MASK(end,:));
             MASK(end,fidx(1):fidx(end)) = 1;
             MASK = imfill(MASK,'holes');
-            
             E = edge(MASK);
-            %{
-            % gray scale for the strip
-            G = rgb2gray(tmpD);
-            E = edge(G);
-            % integrate the edge
-            sig = sum(E,2);
-            % threshold the integrated edge
-            sig = sig > eT;
-            % fill in the sig
-            sig(1:sigFILL) = 0;
-            nidx = find(sig);
-            %}
-            
-            %{
-            % filter and edge
-            G = imfilter(G,fspecial('disk',15),'replicate');
-            SZ = size(I);
-            [d1 d2] = gradient(single(G)/255);
-            E = abs(d2) > graythresh(abs(d2));
-            %}
-            %{
-            [H, theta, rho] = hough(E','Theta',linspace(-5,5,20));
-            P  = houghpeaks(H,1,'Threshold',0);
-            linesV = houghlines(E',theta,rho,P,'FillGap',500,'MinLength',300);
-            %}
-            
             sig = sum(E,2);
             sig = imfilter(sig,fspecial('average',[5 1]),'replicate');
             [J,nidx] = max(sig);
-            
-            
-            
-            %if ~isempty(nidx)
-                %nidx = nidx(1);
-                %nidx = mean([linesV(1).point1(1) linesV(1).point2(1)]);
-                nR(e).BoundingBox(4) = (nidx-OFFSET)-nR(e).BoundingBox(2);
-            %end
+            nR(e).BoundingBox(4) = (nidx-OFFSET)-nR(e).BoundingBox(2);
             fprintf(['ending: find the top of the cone-tainer\n']);
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            % find the top of the cone-tainer
+            % find the top of the cone-tainer - rough pass
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            
-            
-           
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            % crop, get mask, 
+            % find plant thresholded on diameter of stem - fine pass
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             fprintf(['starting: get the plant mask\n']);
-            flag = 1;
             cnt = 1;
+            diameterThreshold = 40;
+            STEM_SNIP = 20;
+            outLN = 4;
+            MAXcnt = 150; 
+            SNIPBasePoint = 100;
+            tmpD = imcrop(I,nR(e).BoundingBox);
+            MASK = getMASK_ver0(tmpD);
+            [skeleton] = getPlantSkelton(MASK);
+            [basePoint] = getStemBasePoint(MASK,SNIPBasePoint,skeleton);
+            [diameter] = measureStemDiameter(MASK,STEM_SNIP,outLN,basePoint);
             fprintf(['clipping: the bottom plant mask\n']);
-            while flag
+            while diameter > diameterThreshold && cnt < MAXcnt
                 fprintf(['.']);
-                tmpD = imcrop(I,nR(e).BoundingBox);
-                
-                % make plant mask
-                MASK = getMASK_ver0(tmpD);
-                if sum(MASK(end,:)) > 80
+                [skeleton] = getPlantSkelton(MASK);
+                [basePoint] = getStemBasePoint(MASK,SNIPBasePoint,skeleton);
+                [diameter] = measureStemDiameter(MASK,STEM_SNIP,outLN,basePoint);
+                if diameter > diameterThreshold
+                    MASK(end,:) = [];
                     nR(e).BoundingBox(4) = nR(e).BoundingBox(4) -1;
-                else
-                    flag = 0;
                 end
-                cnt = cnt +1;
-                if cnt > 150
-                    flag = 0;
-                end
+                cnt = cnt + 1;
             end
             fprintf(['\n']);
+            fprintf(['starting: get the plant mask\n']);
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % find plant thresholded on diameter of stem - fine pass
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             
-            
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % re-crop the plant,make mask,skeleton,basePoint,diameter and connectPlant
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            tmpD = imcrop(I,nR(e).BoundingBox);
+            MASK = getMASK_ver0(tmpD);
+            [skeleton] = getPlantSkelton(MASK);
+            [basePoint] = getStemBasePoint(MASK,SNIP,skeleton);
+            [diameter] = measureStemDiameter(MASK,STEM_SNIP,outLN,basePoint);
             MASK = connectPlant(MASK);
-            
-            % sum the mask for the height calculation
-            sig = sum(MASK,2);
-            % find the pixels
-            fidx = find(sig);
-            if isempty(fidx)
-                fidx = size(MASK,1);
-            end
-            % find the top pixel
-            HEIGHT(e) = fidx(1);
-            % plant height
-            plantHEIGHT(e) = size(MASK,1) - HEIGHT(e);
-            % find the biomass
-            dBIOMASS(e) = sum(MASK(:));
             fprintf(['ending: get the plant mask\n']);
-            % if the mask is blank not blank
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % re-crop the plant,make mask,skeleton,basePoint,diameter and connectPlant
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % spool out the stem diameter
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            pNameDIA = [oPath nm '{PlantNumber_' num2str(e) '}{Phenotype_StemDiameter}.csv'];
+            csvwrite(pNameDIA,diameter);
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % spool out the stem diameter
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % make phenotype measurements
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            [plantHEIGHT(e),HEIGHT(e), WIDTH(e),dBIOMASS(e),hMassDistribution,vMassDistribution,CenterOfMass,StdDis] = measureHeightWidthDigitalBioMass(MASK);
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % make phenotype measurements
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            
+            
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % spool out the stem diameter
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            tmpName = [oPath nm '{PlantNumber_' num2str(e) '}{Phenotype_Std1}.csv'];
+            csvwrite(tmpName,StdDis(1));
+            tmpName = [oPath nm '{PlantNumber_' num2str(e) '}{Phenotype_Std2}.csv'];
+            csvwrite(tmpName,StdDis(2));
+            tmpName = [oPath nm '{PlantNumber_' num2str(e) '}{Phenotype_CenterOfMass1}.csv'];
+            csvwrite(tmpName,CenterOfMass(1));
+            tmpName = [oPath nm '{PlantNumber_' num2str(e) '}{Phenotype_CenterOfMass2}.csv'];
+            csvwrite(tmpName,CenterOfMass(2));
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % spool out the stem diameter
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             % find the top of the container
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             data.isPlant(e) = 0;
-            if sum(MASK(:))/prod(size(MASK)) < thresP & dBIOMASS(e) > 300 & plantHEIGHT(e) > 50
+            if sum(MASK(:))/prod(size(MASK)) < thresP & dBIOMASS(e) > 100 & plantHEIGHT(e) > 20
                 data.isPlant(e) = 1;
-                
-               
-                
-                
-                
-                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                % trace the skeleton
-                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                fprintf(['starting: skeleton trace\n']);
-                % pad the array
-                tmpMASK = padarray(MASK, [300 0], 'replicate', 'post');
-                % get the skeleton
-                SKEL = bwmorph(tmpMASK,'thin',inf);
-                % get the skeleton
-                SKEL = SKEL(1:size(MASK,1),:);
-                SKEL = bwareaopen(SKEL,10);
-                % find the skeleton for tracing
-                [r c] = find(SKEL);
-                % find the tips
-                EP = imfilter(double(SKEL),ones(3,3));
-                [re ce] = find(EP == 2 & SKEL);
-                % SNIP off some stem
-                baseMASK = sum(MASK((end-SNIP):end,:),1);
-                % mean along the stem snip
-                basePoint(1) = mean(find(baseMASK==max(baseMASK)));
-                % set the basepoint 1 to the size of the mask
-                basePoint(2) = size(MASK,1);
-                % find skeleton
-                [x y] = find(SKEL);
-                % stack the skeleton points for tracing
-                DP = [x y]';
-                fprintf(['starting: make adjacency matrix\n']);
-                % make adjaceny matrix
-                T = Radjacency(DP,3);
-                fprintf(['ending: make adjacency matrix\n']);
-                % find the longest path from the stem end point to the leaf tip
-                pathcost = [];
-                path = {};
-                % snap the base point to the skeleton
-                [idx(1)] = snapTo(DP',[fliplr(basePoint)]);
-                basePoint = DP(:,idx(1))';
-                for i = 1:numel(re)
-                    % find the end point in the skeleton
-                    [idx(2)] = snapTo(DP',[re(i) ce(i)]);
-                    fprintf(['starting: path trace\n']);
-                    % trace
-                    [path{i} , pathcost(i)]  = dijkstra(T , idx(1) , idx(2));
-                    fprintf(['ending: path trace\n']);
+             
+                skeleton = bwmorph(skeleton,'skel');
+                for r = 1:15
+                    ep = bwmorph(skeleton,'endpoints');
+                    ep(end,:) = 0;
+                    skeleton = skeleton - ep;
                 end
-                % set pathcost of inf to zero
-                pathcost(isinf(pathcost)) = 0;
-                % find the zeros - including inf path cost
-                ridx = find(pathcost==0);
-                % remove the 0 length paths
-                pathcost(ridx) = [];
-                % remove the 0 length paths
-                path(ridx) = [];
-                % find the max path cost
-                [J,midx] = max(pathcost);
-                fprintf(['ending: skeleton trace\n']);
+                
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 % trace the skeleton
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+                [path,pathcost,midx,DP] = traceSkeleton(skeleton,basePoint);
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                % measure the stem diameter
+                % trace the skeleton
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                STEM_SNIP = 20;
-                MM = 3;
-                STEM = MASK((end-STEM_SNIP):end,:);
-                STEM = logical(STEM) - ~imfill(~logical(STEM),[size(STEM,1) round(basePoint(2))]);
-                dia = sum(STEM,2);
-                dia = sort(dia);
-                dia = mean(dia(MM:end-(MM-1)));
-                pNameDIA = [oPath nm '{PlantNumber_' num2str(e) '}{Phenotype_StemDiameter}.csv'];
-                csvwrite(pNameDIA,dia);
-                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                % measure the stem diamter
-                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                
+                distT = bwdist(~MASK);
+                
+                pathStack = [];
+                for r = 1:numel(path)
+                    pathStack = [pathStack;path{r}];
+                end
+                UQ = unique(pathStack);
+                pathCount = [];
+                for u = 1:numel(UQ)
+                    pathCount(u) = sum(pathStack==UQ(u));
+                end
+                fidx = find(pathCount == 1);
+                
+                
+                UQu = UQ(fidx);
+                pathStackU = [];
+                for r = 1:numel(path)
+                    tmpPath = path{r};
+                    for u = 1:numel(UQu)
+                        fidx = find(tmpPath == UQu(u));
+                        pathStackU = [pathStackU;tmpPath(fidx)];
+                    end
+                end
+                
+                
+                fidx = find(pathCount ~= 1);
+                UQn = UQ(fidx);
+                pathStackN = [];
+                for r = 1:numel(path)
+                    tmpPath = path{r};
+                    for u = 1:numel(UQn)
+                        fidx = find(tmpPath == UQn(u));
+                        pathStackN = [pathStackN;tmpPath(fidx)];
+                    end
+                end
+                
+                
+                leafOnlySkeleton = zeros(size(MASK));
+                leafOnlySkeletonN = zeros(size(MASK));
+                sidxU = sub2ind(size(MASK),DP(1,pathStackU)',DP(2,pathStackU)');
+                sidxN = sub2ind(size(MASK),DP(1,pathStackN)',DP(2,pathStackN)');
+                
+                leafOnlySkeleton(sidxU) = 1;
+                leafOnlySkeletonN(sidxN) = 1;
+                leafOnlySkeletonN = imdilate(leafOnlySkeletonN,strel('disk',3));
+                leafOnlySkeleton = logical((leafOnlySkeleton - leafOnlySkeletonN)==1);
+                
+                
+                
+                
+                leafOnlySkeleton = bwareaopen(leafOnlySkeleton,50);
+                leafOnlySkeleton = bwmorph(leafOnlySkeleton,'skel');
+                for r = 1:20
+                    ep = bwmorph(leafOnlySkeleton,'endpoints');
+                    leafOnlySkeleton = leafOnlySkeleton - ep;
+                end
+                lR = regionprops(logical(leafOnlySkeleton),'PixelIdxList');
+                midxMAX = [];
+                for r = 1:numel(lR)
+                    tmp = distT(lR(r).PixelIdxList);
+                    [~,midxMAX(r)] = max(tmp);
+                    midxMAX(r) = lR(r).PixelIdxList(midxMAX(r));
+                end
+                
+                
+                
+                
+                sidx = sub2ind(size(MASK),DP(1,pathStack)',DP(2,pathStack)');
+                
+                %sidx = find(skeleton);
+                leafWidth = distT(sidx);
+                rm = leafWidth < diameter/2;
+                sidx(rm) = [];
+                [l1 l2] = ind2sub(size(MASK),sidx);
+                leafWidth(rm) = [];
+                pathStack(rm) = [];
+                [maxWLeafWidth,MAXIDX] = max(leafWidth);
+                
+                
+                
+                
                 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 % make the mask overlay
@@ -384,12 +376,20 @@ function [] = singleSeedlingImage(imageFile,smoothValue,threshSIG,EXT,topTRIM,SN
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 fprintf(['starting: display single plant\n']);
                 yOFFSET = HEIGHT(e);
+                yOFFSET = 1;
                 xOFFSET = nR(e).BoundingBox(1);
+                dE = bwboundaries(MASK);
+                for r = 1:numel(dE)
+                    tmp(r) = size(dE{r},1);
+                end
+                [J,sidx] = max(tmp);
+               
                 E = edge(MASK(yOFFSET:end,:));
-                E = imdilate(E,strel('disk',3,0));
-                out = flattenMaskOverlay(tmpD(yOFFSET:end,:,:), logical(MASK(yOFFSET:end,:)),.15,'g');
-                out = flattenMaskOverlay(out, logical(E),.55,'b');
-                image(out); hold on;
+                %E = imdilate(E,strel('disk',3,0));
+                %out = flattenMaskOverlay(tmpD(yOFFSET:end,:,:), logical(MASK(yOFFSET:end,:)),.15,'g');
+                %out = flattenMaskOverlay(out, logical(E),.55,'b');
+                image(tmpD); hold on;
+                 plot(dE{sidx}(:,2),dE{sidx}(:,1),'b')
                 axis off
                 axis equal
                 hold on
@@ -404,15 +404,39 @@ function [] = singleSeedlingImage(imageFile,smoothValue,threshSIG,EXT,topTRIM,SN
                 %}
 
                 for i = 1:numel(data.PATHS{e})
-                    plot(data.PATHS{e}{i}(1,:) - xOFFSET,data.PATHS{e}{i}(2,:) - yOFFSET,'r','LineWidth',2);
+                    plot(data.PATHS{e}{i}(1,:) - xOFFSET,data.PATHS{e}{i}(2,:) - yOFFSET,'k','LineWidth',1);
                 end
-                plot(data.PATHS{e}{data.longestPath(e)}(1,:)-xOFFSET,data.PATHS{e}{data.longestPath(e)}(2,:)-yOFFSET,'k','LineWidth',2);
+                plot(data.PATHS{e}{data.longestPath(e)}(1,:)-xOFFSET,data.PATHS{e}{data.longestPath(e)}(2,:)-yOFFSET,'r','LineWidth',1);
                 title(['plant ' num2str(e)]);
                 set(gca,'Position',[0 0 1 1]);
+                plot(CenterOfMass(2),CenterOfMass(1),'c*');
+                plot(linspace((CenterOfMass(2)-WIDTH(e)/2),(CenterOfMass(2)+WIDTH(e)/2),2),[CenterOfMass(1) CenterOfMass(1)],'c');
+                plot([CenterOfMass(2) CenterOfMass(2)],linspace((CenterOfMass(1)-plantHEIGHT(e)/2),(CenterOfMass(1)+plantHEIGHT(e)/2),2),'c');
+                TH = linspace(-pi,pi,200);
+                X = StdDis(2)*cos(TH) + CenterOfMass(2);
+                Y = StdDis(1)*sin(TH) + CenterOfMass(1);
+                plot(X,Y,'c')
+                plot(basePoint(2),basePoint(1)-20,'c.');
+                plot(linspace((basePoint(2)-diameter/2),(basePoint(2)+diameter/2),2),[basePoint(1)-20 basePoint(1)-20],'c');
+                
+                plot(l2(MAXIDX),l1(MAXIDX),'g*');
+                
+                %plot(DP(2,pathStack),DP(1,pathStack),'k.');
+                
+                for r = 1:numel(midxMAX)
+                    [subIDX1 subIDX2] = ind2sub(size(MASK),midxMAX(r));
+                    plot(subIDX2,subIDX1,'g*')
+                end
+                
+                plot(DP(2,pathStack(MAXIDX)),DP(1,pathStack(MAXIDX)),'g*');
                 tmpImageName = [oPath nm '{PlantNumber_' num2str(e) '}{Phenotype_Image}.tif'];
+                
                 saveas(gca,tmpImageName);
                 close all
                 fprintf(['ending: display single plant\n']);
+                
+                
+                
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 % display the results - for each plant
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -468,9 +492,11 @@ function [] = singleSeedlingImage(imageFile,smoothValue,threshSIG,EXT,topTRIM,SN
         pName1 = [oPath nm '{PlantNumber_All}{Phenotype_DigitalBioMass}.csv'];
         pName2 = [oPath nm '{PlantNumber_All}{Phenotype_PlantHeight}.csv'];
         pName3 = [oPath nm '{PlantNumber_All}{Phenotype_LongestPath}.csv'];
+        pNameWidth = [oPath nm '{PlantNumber_All}{Phenotype_Width}.csv'];
         csvwrite(pName1,dBIOMASS);
         csvwrite(pName2,plantHEIGHT);
         csvwrite(pName3,data.longestPath);
+        csvwrite(pNameWidth,WIDTH);
         for e = 1:numel(HEIGHT)
             if (plantHEIGHT(e)==0)
                 data.K{e} = NaN;
@@ -526,8 +552,8 @@ end
     fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC4.10.16/plot105.nef';
     fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC4.1.16/plot108.nef';
     fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC4.1.16/plot110.nef';
-    fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC4.1.16/plot112.nef';
-    fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC2.26.16/plot1.nef';
+    %fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC4.1.16/plot112.nef';
+    %fileName = '/iplant/home/hirsc213/maizeData/seedlingData/one_month_test_mac/GC2.26.16/plot1.nef';
     singleSeedlingImage(fileName,100,5,100,100,4,oPath);
 
 
@@ -548,7 +574,8 @@ end
     [imageFile] = getImageFile(txtFileList,'110','12'); % wrong read pDay11
     [imageFile] = getImageFile(txtFileList,'112','12');
     [imageFile] = getImageFile(txtFileList,'1','11');
-    
+    [imageFile] = getImageFile(txtFileList,'100','14');
+    %[imageFile] = getImageFile(txtFileList,'100','7');
     singleSeedlingImage(imageFile,100,5,100,100,4,oPath);
     parfor e = 1:22
         [imageFile] = getImageFile(txtFileList,'100',num2str(e));

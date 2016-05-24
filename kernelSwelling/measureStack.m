@@ -13,12 +13,14 @@ function [S A] = measureStack(Stack,BOX,mainBOX,numtoMeasure,numCOLS,SKIP,disp)
     C = getCenters(Stack{1},mainBOX);
     C = realignCenters(Stack{1},C,BOX);  
    
+    %{
     % call to manual crop if centers are not found
     if isempty(C) | mod(size(C,1),numCOLS) ~= 0
         I = imread(Stack{1});
         [I mainBOX] = imcrop(I);
         C = getCenters(Stack{1},mainBOX);
     end
+    %}
     
     % measure all if numtoMeasure is less than 0
     if numtoMeasure < 0
